@@ -325,7 +325,6 @@ div.roam-sidebar-container.noselect>div>div {
   border: 4px solid #D8E5EE;
 }
 
-
 .block-border-left {
   border-left: 1px solid #fff;
 }
@@ -876,18 +875,6 @@ span[data-link-title^="DirectQuote"] .rm-page-ref {
   font-family: "Felix Titling", "方正清刻本悦宋简体";
 }
 
-/* Sticky Headers (refactored to reduce duplication) */
-.rm-heading-level-1>.rm-block-main.rm-block__self:first-child,
-.rm-heading-level-2>.rm-block-main.rm-block__self:first-child,
-.rm-heading-level-3>.rm-block-main.rm-block__self:first-child {
-  background-color: transparent !important;
-  background-clip: padding-box !important;
-  position: sticky !important;
-  z-index: 18 !important;
-  top: -1px !important;
-  opacity: 1 !important;
-}
-
 .rm-bq {
   background-color: var(--color-primary-highlight);
   border-left: 2px solid var(--color-primary);
@@ -1032,6 +1019,7 @@ span.rm-highlight {
 span.rm-page-ref[data-tag="h/yellow"],
 span.rm-page-ref[data-tag="h/blue"],
 span.rm-page-ref[data-tag="h/red"],
+span.rm-page-ref[data-tag="sup"],
 span.rm-page-ref[data-tag="h/green"],
 span.rm-page-ref[data-tag="h/purple"],
 span.rm-page-ref[data-tag="h/orange"] {
