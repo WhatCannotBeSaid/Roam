@@ -1,7 +1,18 @@
+/* ========================================================= */
+/* Roam Research Custom Theme - Deep Optimized Version       */
+/* 深度优化版：独立颜色、变量化、无冗余、无冲突              */
+/* ========================================================= */
+
+/* ========================================================= */
+/* CSS Variables - 颜色变量定义                               */
+/* ========================================================= */
 :root {
+  /* ===================== Typography ===================== */
   --header-font: "Futura", "方正颜真卿楷书 简";
   --body-font: "Optima", "HYKongShanKai", "汉仪空山楷 简", "汉仪空山楷", sans-serif;
   --code-font: "Fira Code", "方正屏显雅宋_GBK";
+
+  /* ===================== Core Colors ===================== */
   --bg-color: #F8F9FA;
   /* 纸白 */
   --page-color: #FFFFFF;
@@ -9,9 +20,11 @@
   --text-color: #343A40;
   /* 墨灰 */
   --light-text-color: #586068;
-  /* 铅灰 - Enhanced contrast */
+  /* 铅灰 */
   --page-tag-color: #9A8C98;
   /* 藕荷 */
+
+  /* ===================== Primary Colors ===================== */
   --color-primary: #4A90E2;
   /* 天青 */
   --color-primary-light: #A8D8FF;
@@ -22,61 +35,89 @@
   /* 秋香 */
   --color-subtle-border: #E9ECEF;
   /* 银白 */
-  /* Tag Color Palette - Elegant & Light Theme */
-  --tag-tweet: #89c3eb;
-  /* 苍蓝 */
-  --tag-literature: #b292a4;
-  /* 香芋 */
-  --tag-evergreens: #589b97;
-  /* 窃蓝 */
-  --tag-seedling: #88ada6;
-  /* 水色 */
-  --tag-idea-bank: #f9ac90;
-  /* 初桃 */
-  --tag-illustrated: #5a74c2;
-  /* 景泰蓝 */
-  --tag-garden: #a0a775;
+
+  /* ===================== UI Accent Colors ===================== */
+  --block-highlight-color: #7C3AED;
+  /* 靛蓝紫 - 块高亮 */
+  --heading-h1-color: #142334;
+  /* 玄青 - H1标题 */
+  --heading-h2-color: #395260;
+  /* 苍青 - H2标题 */
+  --heading-h3-color: #404A57;
+  /* 暗钢 - H3标题 */
+  --sidebar-title-color: #DE2A18;
+  /* 朱砂 - 侧边栏标题 */
+  --sidebar-star-color: #ED5A65;
+  /* 珊瑚红 - 星标 */
+  --reference-title-color: #144A74;
+  /* 靛青 - 引用标题 */
+  --checkbox-checked-color: #33bdea;
+  /* 晴空蓝 - 复选框 */
+  --tree-node-color: rgba(28, 172, 225, 0.826);
+  /* 树节点 */
+  --code-selection-color: #3eaf7c;
+  /* 翡翠绿 - 代码选中 */
+
+  /* ===================== Tag Color Palette ===================== */
+  /* 每个标签都有独立的颜色，避免重复 */
+  --tag-tweet: #5B9BD5;
+  /* 蔚蓝 */
+  --tag-literature: #9B59B6;
+  /* 紫藤 */
+  --tag-evergreens: #27AE60;
+  /* 翠绿 */
+  --tag-seedling: #1ABC9C;
+  /* 碧色 */
+  --tag-idea-bank: #E67E22;
+  /* 橙黄 */
+  --tag-illustrated: #3498DB;
+  /* 钴蓝 */
+  --tag-garden: #7D8C53;
   /* 松霜 */
-  --tag-video-tutorial: #e4a6a8;
-  /* 舌红 */
-  --tag-essay: #788a54;
-  /* 艾背绿 */
-  --tag-livestream: #d292a0;
-  /* 玉色 */
-  --tag-talk: #5a74c2;
-  /* 景泰蓝 */
-  --tag-waiting: #ccccd6;
-  /* 远山紫 */
-  --tag-researching: #89c3eb;
-  /* 苍蓝 */
-  --tag-synthesising: #b292a4;
-  /* 香芋 */
-  --tag-alive: #e4a6a8;
-  /* 舌红 */
-  --tag-book: #5a74c2;
-  /* 景泰蓝 */
-  --tag-evergreen-page: #589b97;
-  /* 窃蓝 */
-  --tag-arrow: #88ada6;
-  /* 水色 */
-  --tag-project: #525288;
-  /* 瑾瑜 */
-  --tag-area: #788a54;
-  /* 艾背绿 */
-  --tag-course: #5a74c2;
-  /* 景泰蓝 */
-  --tag-idea: #f9ac90;
-  /* 初桃 */
-  --tag-claim-color: #e4a6a8;
-  /* 舌红 */
-  --tag-questions-color: #89c3eb;
-  /* 苍蓝 */
-  --tag-response-color: #b292a4;
-  /* 香芋 */
-  --tag-evidence-color: #525288;
-  /* 瑾瑜 */
-  --tag-directquote-color: #788a54;
-  /* 艾背绿 */
+  --tag-video-tutorial: #E74C3C;
+  /* 朱红 */
+  --tag-essay: #6B8E23;
+  /* 橄榄绿 */
+  --tag-livestream: #C0392B;
+  /* 绛红 */
+  --tag-talk: #2980B9;
+  /* 靛蓝 */
+  --tag-waiting: #95A5A6;
+  /* 银灰 */
+  --tag-researching: #00BCD4;
+  /* 青色 */
+  --tag-synthesising: #8E44AD;
+  /* 深紫 */
+  --tag-alive: #E91E63;
+  /* 玫红 */
+  --tag-book: #5D6D7E;
+  /* 石墨蓝 */
+  --tag-evergreen-page: #16A085;
+  /* 翡翠 */
+  --tag-arrow: #17A2B8;
+  /* 湖蓝 */
+  --tag-project: #6C5CE7;
+  /* 瑾瑜紫 */
+  --tag-area: #2ECC71;
+  /* 草绿 */
+  --tag-course: #0984E3;
+  /* 天蓝 */
+  --tag-idea: #FD79A8;
+  /* 粉桃 */
+
+  /* ===================== Annotation Tag Colors ===================== */
+  --tag-claim-color: #D63031;
+  /* 红珊瑚 */
+  --tag-questions-color: #0984E3;
+  /* 天蓝 */
+  --tag-response-color: #A29BFE;
+  /* 薰衣草 */
+  --tag-evidence-color: #636E72;
+  /* 石板灰 */
+  --tag-directquote-color: #00B894;
+  /* 薄荷绿 */
+
+  /* ===================== Block Background Colors ===================== */
   --block-claim-bg: #fcf4f4;
   --block-questions-bg: #f0f8fc;
   --block-response-bg: #f6f3f5;
@@ -84,7 +125,9 @@
   --block-directquote-bg: #f1f2ed;
 }
 
-/* Body Colours */
+/* ========================================================= */
+/* Base Layout - 基础布局                                     */
+/* ========================================================= */
 body,
 #app {
   background: var(--bg-color);
@@ -96,7 +139,7 @@ body,
 }
 
 .roam-article>div {
-  padding: 30px 30px 30px 30px;
+  padding: 30px;
   background: var(--page-color);
   box-shadow: var(--page-shadow);
   border: 1px solid var(--color-subtle-border);
@@ -123,23 +166,25 @@ body,
   transition: padding-left 0.15s ease-out;
 }
 
+/* ========================================================= */
+/* Block Highlight - 块高亮样式                               */
+/* ========================================================= */
 .block-highlight-blue {
   background-color: transparent !important;
   z-index: 99;
 }
 
 .block-highlight-blue * {
-  color: var(--color-primary) !important;
+  color: var(--block-highlight-color) !important;
 }
 
-div::selection,
-textarea::selection {
-  background-color: transparent;
-  color: var(--color-primary);
-  text-shadow: 0 0 2px var(--color-primary-light);
+.block-highlight-yellow {
+  background-color: white;
 }
 
-/* Typography */
+/* ========================================================= */
+/* Typography - 排版样式                                      */
+/* ========================================================= */
 h1,
 h2,
 h3,
@@ -165,33 +210,45 @@ textarea {
   color: var(--text-color);
 }
 
+.rm-block-text,
+.roam-block {
+  font-size: 1.1em;
+}
 
+/* Headings - 使用变量 */
+.rm-level1,
+.rm-heading-level-1>.rm-block__self .rm-block__input {
+  color: var(--heading-h1-color);
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-family: "Palatino Linotype", "方正清刻本悦宋简体";
+}
 
-/* Base Pill Style (used by tag variants) */
-.tag-pill-base {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 15px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  line-height: 1.6;
+.rm-level2,
+.rm-heading-level-2>.rm-block__self .rm-block__input {
+  color: var(--heading-h2-color);
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-family: "Palatino Linotype", "方正清刻本悦宋简体" !important;
+}
+
+.rm-level3,
+.rm-heading-level-3>.rm-block__self .rm-block__input {
+  color: var(--heading-h3-color);
+  font-weight: 400;
+  font-size: 1.4rem;
+  font-family: "Palatino Linotype", "方正清刻本悦宋简体";
+}
+
+/* Links */
+a {
+  color: var(--color-secondary);
   font-weight: 600;
 }
 
-/* Embed Blocks */
-.rm-embed-container {
-  background: #fcfdfd;
-  border: 1px solid var(--color-subtle-border);
-  border-radius: 4px;
-  padding: 0.6em 0.4em;
-  margin: 0.4em 0;
-}
-
-.block-highlight-yellow {
-  background-color: white;
-}
-
-/* Code Syntax */
-/* 强制覆盖大型代码块及行内代码的所有子元素 */
+/* ========================================================= */
+/* Code Blocks - 代码块样式                                   */
+/* ========================================================= */
 .rm-code-block .cm-editor,
 .rm-code-block .cm-content,
 .rm-code-block .cm-line,
@@ -206,31 +263,30 @@ code {
   opacity: 90%;
 }
 
-/* 1. 针对大型代码块 (CodeMirror) 的选中颜色 */
+/* Code Selection - 统一使用翡翠绿 */
 .cm-selectionBackground,
 .cm-focused .cm-selectionBackground,
-.cm-content ::selection {
-  background-color: #801DAE !important;
-  /* 这里修改为你喜欢的颜色，例如深绿色 */
-  color: rgb(0, 0, 0) !important;
-  /* 选中时的文字颜色 */
-}
-
-/* 2. 针对行内代码 (Inline Code) 的选中颜色 */
+.cm-content ::selection,
 code::selection {
-  background-color: #801DAE !important;
-  color: rgb(0, 0, 0) !important;
-}
-
-/* 使 CodeMirror 选中背景更圆润，更像椭圆形 */
-.cm-selectionBackground {
+  background-color: var(--code-selection-color) !important;
+  color: #000000 !important;
   border-radius: 10px !important;
-  /* 利用阴影扩张背景，使其看起来更像椭圆 */
-  box-shadow: 0 0 0 2px #3eaf7c !important;
-  background-color: #3eaf7c !important;
 }
 
-/* Queries */
+/* ========================================================= */
+/* Embed Blocks - 嵌入块样式                                  */
+/* ========================================================= */
+.rm-embed-container {
+  background: #fcfdfd;
+  border: 1px solid var(--color-subtle-border);
+  border-radius: 4px;
+  padding: 0.6em 0.4em;
+  margin: 0.4em 0;
+}
+
+/* ========================================================= */
+/* Queries - 查询样式                                         */
+/* ========================================================= */
 .rm-query {
   border: 0.5px solid #e4e9ec;
   border-radius: 5px;
@@ -261,18 +317,54 @@ code::selection {
   padding: 0.4em 0.2em;
 }
 
-.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page {
-  padding: 6px;
+/* Reference Items */
+.rm-reference-item {
+  margin-top: 8px;
+  border-radius: 15px;
+  border: none;
+  margin-right: 8px;
+  flex: 1 1 100%;
+  word-break: break-word;
+  background-color: #ffffff;
+  padding: 0px;
 }
 
+/* ========================================================= */
+/* Sidebar - 侧边栏样式                                       */
+/* ========================================================= */
+.roam-body .roam-app .roam-sidebar-container {
+  background-color: var(--page-color);
+  border-right: 1px var(--color-subtle-border) solid;
+}
+
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page {
+  padding: 6px;
+  color: #000000;
+}
+
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page,
+.roam-body .roam-app .roam-sidebar-container>* {
+  opacity: 80%;
+  box-shadow: none;
+}
+
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page:hover,
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:hover,
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row:hover {
-  background-color: white;
+  background: var(--page-color);
+  color: var(--text-color);
+  opacity: 100%;
+}
+
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button {
+  color: #000000;
 }
 
 div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
   font-size: 14px;
   opacity: 80%;
   letter-spacing: 0.04em;
+  color: var(--sidebar-star-color);
 }
 
 div.roam-sidebar-container.noselect>div>div {
@@ -280,6 +372,24 @@ div.roam-sidebar-container.noselect>div>div {
   letter-spacing: 0.03em;
 }
 
+.roam-sidebar-container .rm-db-title-container .rm-db-title {
+  color: var(--sidebar-title-color);
+  padding: 4px;
+  font-size: large;
+  font-family: "Felix Titling", "方正清刻本悦宋简体";
+}
+
+/* Right Sidebar */
+#right-sidebar>div {
+  background-color: var(--bg-color);
+  border-left: 1px solid #e9ebef;
+  padding: 20px;
+  overflow: visible;
+}
+
+/* ========================================================= */
+/* Block Input - 块输入样式                                   */
+/* ========================================================= */
 #block-input {
   background: white;
 }
@@ -289,24 +399,13 @@ div.roam-sidebar-container.noselect>div>div {
   background: white;
 }
 
-.rm-block-text,
-.roam-block {
-  font-size: 1.1em;
+#block-input-ghost span {
+  color: black !important;
 }
 
-#right-sidebar>div {
-  background-color: var(--bg-color);
-  border-left: 1px solid #e9ebef;
-  padding: 20px;
-  overflow: none;
-}
-
-.rm-page-ref-brackets {
-  display: none;
-}
-
-
-/* Bullet Points */
+/* ========================================================= */
+/* Bullet Points - 子弹点样式                                 */
+/* ========================================================= */
 .rm-bullet .rm-bullet__inner {
   box-sizing: content-box;
   display: flex;
@@ -325,11 +424,53 @@ div.roam-sidebar-container.noselect>div>div {
   border: 4px solid #D8E5EE;
 }
 
-.block-border-left {
-  border-left: 1px solid #fff;
+.rm-bullet__inner--user-icon {
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  background-clip: content-box;
+  border: 4px solid transparent;
+  background-color: #000000;
 }
 
-/* Kanban */
+/* ========================================================= */
+/* Block References - 块引用样式                              */
+/* ========================================================= */
+.rm-block-ref::before {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  border-radius: 2px;
+  height: 10px;
+  background: var(--color-primary-light);
+  margin-right: 6px;
+}
+
+.rm-block-ref {
+  border-bottom: none;
+  font-size: 1em;
+  color: var(--text-color);
+  opacity: 90%;
+}
+
+.rm-block-ref:hover {
+  background: none;
+  cursor: pointer;
+}
+
+.block-ref-count-button {
+  color: var(--color-primary);
+  font-weight: 800;
+  top: -10px;
+}
+
+/* ========================================================= */
+/* Kanban - 看板样式                                          */
+/* ========================================================= */
 .kanban-board {
   background-color: #fff;
 }
@@ -350,124 +491,52 @@ div.roam-sidebar-container.noselect>div>div {
 
 .kanban-column {
   background-color: #e4edf2;
-  margin: 0px 4px 0px 4px;
+  margin: 0px 4px;
   padding: 4px;
   border-radius: 3px;
 }
 
-/* Block references */
-.rm-block-ref::before {
-  content: "";
-  display: inline-block;
-  width: 2px;
-  border-radius: 2px;
-  height: 10px;
-  background: var(--color-primary-light);
-  margin-right: 6px;
-}
-
-.rm-block-ref:hover {
-  background: none;
-  cursor: pointer;
-}
-
-.rm-block-ref {
-  border-bottom: none;
-  font-size: 1em;
-  color: var(--text-color);
-  opacity: 90%;
-}
-
-.block-ref-count-button {
-  color: var(--color-primary);
-  font-weight: 800;
-  top: -10px;
-}
-
-
+/* ========================================================= */
+/* Checkboxes - 复选框样式                                    */
+/* ========================================================= */
 .checkmark {
   background: #fff;
 }
 
 .check-container input:checked~.checkmark {
-  background: #33bdea;
+  background: var(--checkbox-checked-color);
 }
 
 .check-container input:checked~.checkmark:after {
   border-color: #fff;
 }
 
-.rm-reference-item {
-  margin-top: 8px;
-  border-radius: 6px;
-  border: 1px solid #e4e9ee;
-  margin-right: 8px;
-  flex: 1 1 100%;
-  word-break: break-word;
-  background-color: #f7f9fb;
-  padding: 8px;
-}
-
-/* Headings */
-.rm-level1,
-.rm-heading-level-1>.rm-block__self .rm-block__input {
-  color: #142334;
-  font-size: 1.8rem;
-  font-weight: 600;
-  font-family: "Palatino Linotype", "方正清刻本悦宋简体";
-}
-
-.rm-level2,
-.rm-heading-level-2>.rm-block__self .rm-block__input {
-  color: #395260;
-  font-size: 1.6rem;
-  font-weight: 500;
-  font-family: "Palatino Linotype", "方正清刻本悦宋简体" !important;
-}
-
-.rm-level3,
-.rm-heading-level-3>.rm-block__self .rm-block__input {
-  color: #404A57;
-  font-weight: 400;
-  font-size: 1.4rem;
-  font-family: "Palatino Linotype", "方正清刻本悦宋简体";
-}
-
-a {
-  color: var(--color-secondary);
-  font-weight: 600;
-}
-
-.intercom-app,
-.intercom-launcher-frame,
-#intercom-container {
-  display: none;
-}
-
-.roam-body .roam-app .roam-sidebar-container {
-  background-color: var(--page-color);
-  border-right: 1px var(--color-subtle-border) solid;
-}
-
-.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page,
-.roam-body .roam-app .roam-sidebar-container>* {
-  opacity: 80%;
-  box-shadow: none;
-}
-
-.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page:hover,
-.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:hover {
-  background: var(--page-color);
-  color: var(--text-color);
-  opacity: 100%;
-}
-
-#buffer.tall {
-  height: calc(100vh - 50px);
-}
-
 .check-container {
   padding-right: 4px;
+}
+
+/* ========================================================= */
+/* Blockquote - 引用块样式                                    */
+/* ========================================================= */
+.rm-bq {
+  background-color: var(--color-primary-highlight);
+  border-left: 2px solid var(--color-primary);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  font-family: "HYKongShanKai", "汉仪空山楷 简", "汉仪空山楷", cursive;
+  font-size: 0.95em;
+  color: var(--text-color);
+  text-align: left;
+  word-wrap: break-word;
+  opacity: 0.9;
+}
+
+/* ========================================================= */
+/* Page References & Tags - 页面引用和标签样式                 */
+/* ========================================================= */
+.rm-page-ref-brackets {
+  display: none;
 }
 
 span.rm-page-ref {
@@ -476,41 +545,24 @@ span.rm-page-ref {
   padding-right: 1px;
 }
 
-.center-proj {
-  text-align: center;
-}
-
-/* URL links */
-.rm-alias--external,
-.rm-alias--external:hover {
+.rm-page-ref--link {
+  color: var(--color-primary);
   font-weight: 600;
 }
 
-/* Set the colour of popover tooltip text to white */
-.bp3-tooltip .bp3-popover-content div {
-  color: white;
-}
-
-/* Page Link and Tag Colours */
-/* 优先级更高的选择器，确保页面 tag 呈现为 pill（覆盖可能的 element+class 规则） */
+/* Base Tag Style */
 span.rm-page-ref.rm-page-ref--tag {
-  border-radius: 15px;
   display: inline-block;
   padding: 2px 8px;
   border-radius: 15px;
-  /* 椭圆 */
   background: #FF3300;
   line-height: 1.6;
   font-weight: 600;
 }
 
-/* 更稳健的隐藏 '#' 实现：
-   - 将原始文本字体尺寸设为 0（以隐藏原始渲染，包括首字符），
-   - 使用 ::after 渲染 `attr(data-tag)`（不含 '#') 显示真实标签文本，
-   - 恢复子元素（如 popover target）的字体尺寸，保证交互不受影响。 */
+/* Hide '#' in tags */
 span.rm-page-ref[data-tag] {
   font-size: 0;
-  /* 隐藏原始文本 */
   line-height: 0;
 }
 
@@ -518,18 +570,16 @@ span.rm-page-ref[data-tag]::after {
   content: attr(data-tag);
   display: inline-block;
   font-size: 14px;
-  /* 或者使用 1rem，给它一个明确的大小 */
   line-height: 1.6;
   color: #fefefe;
   font-weight: inherit;
 }
 
-/* 为通用标签 ::after 伪元素明确设置颜色 */
 span.rm-page-ref.rm-page-ref--tag[data-tag]::after {
   color: #fefefe;
 }
 
-/* 恢复内部子元素（比如 popover 按钮/图标）的字体尺寸，保持交互可用 */
+/* Restore font size for inner elements */
 span.rm-page-ref[data-tag] span,
 span.rm-page-ref[data-tag] .bp3-popover-wrapper,
 span.rm-page-ref[data-tag] .bp3-popover-target {
@@ -537,47 +587,9 @@ span.rm-page-ref[data-tag] .bp3-popover-target {
   line-height: inherit;
 }
 
-.rm-page-ref--link {
-  color: var(--color-primary);
-  font-weight: 600;
-}
-
-.rm-extensions-settings .rm-extensions-installed .rm-extension-installed__name {
-  font-size: 14px;
-  font-weight: 600;
-  font-optical-sizing: white;
-}
-
-/* Find & Replace hotkey text color */
-.rm-hotkeys-action {
-  color: var(--color-primary);
-}
-
-/* Find & Replace readme text color */
-.rm-settings-panel__section .rm-depot-readme-wrapper h1,
-.rm-settings-panel__section .rm-depot-readme-wrapper h2,
-.rm-settings-panel__section .rm-depot-readme-wrapper h3,
-.rm-settings-panel__section .rm-depot-readme-wrapper p,
-.rm-settings-panel__section .rm-depot-readme-wrapper li,
-.rm-settings-panel__section .rm-depot-readme-wrapper a,
-.rm-settings-panel__section .rm-depot-readme-wrapper strong {
-  color: var(--color-primary);
-}
-
-/* Disabled button text color */
-.bp3-button.bp3-disabled,
-.bp3-button.bp3-disabled .bp3-button-text {
-  color: white !important;
-}
-
-
-/* -------------------------- */
-
-/* /* Custom Data Tags and Pages */
-
-/* -------------------------- */
-/* Filled Tag Styles (with background) */
-/* Shared styles for tags with background */
+/* ========================================================= */
+/* Filled Tags - 填充背景的标签                               */
+/* ========================================================= */
 span.rm-page-ref[data-tag="Tweet"],
 span.rm-page-ref[data-tag="Literature Notes"],
 span.rm-page-ref[data-tag="Evergreens"],
@@ -602,7 +614,7 @@ span[data-link-title^="Alive"] .rm-page-ref {
   font-weight: 500;
 }
 
-/* Individual background colors */
+/* Individual Tag Background Colors */
 span.rm-page-ref[data-tag="Tweet"] {
   background: var(--tag-tweet);
 }
@@ -639,8 +651,9 @@ span.rm-page-ref[data-tag="Alive"] {
   background: var(--tag-alive);
 }
 
-
-/* Other Tag Styles */
+/* ========================================================= */
+/* Text-only Tags - 纯文字标签                                 */
+/* ========================================================= */
 span.rm-page-ref[data-tag="Seedling"],
 span[data-link-title^="Seedling"] .rm-page-ref {
   color: var(--tag-seedling);
@@ -690,39 +703,9 @@ span[data-link-title^="Video Tutorial"] .rm-page-ref {
   color: var(--tag-video-tutorial);
 }
 
-span.rm-page-ref[data-tag="Essay"] {
-  background: var(--tag-essay);
-}
-
-span.rm-page-ref[data-tag="Talk"] {
-  background: var(--tag-talk);
-}
-
-span.rm-page-ref[data-tag="Waiting"] {
-  background: var(--tag-waiting);
-}
-
-span.rm-page-ref[data-tag="Researching"] {
-  background: var(--tag-researching);
-}
-
-span.rm-page-ref[data-tag="Synthesising"] {
-  background: var(--tag-synthesising);
-}
-
-span.rm-page-ref[data-tag="Alive"] {
-  background: var(--tag-alive);
-}
-
-span.rm-page-ref[data-tag="Essay"],
-span.rm-page-ref[data-tag="Talk"],
-span.rm-page-ref[data-tag="Waiting"],
-span.rm-page-ref[data-tag="Researching"],
-span.rm-page-ref[data-tag="Synthesising"],
-span.rm-page-ref[data-tag="Alive"],
-span[data-link-title^="Essay"] .rm-page-ref,
-span[data-link-title^="Talk"] .rm-page-ref,
-/* Link Title Prefix Styles (hierarchy notation) */
+/* ========================================================= */
+/* Link Title Prefix Tags - 层级前缀标签                      */
+/* ========================================================= */
 span[data-link-title^="Book/"] .rm-page-ref,
 span[data-link-title^="Article/"] .rm-page-ref,
 span[data-link-title^="Video/"] .rm-page-ref,
@@ -763,21 +746,6 @@ span[data-link-title^="Course/"] .rm-page-ref {
   color: var(--tag-course);
 }
 
-span[data-link-title^="Project/"] .rm-page-ref {
-  color: var(--tag-project);
-  font-weight: 700;
-}
-
-span[data-link-title^="Area/"] .rm-page-ref {
-  color: var(--tag-area);
-  font-weight: 600;
-}
-
-span[data-link-title^="Course/"] .rm-page-ref {
-  color: var(--tag-course);
-  font-weight: 600;
-}
-
 span[data-link-title^="Idea/"] .rm-page-ref {
   color: var(--tag-idea);
   padding: 3px 4px;
@@ -789,15 +757,9 @@ span[data-link-title^="Idea/"] .rm-page-ref::before {
   content: "✦ ";
 }
 
-
-/* -------------------------- */
-
-/* Block Styles by Tag */
-
-/* -------------------------- */
-
-
-/* Block Container Styles (unified structure) */
+/* ========================================================= */
+/* Block Styles by Tag - 按标签的块样式                       */
+/* ========================================================= */
 .roam-block-container[data-page-links*='Claim'],
 .roam-block-container[data-page-links*='Questions'],
 .roam-block-container[data-page-links*='Response'],
@@ -828,7 +790,7 @@ span[data-link-title^="Idea/"] .rm-page-ref::before {
   background: var(--block-directquote-bg);
 }
 
-/* Block Tag Annotation Colors */
+/* Annotation Tag Colors */
 span.rm-page-ref[data-tag="Claim"],
 span[data-link-title^="Claim"] .rm-page-ref,
 span.rm-page-ref[data-tag="Questions"],
@@ -868,77 +830,116 @@ span[data-link-title^="DirectQuote"] .rm-page-ref {
   color: var(--tag-directquote-color);
 }
 
-.roam-sidebar-container .rm-db-title-container .rm-db-title {
-  color: #DE2A18;
-  padding: 4px;
-  font-size: large;
-  font-family: "Felix Titling", "方正清刻本悦宋简体";
+/* ========================================================= */
+/* Custom Highlights - 自定义高亮                             */
+/* ========================================================= */
+span.rm-highlight {
+  text-decoration: none !important;
+  background: linear-gradient(180deg, rgba(255, 199, 115, 0) 60%, #B0A4E3 60%);
 }
 
-.rm-bq {
-  background-color: var(--color-primary-highlight);
-  border-left: 2px solid var(--color-primary);
-  border-radius: 6px;
-  padding: 12px 16px;
-  margin: 8px 0;
-  font-family: "HYKongShanKai", "汉仪空山楷 简", "汉仪空山楷", cursive;
-  font-size: 0.95em;
-  color: var(--text-color);
-  text-align: left;
-  word-wrap: break-word;
-  opacity: 0.9;
+/* Hide highlight control tags */
+span.rm-page-ref[data-tag="h/yellow"],
+span.rm-page-ref[data-tag="h/blue"],
+span.rm-page-ref[data-tag="h/red"],
+span.rm-page-ref[data-tag="sup"],
+span.rm-page-ref[data-tag="h/green"],
+span.rm-page-ref[data-tag="h/purple"],
+span.rm-page-ref[data-tag="h/orange"] {
+  display: none;
 }
 
-.rm-bullet__inner--user-icon {
-  box-sizing: content-box;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 50%;
-  width: 6px;
-  height: 6px;
-  background-clip: content-box;
-  border: 4px solid transparent;
-  background-color: #000000;
+/* ========================================================= */
+/* Hide Default Lines - 隐藏默认连接线                        */
+/* ========================================================= */
+.rm-multibar,
+.rm-block-children::before {
+  display: none !important;
+  visibility: hidden !important;
 }
 
-.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page {
-  color: #000000
+/* ========================================================= */
+/* Misc UI Elements - 其他UI元素                              */
+/* ========================================================= */
+.intercom-app,
+.intercom-launcher-frame,
+#intercom-container {
+  display: none;
 }
 
-div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
-  color: #ED5A65;
+#buffer.tall {
+  height: calc(100vh - 50px);
 }
 
-.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button {
-  color: #000000
+.center-proj {
+  text-align: center;
 }
 
+/* URL links */
+.rm-alias--external,
+.rm-alias--external:hover {
+  font-weight: 600;
+}
+
+/* Tooltip */
+.bp3-tooltip .bp3-popover-content div {
+  color: white;
+}
+
+/* Extension Settings */
+.rm-extensions-settings .rm-extensions-installed .rm-extension-installed__name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Find & Replace */
+.rm-hotkeys-action {
+  color: var(--color-primary);
+}
+
+.rm-settings-panel__section .rm-depot-readme-wrapper h1,
+.rm-settings-panel__section .rm-depot-readme-wrapper h2,
+.rm-settings-panel__section .rm-depot-readme-wrapper h3,
+.rm-settings-panel__section .rm-depot-readme-wrapper p,
+.rm-settings-panel__section .rm-depot-readme-wrapper li,
+.rm-settings-panel__section .rm-depot-readme-wrapper a,
+.rm-settings-panel__section .rm-depot-readme-wrapper strong {
+  color: var(--color-primary);
+}
+
+/* Disabled button */
+.bp3-button.bp3-disabled,
+.bp3-button.bp3-disabled .bp3-button-text {
+  color: white !important;
+}
+
+/* Linked References Title Override */
+.rm-reference-wrapper div[style*="color: rgb(206, 217, 224)"] {
+  color: var(--reference-title-color) !important;
+}
+
+.rm-unlinked-reference-container strong {
+  color: var(--reference-title-color) !important;
+}
+
+/* Tree Node Expand/Collapse */
+div>.bp3-icon-caret-down+strong,
+div>.bp3-icon-caret-right+strong {
+  color: var(--tree-node-color) !important;
+}
+
+/* ========================================================= */
+/* Settings Panel - 设置面板样式                              */
+/* ========================================================= */
 .rm-settings .rm-settings-panel .rm-settings-panel__description {
   color: #f8f8f8;
 }
 
-.rm-settings .rm-settings-panel__section h1 {
-  color: #E3EFD1 !important;
-}
-
-.rm-settings .rm-settings-panel__section h2 {
-  color: #E3EFD1 !important;
-}
-
-
-.rm-settings .rm-settings-panel h3 {
-  color: #E3EFD1 !important;
-}
-
-.rm-settings .rm-settings-panel__section h4 {
-  color: #E3EFD1 !important;
-}
-
-.rm-settings .rm-settings-panel__section h5 {
-  color: #E3EFD1 !important;
-}
-
+.rm-settings .rm-settings-panel__section h1,
+.rm-settings .rm-settings-panel__section h2,
+.rm-settings .rm-settings-panel h3,
+.rm-settings .rm-settings-panel__section h4,
+.rm-settings .rm-settings-panel__section h5,
 .rm-settings .rm-settings-panel__section h6 {
   color: #E3EFD1 !important;
 }
@@ -947,20 +948,12 @@ div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
   background-color: #000000;
 }
 
-
-
-.rm-extensions-installed__header {
-  color: #e3efd1;
-}
-
+.rm-extensions-installed__header,
 .rm-extension-installed__name {
   color: #e3efd1;
 }
 
-.rm-extensions-marketplace .rm-extensions-marketplace-search {
-  background-color: var(--bg-color);
-}
-
+.rm-extensions-marketplace .rm-extensions-marketplace-search,
 .rm-extensions-marketplace .rm-extensions-marketplace-details {
   background-color: var(--bg-color);
 }
@@ -973,91 +966,39 @@ div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
   background-color: #00acc0;
 }
 
-.rm-reference-item {
-  margin-top: 8px;
-  border-radius: 15px;
-  border: none;
-  margin-right: 8px;
-  flex: 1 1 100%;
-  word-break: break-word;
-  background-color: #ffffff;
-  padding: 0px;
-}
-
-/* Inline-style override: 覆盖 DevTools 中显示的 "color: rgb(206, 217, 224)"（Linked References 标题）
-   Scoped under .rm-reference-wrapper 以减少对其他元素的影响 */
-.rm-reference-wrapper div[style*="color: rgb(206, 217, 224)"] {
-  color: #144A74 !important;
-}
-
-.rm-unlinked-reference-container strong {
-  color: #144A74 !important;
-}
-
 .rm-settings .rm-settings-panel .rm-select-wrapper {
   color: #f8f8f8;
 }
 
-#block-input-ghost span {
-  color: black !important;
-}
-
-div>.bp3-icon-caret-down+strong,
-div>.bp3-icon-caret-right+strong {
-  color: rgba(28, 172, 225, 0.826) !important;
-}
-
-/* -------------------------- */
-/* Custom Highlights          */
-/* -------------------------- */
-span.rm-highlight {
-  text-decoration: none !important;
-  background: linear-gradient(180deg, rgba(255, 199, 115, 0) 60%, #B0A4E3 60%);
-}
-
-/* Hide specific tags */
-span.rm-page-ref[data-tag="h/yellow"],
-span.rm-page-ref[data-tag="h/blue"],
-span.rm-page-ref[data-tag="h/red"],
-span.rm-page-ref[data-tag="sup"],
-span.rm-page-ref[data-tag="h/green"],
-span.rm-page-ref[data-tag="h/purple"],
-span.rm-page-ref[data-tag="h/orange"] {
-  display: none;
-}
-
-/* --- 智能连接线 (Smart Curved Lines) --- */
-
-/* 1. 隐藏 Roam 默认的垂直灰线 */
-.rm-multibar,
-.block-border-left {
-  display: none !important;
-  visibility: hidden !important;
-}
-
-.rm-block-children::before {
-  display: none !important;
-}
-
-
-/* -------------------------- */
-/* Dark Mode Styles (Revised) */
-/* -------------------------- */
-/* --- Custom Night Mode Override for bp3-dark --- */
+/* ========================================================= */
+/* Dark Mode - 深色模式                                       */
+/* ========================================================= */
 body.bp3-dark {
-  /* Apply the new palette */
+  /* Core Colors */
   --bg-color: #1C1C1E;
   --page-color: #2C2C2E;
   --text-color: #EAEAEB;
   --light-text-color: #8A8A8E;
   --page-tag-color: #c678dd;
   --color-primary: #61AFEF;
-  /* 天青 - Brighter blue for better visibility */
   --color-primary-light: #82c0ff;
   --color-primary-highlight: #3A3A3C;
   --color-secondary: #FFD111;
-  /* 藤黄 - Higher contrast yellow */
   --color-subtle-border: #3A3A3C;
+
+  /* UI Accent Colors */
+  --block-highlight-color: #A78BFA;
+  --heading-h1-color: #EAEAEB;
+  --heading-h2-color: #D1D5DB;
+  --heading-h3-color: #9CA3AF;
+  --sidebar-title-color: #FF6B6B;
+  --sidebar-star-color: #FF8787;
+  --reference-title-color: #82c0ff;
+  --checkbox-checked-color: #61AFEF;
+  --tree-node-color: rgba(97, 175, 239, 0.9);
+  --code-selection-color: #56b6c2;
+
+  /* Tag Colors - 深色模式独立配色 */
   --tag-tweet: #61afef;
   --tag-literature: #c678dd;
   --tag-evergreens: #98c379;
@@ -1070,7 +1011,7 @@ body.bp3-dark {
   --tag-livestream: #e06c75;
   --tag-talk: #61afef;
   --tag-waiting: #888888;
-  --tag-researching: #61afef;
+  --tag-researching: #56b6c2;
   --tag-synthesising: #c678dd;
   --tag-alive: #e06c75;
   --tag-book: #61afef;
@@ -1085,28 +1026,24 @@ body.bp3-dark {
   --tag-response-color: #c678dd;
   --tag-evidence-color: #e5c07b;
   --tag-directquote-color: #98c379;
+
+  /* Block Backgrounds */
   --block-claim-bg: rgba(224, 108, 117, 0.1);
   --block-questions-bg: rgba(97, 175, 239, 0.1);
   --block-response-bg: rgba(198, 120, 221, 0.1);
   --block-evidence-bg: rgba(229, 192, 123, 0.1);
   --block-directquote-bg: rgba(152, 195, 121, 0.1);
 
-  /* Custom Highlight Colors */
+  /* Highlight Colors */
   --highlight-yellow: #FFB61E;
-  /* 藤黄 */
   --highlight-green: #61AC85;
-  /* 庭芜绿 */
   --highlight-blue: #83C3F7;
-  /* 沧浪 */
   --highlight-red: #F08383;
-  /* 合欢红 */
   --highlight-purple: #BD84C8;
-  /* 紫藤 */
   --highlight-orange: #FBC85F;
-  /* 杏黄 */
 }
 
-/* General Overrides for Dark Theme */
+/* Dark Mode - General Overrides */
 body.bp3-dark,
 body.bp3-dark #app {
   background: var(--bg-color) !important;
@@ -1117,7 +1054,7 @@ body.bp3-dark .roam-article>div {
   border-color: var(--color-subtle-border);
 }
 
-/* Custom Highlights - Dark Mode */
+/* Dark Mode - Highlights */
 body.bp3-dark span.rm-highlight {
   color: #EEDEB0 !important;
   background: linear-gradient(180deg, transparent 60%, #15559A 60%);
@@ -1147,6 +1084,7 @@ body.bp3-dark .roam-block-container[data-page-links*='h/orange'] span.rm-highlig
   background: linear-gradient(180deg, transparent 60%, var(--highlight-orange) 60%);
 }
 
+/* Dark Mode - Typography */
 body.bp3-dark h1,
 body.bp3-dark h2,
 body.bp3-dark h3,
@@ -1168,7 +1106,7 @@ body.bp3-dark textarea {
   color: var(--text-color);
 }
 
-/* Sidebar */
+/* Dark Mode - Sidebar */
 body.bp3-dark .roam-body .roam-app .roam-sidebar-container {
   background-color: var(--bg-color);
   border-right-color: var(--color-subtle-border);
@@ -1179,7 +1117,6 @@ body.bp3-dark #right-sidebar>div {
   border-left: 1px solid var(--color-subtle-border);
 }
 
-/* Selected item in sidebar */
 body.bp3-dark .starred-pages .page:hover,
 body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:hover,
 body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row:hover {
@@ -1196,8 +1133,7 @@ body.bp3-dark .bp3-text-overflow-ellipsis>a.bp3-active {
   background-color: var(--color-primary-highlight) !important;
 }
 
-
-/* Code Blocks */
+/* Dark Mode - Code Blocks */
 body.bp3-dark .rm-code-block .cm-editor,
 body.bp3-dark .rm-code-block .cm-content,
 body.bp3-dark .rm-code-block .cm-line,
@@ -1205,11 +1141,10 @@ body.bp3-dark .rm-code-block .cm-gutters,
 body.bp3-dark .rm-inline-code,
 body.bp3-dark code {
   background: #282a36;
-  /* Using a common code bg color */
   color: var(--text-color);
 }
 
-/* Other elements */
+/* Dark Mode - Other Elements */
 body.bp3-dark .rm-embed-container,
 body.bp3-dark .rm-reference-item {
   background-color: var(--bg-color);
@@ -1221,6 +1156,7 @@ body.bp3-dark .roam-body #block-input>span>div {
   background: var(--page-color);
 }
 
+/* Dark Mode - Kanban */
 body.bp3-dark .kanban-board {
   background-color: var(--bg-color);
 }
@@ -1234,6 +1170,7 @@ body.bp3-dark .kanban-card {
   box-shadow: 0px 1px 2px #111;
 }
 
+/* Dark Mode - Tags */
 body.bp3-dark span.rm-page-ref.rm-page-ref--tag {
   background: transparent;
   border: 1px solid var(--page-tag-color);
@@ -1244,13 +1181,12 @@ body.bp3-dark span.rm-page-ref[data-tag]::after {
   content: attr(data-tag);
   display: inline-block;
   font-size: 14px;
-  /* 或者使用 1rem，给它一个明确的大小 */
   line-height: 1.6;
   color: #fefefe;
   font-weight: inherit;
 }
 
-/* Stroked styles for other specific tags */
+/* Dark Mode - Stroked Tags */
 body.bp3-dark span.rm-page-ref[data-tag="Tweet"],
 body.bp3-dark span.rm-page-ref[data-tag="Literature Notes"],
 body.bp3-dark span.rm-page-ref[data-tag="Evergreens"],
@@ -1321,6 +1257,7 @@ body.bp3-dark span.rm-page-ref[data-tag="Alive"] {
   border-color: var(--tag-alive);
 }
 
+/* Dark Mode - Links & Bullets */
 body.bp3-dark a {
   color: var(--color-secondary);
 }
@@ -1337,76 +1274,61 @@ body.bp3-dark .rm-bullet__inner--user-icon {
   background-color: var(--tag-seedling);
 }
 
-/* --- End of Custom Night Mode --- */
-
 /* ========================================================= */
-/* 插件 Todo Progress Bar 优化版 (By Gemini & Copilot)        */
+/* Todo Progress Bar Plugin - 进度条插件样式                  */
 /* ========================================================= */
 
-/* --- 通用样式 --- */
-/* 内部包装层：强制填满高度 */
+/* Common Styles */
 div[style*="width: 150px"][style*="overflow: hidden"]>div {
   height: 100% !important;
   width: 100% !important;
 }
 
-/* 动画层基础尺寸 */
 .wave-animation-v19,
 .wave-animation-v19-back {
   height: 60px !important;
   width: 200% !important;
 }
 
-/* 100% 完成时隐藏动画波浪路径 */
+/* Hide wave paths at 100% */
 div[style*="width: 150px"] svg.wave-front:not(.wave-animation-v19) path {
   display: none !important;
 }
 
-/* 100% 完成时隐藏后景 */
 div[style*="width: 150px"] svg.wave-back:not(.wave-animation-v19-back) {
   display: none !important;
 }
 
-
-/* --- 日间模式：清爽波浪 (v2 - 优化版) --- */
-/* 1. 外框容器 */
+/* Light Mode - Progress Bar */
 div[style*="width: 150px"][style*="overflow: hidden"] {
   height: 16px !important;
   border-radius: 9px !important;
   background: #eef5f9 !important;
-  /* 更柔和的背景 */
   border: 1px solid #dbeaf2 !important;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* 2. 顶层波浪 (前景) */
 .wave-animation-v19 {
   top: -28px !important;
-  /* 与夜间模式对齐 */
   opacity: 1 !important;
   filter: drop-shadow(0 0 3px white);
-  /* 柔和的白色辉光 */
 }
 
 .wave-front path {
   fill: #3498db !important;
-  /* 明亮的天蓝色 */
 }
 
-/* 3. 底层波浪 (后景) */
 .wave-animation-v19-back {
   top: -25px !important;
-  /* 与夜间模式对齐 */
   opacity: 0.8 !important;
   filter: none !important;
 }
 
 .wave-back path {
   fill: #2980b9 !important;
-  /* 稍深一点的蓝色 */
 }
 
-/* 4. 100% 完成状态 */
+/* 100% Complete State */
 div[style*="width: 150px"] svg.wave-front:not(.wave-animation-v19) {
   animation: none !important;
   transform: none !important;
@@ -1415,53 +1337,39 @@ div[style*="width: 150px"] svg.wave-front:not(.wave-animation-v19) {
   width: 100% !important;
   left: 0 !important;
   background: linear-gradient(180deg, #3498db 0%, #2980b9 100%) !important;
-  /* 蓝色渐变 */
   opacity: 1 !important;
 }
 
-
-/* --- 夜间模式：火山喷发 (v4 - 提升高度) --- */
-/* 1. 外框容器: 保持炽热感 */
+/* Dark Mode - Progress Bar (Lava Theme) */
 body.bp3-dark div[style*="width: 150px"][style*="overflow: hidden"] {
   background: #1a110f !important;
   border: 1px solid #ff4800 !important;
   box-shadow: inset 0 0 10px 2px rgba(255, 87, 34, 0.7), 0 0 12px rgba(255, 87, 34, 0.5);
 }
 
-/* 2. 顶层熔岩 (前景): 大幅提升高度 */
 body.bp3-dark .wave-animation-v19 {
   top: -28px !important;
-  /* 大幅调高，参考日间模式并增强 */
   opacity: 1 !important;
   filter: drop-shadow(0 0 6px #ffc107);
-  /* 增强辉光 */
 }
 
 body.bp3-dark .wave-front path {
   fill: #FFC107 !important;
-  /* 使用更耀眼的亮黄色 */
   opacity: 1 !important;
 }
 
-/* 3. 底层熔岩 (后景): 相应提升高度 */
 body.bp3-dark .wave-animation-v19-back {
   top: -25px !important;
-  /* 保持与顶层的相对位置，整体调高 */
   opacity: 1 !important;
   filter: none !important;
-  /* 底层不需要模糊 */
 }
 
 body.bp3-dark .wave-back path {
   fill: #E65100 !important;
-  /* 使用更深的暗橙色 */
   opacity: 1 !important;
 }
 
-/* 4. 100% 完成状态: 填满炽热的熔岩 */
 body.bp3-dark div[style*="width: 150px"] svg.wave-front:not(.wave-animation-v19) {
   background: linear-gradient(180deg, #FFC107 0%, #FF9800 100%) !important;
-  /* 渐变填充更有质感 */
   box-shadow: 0 0 12px #FF5722;
-  /* 完成时也发光 */
 }
