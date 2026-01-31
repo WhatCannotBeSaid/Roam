@@ -12,117 +12,127 @@
   --body-font: "Optima", "HYKongShanKai", "汉仪空山楷 简", "汉仪空山楷", sans-serif;
   --code-font: "Fira Code", "方正屏显雅宋_GBK";
 
-  /* ===================== Core Colors ===================== */
-  --bg-color: #F8F9FA;
-  /* 纸白 */
-  --page-color: #FFFFFF;
-  /* 纯白 */
-  --text-color: #343A40;
-  /* 墨灰 */
-  --light-text-color: #586068;
+  /* ===================== 日间模式 - 中国传统色 ===================== */
+  /* 
+   * 参考：https://colors.masantu.com/
+   * 设计理念：以宣纸为底，水墨为字，点缀传统五色
+   */
+
+  /* 背景色系 - 纸墨意境 */
+  --bg-color: #F2F0E7;
+  /* 缟 - 生绢色，如宣纸 */
+  --page-color: #FCFAF5;
+  /* 月白 - 淡雅纸色 */
+  --text-color: #333333;
+  /* 玄色 - 水墨深色 */
+  --light-text-color: #666666;
   /* 铅灰 */
-  --page-tag-color: #9A8C98;
-  /* 藕荷 */
+  --page-tag-color: #8076a3;
+  /* 藤萝紫 */
 
-  /* ===================== Primary Colors ===================== */
-  --color-primary: #4A90E2;
-  /* 天青 */
-  --color-primary-light: #A8D8FF;
-  /* 蔚蓝 */
-  --color-primary-highlight: #FDF4E3;
-  /* 杏仁黄 */
-  --color-secondary: #E6A868;
-  /* 秋香 */
-  --color-subtle-border: #E9ECEF;
-  /* 银白 */
+  /* 主色系 - 传统五色 */
+  --color-primary: #1772b4;
+  /* 群青 - 沉稳蓝 */
+  --color-primary-light: #cce5f0;
+  /* 淡群青 */
+  --color-primary-highlight: #f8f4e8;
+  /* 象牙 */
+  --color-secondary: #cb7a1f;
+  /* 琥珀 - 温暖金 */
+  --color-subtle-border: #d4d0c4;
+  /* 银鼠 */
 
-  /* ===================== UI Accent Colors ===================== */
-  --block-highlight-color: #7C3AED;
-  /* 靛蓝紫 - 块高亮 */
-  --heading-h1-color: #142334;
-  /* 玄青 - H1标题 */
-  --heading-h2-color: #395260;
-  /* 苍青 - H2标题 */
-  --heading-h3-color: #404A57;
-  /* 暗钢 - H3标题 */
-  --sidebar-title-color: #DE2A18;
-  /* 朱砂 - 侧边栏标题 */
-  --sidebar-star-color: #ED5A65;
-  /* 珊瑚红 - 星标 */
-  --reference-title-color: #144A74;
-  /* 靛青 - 引用标题 */
-  --checkbox-checked-color: #33bdea;
-  /* 晴空蓝 - 复选框 */
-  --tree-node-color: rgba(28, 172, 225, 0.826);
-  /* 树节点 */
-  --code-selection-color: #3eaf7c;
-  /* 翡翠绿 - 代码选中 */
-
-  /* ===================== Tag Color Palette ===================== */
-  /* 每个标签都有独立的颜色，避免重复 */
-  --tag-tweet: #5B9BD5;
-  /* 蔚蓝 */
-  --tag-literature: #9B59B6;
-  /* 紫藤 */
-  --tag-evergreens: #27AE60;
-  /* 翠绿 */
-  --tag-seedling: #1ABC9C;
-  /* 碧色 */
-  --tag-idea-bank: #E67E22;
-  /* 橙黄 */
-  --tag-illustrated: #3498DB;
-  /* 钴蓝 */
-  --tag-garden: #7D8C53;
-  /* 松霜 */
-  --tag-video-tutorial: #E74C3C;
-  /* 朱红 */
-  --tag-essay: #6B8E23;
-  /* 橄榄绿 */
-  --tag-livestream: #C0392B;
-  /* 绛红 */
-  --tag-talk: #2980B9;
+  /* 强调色 - 传统重彩 */
+  --block-highlight-color: #815476;
+  /* 紫棠 */
+  --heading-h1-color: #1a1a1a;
+  /* 玄黑 */
+  --heading-h2-color: #333333;
+  /* 墨色 */
+  --heading-h3-color: #555555;
+  /* 铅灰 */
+  --sidebar-title-color: #c83c23;
+  /* 朱砂 */
+  --sidebar-star-color: #c83c23;
+  /* 朱砂 */
+  --reference-title-color: #144a74;
   /* 靛蓝 */
-  --tag-waiting: #95A5A6;
+  --checkbox-checked-color: #2c9678;
+  /* 松柏绿 */
+  --tree-node-color: #1772b4;
+  /* 群青 */
+  --code-selection-color: #d0e8e4;
+  /* 淡松柏绿 */
+
+  /* 标签色 - 传统配色 */
+  --tag-tweet: #1772b4;
+  /* 群青 */
+  --tag-literature: #815476;
+  /* 紫棠 */
+  --tag-evergreens: #2c9678;
+  /* 松柏绿 */
+  --tag-seedling: #5cb3a5;
+  /* 青碧 */
+  --tag-idea-bank: #cb7a1f;
+  /* 琥珀 */
+  --tag-illustrated: #1772b4;
+  /* 群青 */
+  --tag-garden: #5a8f65;
+  /* 竹青 */
+  --tag-video-tutorial: #c83c23;
+  /* 朱砂 */
+  --tag-essay: #5a8f65;
+  /* 竹青 */
+  --tag-livestream: #a4373a;
+  /* 胭脂 */
+  --tag-talk: #144a74;
+  /* 靛蓝 */
+  --tag-waiting: #888888;
   /* 银灰 */
-  --tag-researching: #00BCD4;
-  /* 青色 */
-  --tag-synthesising: #8E44AD;
-  /* 深紫 */
-  --tag-alive: #E91E63;
-  /* 玫红 */
-  --tag-book: #5D6D7E;
-  /* 石墨蓝 */
-  --tag-evergreen-page: #16A085;
-  /* 翡翠 */
-  --tag-arrow: #17A2B8;
-  /* 湖蓝 */
-  --tag-project: #6C5CE7;
-  /* 瑾瑜紫 */
-  --tag-area: #2ECC71;
-  /* 草绿 */
-  --tag-course: #0984E3;
-  /* 天蓝 */
-  --tag-idea: #FD79A8;
-  /* 粉桃 */
+  --tag-researching: #2c9678;
+  /* 松柏绿 */
+  --tag-synthesising: #815476;
+  /* 紫棠 */
+  --tag-alive: #c83c23;
+  /* 朱砂 */
+  --tag-book: #4a6576;
+  /* 黛蓝 */
+  --tag-evergreen-page: #2c9678;
+  /* 松柏绿 */
+  --tag-arrow: #1772b4;
+  /* 群青 */
+  --tag-project: #815476;
+  /* 紫棠 */
+  --tag-area: #5a8f65;
+  /* 竹青 */
+  --tag-course: #1772b4;
+  /* 群青 */
+  --tag-idea: #cb7a1f;
+  /* 琥珀 */
 
-  /* ===================== Annotation Tag Colors ===================== */
-  --tag-claim-color: #D63031;
-  /* 红珊瑚 */
-  --tag-questions-color: #0984E3;
-  /* 天蓝 */
-  --tag-response-color: #A29BFE;
-  /* 薰衣草 */
-  --tag-evidence-color: #636E72;
-  /* 石板灰 */
-  --tag-directquote-color: #00B894;
-  /* 薄荷绿 */
+  /* 注释标签色 */
+  --tag-claim-color: #a4373a;
+  /* 胭脂 */
+  --tag-questions-color: #1772b4;
+  /* 群青 */
+  --tag-response-color: #815476;
+  /* 紫棠 */
+  --tag-evidence-color: #666666;
+  /* 铅灰 */
+  --tag-directquote-color: #2c9678;
+  /* 松柏绿 */
 
-  /* ===================== Block Background Colors ===================== */
-  --block-claim-bg: #fcf4f4;
-  --block-questions-bg: #f0f8fc;
-  --block-response-bg: #f6f3f5;
-  --block-evidence-bg: #e9e9f0;
-  --block-directquote-bg: #f1f2ed;
+  /* 块背景色 - 淡雅传统 */
+  --block-claim-bg: #faf5f5;
+  /* 淡胭脂 */
+  --block-questions-bg: #f0f6fa;
+  /* 淡群青 */
+  --block-response-bg: #f7f4f8;
+  /* 淡紫棠 */
+  --block-evidence-bg: #f5f5f3;
+  /* 淡灰 */
+  --block-directquote-bg: #f0f7f5;
+  /* 淡松柏绿 */
 }
 
 /* ========================================================= */
@@ -274,22 +284,31 @@ code::selection {
 }
 
 /* ========================================================= */
-/* Embed Blocks - 嵌入块样式                                  */
+/* Embed Blocks - 嵌入块样式 (美化版)                          */
 /* ========================================================= */
 .rm-embed-container {
-  background: #fcfdfd;
-  border: 1px solid var(--color-subtle-border);
-  border-radius: 4px;
-  padding: 0.6em 0.4em;
-  margin: 0.4em 0;
+  background: linear-gradient(135deg, #fcfdfd 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 8px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.rm-embed-container:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-primary-light);
 }
 
 /* ========================================================= */
-/* Queries - 查询样式                                         */
+/* Queries - 查询样式 (美化版)                                 */
 /* ========================================================= */
 .rm-query {
-  border: 0.5px solid #e4e9ec;
-  border-radius: 5px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .rm-query .rm-query-title {
@@ -389,7 +408,6 @@ div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
   margin-left: 0px;
   /* 让文字更靠近星星 */
   opacity: 90%;
-  border-top: 1px solid #e2e8f0;
   margin-top: 8px;
 }
 
@@ -529,31 +547,46 @@ div.roam-sidebar-container.noselect>div>div {
 }
 
 /* ========================================================= */
-/* Kanban - 看板样式                                          */
+/* Kanban - 看板样式 (美化版)                                  */
 /* ========================================================= */
 .kanban-board {
-  background-color: #fff;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  padding: 12px;
 }
 
 .kanban-card {
-  background-color: white;
-  margin: 8px;
-  box-shadow: 0px 1px 2px #9eb3c0;
-  padding: 10px;
-  border-radius: 2px;
+  background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+  margin: 10px 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #e8eef3;
+  transition: all 0.25s ease;
+}
+
+.kanban-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  border-color: var(--color-primary-light);
 }
 
 .kanban-title {
   text-align: center;
-  font-weight: bold;
-  padding-top: 6px;
+  font-weight: 700;
+  padding: 10px 8px;
+  color: var(--heading-h2-color);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
 }
 
 .kanban-column {
-  background-color: #e4edf2;
-  margin: 0px 4px;
-  padding: 4px;
-  border-radius: 3px;
+  background: linear-gradient(180deg, #eef3f8 0%, #e4edf2 100%);
+  margin: 0px 6px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #dce5ec;
+  min-width: 200px;
 }
 
 /* ========================================================= */
@@ -1064,77 +1097,140 @@ div>.bp3-icon-caret-right+strong {
   color: #f8f8f8;
 }
 
-/* ========================================================= */
-/* Dark Mode - 深色模式                                       */
+/* ===================== 夜间模式 - 中国传统色 ===================== */
+/* 
+ * 参考：https://colors.masantu.com/
+ * 设计理念：玄墨为底，月白为字，传统五色点缀
+ */
 /* ========================================================= */
 body.bp3-dark {
-  /* Core Colors */
-  --bg-color: #1C1C1E;
-  --page-color: #2C2C2E;
-  --text-color: #EAEAEB;
-  --light-text-color: #8A8A8E;
-  --page-tag-color: #c678dd;
-  --color-primary: #61AFEF;
-  --color-primary-light: #82c0ff;
-  --color-primary-highlight: #3A3A3C;
-  --color-secondary: #FFD111;
-  --color-subtle-border: #3A3A3C;
+  /* 背景色系 - 玄墨意境 */
+  --bg-color: #1a1a1a;
+  /* 玄色 - 深邃如夜 */
+  --page-color: #242424;
+  /* 墨灰 */
+  --text-color: #e8e4da;
+  /* 月白 - 如月光 */
+  --light-text-color: #a0a0a0;
+  /* 银灰 */
+  --page-tag-color: #a08cb0;
+  /* 藤萝紫亮版 */
 
-  /* UI Accent Colors */
-  --block-highlight-color: #A78BFA;
-  --heading-h1-color: #EAEAEB;
-  --heading-h2-color: #D1D5DB;
-  --heading-h3-color: #9CA3AF;
-  --sidebar-title-color: #FF6B6B;
-  --sidebar-star-color: #FF8787;
-  --reference-title-color: #82c0ff;
-  --checkbox-checked-color: #61AFEF;
-  --tree-node-color: rgba(97, 175, 239, 0.9);
-  --code-selection-color: #56b6c2;
+  /* 主色系 - 传统五色暗版 */
+  --color-primary: #4a9ed0;
+  /* 群青亮版 */
+  --color-primary-light: #2a4a5a;
+  /* 靛蓝暗版 */
+  --color-primary-highlight: #2a2a28;
+  /* 墨底高亮 */
+  --color-secondary: #daa055;
+  /* 琥珀亮版 */
+  --color-subtle-border: #3a3a38;
+  /* 墨边框 */
 
-  /* Tag Colors - 深色模式独立配色 */
-  --tag-tweet: #61afef;
-  --tag-literature: #c678dd;
-  --tag-evergreens: #98c379;
-  --tag-seedling: #56b6c2;
-  --tag-idea-bank: #e5c07b;
-  --tag-illustrated: #61afef;
-  --tag-garden: #98c379;
-  --tag-video-tutorial: #e06c75;
-  --tag-essay: #98c379;
-  --tag-livestream: #e06c75;
-  --tag-talk: #61afef;
-  --tag-waiting: #888888;
-  --tag-researching: #56b6c2;
-  --tag-synthesising: #c678dd;
-  --tag-alive: #e06c75;
-  --tag-book: #61afef;
-  --tag-evergreen-page: #98c379;
-  --tag-arrow: #56b6c2;
-  --tag-project: #c678dd;
-  --tag-area: #98c379;
-  --tag-course: #61afef;
-  --tag-idea: #e5c07b;
-  --tag-claim-color: #e06c75;
-  --tag-questions-color: #61afef;
-  --tag-response-color: #c678dd;
-  --tag-evidence-color: #e5c07b;
-  --tag-directquote-color: #98c379;
+  /* 强调色 - 传统重彩亮版 */
+  --block-highlight-color: #a07090;
+  /* 紫棠亮版 */
+  --heading-h1-color: #e8e4da;
+  /* 月白 */
+  --heading-h2-color: #d0ccc0;
+  /* 素白 */
+  --heading-h3-color: #a0a0a0;
+  /* 银灰 */
+  --sidebar-title-color: #e05545;
+  /* 朱砂亮版 */
+  --sidebar-star-color: #e05545;
+  /* 朱砂亮版 */
+  --reference-title-color: #5aa0d0;
+  /* 群青亮版 */
+  --checkbox-checked-color: #50b090;
+  /* 松柏绿亮版 */
+  --tree-node-color: #4a9ed0;
+  /* 群青亮版 */
+  --code-selection-color: #3a5a4a;
+  /* 松柏绿暗版 */
 
-  /* Block Backgrounds */
-  --block-claim-bg: rgba(224, 108, 117, 0.1);
-  --block-questions-bg: rgba(97, 175, 239, 0.1);
-  --block-response-bg: rgba(198, 120, 221, 0.1);
-  --block-evidence-bg: rgba(229, 192, 123, 0.1);
-  --block-directquote-bg: rgba(152, 195, 121, 0.1);
+  /* 标签色 - 传统色亮版 */
+  --tag-tweet: #4a9ed0;
+  /* 群青亮版 */
+  --tag-literature: #a07090;
+  /* 紫棠亮版 */
+  --tag-evergreens: #50b090;
+  /* 松柏绿亮版 */
+  --tag-seedling: #70c8b8;
+  /* 青碧亮版 */
+  --tag-idea-bank: #daa055;
+  /* 琥珀亮版 */
+  --tag-illustrated: #4a9ed0;
+  /* 群青亮版 */
+  --tag-garden: #70a880;
+  /* 竹青亮版 */
+  --tag-video-tutorial: #e05545;
+  /* 朱砂亮版 */
+  --tag-essay: #70a880;
+  /* 竹青亮版 */
+  --tag-livestream: #c05050;
+  /* 胭脂亮版 */
+  --tag-talk: #5aa0d0;
+  /* 群青亮版 */
+  --tag-waiting: #909090;
+  /* 银灰 */
+  --tag-researching: #50b090;
+  /* 松柏绿亮版 */
+  --tag-synthesising: #a07090;
+  /* 紫棠亮版 */
+  --tag-alive: #e05545;
+  /* 朱砂亮版 */
+  --tag-book: #6a8090;
+  /* 黛蓝亮版 */
+  --tag-evergreen-page: #50b090;
+  /* 松柏绿亮版 */
+  --tag-arrow: #4a9ed0;
+  /* 群青亮版 */
+  --tag-project: #a07090;
+  /* 紫棠亮版 */
+  --tag-area: #70a880;
+  /* 竹青亮版 */
+  --tag-course: #4a9ed0;
+  /* 群青亮版 */
+  --tag-idea: #daa055;
+  /* 琥珀亮版 */
+  --tag-claim-color: #c05050;
+  /* 胭脂亮版 */
+  --tag-questions-color: #4a9ed0;
+  /* 群青亮版 */
+  --tag-response-color: #a07090;
+  /* 紫棠亮版 */
+  --tag-evidence-color: #a0a0a0;
+  /* 银灰 */
+  --tag-directquote-color: #50b090;
+  /* 松柏绿亮版 */
 
-  /* Highlight Colors */
-  --highlight-yellow: #FFB61E;
-  --highlight-green: #61AC85;
-  --highlight-blue: #83C3F7;
-  --highlight-red: #F08383;
-  --highlight-purple: #BD84C8;
-  --highlight-orange: #FBC85F;
+  /* 块背景色 - 传统色极淡 */
+  --block-claim-bg: rgba(192, 80, 80, 0.1);
+  /* 淡胭脂 */
+  --block-questions-bg: rgba(74, 158, 208, 0.1);
+  /* 淡群青 */
+  --block-response-bg: rgba(160, 112, 144, 0.1);
+  /* 淡紫棠 */
+  --block-evidence-bg: rgba(160, 160, 160, 0.08);
+  /* 淡银灰 */
+  --block-directquote-bg: rgba(80, 176, 144, 0.1);
+  /* 淡松柏绿 */
+
+  /* 高亮色 - 传统色 */
+  --highlight-yellow: #daa055;
+  /* 琥珀 */
+  --highlight-green: #50b090;
+  /* 松柏绿 */
+  --highlight-blue: #4a9ed0;
+  /* 群青 */
+  --highlight-red: #e05545;
+  /* 朱砂 */
+  --highlight-purple: #a07090;
+  /* 紫棠 */
+  --highlight-orange: #daa055;
+  /* 琥珀 */
 }
 
 /* Dark Mode - General Overrides */
@@ -1200,21 +1296,80 @@ body.bp3-dark textarea {
   color: var(--text-color);
 }
 
-/* Dark Mode - Sidebar */
+/* Dark Mode - Sidebar (美化版) */
 body.bp3-dark .roam-body .roam-app .roam-sidebar-container {
-  background-color: var(--bg-color);
-  border-right-color: var(--color-subtle-border);
+  background: linear-gradient(180deg, #1e1e20 0%, #252528 50%, #1a1a1c 100%);
+  border-right: 1px solid #3a3a3c;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.3);
 }
 
-body.bp3-dark #right-sidebar>div {
-  background-color: var(--bg-color);
-  border-left: 1px solid var(--color-subtle-border);
+/* 夜间模式数据库标题 */
+body.bp3-dark .roam-sidebar-container .rm-db-title-container .rm-db-title {
+  color: #FF6B6B;
+  text-shadow: 0 0 8px rgba(255, 107, 107, 0.3);
 }
 
-body.bp3-dark .starred-pages .page:hover,
+/* 夜间模式导航按钮 */
+body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button,
+body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row {
+  color: #a0a0a5;
+  padding: 10px 16px;
+  margin: 2px 8px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+/* 夜间模式导航按钮悬停 */
 body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:hover,
 body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row:hover {
-  background-color: var(--page-color);
+  background: linear-gradient(135deg, #2c2c30 0%, #353538 100%);
+  color: #ffffff;
+  border-color: #4a4a4e;
+  box-shadow: 0 2px 12px rgba(97, 175, 239, 0.15);
+  transform: translateX(3px);
+}
+
+/* 夜间模式SHORTCUTS标题 */
+body.bp3-dark div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
+  color: #FF8787;
+  border-top-color: #3a3a3c;
+}
+
+/* 夜间模式快捷链接项 */
+body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page {
+  color: #8a8a8e;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+  border-left: 3px solid transparent;
+}
+
+/* 夜间模式快捷链接悬停 */
+body.bp3-dark .starred-pages .page:hover {
+  background: linear-gradient(90deg, #2a2a2e 0%, #323236 100%);
+  color: #ffffff;
+  border-left-color: #61AFEF;
+  padding-left: 20px;
+  box-shadow: 0 2px 8px rgba(97, 175, 239, 0.1);
+}
+
+/* 夜间模式侧边栏图标 */
+body.bp3-dark .roam-sidebar-content .bp3-icon {
+  color: #6a6a6e;
+  transition: all 0.25s ease;
+}
+
+body.bp3-dark .roam-sidebar-content .log-button:hover .bp3-icon,
+body.bp3-dark .roam-sidebar-content .top-row:hover .bp3-icon {
+  color: #61AFEF;
+  filter: drop-shadow(0 0 4px rgba(97, 175, 239, 0.4));
+}
+
+/* 夜间模式右侧边栏 */
+body.bp3-dark #right-sidebar>div {
+  background: linear-gradient(180deg, #1c1c1e 0%, #222224 100%);
+  border-left: 1px solid #3a3a3c;
+  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.3);
 }
 
 body.bp3-dark .bp3-tree-node.bp3-tree-node-selected>.bp3-tree-node-content {
@@ -1227,7 +1382,7 @@ body.bp3-dark .bp3-text-overflow-ellipsis>a.bp3-active {
   background-color: var(--color-primary-highlight) !important;
 }
 
-/* Dark Mode - Code Blocks */
+/* Dark Mode - Code Blocks (美化版) */
 body.bp3-dark .rm-code-block .cm-editor,
 body.bp3-dark .rm-code-block .cm-content,
 body.bp3-dark .rm-code-block .cm-line,
@@ -1236,13 +1391,49 @@ body.bp3-dark .rm-inline-code,
 body.bp3-dark code {
   background: #282a36;
   color: var(--text-color);
+  border-radius: 6px;
+  border: 1px solid #3a3a3c;
 }
 
-/* Dark Mode - Other Elements */
-body.bp3-dark .rm-embed-container,
+/* Dark Mode - Checkboxes (美化版) */
+body.bp3-dark .check-container {
+  border-color: #5a5a5e;
+  background: #2c2c30;
+}
+
+body.bp3-dark .check-container:hover {
+  background-color: #3a3a3e;
+  border-color: #6a6a6e;
+  box-shadow: 0 0 6px rgba(97, 175, 239, 0.2);
+}
+
+body.bp3-dark .checkmark {
+  background: #2c2c30;
+}
+
+body.bp3-dark .check-container input:checked~.checkmark {
+  background-color: #4ade80 !important;
+  border-color: #4ade80 !important;
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+}
+
+body.bp3-dark .rm-checklist-item-resolved {
+  color: #6a6a6e !important;
+}
+
+/* Dark Mode - Embed & Reference (美化版) */
+body.bp3-dark .rm-embed-container {
+  background: linear-gradient(135deg, #232326 0%, #2a2a2e 100%);
+  border: 1px solid #3a3a3c;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
 body.bp3-dark .rm-reference-item {
-  background-color: var(--bg-color);
-  border-color: var(--color-subtle-border);
+  background: linear-gradient(135deg, #1e1e20 0%, #252528 100%);
+  border: 1px solid #3a3a3c;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
 body.bp3-dark #block-input,
@@ -1250,18 +1441,34 @@ body.bp3-dark .roam-body #block-input>span>div {
   background: var(--page-color);
 }
 
-/* Dark Mode - Kanban */
+/* Dark Mode - Kanban (美化版) */
 body.bp3-dark .kanban-board {
-  background-color: var(--bg-color);
+  background: linear-gradient(135deg, #1a1a1c 0%, #222224 100%);
+  border-radius: 12px;
 }
 
 body.bp3-dark .kanban-column {
-  background-color: var(--page-color);
+  background: linear-gradient(180deg, #2a2a2e 0%, #252528 100%);
+  border: 1px solid #3a3a3c;
+  border-radius: 10px;
 }
 
 body.bp3-dark .kanban-card {
-  background-color: var(--bg-color);
-  box-shadow: 0px 1px 2px #111;
+  background: linear-gradient(135deg, #2c2c30 0%, #323236 100%);
+  border: 1px solid #3a3a3c;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
+}
+
+body.bp3-dark .kanban-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  border-color: #61AFEF;
+}
+
+body.bp3-dark .kanban-title {
+  color: #d1d5db;
 }
 
 /* Dark Mode - Tags */
@@ -1466,4 +1673,53 @@ body.bp3-dark .wave-back path {
 body.bp3-dark div[style*="width: 150px"] svg.wave-front:not(.wave-animation-v19) {
   background: linear-gradient(180deg, #FFC107 0%, #FF9800 100%) !important;
   box-shadow: 0 0 12px #FF5722;
+}
+
+/* ========================================================= */
+/* roam/js Code Block - 代码块样式修复（夜间模式）             */
+/* ========================================================= */
+
+/* 修复 roam/js 页面的警告区域在夜间模式下的显示 */
+body.bp3-dark .rm-code-warning,
+body.bp3-dark .roam-block-container[data-page-links*="roam/js"] .rm-code-warning,
+body.bp3-dark .bp3-card {
+  background-color: #2a2a2e !important;
+  color: var(--text-color) !important;
+}
+
+/* roam/js 代码块容器 */
+body.bp3-dark .rm-code-warning .CodeMirror,
+body.bp3-dark .rm-code-warning pre,
+body.bp3-dark .rm-code-warning code,
+body.bp3-dark .rm-code-warning textarea {
+  background-color: #1e1e22 !important;
+  color: #e8e4da !important;
+}
+
+/* 确保按钮在夜间模式下可见 */
+body.bp3-dark .rm-code-warning .bp3-button {
+  background-color: #3a3a3e !important;
+  color: #e8e4da !important;
+}
+
+body.bp3-dark .rm-code-warning .bp3-button:hover {
+  background-color: #4a4a4e !important;
+}
+
+/* ========================================================= */
+/* Hidden Menu Button - 隐藏左侧边栏菜单按钮                   */
+/* 因为已有悬浮展开功能，不再需要原生按钮                       */
+/* ========================================================= */
+
+.bp3-icon-menu,
+.rm-open-left-sidebar-btn {
+  display: none !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+.rm-topbar:has(.rm-open-left-sidebar-btn):not(:has(#todayTomorrow)):not(:has(#workspaces))>.speech-to-roam.speech-to-roam-container-top {
+  left: 0 !important;
 }
