@@ -330,61 +330,121 @@ code::selection {
 }
 
 /* ========================================================= */
-/* Sidebar - 侧边栏样式                                       */
+/* Sidebar - 侧边栏样式（美化版）                              */
 /* ========================================================= */
+
+/* 侧边栏主容器 - 柔和渐变背景 */
 .roam-body .roam-app .roam-sidebar-container {
-  background-color: var(--page-color);
-  border-right: 1px var(--color-subtle-border) solid;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 50%, #e8eef3 100%);
+  border-right: 1px solid #e2e8f0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.03);
 }
 
-.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page {
-  padding: 6px;
-  color: #000000;
+/* 数据库标题样式 */
+.roam-sidebar-container .rm-db-title-container .rm-db-title {
+  color: var(--sidebar-title-color);
+  padding: 8px 12px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: "Felix Titling", "方正清刻本悦宋简体";
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page,
-.roam-body .roam-app .roam-sidebar-container>* {
-  opacity: 80%;
-  box-shadow: none;
+/* 导航按钮基础样式 */
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button,
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row {
+  color: #475569;
+  padding: 10px 16px;
+  margin: 2px 8px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
 }
 
-.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page:hover,
+/* 导航按钮悬停效果 */
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:hover,
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row:hover {
-  background: var(--page-color);
-  color: var(--text-color);
-  opacity: 100%;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  color: #1e293b;
+  border-color: #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transform: translateX(2px);
 }
 
-.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button {
-  color: #000000;
+/* SHORTCUTS 标题样式 */
+div.flex-v-box.starred-pages-wrapper>div.flex-h-box {
+  gap: 0px;
+  /* 减少星星和文字的间距 */
 }
 
 div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
   font-size: 14px;
-  opacity: 80%;
-  letter-spacing: 0.04em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--sidebar-star-color);
+  padding: 16px 4px 8px 0;
+  margin-left: 0px;
+  /* 让文字更靠近星星 */
+  opacity: 90%;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 8px;
 }
 
+/* 快捷链接页面项 */
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page {
+  padding: 8px 16px;
+  margin: 2px 8px;
+  color: #64748b;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+/* 快捷链接悬停效果 */
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page:hover {
+  background: linear-gradient(90deg, #ffffff 0%, #f8fafc 100%);
+  color: #0f172a;
+  border-left-color: var(--color-primary);
+  padding-left: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* 侧边栏内容整体透明度控制 */
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page,
+.roam-body .roam-app .roam-sidebar-container>* {
+  opacity: 100%;
+  box-shadow: none;
+}
+
+/* 侧边栏字体设置 */
 div.roam-sidebar-container.noselect>div>div {
   font-size: 14px;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 
-.roam-sidebar-container .rm-db-title-container .rm-db-title {
-  color: var(--sidebar-title-color);
-  padding: 4px;
-  font-size: large;
-  font-family: "Felix Titling", "方正清刻本悦宋简体";
+/* 侧边栏图标美化 */
+.roam-sidebar-content .bp3-icon {
+  color: #94a3b8;
+  transition: color 0.2s ease;
 }
 
-/* Right Sidebar */
+.roam-sidebar-content .log-button:hover .bp3-icon,
+.roam-sidebar-content .top-row:hover .bp3-icon {
+  color: var(--color-primary);
+}
+
+/* Right Sidebar - 右侧边栏 */
 #right-sidebar>div {
-  background-color: var(--bg-color);
-  border-left: 1px solid #e9ebef;
+  background: linear-gradient(180deg, var(--bg-color) 0%, #f1f5f9 100%);
+  border-left: 1px solid #e2e8f0;
   padding: 20px;
   overflow: visible;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.03);
 }
 
 /* ========================================================= */
@@ -497,22 +557,56 @@ div.roam-sidebar-container.noselect>div>div {
 }
 
 /* ========================================================= */
-/* Checkboxes - 复选框样式                                    */
+/* Checkboxes - 复选框样式 (美化版)                            */
 /* ========================================================= */
-.checkmark {
-  background: #fff;
+
+/* 复选框容器基础样式 */
+.check-container {
+  height: 16px;
+  width: 16px;
+  border-radius: 4px;
+  /* 圆角化，更现代 */
+  border: 1.5px solid #94a3b8;
+  /* 未完成时的淡灰色边框 */
+  margin-right: 6px;
+  transition: all 0.2s ease;
+  /* 平滑过渡 */
 }
 
+/* 鼠标悬停效果 */
+.check-container:hover {
+  background-color: #f1f5f9;
+  border-color: #64748b;
+}
+
+/* 复选框勾选标记基础 */
+.checkmark {
+  background: #fff;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+/* 完成后的复选框样式 - 绿色背景 */
 .check-container input:checked~.checkmark {
-  background: var(--checkbox-checked-color);
+  background-color: #4ade80 !important;
+  /* 完成后的绿色 */
+  border-color: #4ade80 !important;
 }
 
 .check-container input:checked~.checkmark:after {
   border-color: #fff;
+  left: 5px !important;
+  top: 2px !important;
+  width: 4px !important;
+  height: 8px !important;
+  border-width: 0 2px 2px 0 !important;
 }
 
-.check-container {
-  padding-right: 4px;
+/* 任务完成后的文本效果：变灰并加删除线 */
+.rm-checklist-item-resolved {
+  color: #94a3b8 !important;
+  text-decoration: line-through;
+  transition: color 0.3s ease;
 }
 
 /* ========================================================= */
