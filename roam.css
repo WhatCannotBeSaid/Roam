@@ -41,8 +41,9 @@
   --border-radius-pill: 20px;
 
   /* 子弹点颜色 */
-  --bullet-bg: #8A8A8A;
-  --bullet-border: #7A7A7A;
+  --bullet-bg: rgba(42, 90, 106, 0.5);
+  /* 默认为半透明主色 */
+  --bullet-border: var(--color-primary);
 
   /* 复选框 */
   --checkbox-success: #4ade80;
@@ -180,7 +181,8 @@ body,
 }
 
 .roam-article {
-  padding: 0 10px 0 0 !important;
+  padding-right: 10px !important;
+  padding-left: 0px !important;
 }
 
 .roam-article>div {
@@ -426,21 +428,21 @@ code::selection {
 }
 
 /* 导航按钮基础样式 */
-.roam-sidebar-content .log-button,
-.roam-sidebar-content .top-row {
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button,
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row {
   color: #5a5a5a;
   padding: 10px 16px;
   margin: 2px 8px;
-  border-radius: var(--border-radius-sm);
+  border-radius: 6px;
   font-weight: 500;
-  transition: var(--transition-fast);
+  transition: all 0.2s ease;
   border: none;
   background: transparent;
 }
 
 /* 导航按钮悬停效果 */
-.roam-sidebar-content .log-button:hover,
-.roam-sidebar-content .top-row:hover {
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:hover,
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row:hover {
   background: rgba(255, 255, 255, 0.6);
   color: #1a1a1a;
   box-shadow: none;
@@ -449,7 +451,7 @@ code::selection {
 
 /* SHORTCUTS 标题样式 */
 div.flex-v-box.starred-pages-wrapper>div.flex-h-box {
-  gap: 0;
+  gap: 0px;
   /* 减少星星和文字的间距 */
 }
 
@@ -460,17 +462,18 @@ div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
   text-transform: uppercase;
   color: var(--sidebar-star-color);
   padding: 16px 4px 8px 0;
-  margin: 8px 0 0 0;
+  margin-left: 0px;
   /* 让文字更靠近星星 */
   opacity: 0.9;
+  margin-top: 8px;
 }
 
 /* 快捷链接页面项 */
-.starred-pages-wrapper .starred-pages .page {
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page {
   padding: 8px 16px;
   margin: 2px 8px;
   color: #6a6a6a;
-  border-radius: var(--border-radius-sm);
+  border-radius: 6px;
   font-weight: 500;
   font-size: 1.2rem;
   transition: var(--transition-fast);
@@ -479,7 +482,7 @@ div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
 }
 
 /* 快捷链接悬停效果 */
-.starred-pages-wrapper .starred-pages .page:hover {
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page:hover {
   background: rgba(255, 255, 255, 0.6);
   color: #1a1a1a;
   padding-left: 20px;
@@ -487,8 +490,8 @@ div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
 }
 
 /* 侧边栏内容整体透明度控制 */
-.starred-pages-wrapper .starred-pages .page,
-.roam-sidebar-container>* {
+.roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page,
+.roam-body .roam-app .roam-sidebar-container>* {
   opacity: 1;
   box-shadow: none;
 }
@@ -502,7 +505,7 @@ div.roam-sidebar-container.noselect>div>div {
 /* 侧边栏图标美化 */
 .roam-sidebar-content .bp3-icon {
   color: #94a3b8;
-  transition: color var(--transition-fast);
+  transition: color 0.2s ease;
 }
 
 .roam-sidebar-content .log-button:hover .bp3-icon,
@@ -523,12 +526,12 @@ div.roam-sidebar-container.noselect>div>div {
 /* Block Input - 块输入样式                                   */
 /* ========================================================= */
 #block-input {
-  background: #fff;
+  background: white;
 }
 
 .roam-body #block-input>span>div {
   padding: 6px 24px;
-  background: #fff;
+  background: white;
 }
 
 #block-input-ghost span {
@@ -538,30 +541,46 @@ div.roam-sidebar-container.noselect>div>div {
 /* ========================================================= */
 /* Bullet Points - 子弹点样式                                 */
 /* ========================================================= */
-/* 子弹点共用样式 */
-.rm-bullet .rm-bullet__inner,
+.rm-bullet .rm-bullet__inner {
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  background-clip: content-box;
+  border: 4px solid transparent;
+  background-color: var(--bullet-bg);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rm-bullet .rm-bullet__inner:hover {
+  background-color: var(--color-primary);
+  transform: scale(1.4);
+  box-shadow: 0 0 8px rgba(42, 90, 106, 0.3);
+}
+
+.rm-bullet.rm-bullet--closed .rm-bullet__inner {
+  box-sizing: content-box;
+  background-color: transparent !important;
+  border: 2px solid var(--bullet-border) !important;
+  width: 8px;
+  height: 8px;
+  margin: 1px;
+}
+
 .rm-bullet__inner--user-icon {
   box-sizing: content-box;
   display: flex;
   align-items: center;
   overflow: hidden;
   border-radius: 50%;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   background-clip: content-box;
   border: 4px solid transparent;
-}
-
-.rm-bullet .rm-bullet__inner {
-  background-color: var(--bullet-bg);
-}
-
-.rm-bullet.rm-bullet--closed .rm-bullet__inner {
-  border-color: var(--bullet-border);
-}
-
-.rm-bullet__inner--user-icon {
-  background-color: #000;
+  background-color: #000000;
 }
 
 /* 正在编辑的块 - bullet 更显眼 */
@@ -581,7 +600,7 @@ body.bp3-dark .rm-block__input:focus~.rm-bullet .rm-bullet__inner,
 body.bp3-dark .rm-block--focused .rm-bullet .rm-bullet__inner,
 body.bp3-dark .roam-block-container:focus-within>.rm-block-main .rm-bullet .rm-bullet__inner {
   background-color: #FF6B6B !important;
-  border-color: rgba(255, 107, 107, 0.4) !important;
+  border: 3px solid rgba(255, 107, 107, 0.4) !important;
   box-shadow: 0 0 8px rgba(255, 107, 107, 0.6);
 }
 
@@ -805,7 +824,7 @@ span[data-link-title^="Waiting"] .rm-page-ref,
 span[data-link-title^="Researching"] .rm-page-ref,
 span[data-link-title^="Synthesising"] .rm-page-ref,
 span[data-link-title^="Alive"] .rm-page-ref {
-  color: #fff;
+  color: white;
   padding: 3px 7px;
   line-height: 2em;
   font-weight: 500;
@@ -1072,7 +1091,7 @@ span.rm-page-ref[data-tag="h/orange"] {
 
 /* Tooltip */
 .bp3-tooltip .bp3-popover-content div {
-  color: #fff;
+  color: white;
 }
 
 /* Extension Settings */
@@ -1099,7 +1118,7 @@ span.rm-page-ref[data-tag="h/orange"] {
 /* Disabled button */
 .bp3-button.bp3-disabled,
 .bp3-button.bp3-disabled .bp3-button-text {
-  color: #fff !important;
+  color: white !important;
 }
 
 /* Linked References Title Override */
@@ -1372,22 +1391,22 @@ body.bp3-dark .roam-sidebar-container .rm-db-title-container .rm-db-title {
 }
 
 /* 夜间模式导航按钮 */
-body.bp3-dark .roam-sidebar-content .log-button,
-body.bp3-dark .roam-sidebar-content .top-row {
+body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button,
+body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row {
   color: #a0a0a5;
   padding: 10px 16px;
   margin: 2px 8px;
-  border-radius: var(--border-radius-sm);
-  transition: var(--transition-normal);
+  border-radius: 6px;
+  transition: all 0.25s ease;
   border: none;
   background: transparent;
 }
 
 /* 夜间模式导航按钮悬停 */
-body.bp3-dark .roam-sidebar-content .log-button:hover,
-body.bp3-dark .roam-sidebar-content .top-row:hover {
+body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:hover,
+body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row:hover {
   background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  color: #ffffff;
   box-shadow: none;
   transform: translateX(3px);
 }
@@ -1399,10 +1418,10 @@ body.bp3-dark div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
 }
 
 /* 夜间模式快捷链接项 */
-body.bp3-dark .starred-pages-wrapper .starred-pages .page {
+body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page {
   color: #8a8a8e;
-  border-radius: var(--border-radius-sm);
-  transition: var(--transition-normal);
+  border-radius: 6px;
+  transition: all 0.25s ease;
   border-left: none;
   background: transparent;
 }
@@ -1410,7 +1429,7 @@ body.bp3-dark .starred-pages-wrapper .starred-pages .page {
 /* 夜间模式快捷链接悬停 */
 body.bp3-dark .starred-pages .page:hover {
   background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  color: #ffffff;
   padding-left: 20px;
   box-shadow: none;
 }
@@ -1418,7 +1437,7 @@ body.bp3-dark .starred-pages .page:hover {
 /* 夜间模式侧边栏图标 */
 body.bp3-dark .roam-sidebar-content .bp3-icon {
   color: #6a6a6e;
-  transition: var(--transition-normal);
+  transition: all 0.25s ease;
 }
 
 body.bp3-dark .roam-sidebar-content .log-button:hover .bp3-icon,
@@ -1436,7 +1455,7 @@ body.bp3-dark #right-sidebar>div {
 
 body.bp3-dark .bp3-tree-node.bp3-tree-node-selected>.bp3-tree-node-content {
   background-color: var(--color-primary) !important;
-  color: #fff !important;
+  color: white !important;
 }
 
 body.bp3-dark .starred-pages .page .active,
