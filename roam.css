@@ -542,6 +542,13 @@ div.roam-sidebar-container.noselect > div > div {
   color: black !important;
 }
 
+/* Compact Layout - 紧凑布局 */
+.controls {
+  margin-right: 2px !important; /* 减小 Bullet 和文本的间距 */
+  padding-right: 0 !important;
+  flex: 0 0 auto !important;
+}
+
 /* Bullets */
 .rm-bullet .rm-bullet__inner {
   box-sizing: content-box;
@@ -716,12 +723,14 @@ div > .bp3-icon-caret-right + strong {
 .check-container {
   height: 18px;
   width: 18px;
-  margin-right: 8px;
-  position: relative;
+  /* margin-right: 8px; -> Removed for absolute positioning */
+  position: absolute !important; /* Modified: Absolute positioning to move left */
+  left: 0px !important; /* Modified: Position before the bullet (Adjusted for compactness) */
   top: 2px;
   border: none !important;
   background: transparent !important;
   border-radius: 0 !important;
+  z-index: 1000;
 }
 
 .checkmark {
@@ -744,31 +753,47 @@ div > .bp3-icon-caret-right + strong {
 }
 
 .check-container input:checked ~ .checkmark {
-  background-color: var(--color-primary) !important;
-  border-color: var(--color-primary) !important;
-  box-shadow: 0 2px 5px rgba(42, 90, 106, 0.3);
+  /* User Request: Checkmark element immediately disappears when checked */
+  display: none !important;
+  opacity: 0;
 }
 
 .check-container input:checked ~ .checkmark:after {
-  display: block;
-  content: "";
-  position: absolute;
-  left: 6.5px !important;
-  top: 2px !important;
-  width: 5px !important;
-  height: 10px !important;
-  border: solid #fff;
-  border-width: 0 2px 2px 0 !important;
-  transform: rotate(45deg);
+  display: none !important;
 }
 
+/* Enhanced Strikethrough Logic - 增强的删除线逻辑 */
+/* 使用 :has() 伪类确保只要复选框被勾选，删除线样式立即生效 */
+.rm-block-text:has(.check-container input:checked),
+.roam-block:has(.check-container input:checked) {
+  /* 文本样式：变淡并退居次要层级 */
+  color: var(--light-text-color) !important;
+  opacity: 0.75; /* 保持一定可读性 */
+  
+  /* 删除线样式：优雅的半透明主色调 */
+  text-decoration: line-through !important;
+  text-decoration-thickness: 1.5px !important; /* 精致的线条粗细 */
+  text-decoration-color: rgba(42, 90, 106, 0.6) !important; /* 墨青色半透明，与主题呼应且不刺眼 */
+  text-decoration-style: solid;
+  
+  /* 平滑过渡动画 */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 同步更新原生类名样式，确保兼容性 */
 .rm-checklist-item-resolved {
   color: var(--light-text-color) !important;
-  text-decoration: line-through;
-  opacity: 0.8;
-  transition: color 0.3s ease;
-  text-decoration-thickness: 1.5px;
-  text-decoration-color: var(--color-primary-light);
+  opacity: 0.75;
+  text-decoration: line-through !important;
+  text-decoration-thickness: 1.5px !important;
+  text-decoration-color: rgba(42, 90, 106, 0.6) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Exclude check container from decoration - 排除复选框容器 */
+.rm-block-text:has(.check-container input:checked) .check-container,
+.roam-block:has(.check-container input:checked) .check-container {
+  text-decoration: none !important;
 }
 
 /* ========================================================= */
