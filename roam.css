@@ -15,13 +15,13 @@
  * 9. Kanban - 看板样式
  * 10. Tags & Labels - 标签样式
  * 11. Highlights - 高亮样式
- * 12. Dark Mode Overrides - 夜间模式覆盖
- * 13. Plugins - 插件样式
+ * 12. Settings & Plugins - 设置与插件
+ * 13. Dark Mode Overrides - 夜间模式覆盖
  */
 /* ========================================================= */
 
 /* ========================================================= */
-/* CSS Variables - 颜色变量定义                               */
+/* 1. CSS Variables - 颜色变量定义                            */
 /* ========================================================= */
 :root {
   /* ===================== Typography ===================== */
@@ -48,12 +48,6 @@
   --checkbox-success: #4ade80;
 
   /* ===================== 日间模式 - 中国传统色 ===================== */
-  /* 
-   * 参考：https://colors.masantu.com/
-   * 设计理念：牙色宣纸底，玄青水墨字，点缀传统五色
-   * 护眼原则：低对比度、暖色调、自然柔和
-   */
-
   /* 背景色系 - 护眼暖色调 */
   --bg-color: #F5F0E6; /* 米黄 - 护眼暖底 */
   --page-color: #F5F0E6; /* 与背景一致 */
@@ -128,7 +122,7 @@
 }
 
 /* ========================================================= */
-/* Base Layout - 基础布局                                     */
+/* 2. Base Layout - 基础布局                                    */
 /* ========================================================= */
 body,
 #app {
@@ -136,8 +130,7 @@ body,
 }
 
 .roam-article {
-  padding-right: 10px !important;
-  padding-left: 0 !important;
+  padding: 0 10px 0 0 !important;
 }
 
 .roam-article > div {
@@ -169,10 +162,9 @@ body,
 }
 
 /* ========================================================= */
-/* Block Highlight - 块高亮样式                               */
+/* 11. Highlights - 高亮样式 (Moved up for logic flow)        */
 /* ========================================================= */
 .block-highlight-blue {
-  background-color: transparent !important;
   background: none !important;
   z-index: 99;
   border: none !important;
@@ -182,14 +174,14 @@ body,
 }
 
 .block-highlight-blue * {
-  color: var(--block-highlight-color) !important; /* 基础高亮颜色 */
-  font-weight: 700; /* 加粗以增强辨识度 */
+  color: var(--block-highlight-color) !important;
+  font-weight: 700;
   transition: color 0.2s ease-in-out;
 }
 
 .block-highlight-blue:hover *,
 .block-highlight-blue:focus-within * {
-  color: var(--color-secondary) !important; /* 悬停/选中时变为醒目的赭红色 */
+  color: var(--color-secondary) !important;
   text-shadow: 0 0 1px rgba(168, 90, 58, 0.2);
   cursor: pointer;
 }
@@ -198,8 +190,24 @@ body,
   background-color: white;
 }
 
+span.rm-highlight {
+  text-decoration: none !important;
+  background: linear-gradient(180deg, rgba(255, 199, 115, 0) 60%, #B0A4E3 60%);
+}
+
+/* Hide highlight control tags */
+span.rm-page-ref[data-tag="h/yellow"],
+span.rm-page-ref[data-tag="h/blue"],
+span.rm-page-ref[data-tag="h/red"],
+span.rm-page-ref[data-tag="sup"],
+span.rm-page-ref[data-tag="h/green"],
+span.rm-page-ref[data-tag="h/purple"],
+span.rm-page-ref[data-tag="h/orange"] {
+  display: none;
+}
+
 /* ========================================================= */
-/* Typography - 排版样式                                      */
+/* 3. Typography - 排版样式                                     */
 /* ========================================================= */
 h1, h2, h3, h4, h5, h6,
 .rm-level1, .rm-level2,
@@ -224,7 +232,7 @@ div, textarea {
   font-size: 1.1em;
 }
 
-/* Headings - 使用变量 */
+/* Headings */
 .rm-level1,
 .rm-heading-level-1 > .rm-block__self .rm-block__input {
   color: var(--heading-h1-color);
@@ -255,8 +263,14 @@ a {
   font-weight: 600;
 }
 
+/* URL links */
+.rm-alias--external,
+.rm-alias--external:hover {
+  font-weight: 600;
+}
+
 /* ========================================================= */
-/* Code Blocks - 代码块样式 (无边框沉浸式)                      */
+/* 4. Code Blocks - 代码块样式 (无边框沉浸式)                    */
 /* ========================================================= */
 .rm-code-block .cm-editor,
 .rm-code-block .cm-content,
@@ -297,7 +311,7 @@ code::selection {
 }
 
 /* ========================================================= */
-/* Embed Blocks - 嵌入块样式 (无边框沉浸式)                    */
+/* 5. Embed & Query - 嵌入和查询样式                            */
 /* ========================================================= */
 .rm-embed-container {
   background: rgba(0, 0, 0, 0.02);
@@ -313,9 +327,6 @@ code::selection {
   background: rgba(0, 0, 0, 0.04);
 }
 
-/* ========================================================= */
-/* Queries - 查询样式 (无边框沉浸式)                           */
-/* ========================================================= */
 .rm-query {
   border: none;
   border-radius: 8px;
@@ -350,7 +361,6 @@ code::selection {
   padding: 0.4em 0.2em;
 }
 
-/* Reference Items - 椭圆标签样式 */
 .rm-reference-item {
   margin-top: 8px;
   border-radius: 20px;
@@ -367,18 +377,24 @@ code::selection {
   background-color: rgba(0, 0, 0, 0.06);
 }
 
-/* ========================================================= */
-/* Sidebar - 侧边栏样式（无边框沉浸式）                        */
-/* ========================================================= */
+/* Linked References Title Override */
+.rm-reference-wrapper div[style*="color: rgb(206, 217, 224)"] {
+  color: var(--reference-title-color) !important;
+}
 
-/* 侧边栏主容器 - 极简透明风格 */
+.rm-unlinked-reference-container strong {
+  color: var(--reference-title-color) !important;
+}
+
+/* ========================================================= */
+/* 6. Sidebar - 侧边栏样式（无边框沉浸式）                        */
+/* ========================================================= */
 .roam-body .roam-app .roam-sidebar-container {
   background: var(--bg-color);
   border-right: none;
   box-shadow: none;
 }
 
-/* 数据库标题样式 */
 .roam-sidebar-container .rm-db-title-container .rm-db-title {
   color: var(--sidebar-title-color);
   padding: 8px 12px;
@@ -389,7 +405,7 @@ code::selection {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* 导航按钮基础样式 */
+/* Navigation Buttons */
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button,
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row {
   color: #5a5a5a;
@@ -402,7 +418,6 @@ code::selection {
   background: transparent;
 }
 
-/* 导航按钮悬停效果 */
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:hover,
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row:hover {
   background: rgba(255, 255, 255, 0.6);
@@ -411,9 +426,9 @@ code::selection {
   transform: translateX(2px);
 }
 
-/* SHORTCUTS 标题样式 */
+/* SHORTCUTS Title */
 div.flex-v-box.starred-pages-wrapper > div.flex-h-box {
-  gap: 0; /* 减少星星和文字的间距 */
+  gap: 0;
 }
 
 div.flex-v-box.starred-pages-wrapper > div.flex-h-box > span {
@@ -423,12 +438,12 @@ div.flex-v-box.starred-pages-wrapper > div.flex-h-box > span {
   text-transform: uppercase;
   color: var(--sidebar-star-color);
   padding: 16px 4px 8px 0;
-  margin-left: 0; /* 让文字更靠近星星 */
+  margin-left: 0;
   opacity: 0.9;
   margin-top: 8px;
 }
 
-/* 快捷链接页面项 */
+/* Starred Pages */
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page {
   padding: 8px 16px;
   margin: 2px 8px;
@@ -441,7 +456,6 @@ div.flex-v-box.starred-pages-wrapper > div.flex-h-box > span {
   background: transparent;
 }
 
-/* 快捷链接悬停效果 */
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page:hover {
   background: rgba(255, 255, 255, 0.6);
   color: #1a1a1a;
@@ -449,20 +463,18 @@ div.flex-v-box.starred-pages-wrapper > div.flex-h-box > span {
   box-shadow: none;
 }
 
-/* 侧边栏内容整体透明度控制 */
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page,
 .roam-body .roam-app .roam-sidebar-container > * {
   opacity: 1;
   box-shadow: none;
 }
 
-/* 侧边栏字体设置 */
 div.roam-sidebar-container.noselect > div > div {
   font-size: 14px;
   letter-spacing: 0.02em;
 }
 
-/* 侧边栏图标美化 */
+/* Sidebar Icons */
 .roam-sidebar-content .bp3-icon {
   color: #94a3b8;
   transition: color 0.2s ease;
@@ -473,43 +485,24 @@ div.roam-sidebar-container.noselect > div > div {
   color: var(--color-primary);
 }
 
-/* ========================================================= */
-/* Sidebar Logo Fix - 侧边栏底部 Logo 修复                   */
-/* ========================================================= */
-
-/* 日间模式：反转 Logo 颜色为深色 (匹配 style 属性或 data 属性) */
+/* Sidebar Logo Fix */
 .roam-sidebar-container img[style*="astrolabe"],
 .roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"] {
   filter: invert(1) brightness(0.2) !important;
   opacity: 0.8;
 }
 
-/* 日间模式：强制文本颜色为主题主色 */
 .roam-sidebar-container img[style*="astrolabe"] ~ span,
 .roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"] ~ span {
   color: var(--color-primary) !important;
 }
 
-/* 夜间模式：保持 Logo 原样 (白色) */
-body.bp3-dark .roam-sidebar-container img[style*="astrolabe"],
-body.bp3-dark .roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"] {
-  filter: none !important;
-  opacity: 1;
-}
-
-/* 夜间模式：保持文本白色 */
-body.bp3-dark .roam-sidebar-container img[style*="astrolabe"] ~ span,
-body.bp3-dark .roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"] ~ span {
-  color: white !important;
-}
-
-/* 修复鼠标悬停时出现的黑色背景 */
 #roam-sidebar-logo:hover {
   background: transparent !important;
   text-decoration: none !important;
 }
 
-/* Right Sidebar - 右侧边栏 */
+/* Right Sidebar */
 #right-sidebar {
   z-index: 999 !important;
   background-color: var(--bg-color) !important;
@@ -524,9 +517,27 @@ body.bp3-dark .roam-sidebar-container img[data-wheelzoom-original-src*="astrolab
   box-shadow: none;
 }
 
+/* Hidden Menu Button */
+.bp3-icon-menu,
+.rm-open-left-sidebar-btn {
+  display: none !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.rm-topbar:has(.rm-open-left-sidebar-btn):not(:has(#todayTomorrow)):not(:has(#workspaces)) > .speech-to-roam.speech-to-roam-container-top {
+  left: 0 !important;
+}
+
+.rm-multibar {
+  display: none !important;
+}
+
 /* ========================================================= */
-/* Block Input - 块输入样式                                   */
+/* 7. Bullet Points & References - 子弹点和引用                 */
 /* ========================================================= */
+/* Block Input */
 #block-input {
   background: white;
 }
@@ -540,9 +551,7 @@ body.bp3-dark .roam-sidebar-container img[data-wheelzoom-original-src*="astrolab
   color: black !important;
 }
 
-/* ========================================================= */
-/* Bullet Points - 子弹点样式                                 */
-/* ========================================================= */
+/* Bullets */
 .rm-bullet .rm-bullet__inner {
   box-sizing: content-box;
   display: flex;
@@ -588,7 +597,7 @@ body.bp3-dark .roam-sidebar-container img[data-wheelzoom-original-src*="astrolab
   background-color: #000000;
 }
 
-/* 正在编辑的块 - bullet 更显眼 */
+/* Focused Block Bullet */
 .rm-block__input:focus ~ .rm-bullet .rm-bullet__inner,
 .rm-block--focused .rm-bullet .rm-bullet__inner,
 .roam-block-container:focus-within > .rm-block-main .rm-bullet .rm-bullet__inner {
@@ -601,19 +610,7 @@ body.bp3-dark .roam-sidebar-container img[data-wheelzoom-original-src*="astrolab
   margin: 1px !important;
 }
 
-/* 夜间模式 - 编辑状态 bullet */
-body.bp3-dark .rm-block__input:focus ~ .rm-bullet .rm-bullet__inner,
-body.bp3-dark .rm-block--focused .rm-bullet .rm-bullet__inner,
-body.bp3-dark .roam-block-container:focus-within > .rm-block-main .rm-bullet .rm-bullet__inner {
-  background-color: #FF6B6B !important;
-  border: 3px solid rgba(255, 107, 107, 0.4) !important;
-  box-shadow: 0 0 8px rgba(255, 107, 107, 0.6);
-  margin: 1px !important;
-}
-
-/* ========================================================= */
-/* Block References - 块引用样式                              */
-/* ========================================================= */
+/* Block References */
 .rm-block-ref::before {
   content: "";
   display: inline-block;
@@ -642,8 +639,113 @@ body.bp3-dark .roam-block-container:focus-within > .rm-block-main .rm-bullet .rm
   top: -10px;
 }
 
+/* Blockquote */
+.rm-bq {
+  background-color: rgba(42, 90, 106, 0.08);
+  border-left: 3px solid rgba(42, 90, 106, 0.5);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 12px 0;
+  font-family: "HYKongShanKai", "汉仪空山楷 简", "汉仪空山楷", cursive;
+  font-size: 0.95em;
+  color: var(--text-color);
+  text-align: left;
+  word-wrap: break-word;
+  opacity: 1;
+}
+
+/* Tree Node Carets */
+div > .bp3-icon-caret-down + strong,
+div > .bp3-icon-caret-right + strong {
+  color: var(--tree-node-color) !important;
+}
+
+/* Fix for Resize Handle & Caret */
+.controls .rm-caret,
+.rm-caret,
+.rm-caret-hidden {
+  z-index: 1000 !important;
+  pointer-events: auto !important;
+  position: relative;
+}
+
+.rm-resize-handle {
+  width: 4px !important;
+  left: -4px !important;
+  opacity: 0;
+  z-index: 10;
+}
+
+.rm-resize-handle:hover {
+  width: 8px !important;
+  left: -8px !important;
+  opacity: 0.5;
+  background-color: var(--color-primary-light);
+}
+
 /* ========================================================= */
-/* Kanban - 看板样式 (无边框沉浸式)                            */
+/* 8. Checkboxes - 复选框样式                                   */
+/* ========================================================= */
+.check-container {
+  height: 18px;
+  width: 18px;
+  margin-right: 8px;
+  position: relative;
+  top: 2px;
+  border: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid var(--light-text-color);
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.check-container:hover .checkmark {
+  border-color: var(--color-primary);
+  background-color: rgba(42, 90, 106, 0.1);
+  transform: scale(1.05);
+}
+
+.check-container input:checked ~ .checkmark {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 2px 5px rgba(42, 90, 106, 0.3);
+}
+
+.check-container input:checked ~ .checkmark:after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 6.5px !important;
+  top: 2px !important;
+  width: 5px !important;
+  height: 10px !important;
+  border: solid #fff;
+  border-width: 0 2px 2px 0 !important;
+  transform: rotate(45deg);
+}
+
+.rm-checklist-item-resolved {
+  color: var(--light-text-color) !important;
+  text-decoration: line-through;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: var(--color-primary-light);
+}
+
+/* ========================================================= */
+/* 9. Kanban - 看板样式                                        */
 /* ========================================================= */
 .kanban-board {
   background: transparent;
@@ -686,102 +788,7 @@ body.bp3-dark .roam-block-container:focus-within > .rm-block-main .rm-bullet .rm
 }
 
 /* ========================================================= */
-/* Checkboxes - 复选框样式 (深度优化版)                        */
-/* ========================================================= */
-
-/* 复选框容器 - 布局定位 */
-.check-container {
-  height: 18px;
-  width: 18px;
-  margin-right: 8px;
-  position: relative;
-  top: 2px;
-  border: none !important; /* 移除容器边框，交给 checkmark 控制 */
-  background: transparent !important;
-  border-radius: 0 !important; /* Reset */
-}
-
-/* 复选框视觉主体 */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: transparent;
-  border: 2px solid var(--light-text-color); /* 默认边框 */
-  border-radius: var(--border-radius-sm); /* 6px 圆角 */
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-sizing: border-box;
-}
-
-/* 鼠标悬停效果 */
-.check-container:hover .checkmark {
-  border-color: var(--color-primary);
-  background-color: rgba(42, 90, 106, 0.1);
-  transform: scale(1.05);
-}
-
-/* 选中状态 - 主题色填充 */
-.check-container input:checked ~ .checkmark {
-  background-color: var(--color-primary) !important;
-  border-color: var(--color-primary) !important;
-  box-shadow: 0 2px 5px rgba(42, 90, 106, 0.3);
-}
-
-/* 选中状态 - 对勾图标 */
-.check-container input:checked ~ .checkmark:after {
-  display: block;
-  content: "";
-  position: absolute;
-  left: 6.5px !important;
-  top: 2px !important;
-  width: 5px !important;
-  height: 10px !important;
-  border: solid #fff;
-  border-width: 0 2px 2px 0 !important;
-  transform: rotate(45deg);
-}
-
-/* 任务完成后的文本效果 */
-.rm-checklist-item-resolved {
-  color: var(--light-text-color) !important;
-  text-decoration: line-through;
-  opacity: 0.8;
-  transition: color 0.3s ease;
-  text-decoration-thickness: 1.5px;
-  text-decoration-color: var(--color-primary-light);
-}
-
-/* 夜间模式适配 */
-body.bp3-dark .checkmark {
-  border-color: #5C7080;
-}
-
-body.bp3-dark .check-container:hover .checkmark {
-  background-color: rgba(42, 90, 106, 0.4);
-  border-color: var(--color-primary);
-}
-
-/* ========================================================= */
-/* Blockquote - 引用块样式 (无边框沉浸式)                      */
-/* ========================================================= */
-.rm-bq {
-  background-color: rgba(42, 90, 106, 0.08);
-  border-left: 3px solid rgba(42, 90, 106, 0.5);
-  border-radius: 0 8px 8px 0;
-  padding: 16px 20px;
-  margin: 12px 0;
-  font-family: "HYKongShanKai", "汉仪空山楷 简", "汉仪空山楷", cursive;
-  font-size: 0.95em;
-  color: var(--text-color);
-  text-align: left;
-  word-wrap: break-word;
-  opacity: 1;
-}
-
-/* ========================================================= */
-/* Page References & Tags - 页面引用和标签样式                 */
+/* 10. Tags & Labels - 标签样式                                */
 /* ========================================================= */
 .rm-page-ref-brackets {
   display: none;
@@ -808,7 +815,6 @@ span.rm-page-ref.rm-page-ref--tag {
   font-weight: 600;
 }
 
-/* Hide '#' in tags */
 span.rm-page-ref[data-tag] {
   font-size: 0;
   line-height: 0;
@@ -827,7 +833,6 @@ span.rm-page-ref.rm-page-ref--tag[data-tag]::after {
   color: #fefefe;
 }
 
-/* Restore font size for inner elements */
 span.rm-page-ref[data-tag] span,
 span.rm-page-ref[data-tag] .bp3-popover-wrapper,
 span.rm-page-ref[data-tag] .bp3-popover-target {
@@ -835,9 +840,7 @@ span.rm-page-ref[data-tag] .bp3-popover-target {
   line-height: inherit;
 }
 
-/* ========================================================= */
-/* Filled Tags - 填充背景的标签                               */
-/* ========================================================= */
+/* Filled Tags */
 span.rm-page-ref[data-tag="Tweet"],
 span.rm-page-ref[data-tag="Literature Notes"],
 span.rm-page-ref[data-tag="Evergreens"],
@@ -862,7 +865,6 @@ span[data-link-title^="Alive"] .rm-page-ref {
   font-weight: 500;
 }
 
-/* Individual Tag Background Colors */
 span.rm-page-ref[data-tag="Tweet"] { background: var(--tag-tweet); }
 span.rm-page-ref[data-tag="Literature Notes"] { background: var(--tag-literature); }
 span.rm-page-ref[data-tag="Evergreens"] { background: var(--tag-evergreens); }
@@ -873,9 +875,7 @@ span.rm-page-ref[data-tag="Researching"] { background: var(--tag-researching); }
 span.rm-page-ref[data-tag="Synthesising"] { background: var(--tag-synthesising); }
 span.rm-page-ref[data-tag="Alive"] { background: var(--tag-alive); }
 
-/* ========================================================= */
-/* Text-only Tags - 纯文字标签                                 */
-/* ========================================================= */
+/* Text-only Tags */
 span.rm-page-ref[data-tag="Seedling"],
 span[data-link-title^="Seedling"] .rm-page-ref {
   color: var(--tag-seedling);
@@ -925,9 +925,7 @@ span[data-link-title^="Video Tutorial"] .rm-page-ref {
   color: var(--tag-video-tutorial);
 }
 
-/* ========================================================= */
-/* Link Title Prefix Tags - 层级前缀标签                      */
-/* ========================================================= */
+/* Link Title Prefix Tags */
 span[data-link-title^="Book/"] .rm-page-ref,
 span[data-link-title^="Article/"] .rm-page-ref,
 span[data-link-title^="Video/"] .rm-page-ref,
@@ -979,9 +977,7 @@ span[data-link-title^="Idea/"] .rm-page-ref::before {
   content: "✦ ";
 }
 
-/* ========================================================= */
-/* Block Styles by Tag - 按标签的块样式                       */
-/* ========================================================= */
+/* Block Styles by Tag */
 .roam-block-container[data-page-links*='Claim'],
 .roam-block-container[data-page-links*='Questions'],
 .roam-block-container[data-page-links*='Response'],
@@ -1039,26 +1035,7 @@ span[data-link-title^="DirectQuote"] .rm-page-ref {
 }
 
 /* ========================================================= */
-/* Custom Highlights - 自定义高亮                             */
-/* ========================================================= */
-span.rm-highlight {
-  text-decoration: none !important;
-  background: linear-gradient(180deg, rgba(255, 199, 115, 0) 60%, #B0A4E3 60%);
-}
-
-/* Hide highlight control tags */
-span.rm-page-ref[data-tag="h/yellow"],
-span.rm-page-ref[data-tag="h/blue"],
-span.rm-page-ref[data-tag="h/red"],
-span.rm-page-ref[data-tag="sup"],
-span.rm-page-ref[data-tag="h/green"],
-span.rm-page-ref[data-tag="h/purple"],
-span.rm-page-ref[data-tag="h/orange"] {
-  display: none;
-}
-
-/* ========================================================= */
-/* Misc UI Elements - 其他UI元素                              */
+/* 12. Settings & Plugins - 设置与插件                         */
 /* ========================================================= */
 .intercom-app,
 .intercom-launcher-frame,
@@ -1072,12 +1049,6 @@ span.rm-page-ref[data-tag="h/orange"] {
 
 .center-proj {
   text-align: center;
-}
-
-/* URL links */
-.rm-alias--external,
-.rm-alias--external:hover {
-  font-weight: 600;
 }
 
 /* Tooltip */
@@ -1112,24 +1083,60 @@ span.rm-page-ref[data-tag="h/orange"] {
   color: white !important;
 }
 
-/* Linked References Title Override */
-.rm-reference-wrapper div[style*="color: rgb(206, 217, 224)"] {
-  color: var(--reference-title-color) !important;
+/* Popover & Menu */
+.bp3-popover .bp3-popover-content {
+  background: var(--page-color) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  padding: 8px !important;
+  color: var(--text-color) !important;
 }
 
-.rm-unlinked-reference-container strong {
-  color: var(--reference-title-color) !important;
+.bp3-menu {
+  background: transparent !important;
+  padding: 0 !important;
+  color: var(--text-color) !important;
 }
 
-/* Tree Node Expand/Collapse */
-div > .bp3-icon-caret-down + strong,
-div > .bp3-icon-caret-right + strong {
-  color: var(--tree-node-color) !important;
+.bp3-menu-item {
+  border-radius: 999px !important;
+  margin: 4px 0 !important;
+  padding: 10px 16px !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-color) !important;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
 }
 
-/* ========================================================= */
-/* Settings Panel - 设置面板样式                              */
-/* ========================================================= */
+.bp3-menu-item:hover,
+.bp3-menu-item.bp3-active {
+  background-color: var(--color-primary-light) !important;
+  color: var(--color-primary) !important;
+  transform: translateX(2px);
+}
+
+.bp3-menu-item .bp3-icon {
+  color: var(--light-text-color);
+  margin-right: 10px;
+  transition: color 0.2s ease;
+}
+
+.bp3-menu-item:hover .bp3-icon,
+.bp3-menu-item.bp3-active .bp3-icon {
+  color: var(--color-primary) !important;
+}
+
+.bp3-popover-arrow-fill {
+  fill: var(--page-color) !important;
+}
+
+.bp3-popover-arrow-border {
+  fill: transparent !important;
+}
+
+/* Settings Panel - Specific/Legacy */
 .rm-settings .rm-settings-panel .rm-settings-panel__description {
   color: #f8f8f8;
 }
@@ -1169,12 +1176,14 @@ div > .bp3-icon-caret-right + strong {
   color: #f8f8f8;
 }
 
-/* ===================== 夜间模式 - 中国传统色 ===================== */
+/* ========================================================= */
+/* 13. Dark Mode Overrides - 夜间模式覆盖                      */
+/* ========================================================= */
 /* 
  * 参考：https://colors.masantu.com/
  * 设计理念：玄墨为底，月白为字，传统五色点缀
  */
-/* ========================================================= */
+
 body.bp3-dark {
   /* 背景色系 - 夜间护眼模式 */
   --bg-color: #2A2A2A; /* 缁色 - 深黑带灰 */
@@ -1203,51 +1212,51 @@ body.bp3-dark {
   --code-selection-color: #4A6A74; /* 扁青暗版 */
 
   /* 标签色 - 与日间保持一致色相 */
-  --tag-tweet: #6A9CAB; /* 扁青亮版 */
-  --tag-literature: #A89EA8; /* 藕荷亮版 */
-  --tag-evergreens: #7AAA8E; /* 竹青亮版 */
-  --tag-seedling: #8AB0A8; /* 青螺亮版 */
-  --tag-idea-bank: #C8937A; /* 檀色亮版 */
-  --tag-illustrated: #6A9CAB; /* 扁青亮版 */
-  --tag-garden: #8AAC8A; /* 蛙绿亮版 */
-  --tag-video-tutorial: #C8836A; /* 檀色偏红 */
-  --tag-essay: #8AAC8A; /* 蛙绿亮版 */
-  --tag-livestream: #B8836A; /* 赭石亮版 */
-  --tag-talk: #7A9CA8; /* 蟹青亮版 */
-  --tag-waiting: #A0A098; /* 艾绿亮版 */
-  --tag-researching: #7AAA8E; /* 竹青亮版 */
-  --tag-synthesising: #A89EA8; /* 藕荷亮版 */
-  --tag-alive: #C8836A; /* 檀色 */
-  --tag-book: #8A9AA8; /* 鸦青亮版 */
-  --tag-evergreen-page: #7AAA8E; /* 竹青亮版 */
-  --tag-arrow: #6A9CAB; /* 扁青亮版 */
-  --tag-project: #A89EA8; /* 藕荷亮版 */
-  --tag-area: #8AAC8A; /* 蛙绿亮版 */
-  --tag-course: #6A9CAB; /* 扁青亮版 */
-  --tag-idea: #C8937A; /* 檀色亮版 */
-  --tag-claim-color: #B8836A; /* 赭石亮版 */
-  --tag-questions-color: #6A9CAB; /* 扁青亮版 */
-  --tag-response-color: #A89EA8; /* 紫棠亮版 */
-  --tag-evidence-color: #a0a0a0; /* 银灰 */
-  --tag-directquote-color: #50b090; /* 松柏绿亮版 */
+  --tag-tweet: #6A9CAB;
+  --tag-literature: #A89EA8;
+  --tag-evergreens: #7AAA8E;
+  --tag-seedling: #8AB0A8;
+  --tag-idea-bank: #C8937A;
+  --tag-illustrated: #6A9CAB;
+  --tag-garden: #8AAC8A;
+  --tag-video-tutorial: #C8836A;
+  --tag-essay: #8AAC8A;
+  --tag-livestream: #B8836A;
+  --tag-talk: #7A9CA8;
+  --tag-waiting: #A0A098;
+  --tag-researching: #7AAA8E;
+  --tag-synthesising: #A89EA8;
+  --tag-alive: #C8836A;
+  --tag-book: #8A9AA8;
+  --tag-evergreen-page: #7AAA8E;
+  --tag-arrow: #6A9CAB;
+  --tag-project: #A89EA8;
+  --tag-area: #8AAC8A;
+  --tag-course: #6A9CAB;
+  --tag-idea: #C8937A;
+  --tag-claim-color: #B8836A;
+  --tag-questions-color: #6A9CAB;
+  --tag-response-color: #A89EA8;
+  --tag-evidence-color: #a0a0a0;
+  --tag-directquote-color: #50b090;
 
   /* 块背景色 - 传统色极淡 */
-  --block-claim-bg: rgba(192, 80, 80, 0.1); /* 淡胭脂 */
-  --block-questions-bg: rgba(74, 158, 208, 0.1); /* 淡群青 */
-  --block-response-bg: rgba(160, 112, 144, 0.1); /* 淡紫棠 */
-  --block-evidence-bg: rgba(160, 160, 160, 0.08); /* 淡银灰 */
-  --block-directquote-bg: rgba(80, 176, 144, 0.1); /* 淡松柏绿 */
+  --block-claim-bg: rgba(192, 80, 80, 0.1);
+  --block-questions-bg: rgba(74, 158, 208, 0.1);
+  --block-response-bg: rgba(160, 112, 144, 0.1);
+  --block-evidence-bg: rgba(160, 160, 160, 0.08);
+  --block-directquote-bg: rgba(80, 176, 144, 0.1);
 
   /* 高亮色 - 传统色 */
-  --highlight-yellow: #daa055; /* 琥珀 */
-  --highlight-green: #50b090; /* 松柏绿 */
-  --highlight-blue: #4a9ed0; /* 群青 */
-  --highlight-red: #e05545; /* 朱砂 */
-  --highlight-purple: #a07090; /* 紫棠 */
-  --highlight-orange: #daa055; /* 琥珀 */
+  --highlight-yellow: #daa055;
+  --highlight-green: #50b090;
+  --highlight-blue: #4a9ed0;
+  --highlight-red: #e05545;
+  --highlight-purple: #a07090;
+  --highlight-orange: #daa055;
 }
 
-/* Dark Mode - General Overrides */
+/* General Overrides */
 body.bp3-dark,
 body.bp3-dark #app {
   background: var(--bg-color) !important;
@@ -1258,37 +1267,20 @@ body.bp3-dark .roam-article > div {
   border-color: var(--color-subtle-border);
 }
 
-/* Dark Mode - Highlights */
+/* Highlights */
 body.bp3-dark span.rm-highlight {
   color: #EEDEB0 !important;
   background: linear-gradient(180deg, transparent 60%, #15559A 60%);
 }
 
-body.bp3-dark .roam-block-container[data-page-links*='h/yellow'] span.rm-highlight {
-  background: linear-gradient(180deg, transparent 60%, var(--highlight-yellow) 60%);
-}
+body.bp3-dark .roam-block-container[data-page-links*='h/yellow'] span.rm-highlight { background: linear-gradient(180deg, transparent 60%, var(--highlight-yellow) 60%); }
+body.bp3-dark .roam-block-container[data-page-links*='h/green'] span.rm-highlight { background: linear-gradient(180deg, transparent 60%, var(--highlight-green) 60%); }
+body.bp3-dark .roam-block-container[data-page-links*='h/blue'] span.rm-highlight { background: linear-gradient(180deg, transparent 60%, var(--highlight-blue) 60%); }
+body.bp3-dark .roam-block-container[data-page-links*='h/red'] span.rm-highlight { background: linear-gradient(180deg, transparent 60%, var(--highlight-red) 60%); }
+body.bp3-dark .roam-block-container[data-page-links*='h/purple'] span.rm-highlight { background: linear-gradient(180deg, transparent 60%, var(--highlight-purple) 60%); }
+body.bp3-dark .roam-block-container[data-page-links*='h/orange'] span.rm-highlight { background: linear-gradient(180deg, transparent 60%, var(--highlight-orange) 60%); }
 
-body.bp3-dark .roam-block-container[data-page-links*='h/green'] span.rm-highlight {
-  background: linear-gradient(180deg, transparent 60%, var(--highlight-green) 60%);
-}
-
-body.bp3-dark .roam-block-container[data-page-links*='h/blue'] span.rm-highlight {
-  background: linear-gradient(180deg, transparent 60%, var(--highlight-blue) 60%);
-}
-
-body.bp3-dark .roam-block-container[data-page-links*='h/red'] span.rm-highlight {
-  background: linear-gradient(180deg, transparent 60%, var(--highlight-red) 60%);
-}
-
-body.bp3-dark .roam-block-container[data-page-links*='h/purple'] span.rm-highlight {
-  background: linear-gradient(180deg, transparent 60%, var(--highlight-purple) 60%);
-}
-
-body.bp3-dark .roam-block-container[data-page-links*='h/orange'] span.rm-highlight {
-  background: linear-gradient(180deg, transparent 60%, var(--highlight-orange) 60%);
-}
-
-/* Dark Mode - Typography */
+/* Typography */
 body.bp3-dark h1,
 body.bp3-dark h2,
 body.bp3-dark h3,
@@ -1301,41 +1293,32 @@ body.bp3-dark .rm-level2,
 body.bp3-dark .rm-heading-level-2 > .rm-block__self .rm-block__input,
 body.bp3-dark .rm-level3,
 body.bp3-dark .rm-heading-level-3 > .rm-block__self .rm-block__input,
-body.bp3-dark .rm-title-editing-display textarea {
+body.bp3-dark .rm-title-editing-display textarea,
+body.bp3-dark div,
+body.bp3-dark textarea {
   color: var(--text-color) !important;
 }
 
-body.bp3-dark div,
-body.bp3-dark textarea {
-  color: var(--text-color);
-}
-
-/* Dark Mode - Sidebar (无边框沉浸式) */
+/* Sidebar */
 body.bp3-dark .roam-body .roam-app .roam-sidebar-container {
   background: var(--bg-color);
   border-right: none;
   box-shadow: none;
 }
 
-/* 夜间模式数据库标题 */
 body.bp3-dark .roam-sidebar-container .rm-db-title-container .rm-db-title {
   color: #FF6B6B;
   text-shadow: 0 0 8px rgba(255, 107, 107, 0.3);
 }
 
-/* 夜间模式导航按钮 */
 body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button,
 body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row {
   color: #a0a0a5;
-  padding: 10px 16px;
-  margin: 2px 8px;
-  border-radius: 6px;
   transition: all 0.25s ease;
   border: none;
   background: transparent;
 }
 
-/* 夜间模式导航按钮悬停 */
 body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:hover,
 body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row:hover {
   background: rgba(255, 255, 255, 0.08);
@@ -1344,22 +1327,18 @@ body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content
   transform: translateX(3px);
 }
 
-/* 夜间模式SHORTCUTS标题 */
 body.bp3-dark div.flex-v-box.starred-pages-wrapper > div.flex-h-box > span {
   color: #FF8787;
   border-top-color: #3a3a3c;
 }
 
-/* 夜间模式快捷链接项 */
 body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page {
   color: #8a8a8e;
-  border-radius: 6px;
   transition: all 0.25s ease;
   border-left: none;
   background: transparent;
 }
 
-/* 夜间模式快捷链接悬停 */
 body.bp3-dark .starred-pages .page:hover {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
@@ -1367,7 +1346,6 @@ body.bp3-dark .starred-pages .page:hover {
   box-shadow: none;
 }
 
-/* 夜间模式侧边栏图标 */
 body.bp3-dark .roam-sidebar-content .bp3-icon {
   color: #6a6a6e;
   transition: all 0.25s ease;
@@ -1379,7 +1357,6 @@ body.bp3-dark .roam-sidebar-content .top-row:hover .bp3-icon {
   filter: drop-shadow(0 0 4px rgba(97, 175, 239, 0.4));
 }
 
-/* 夜间模式右侧边栏 */
 body.bp3-dark #right-sidebar {
   background-color: var(--bg-color) !important;
   border-left: 1px solid var(--color-subtle-border) !important;
@@ -1401,7 +1378,7 @@ body.bp3-dark .bp3-text-overflow-ellipsis > a.bp3-active {
   background-color: var(--color-primary-highlight) !important;
 }
 
-/* Dark Mode - Code Blocks (无边框沉浸式) */
+/* Code Blocks */
 body.bp3-dark .rm-code-block {
   background: rgba(255, 255, 255, 0.03);
   border: none;
@@ -1423,7 +1400,7 @@ body.bp3-dark code {
   border: none;
 }
 
-/* Dark Mode - Checkboxes (美化版) */
+/* Checkboxes */
 body.bp3-dark .check-container {
   border-color: #5a5a5e;
   background: #2c2c30;
@@ -1449,12 +1426,9 @@ body.bp3-dark .rm-checklist-item-resolved {
   color: #6a6a6e !important;
 }
 
-/* Dark Mode - Embed & Reference (无边框沉浸式) */
+/* Embed & Reference */
 body.bp3-dark .rm-embed-container {
   background: rgba(255, 255, 255, 0.03);
-  border: none;
-  border-radius: var(--border-radius-md);
-  box-shadow: none;
 }
 
 body.bp3-dark .rm-embed-container:hover {
@@ -1464,10 +1438,6 @@ body.bp3-dark .rm-embed-container:hover {
 body.bp3-dark .rm-reference-item {
   background: rgba(255, 255, 255, 0.04);
   border: none;
-  border-radius: var(--border-radius-pill);
-  box-shadow: none;
-  padding: 10px 18px;
-  transition: var(--transition-fast);
 }
 
 body.bp3-dark .rm-reference-item:hover {
@@ -1479,12 +1449,7 @@ body.bp3-dark .roam-body #block-input > span > div {
   background: var(--page-color);
 }
 
-/* Dark Mode - Kanban (无边框沉浸式) */
-body.bp3-dark .kanban-board {
-  background: transparent;
-  border-radius: var(--border-radius-lg);
-}
-
+/* Kanban */
 body.bp3-dark .kanban-column {
   background: rgba(255, 255, 255, 0.02);
   border: none;
@@ -1493,10 +1458,6 @@ body.bp3-dark .kanban-column {
 
 body.bp3-dark .kanban-card {
   background: rgba(255, 255, 255, 0.04);
-  border: none;
-  border-radius: var(--border-radius-md);
-  box-shadow: none;
-  transition: var(--transition-normal);
 }
 
 body.bp3-dark .kanban-card:hover {
@@ -1509,12 +1470,11 @@ body.bp3-dark .kanban-title {
   color: #d1d5db;
 }
 
-/* Dark Mode - Tags */
-/* 使用半透明深色背景 + 暖色调文字，提高可读性和协调性 */
+/* Tags (Dark Mode) */
 body.bp3-dark span.rm-page-ref.rm-page-ref--tag {
-  background: rgba(200, 147, 122, 0.15); /* 檀色淡底 */
-  border: 1px solid rgba(200, 147, 122, 0.4); /* 檀色边框 */
-  color: var(--color-secondary) !important; /* 檀色文字 */
+  background: rgba(200, 147, 122, 0.15);
+  border: 1px solid rgba(200, 147, 122, 0.4);
+  color: var(--color-secondary) !important;
   padding: 2px 8px;
   border-radius: 15px;
 }
@@ -1524,11 +1484,11 @@ body.bp3-dark span.rm-page-ref[data-tag]::after {
   display: inline-block;
   font-size: 14px;
   line-height: 1.6;
-  color: var(--color-secondary); /* 继承檀色 */
+  color: var(--color-secondary);
   font-weight: inherit;
 }
 
-/* Dark Mode - Stroked Tags */
+/* Stroked Tags */
 body.bp3-dark span.rm-page-ref[data-tag="Tweet"],
 body.bp3-dark span.rm-page-ref[data-tag="Literature Notes"],
 body.bp3-dark span.rm-page-ref[data-tag="Evergreens"],
@@ -1544,61 +1504,17 @@ body.bp3-dark span.rm-page-ref[data-tag="Alive"] {
   line-height: 1.6;
 }
 
-body.bp3-dark span.rm-page-ref[data-tag="Tweet"]::after,
-body.bp3-dark span.rm-page-ref[data-tag="Tweet"] {
-  color: var(--tag-tweet);
-  border-color: var(--tag-tweet);
-}
+body.bp3-dark span.rm-page-ref[data-tag="Tweet"]::after, body.bp3-dark span.rm-page-ref[data-tag="Tweet"] { color: var(--tag-tweet); border-color: var(--tag-tweet); }
+body.bp3-dark span.rm-page-ref[data-tag="Literature Notes"]::after, body.bp3-dark span.rm-page-ref[data-tag="Literature Notes"] { color: var(--tag-literature); border-color: var(--tag-literature); }
+body.bp3-dark span.rm-page-ref[data-tag="Evergreens"]::after, body.bp3-dark span.rm-page-ref[data-tag="Evergreens"] { color: var(--tag-evergreens); border-color: var(--tag-evergreens); }
+body.bp3-dark span.rm-page-ref[data-tag="Essay"]::after, body.bp3-dark span.rm-page-ref[data-tag="Essay"] { color: var(--tag-essay); border-color: var(--tag-essay); }
+body.bp3-dark span.rm-page-ref[data-tag="Talk"]::after, body.bp3-dark span.rm-page-ref[data-tag="Talk"] { color: var(--tag-talk); border-color: var(--tag-talk); }
+body.bp3-dark span.rm-page-ref[data-tag="Waiting"]::after, body.bp3-dark span.rm-page-ref[data-tag="Waiting"] { color: var(--tag-waiting); border-color: var(--tag-waiting); }
+body.bp3-dark span.rm-page-ref[data-tag="Researching"]::after, body.bp3-dark span.rm-page-ref[data-tag="Researching"] { color: var(--tag-researching); border-color: var(--tag-researching); }
+body.bp3-dark span.rm-page-ref[data-tag="Synthesising"]::after, body.bp3-dark span.rm-page-ref[data-tag="Synthesising"] { color: var(--tag-synthesising); border-color: var(--tag-synthesising); }
+body.bp3-dark span.rm-page-ref[data-tag="Alive"]::after, body.bp3-dark span.rm-page-ref[data-tag="Alive"] { color: var(--tag-alive); border-color: var(--tag-alive); }
 
-body.bp3-dark span.rm-page-ref[data-tag="Literature Notes"]::after,
-body.bp3-dark span.rm-page-ref[data-tag="Literature Notes"] {
-  color: var(--tag-literature);
-  border-color: var(--tag-literature);
-}
-
-body.bp3-dark span.rm-page-ref[data-tag="Evergreens"]::after,
-body.bp3-dark span.rm-page-ref[data-tag="Evergreens"] {
-  color: var(--tag-evergreens);
-  border-color: var(--tag-evergreens);
-}
-
-body.bp3-dark span.rm-page-ref[data-tag="Essay"]::after,
-body.bp3-dark span.rm-page-ref[data-tag="Essay"] {
-  color: var(--tag-essay);
-  border-color: var(--tag-essay);
-}
-
-body.bp3-dark span.rm-page-ref[data-tag="Talk"]::after,
-body.bp3-dark span.rm-page-ref[data-tag="Talk"] {
-  color: var(--tag-talk);
-  border-color: var(--tag-talk);
-}
-
-body.bp3-dark span.rm-page-ref[data-tag="Waiting"]::after,
-body.bp3-dark span.rm-page-ref[data-tag="Waiting"] {
-  color: var(--tag-waiting);
-  border-color: var(--tag-waiting);
-}
-
-body.bp3-dark span.rm-page-ref[data-tag="Researching"]::after,
-body.bp3-dark span.rm-page-ref[data-tag="Researching"] {
-  color: var(--tag-researching);
-  border-color: var(--tag-researching);
-}
-
-body.bp3-dark span.rm-page-ref[data-tag="Synthesising"]::after,
-body.bp3-dark span.rm-page-ref[data-tag="Synthesising"] {
-  color: var(--tag-synthesising);
-  border-color: var(--tag-synthesising);
-}
-
-body.bp3-dark span.rm-page-ref[data-tag="Alive"]::after,
-body.bp3-dark span.rm-page-ref[data-tag="Alive"] {
-  color: var(--tag-alive);
-  border-color: var(--tag-alive);
-}
-
-/* Dark Mode - Links & Bullets */
+/* Links & Bullets */
 body.bp3-dark a {
   color: var(--color-secondary);
 }
@@ -1618,11 +1534,7 @@ body.bp3-dark .rm-bullet__inner--user-icon {
   background-color: var(--tag-seedling);
 }
 
-/* ========================================================= */
-/* roam/js Code Block - 代码块样式修复（夜间模式）             */
-/* ========================================================= */
-
-/* 修复 roam/js 页面的警告区域在夜间模式下的显示 */
+/* roam/js Code Block */
 body.bp3-dark .rm-code-warning,
 body.bp3-dark .roam-block-container[data-page-links*="roam/js"] .rm-code-warning,
 body.bp3-dark .bp3-card {
@@ -1630,7 +1542,6 @@ body.bp3-dark .bp3-card {
   color: var(--text-color) !important;
 }
 
-/* roam/js 代码块容器 */
 body.bp3-dark .rm-code-warning .CodeMirror,
 body.bp3-dark .rm-code-warning pre,
 body.bp3-dark .rm-code-warning code,
@@ -1639,7 +1550,6 @@ body.bp3-dark .rm-code-warning textarea {
   color: #e8e4da !important;
 }
 
-/* 确保按钮在夜间模式下可见 */
 body.bp3-dark .rm-code-warning .bp3-button {
   background-color: #3a3a3e !important;
   color: #e8e4da !important;
@@ -1649,150 +1559,33 @@ body.bp3-dark .rm-code-warning .bp3-button:hover {
   background-color: #4a4a4e !important;
 }
 
-/* ========================================================= */
-/* Hidden Menu Button - 隐藏左侧边栏菜单按钮                   */
-/* 因为已有悬浮展开功能，不再需要原生按钮                       */
-/* ========================================================= */
-
-.bp3-icon-menu,
-.rm-open-left-sidebar-btn {
-  display: none !important;
-  width: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.rm-topbar:has(.rm-open-left-sidebar-btn):not(:has(#todayTomorrow)):not(:has(#workspaces)) > .speech-to-roam.speech-to-roam-container-top {
-  left: 0 !important;
-}
-
-/* 隐藏层级指示线 */
-.rm-multibar {
-  display: none !important;
-}
-
-/* ========================================================= */
-/* Fix for Resize Handle & Caret - 修复调整手柄遮挡折叠图标    */
-/* ========================================================= */
-
-/* Fix for unclickable caret/triangle buttons - 修复无法点击的折叠/缩放图标 */
-.controls .rm-caret,
-.rm-caret,
-.rm-caret-hidden {
-  z-index: 1000 !important;
-  pointer-events: auto !important;
-  position: relative; /* Ensure z-index works */
-}
-
-/* Fix for rm-resize-handle blocking caret - 修复调整手柄遮挡折叠图标的问题 */
-.rm-resize-handle {
-  width: 4px !important;
-  left: -4px !important;
-  opacity: 0;
-  z-index: 10;
-}
-
-.rm-resize-handle:hover {
-  width: 8px !important;
-  left: -8px !important;
-  opacity: 0.5;
-  background-color: var(--color-primary-light);
-}
-
-/* ========================================================= */
-/* Popover & Menu - 弹出菜单优化 (椭圆风格) */
-/* ========================================================= */
-
-/* Popover Container - 整体圆润化 */
-.bp3-popover .bp3-popover-content {
-  background: var(--page-color) !important;
-  border-radius: 16px !important; /* 更大的圆角，接近椭圆视觉 */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important; /* 更柔和、深邃的阴影 */
-  border: 1px solid rgba(0, 0, 0, 0.05) !important; /* 极淡边框 */
-  padding: 8px !important; /* 增加内边距，让菜单项悬浮其中 */
-  color: var(--text-color) !important;
-}
-
-/* Menu List - 移除默认背景和内边距 */
-.bp3-menu {
-  background: transparent !important;
-  padding: 0 !important;
-  color: var(--text-color) !important;
-}
-
-/* Menu Item - 完美胶囊形 */
-.bp3-menu-item {
-  border-radius: 999px !important; /* 完美胶囊圆角 */
-  margin: 4px 0 !important; /* 项之间增加间距 */
-  padding: 10px 16px !important; /* 舒适的点击区域 */
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  color: var(--text-color) !important;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-}
-
-/* Menu Item Hover - 日间模式 */
-.bp3-menu-item:hover,
-.bp3-menu-item.bp3-active {
-  background-color: var(--color-primary-light) !important; /* 使用淡青灰背景 */
-  color: var(--color-primary) !important; /* 墨青色文字 */
-  transform: translateX(2px); /* 悬停时微动，增加交互感 */
-}
-
-/* Icons in Menu */
-.bp3-menu-item .bp3-icon {
-  color: var(--light-text-color);
-  margin-right: 10px;
-  transition: color 0.2s ease;
-}
-
-.bp3-menu-item:hover .bp3-icon,
-.bp3-menu-item.bp3-active .bp3-icon {
-  color: var(--color-primary) !important;
-}
-
-/* Popover Arrow - 适配背景色 */
-.bp3-popover-arrow-fill {
-  fill: var(--page-color) !important;
-}
-
-.bp3-popover-arrow-border {
-  fill: transparent !important; /* 隐藏箭头边框以获得更清洁外观 */
-}
-
-/* ===================== Dark Mode Overrides ===================== */
-
-/* Popover - 夜间模式 */
+/* Popover Dark Mode */
 body.bp3-dark .bp3-popover .bp3-popover-content {
-  background: #333336 !important; /* 深灰背景，比纯黑略亮 */
+  background: #333336 !important;
   border: 1px solid #454545 !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
   color: var(--text-color) !important;
 }
 
-/* Menu Item Hover - 夜间模式 */
 body.bp3-dark .bp3-menu-item:hover,
 body.bp3-dark .bp3-menu-item.bp3-active {
-  background-color: var(--color-primary) !important; /* 选中时使用主色背景 */
-  color: #ffffff !important; /* 文字反白 */
+  background-color: var(--color-primary) !important;
+  color: #ffffff !important;
 }
 
-/* Icons - 夜间模式 */
 body.bp3-dark .bp3-menu-item .bp3-icon {
   color: #8a8a8e;
 }
 
 body.bp3-dark .bp3-menu-item:hover .bp3-icon,
 body.bp3-dark .bp3-menu-item.bp3-active .bp3-icon {
-  color: #ffffff !important; /* 图标反白 */
+  color: #ffffff !important;
 }
 
-/* Arrow - 夜间模式 */
 body.bp3-dark .bp3-popover-arrow-fill {
   fill: #333336 !important;
 }
 
 body.bp3-dark .bp3-popover-arrow-border {
-  fill: #454545 !important; /* 夜间模式保留微弱边框 */
+  fill: #454545 !important;
 }
