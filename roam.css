@@ -1033,25 +1033,27 @@ span[data-link-title^="DirectQuote"] .rm-page-ref {
 .rm-topbar {
   display: flex !important;
   align-items: center !important;
-  /* Ensure space distribution */
+  position: relative !important; /* 开启定位上下文，为绝对居中做准备 */
 }
 
-/* 2. Search Wrapper - Flex Behavior */
-/* 让搜索框容器成为 Flex 项目，参与布局流，而不是绝对定位 */
+/* 2. Search Wrapper - Absolute Centering */
+/* 修改：使用绝对定位 + 变换实现完美居中，不影响左右两侧元素 */
 .rm-find-or-create-wrapper {
-  flex: 0 1 auto !important;
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
   display: flex !important;
   align-items: center !important;
-  position: relative !important;
-  margin-right: 12px !important;
-  transition: all 0.2s ease;
+  margin-right: 0 !important;
+  z-index: 1000; /* 确保在顶层 */
+  flex: 0 0 auto !important;
 }
 
 /* 3. Search Input Styling & Expansion */
 #find-or-create-input {
-  width: 200px !important; /* 默认宽度 */
-  min-width: 150px;
-  height: 32px !important;
+  width: 300px !important; /* 默认宽度增加 */
+  min-width: 200px;
+  height: 34px !important;
   border-radius: 20px !important; /* 圆润风格 */
   background-color: rgba(0, 0, 0, 0.04) !important;
   border: 1px solid transparent !important;
@@ -1065,17 +1067,18 @@ span[data-link-title^="DirectQuote"] .rm-page-ref {
 
 /* Icon Position */
 .rm-find-or-create-wrapper .bp3-icon-search {
-  left: 10px !important;
+  left: 12px !important;
   color: var(--light-text-color) !important;
 }
 
 /* Focus State - Expand Width */
-/* 展开时宽度增加，推挤其他元素而非覆盖 */
+/* 激活时拉长并保持居中 */
 #find-or-create-input:focus {
-  width: 400px !important; /* 展开宽度 */
+  width: 600px !important; /* 大幅增加展开宽度 */
+  max-width: 60vw !important; /* 响应式最大宽度 */
   background-color: var(--page-color) !important;
   border-color: var(--color-primary) !important;
-  box-shadow: 0 0 0 2px rgba(42, 90, 106, 0.2) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Dark Mode Support for Input */
@@ -1092,12 +1095,19 @@ body.bp3-dark #find-or-create-input:focus {
 
 /* Mobile Responsive - Prevent overflow */
 @media (max-width: 768px) {
+  #find-or-create-input {
+    width: 180px !important; /* 移动端默认宽度 */
+  }
+
   #find-or-create-input:focus {
-    width: 200px !important; /* 移动端展开宽度减小 */
+    width: 300px !important; /* 移动端展开宽度 */
+    max-width: 70vw !important;
   }
   
+  /* 移动端保持绝对居中，但避免覆盖两侧按钮 */
   .rm-find-or-create-wrapper {
-    flex-shrink: 1 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
   }
 }
 
@@ -1325,6 +1335,83 @@ body.bp3-dark #find-or-create-input:focus {
 .rm-find-or-create__menu .rm-new-page {
   color: var(--color-secondary) !important;
   font-weight: 600;
+}
+
+/* ========================================================= */
+/* Sync Status Integration & Light Bar - 同步状态整合与灯条     */
+/* ========================================================= */
+
+/* 1. Sync Icon Positioning & Hover Logic */
+/* 默认隐藏，绝对定位在搜索框右侧内部 */
+.rm-sync {
+  position: absolute !important;
+  left: 50% !important; /* 配合父级居中 */
+  margin-left: 150px; /* 默认宽度的一半 (300/2) */
+  transform: translateX(-30px); /* 向左微调，位于输入框内部右侧 */
+  top: 50%;
+  margin-top: -10px; /* 垂直居中 */
+  opacity: 0;
+  pointer-events: none; /* 默认不阻挡点击 */
+  transition: all 0.2s ease !important;
+  z-index: 1001; /* 高于搜索框 */
+}
+
+/* 悬停搜索框区域时显示同步图标 */
+/* 使用 :has() 检测鼠标是否在搜索框容器内 */
+.rm-find-or-create-wrapper:hover ~ .rm-sync,
+.rm-sync:hover {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-36px); /* 悬停时稍微位移以吸引注意 */
+}
+
+/* 搜索框展开时，隐藏同步图标（避免干扰输入） */
+/* 用户要求：点击搜索框后右侧出现的同步图标应被移除 */
+.rm-topbar:has(#find-or-create-input:focus) .rm-sync {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  display: none !important;
+}
+
+/* 2. Light Bar Visual Effect (灯条效果) */
+/* 利用 box-shadow 实现环绕光晕，不仅限于底部 */
+
+/* A. 默认状态 (未同步/正在保存) - 橙色呼吸灯 */
+/* 当 rm-sync 存在但没有 .rm-sync--synced 类时 */
+.rm-topbar:has(.rm-sync) #find-or-create-input {
+  border: 1.5px solid #FF9F1C !important; /* 全环绕橙色边框 */
+  box-shadow: 0 0 12px rgba(255, 159, 28, 0.25) !important; /* 环绕光晕 */
+}
+
+/* B. 同步完成状态 - 绿色常亮 */
+/* 当 rm-sync 拥有 .rm-sync--synced 类时 */
+.rm-topbar:has(.rm-sync--synced) #find-or-create-input {
+  border: 1.5px solid transparent !important; /* 恢复透明 */
+  box-shadow: none !important;
+  /* 或者保留微弱的绿色边框暗示 */
+  border-color: rgba(46, 196, 182, 0.3) !important; 
+}
+
+/* 聚焦状态下的灯条增强 */
+.rm-topbar:has(.rm-sync) #find-or-create-input:focus {
+  border-color: #FF9F1C !important;
+  box-shadow: 0 0 0 2px rgba(255, 159, 28, 0.2), 0 4px 16px rgba(255, 159, 28, 0.1) !important;
+}
+
+.rm-topbar:has(.rm-sync--synced) #find-or-create-input:focus {
+  border-color: var(--color-primary) !important; /* 恢复主色 */
+  box-shadow: 0 0 0 2px rgba(42, 90, 106, 0.2), 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .rm-sync {
+    margin-left: 90px; /* 移动端宽度 (180/2) */
+  }
+  
+  .rm-topbar:has(#find-or-create-input:focus) .rm-sync {
+    margin-left: 35vw; /* 移动端展开宽度 (70vw/2) */
+  }
 }
 
 /* ========================================================= */
