@@ -1488,6 +1488,11 @@ body.bp3-dark #find-or-create-input:focus {
   padding-bottom: 10px;
 }
 
+/* Remove duplicate divider line */
+.DayPicker-Caption .bp3-divider {
+  display: none !important;
+}
+
 .bp3-datepicker-caption select {
   color: var(--text-color) !important;
   font-weight: 600 !important;
