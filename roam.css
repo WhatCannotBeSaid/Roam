@@ -28,6 +28,7 @@
   --header-font: "Futura", "方正颜真卿楷书 简";
   --body-font: "Optima", "HYKongShanKai", "汉仪空山楷 简", "汉仪空山楷", sans-serif;
   --code-font: "Fira Code", "方正屏显雅宋_GBK";
+  --heading-block-font: "Palatino Linotype", "方正清刻本悦宋简体"; /* 块级标题专用字体 */
 
   /* ===================== Utility Variables ===================== */
   /* 过渡效果 */
@@ -162,42 +163,6 @@ body,
 }
 
 /* ========================================================= */
-/* 11. Highlights - 高亮样式 (Moved up for logic flow)        */
-/* ========================================================= */
-.block-highlight-blue {
-  background: none !important;
-  z-index: 99;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0;
-  margin: 0;
-}
-
-.block-highlight-blue * {
-  color: var(--block-highlight-color) !important;
-}
-
-.block-highlight-yellow {
-  background-color: white;
-}
-
-span.rm-highlight {
-  text-decoration: none !important;
-  background: linear-gradient(180deg, rgba(255, 199, 115, 0) 60%, #B0A4E3 60%);
-}
-
-/* Hide highlight control tags */
-span.rm-page-ref[data-tag="h/yellow"],
-span.rm-page-ref[data-tag="h/blue"],
-span.rm-page-ref[data-tag="h/red"],
-span.rm-page-ref[data-tag="sup"],
-span.rm-page-ref[data-tag="h/green"],
-span.rm-page-ref[data-tag="h/purple"],
-span.rm-page-ref[data-tag="h/orange"] {
-  display: none;
-}
-
-/* ========================================================= */
 /* 3. Typography - 排版样式                                     */
 /* ========================================================= */
 h1, h2, h3, h4, h5, h6,
@@ -229,7 +194,7 @@ div, textarea {
   color: var(--heading-h1-color);
   font-size: 1.8rem;
   font-weight: 600;
-  font-family: "Palatino Linotype", "方正清刻本悦宋简体";
+  font-family: var(--heading-block-font);
 }
 
 .rm-level2,
@@ -237,7 +202,7 @@ div, textarea {
   color: var(--heading-h2-color);
   font-size: 1.6rem;
   font-weight: 500;
-  font-family: "Palatino Linotype", "方正清刻本悦宋简体" !important;
+  font-family: var(--heading-block-font) !important;
 }
 
 .rm-level3,
@@ -245,7 +210,7 @@ div, textarea {
   color: var(--heading-h3-color);
   font-weight: 400;
   font-size: 1.4rem;
-  font-family: "Palatino Linotype", "方正清刻本悦宋简体";
+  font-family: var(--heading-block-font);
 }
 
 /* Links */
@@ -544,7 +509,7 @@ div.roam-sidebar-container.noselect > div > div {
 
 /* Compact Layout - 紧凑布局 */
 .controls {
-  margin-right: 2px !important; /* 减小 Bullet 和文本的间距 */
+  margin-right: 2px !important;
   padding-right: 0 !important;
   flex: 0 0 auto !important;
 }
@@ -613,18 +578,14 @@ div.roam-sidebar-container.noselect > div > div {
 /* ========================================================= */
 /* Light Mode - 日间模式 (优化版) */
 .rm-bullet__tooltip {
-  /* 背景色: 使用主背景色的稍亮变体，保持温暖护眼的基调 */
+  /* 背景色: 使用主背景色的稍亮变体 */
   background-color: var(--page-color, #F5F0E6) !important;
-  
-  /* 文本颜色: 使用主文本色 (深灰)，确保在浅色背景下清晰可读 */
+  /* 文本颜色: 使用主文本色 (深灰) */
   color: var(--text-color, #3A3A3A) !important;
-  
-  /* 边框: 使用暖灰边框，与整体风格统一 */
+  /* 边框: 使用暖灰边框 */
   border: 1px solid var(--color-subtle-border, #D8D0C4) !important;
-  
   /* 阴影: 柔和的暖色调阴影 */
   box-shadow: 0 4px 16px rgba(168, 90, 58, 0.12) !important;
-  
   border-radius: 8px !important;
   padding: 8px 12px !important;
   font-size: 13px !important;
@@ -635,9 +596,8 @@ div.roam-sidebar-container.noselect > div > div {
 
 /* Time/Metadata inside tooltip */
 .rm-bullet-tooltip__time {
-  /* 次级文本: 使用中灰，形成层级感 */
+  /* 次级文本: 使用中灰 */
   color: var(--light-text-color, #6A6A6A) !important;
-  
   font-size: 0.9em !important;
   margin-top: 4px !important;
   display: block !important;
@@ -723,9 +683,8 @@ div > .bp3-icon-caret-right + strong {
 .check-container {
   height: 18px;
   width: 18px;
-  /* margin-right: 8px; -> Removed for absolute positioning */
-  position: absolute !important; /* Modified: Absolute positioning to move left */
-  left: 0px !important; /* Modified: Position before the bullet (Adjusted for compactness) */
+  position: absolute !important;
+  left: 0px !important;
   top: 2px;
   border: none !important;
   background: transparent !important;
@@ -753,7 +712,6 @@ div > .bp3-icon-caret-right + strong {
 }
 
 .check-container input:checked ~ .checkmark {
-  /* User Request: Checkmark element immediately disappears when checked */
   display: none !important;
   opacity: 0;
 }
@@ -768,15 +726,12 @@ div > .bp3-icon-caret-right + strong {
 .roam-block:has(.check-container input:checked) {
   /* 文本样式：变淡并退居次要层级 */
   color: var(--light-text-color) !important;
-  opacity: 0.75; /* 保持一定可读性 */
-  
+  opacity: 0.75;
   /* 删除线样式：优雅的半透明主色调 */
   text-decoration: line-through !important;
-  text-decoration-thickness: 1.5px !important; /* 精致的线条粗细 */
-  text-decoration-color: rgba(42, 90, 106, 0.6) !important; /* 墨青色半透明，与主题呼应且不刺眼 */
+  text-decoration-thickness: 1.5px !important;
+  text-decoration-color: rgba(42, 90, 106, 0.6) !important;
   text-decoration-style: solid;
-  
-  /* 平滑过渡动画 */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1087,8 +1042,45 @@ span[data-link-title^="DirectQuote"] .rm-page-ref {
 }
 
 /* ========================================================= */
-/* Top Bar & Search Input Optimization - 顶栏与搜索框优化       */
+/* 11. Highlights - 高亮样式                                   */
 /* ========================================================= */
+.block-highlight-blue {
+  background: none !important;
+  z-index: 99;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+  margin: 0;
+}
+
+.block-highlight-blue * {
+  color: var(--block-highlight-color) !important;
+}
+
+.block-highlight-yellow {
+  background-color: white;
+}
+
+span.rm-highlight {
+  text-decoration: none !important;
+  background: linear-gradient(180deg, rgba(255, 199, 115, 0) 60%, #B0A4E3 60%);
+}
+
+/* Hide highlight control tags */
+span.rm-page-ref[data-tag="h/yellow"],
+span.rm-page-ref[data-tag="h/blue"],
+span.rm-page-ref[data-tag="h/red"],
+span.rm-page-ref[data-tag="sup"],
+span.rm-page-ref[data-tag="h/green"],
+span.rm-page-ref[data-tag="h/purple"],
+span.rm-page-ref[data-tag="h/orange"] {
+  display: none;
+}
+
+/* ========================================================= */
+/* 12. Settings & Plugins - 设置与插件                         */
+/* ========================================================= */
+/* Top Bar & Search Input Optimization - 顶栏与搜索框优化 */
 
 /* 1. Ensure Topbar handles layout flow */
 .rm-topbar {
@@ -1098,7 +1090,6 @@ span[data-link-title^="DirectQuote"] .rm-page-ref {
 }
 
 /* 2. Search Wrapper - Absolute Centering */
-/* 修改：使用绝对定位 + 变换实现完美居中，不影响左右两侧元素 */
 .rm-find-or-create-wrapper {
   position: absolute !important;
   left: 50% !important;
@@ -1112,7 +1103,7 @@ span[data-link-title^="DirectQuote"] .rm-page-ref {
 
 /* 3. Search Input Styling & Expansion */
 #find-or-create-input {
-  width: 300px !important; /* 默认宽度增加 */
+  width: 300px !important;
   min-width: 200px;
   height: 34px !important;
   border-radius: 20px !important; /* 圆润风格 */
@@ -1133,9 +1124,8 @@ span[data-link-title^="DirectQuote"] .rm-page-ref {
 }
 
 /* Focus State - Expand Width */
-/* 激活时拉长并保持居中 */
 #find-or-create-input:focus {
-  width: 600px !important; /* 大幅增加展开宽度 */
+  width: 600px !important;
   max-width: 60vw !important; /* 响应式最大宽度 */
   background-color: var(--page-color) !important;
   border-color: var(--color-primary) !important;
@@ -1157,15 +1147,14 @@ body.bp3-dark #find-or-create-input:focus {
 /* Mobile Responsive - Prevent overflow */
 @media (max-width: 768px) {
   #find-or-create-input {
-    width: 180px !important; /* 移动端默认宽度 */
+    width: 180px !important;
   }
 
   #find-or-create-input:focus {
-    width: 300px !important; /* 移动端展开宽度 */
+    width: 300px !important;
     max-width: 70vw !important;
   }
   
-  /* 移动端保持绝对居中，但避免覆盖两侧按钮 */
   .rm-find-or-create-wrapper {
     left: 50% !important;
     transform: translateX(-50%) !important;
@@ -1173,15 +1162,11 @@ body.bp3-dark #find-or-create-input:focus {
 }
 
 /* 4. Hide Help Button */
-/* 隐藏顶栏的帮助图标按钮 */
 .rm-topbar .rm-topbar__help,
 .bp3-icon-help {
   display: none !important;
 }
 
-/* ========================================================= */
-/* 12. Settings & Plugins - 设置与插件                         */
-/* ========================================================= */
 .intercom-app,
 .intercom-launcher-frame,
 #intercom-container {
@@ -1321,30 +1306,26 @@ body.bp3-dark #find-or-create-input:focus {
   color: #f8f8f8;
 }
 
-/* ========================================================= */
-/* Search Menu Optimization - 搜索框面板清晰度优化             */
-/* ========================================================= */
-
+/* Search Menu Optimization - 搜索框面板清晰度优化 */
 /* Outer Wrapper Optimization (Targeting the popover container) */
-/* 使用 :has() 选择器精准定位包含搜索菜单的弹窗容器，解决最外层边框不生效问题 */
 .bp3-popover .bp3-popover-content:has(.rm-find-or-create__menu) {
   background-color: var(--page-color) !important;
-  border: 1px solid var(--color-subtle-border) !important; /* 强制覆盖默认浅边框 */
-  border-radius: 16px !important; /* 与左侧栏圆角风格一致 */
+  border: 1px solid var(--color-subtle-border) !important;
+  border-radius: 16px !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
-  padding: 6px !important; /* 统一内边距 */
+  padding: 6px !important;
 }
 
 /* Inner Menu Container - Remove duplicate borders */
 .bp3-menu.rm-find-or-create__menu {
   background-color: transparent !important;
-  border: none !important; /* 移除内部边框，避免双重边框 */
+  border: none !important;
   box-shadow: none !important;
   padding: 0 !important;
   border-radius: 0 !important;
 }
 
-/* "Recent" Title Override - 强制覆盖浅色内联样式 */
+/* "Recent" Title Override */
 .bp3-menu.rm-find-or-create__menu div[style*="color: rgb(206, 217, 224)"] {
   color: var(--light-text-color) !important;
   font-weight: 600 !important;
@@ -1357,8 +1338,8 @@ body.bp3-dark #find-or-create-input:focus {
 
 /* Menu Items Container */
 .bp3-menu.rm-find-or-create__menu .rm-menu-item {
-  border-radius: 999px !important; /* 胶囊形状 */
-  margin: 2px 0 !important; /* 调整间距 */
+  border-radius: 999px !important;
+  margin: 2px 0 !important;
   padding: 8px 16px !important;
   transition: background-color 0.15s ease;
 }
@@ -1398,36 +1379,29 @@ body.bp3-dark #find-or-create-input:focus {
   font-weight: 600;
 }
 
-/* ========================================================= */
-/* Sync Status Integration & Light Bar - 同步状态整合与灯条     */
-/* ========================================================= */
+/* Sync Status Integration & Light Bar - 同步状态整合与灯条 */
 
 /* 1. Sync Icon Positioning & Hover Logic */
-/* 默认隐藏，绝对定位在搜索框右侧内部 */
 .rm-sync {
   position: absolute !important;
-  left: 50% !important; /* 配合父级居中 */
-  margin-left: 150px; /* 默认宽度的一半 (300/2) */
-  transform: translateX(-30px); /* 向左微调，位于输入框内部右侧 */
+  left: 50% !important;
+  margin-left: 150px;
+  transform: translateX(-30px);
   top: 50%;
-  margin-top: -10px; /* 垂直居中 */
+  margin-top: -10px;
   opacity: 0;
-  pointer-events: none; /* 默认不阻挡点击 */
+  pointer-events: none;
   transition: all 0.2s ease !important;
-  z-index: 1001; /* 高于搜索框 */
+  z-index: 1001;
 }
 
-/* 悬停搜索框区域时显示同步图标 */
-/* 使用 :has() 检测鼠标是否在搜索框容器内 */
 .rm-find-or-create-wrapper:hover ~ .rm-sync,
 .rm-sync:hover {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(-36px); /* 悬停时稍微位移以吸引注意 */
+  transform: translateX(-36px);
 }
 
-/* 搜索框展开时，隐藏同步图标（避免干扰输入） */
-/* 用户要求：点击搜索框后右侧出现的同步图标应被移除 */
 .rm-topbar:has(#find-or-create-input:focus) .rm-sync {
   opacity: 0 !important;
   pointer-events: none !important;
@@ -1435,21 +1409,14 @@ body.bp3-dark #find-or-create-input:focus {
 }
 
 /* 2. Light Bar Visual Effect (灯条效果) */
-/* 利用 box-shadow 实现环绕光晕，不仅限于底部 */
-
-/* A. 默认状态 (未同步/正在保存) - 橙色呼吸灯 */
-/* 当 rm-sync 存在但没有 .rm-sync--synced 类时 */
 .rm-topbar:has(.rm-sync) #find-or-create-input {
-  border: 1.5px solid #FF9F1C !important; /* 全环绕橙色边框 */
-  box-shadow: 0 0 12px rgba(255, 159, 28, 0.25) !important; /* 环绕光晕 */
+  border: 1.5px solid #FF9F1C !important;
+  box-shadow: 0 0 12px rgba(255, 159, 28, 0.25) !important;
 }
 
-/* B. 同步完成状态 - 绿色常亮 */
-/* 当 rm-sync 拥有 .rm-sync--synced 类时 */
 .rm-topbar:has(.rm-sync--synced) #find-or-create-input {
-  border: 1.5px solid transparent !important; /* 恢复透明 */
+  border: 1.5px solid transparent !important;
   box-shadow: none !important;
-  /* 或者保留微弱的绿色边框暗示 */
   border-color: rgba(46, 196, 182, 0.3) !important; 
 }
 
@@ -1460,32 +1427,27 @@ body.bp3-dark #find-or-create-input:focus {
 }
 
 .rm-topbar:has(.rm-sync--synced) #find-or-create-input:focus {
-  border-color: var(--color-primary) !important; /* 恢复主色 */
+  border-color: var(--color-primary) !important;
   box-shadow: 0 0 0 2px rgba(42, 90, 106, 0.2), 0 4px 12px rgba(0,0,0,0.1) !important;
 }
 
 /* 移动端适配 */
 @media (max-width: 768px) {
   .rm-sync {
-    margin-left: 90px; /* 移动端宽度 (180/2) */
+    margin-left: 90px;
   }
   
   .rm-topbar:has(#find-or-create-input:focus) .rm-sync {
-    margin-left: 35vw; /* 移动端展开宽度 (70vw/2) */
+    margin-left: 35vw;
   }
 }
 
-/* ========================================================= */
-/* Sync Tooltip Optimization - 同步状态提示优化                 */
-/* ========================================================= */
-
-/* Content Wrapper */
+/* Sync Tooltip Optimization - 同步状态提示优化 */
 .rm-sync-tooltip__content {
   padding: 8px 12px !important;
   min-width: 240px;
 }
 
-/* Title */
 .rm-sync-tooltip__title {
   color: var(--text-color) !important;
   font-family: var(--header-font) !important;
@@ -1494,7 +1456,6 @@ body.bp3-dark #find-or-create-input:focus {
   margin-bottom: 8px !important;
 }
 
-/* Status Text */
 .rm-sync-tooltip__text,
 .rm-sync-tooltip__content > div > div {
   color: var(--text-color) !important;
@@ -1510,13 +1471,11 @@ body.bp3-dark #find-or-create-input:focus {
   color: var(--text-color) !important;
 }
 
-/* Status Highlights (Online/Offline) */
 .rm-sync-tooltip__text strong {
   color: var(--color-primary) !important;
   font-weight: 700 !important;
 }
 
-/* Last Sync Time */
 .rm-sync-tooltip__last-sync-time {
   color: var(--light-text-color) !important;
   font-size: 0.85em !important;
@@ -1524,17 +1483,12 @@ body.bp3-dark #find-or-create-input:focus {
   font-family: var(--code-font) !important;
 }
 
-/* Divider Override */
 .rm-sync-tooltip__content .bp3-divider {
   border-bottom-color: var(--color-subtle-border) !important;
   margin: 8px 0 !important;
 }
 
-/* ========================================================= */
-/* Datepicker Optimization - 日期选择器美化                     */
-/* ========================================================= */
-
-/* Container */
+/* Datepicker Optimization - 日期选择器美化 */
 .bp3-datepicker {
   background-color: var(--page-color) !important;
   border-radius: 12px !important;
@@ -1549,7 +1503,6 @@ body.bp3-dark #find-or-create-input:focus {
   padding-bottom: 10px;
 }
 
-/* Remove duplicate divider line */
 .DayPicker-Caption .bp3-divider {
   display: none !important;
 }
@@ -1564,7 +1517,6 @@ body.bp3-dark #find-or-create-input:focus {
   color: var(--color-primary) !important;
 }
 
-/* Navigation Buttons */
 .DayPicker-NavButton {
   color: var(--color-primary) !important;
 }
@@ -1574,7 +1526,6 @@ body.bp3-dark #find-or-create-input:focus {
   border-radius: 50%;
 }
 
-/* Weekday Headers */
 .DayPicker-Weekday {
   color: var(--light-text-color) !important;
   font-size: 0.85em;
@@ -1582,7 +1533,6 @@ body.bp3-dark #find-or-create-input:focus {
   text-transform: uppercase;
 }
 
-/* Days */
 .DayPicker-Day {
   border-radius: 50% !important;
   color: var(--text-color) !important;
@@ -1600,13 +1550,11 @@ body.bp3-dark #find-or-create-input:focus {
   color: var(--color-primary) !important;
 }
 
-/* Today */
 .DayPicker-Day--today {
   color: var(--color-secondary) !important;
   font-weight: 700;
 }
 
-/* Selected Day */
 .DayPicker-Day--selected,
 .DayPicker-Day--selected:hover {
   background-color: var(--color-primary) !important;
@@ -1614,7 +1562,6 @@ body.bp3-dark #find-or-create-input:focus {
   font-weight: 700;
 }
 
-/* Outside Month Days */
 .DayPicker-Day--outside {
   opacity: 0.3;
 }
@@ -2051,21 +1998,15 @@ body.bp3-dark .bp3-popover-arrow-border {
 }
 
 /* Bullet Tooltip Dark Mode */
-/* 夜间模式工具提示优化 */
 body.bp3-dark .rm-bullet__tooltip {
-  /* 背景色：使用深灰偏蓝的背景，与整体暗色主题融合，避免纯黑的生硬感 */
+  /* 背景色：使用深灰偏蓝的背景，与整体暗色主题融合 */
   background-color: #2D333B !important; 
-  
   /* 文本颜色：使用柔和的亮白，确保高对比度同时不刺眼 */
   color: #E6EDF3 !important;
-  
   /* 边框：细微的边框提升层次感，颜色选择低对比度的灰色 */
   border: 1px solid #444C56 !important;
-  
   /* 阴影：深色投影增加悬浮感 */
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
-  
-  /* 视觉样式：统一圆角与内边距 */
   border-radius: 8px !important;
   padding: 8px 12px !important;
 }
@@ -2074,7 +2015,6 @@ body.bp3-dark .rm-bullet__tooltip {
 body.bp3-dark .rm-bullet-tooltip__time {
   /* 次级文本颜色：使用低饱和度灰色，形成信息层级 */
   color: #8B949E !important;
-  
   font-weight: 500 !important;
   margin-top: 4px !important;
 }
