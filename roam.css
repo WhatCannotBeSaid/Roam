@@ -179,13 +179,6 @@ body,
   transition: color 0.2s ease-in-out;
 }
 
-.block-highlight-blue:hover *,
-.block-highlight-blue:focus-within * {
-  color: var(--color-secondary) !important;
-  text-shadow: 0 0 1px rgba(168, 90, 58, 0.2);
-  cursor: pointer;
-}
-
 .block-highlight-yellow {
   background-color: white;
 }
