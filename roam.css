@@ -175,8 +175,6 @@ body,
 
 .block-highlight-blue * {
   color: var(--block-highlight-color) !important;
-  font-weight: 700;
-  transition: color 0.2s ease-in-out;
 }
 
 .block-highlight-yellow {
@@ -1028,6 +1026,89 @@ span[data-link-title^="DirectQuote"] .rm-page-ref {
 }
 
 /* ========================================================= */
+/* Top Bar & Search Input Optimization - 顶栏与搜索框优化       */
+/* ========================================================= */
+
+/* 1. Ensure Topbar handles layout flow */
+.rm-topbar {
+  display: flex !important;
+  align-items: center !important;
+  /* Ensure space distribution */
+}
+
+/* 2. Search Wrapper - Flex Behavior */
+/* 让搜索框容器成为 Flex 项目，参与布局流，而不是绝对定位 */
+.rm-find-or-create-wrapper {
+  flex: 0 1 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+  margin-right: 12px !important;
+  transition: all 0.2s ease;
+}
+
+/* 3. Search Input Styling & Expansion */
+#find-or-create-input {
+  width: 200px !important; /* 默认宽度 */
+  min-width: 150px;
+  height: 32px !important;
+  border-radius: 20px !important; /* 圆润风格 */
+  background-color: rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid transparent !important;
+  padding-left: 36px !important;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              background-color 0.2s ease, 
+              box-shadow 0.2s ease !important;
+  box-shadow: none !important;
+  color: var(--text-color) !important;
+}
+
+/* Icon Position */
+.rm-find-or-create-wrapper .bp3-icon-search {
+  left: 10px !important;
+  color: var(--light-text-color) !important;
+}
+
+/* Focus State - Expand Width */
+/* 展开时宽度增加，推挤其他元素而非覆盖 */
+#find-or-create-input:focus {
+  width: 400px !important; /* 展开宽度 */
+  background-color: var(--page-color) !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 2px rgba(42, 90, 106, 0.2) !important;
+}
+
+/* Dark Mode Support for Input */
+body.bp3-dark #find-or-create-input {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: var(--text-color) !important;
+}
+
+body.bp3-dark #find-or-create-input:focus {
+  background-color: var(--bg-color) !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 2px rgba(106, 156, 171, 0.3) !important;
+}
+
+/* Mobile Responsive - Prevent overflow */
+@media (max-width: 768px) {
+  #find-or-create-input:focus {
+    width: 200px !important; /* 移动端展开宽度减小 */
+  }
+  
+  .rm-find-or-create-wrapper {
+    flex-shrink: 1 !important;
+  }
+}
+
+/* 4. Hide Help Button */
+/* 隐藏顶栏的帮助图标按钮 */
+.rm-topbar .rm-topbar__help,
+.bp3-icon-help {
+  display: none !important;
+}
+
+/* ========================================================= */
 /* 12. Settings & Plugins - 设置与插件                         */
 /* ========================================================= */
 .intercom-app,
@@ -1167,6 +1248,239 @@ span[data-link-title^="DirectQuote"] .rm-page-ref {
 
 .rm-settings .rm-settings-panel .rm-select-wrapper {
   color: #f8f8f8;
+}
+
+/* ========================================================= */
+/* Search Menu Optimization - 搜索框面板清晰度优化             */
+/* ========================================================= */
+
+/* Outer Wrapper Optimization (Targeting the popover container) */
+/* 使用 :has() 选择器精准定位包含搜索菜单的弹窗容器，解决最外层边框不生效问题 */
+.bp3-popover .bp3-popover-content:has(.rm-find-or-create__menu) {
+  background-color: var(--page-color) !important;
+  border: 1px solid var(--color-subtle-border) !important; /* 强制覆盖默认浅边框 */
+  border-radius: 16px !important; /* 与左侧栏圆角风格一致 */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+  padding: 6px !important; /* 统一内边距 */
+}
+
+/* Inner Menu Container - Remove duplicate borders */
+.bp3-menu.rm-find-or-create__menu {
+  background-color: transparent !important;
+  border: none !important; /* 移除内部边框，避免双重边框 */
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* "Recent" Title Override - 强制覆盖浅色内联样式 */
+.bp3-menu.rm-find-or-create__menu div[style*="color: rgb(206, 217, 224)"] {
+  color: var(--light-text-color) !important;
+  font-weight: 600 !important;
+  font-size: 0.85em !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 1 !important;
+  padding: 8px 16px !important;
+}
+
+/* Menu Items Container */
+.bp3-menu.rm-find-or-create__menu .rm-menu-item {
+  border-radius: 999px !important; /* 胶囊形状 */
+  margin: 2px 0 !important; /* 调整间距 */
+  padding: 8px 16px !important;
+  transition: background-color 0.15s ease;
+}
+
+/* Item Titles (Dates, Page Names) */
+.rm-search-title.bp3-text-overflow-ellipsis,
+.rm-search-list-item-title.bp3-text-overflow-ellipsis {
+  color: var(--text-color) !important;
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+  text-shadow: none !important;
+}
+
+/* Item Subtitles/Context */
+.rm-search-list-item {
+  color: var(--light-text-color) !important;
+  font-size: 0.9em !important;
+  margin-top: 2px;
+}
+
+/* Hover/Active State */
+.bp3-menu.rm-find-or-create__menu .rm-menu-item:hover,
+.bp3-menu.rm-find-or-create__menu .rm-menu-item.bp3-active {
+  background-color: var(--color-primary-light) !important;
+}
+
+.bp3-menu.rm-find-or-create__menu .rm-menu-item:hover .rm-search-title,
+.bp3-menu.rm-find-or-create__menu .rm-menu-item.bp3-active .rm-search-title,
+.bp3-menu.rm-find-or-create__menu .rm-menu-item:hover .rm-search-list-item-title,
+.bp3-menu.rm-find-or-create__menu .rm-menu-item.bp3-active .rm-search-list-item-title {
+  color: var(--color-primary) !important;
+}
+
+/* New Page Creation Prompt */
+.rm-find-or-create__menu .rm-new-page {
+  color: var(--color-secondary) !important;
+  font-weight: 600;
+}
+
+/* ========================================================= */
+/* Sync Tooltip Optimization - 同步状态提示优化                 */
+/* ========================================================= */
+
+/* Content Wrapper */
+.rm-sync-tooltip__content {
+  padding: 8px 12px !important;
+  min-width: 240px;
+}
+
+/* Title */
+.rm-sync-tooltip__title {
+  color: var(--text-color) !important;
+  font-family: var(--header-font) !important;
+  font-size: 1.1em !important;
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
+}
+
+/* Status Text */
+.rm-sync-tooltip__text,
+.rm-sync-tooltip__content > div > div {
+  color: var(--text-color) !important;
+  font-family: var(--body-font) !important;
+  font-size: 0.95em !important;
+  line-height: 1.5 !important;
+  margin-bottom: 4px !important;
+}
+
+/* Specific fix for nested divs in sync tooltip */
+.rm-sync-tooltip__text div,
+.rm-sync-tooltip__content div {
+  color: var(--text-color) !important;
+}
+
+/* Status Highlights (Online/Offline) */
+.rm-sync-tooltip__text strong {
+  color: var(--color-primary) !important;
+  font-weight: 700 !important;
+}
+
+/* Last Sync Time */
+.rm-sync-tooltip__last-sync-time {
+  color: var(--light-text-color) !important;
+  font-size: 0.85em !important;
+  margin-top: 4px !important;
+  font-family: var(--code-font) !important;
+}
+
+/* Divider Override */
+.rm-sync-tooltip__content .bp3-divider {
+  border-bottom-color: var(--color-subtle-border) !important;
+  margin: 8px 0 !important;
+}
+
+/* ========================================================= */
+/* Datepicker Optimization - 日期选择器美化                     */
+/* ========================================================= */
+
+/* Container */
+.bp3-datepicker {
+  background-color: var(--page-color) !important;
+  border-radius: 12px !important;
+  padding: 10px !important;
+}
+
+/* Header (Month/Year) */
+.DayPicker-Caption {
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--color-subtle-border);
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.bp3-datepicker-caption select {
+  color: var(--text-color) !important;
+  font-weight: 600 !important;
+  font-family: var(--header-font) !important;
+}
+
+.bp3-datepicker-caption .bp3-icon {
+  color: var(--color-primary) !important;
+}
+
+/* Navigation Buttons */
+.DayPicker-NavButton {
+  color: var(--color-primary) !important;
+}
+
+.DayPicker-NavButton:hover {
+  background-color: var(--color-primary-light) !important;
+  border-radius: 50%;
+}
+
+/* Weekday Headers */
+.DayPicker-Weekday {
+  color: var(--light-text-color) !important;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Days */
+.DayPicker-Day {
+  border-radius: 50% !important;
+  color: var(--text-color) !important;
+  font-family: var(--code-font) !important;
+  transition: all 0.2s ease;
+}
+
+.DayPicker-Day .bp3-datepicker-day-wrapper {
+  color: inherit !important;
+  font-weight: inherit !important;
+}
+
+.DayPicker-Day:hover {
+  background-color: var(--color-primary-light) !important;
+  color: var(--color-primary) !important;
+}
+
+/* Today */
+.DayPicker-Day--today {
+  color: var(--color-secondary) !important;
+  font-weight: 700;
+}
+
+/* Selected Day */
+.DayPicker-Day--selected,
+.DayPicker-Day--selected:hover {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+  font-weight: 700;
+}
+
+/* Outside Month Days */
+.DayPicker-Day--outside {
+  opacity: 0.3;
+}
+
+/* Dark Mode Overrides for Datepicker */
+body.bp3-dark .bp3-datepicker {
+  background-color: var(--page-color) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+body.bp3-dark .DayPicker-Day:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+
+body.bp3-dark .DayPicker-Day--selected,
+body.bp3-dark .DayPicker-Day--selected:hover {
+  background-color: var(--color-primary) !important;
+  color: white !important;
 }
 
 /* ========================================================= */
