@@ -41,8 +41,7 @@
   --border-radius-pill: 20px;
 
   /* 子弹点颜色 */
-  --bullet-bg: rgba(42, 90, 106, 0.5);
-  /* 默认为半透明主色 */
+  --bullet-bg: rgba(42, 90, 106, 0.5); /* 默认为半透明主色 */
   --bullet-border: var(--color-primary);
 
   /* 复选框 */
@@ -56,120 +55,76 @@
    */
 
   /* 背景色系 - 护眼暖色调 */
-  --bg-color: #F5F0E6;
-  /* 米黄 - 护眼暖底 */
-  --page-color: #F5F0E6;
-  /* 与背景一致 */
-  --text-color: #3A3A3A;
-  /* 深灰 - 清晰但不刺眼 */
-  --light-text-color: #6A6A6A;
-  /* 中灰 */
-  --page-tag-color: #7A7A7A;
-  /* 灰色 */
+  --bg-color: #F5F0E6; /* 米黄 - 护眼暖底 */
+  --page-color: #F5F0E6; /* 与背景一致 */
+  --text-color: #3A3A3A; /* 深灰 - 清晰但不刺眼 */
+  --light-text-color: #6A6A6A; /* 中灰 */
+  --page-tag-color: #7A7A7A; /* 灰色 */
 
   /* 主色系 */
-  --color-primary: #2A5A6A;
-  /* 墨青 - 沉稳 */
-  --color-primary-light: #D8E4E8;
-  /* 淡青灰 */
-  --color-primary-highlight: #EDE8DC;
-  /* 暖米 */
-  --color-secondary: #A85A3A;
-  /* 赭红 - 更深更醒目 */
-  --color-subtle-border: #D8D0C4;
-  /* 暖灰边框 */
+  --color-primary: #2A5A6A; /* 墨青 - 沉稳 */
+  --color-primary-light: #D8E4E8; /* 淡青灰 */
+  --color-primary-highlight: #EDE8DC; /* 暖米 */
+  --color-secondary: #A85A3A; /* 赭红 - 更深更醒目 */
+  --color-subtle-border: #D8D0C4; /* 暖灰边框 */
 
   /* 强调色 - 高对比度 */
-  --block-highlight-color: #6A5A7A;
-  /* 紫灰 */
-  --heading-h1-color: #1A1A1A;
-  /* 近黑 - 最清晰 */
-  --heading-h2-color: #2A2A2A;
-  /* 深灰黑 */
-  --heading-h3-color: #3A3A3A;
-  /* 深灰 */
-  --sidebar-title-color: #9A4A3A;
-  /* 赭红 */
-  --sidebar-star-color: #9A4A3A;
-  /* 赭红 */
-  --reference-title-color: #2A5A6A;
-  /* 墨青 */
-  --checkbox-checked-color: #3A7A5A;
-  /* 深绿 */
-  --tree-node-color: #2A5A6A;
-  /* 墨青 */
-  --code-selection-color: #C8D8E0;
-  /* 淡青 */
+  --block-highlight-color: #483D8B; /* 深岩蓝 - 高对比度 */
+  --heading-h1-color: #1A1A1A; /* 近黑 - 最清晰 */
+  --heading-h2-color: #2A2A2A; /* 深灰黑 */
+  --heading-h3-color: #3A3A3A; /* 深灰 */
+  --sidebar-title-color: #9A4A3A; /* 赭红 */
+  --sidebar-star-color: #9A4A3A; /* 赭红 */
+  --reference-title-color: #2A5A6A; /* 墨青 */
+  --checkbox-checked-color: #3A7A5A; /* 深绿 */
+  --tree-node-color: #2A5A6A; /* 墨青 */
+  --code-selection-color: #C8D8E0; /* 淡青 */
 
   /* 标签色 - 中国传统色（护眼柔和版） */
-  --tag-tweet: #4A7C8C;
-  /* 扁青 */
-  --tag-literature: #8B7E8B;
-  /* 藕荷 */
-  --tag-evergreens: #5A8A6E;
-  /* 竹青 */
-  --tag-seedling: #6B9088;
-  /* 青螺 */
-  --tag-idea-bank: #B8735A;
-  /* 檀色 */
-  --tag-illustrated: #4A7C8C;
-  /* 扁青 */
-  --tag-garden: #6B8E6B;
-  /* 蛙绿 */
-  --tag-video-tutorial: #A65B4B;
-  /* 檀色偏红 */
-  --tag-essay: #6B8E6B;
-  /* 蛙绿 */
-  --tag-livestream: #9C6B5A;
-  /* 赭石 */
-  --tag-talk: #5A7A8A;
-  /* 蟹青 */
-  --tag-waiting: #8B8B83;
-  /* 艾绿 */
-  --tag-researching: #5A8A6E;
-  /* 竹青 */
-  --tag-synthesising: #8B7E8B;
-  /* 藕荷 */
-  --tag-alive: #A65B4B;
-  /* 檀色 */
-  --tag-book: #5A6B7A;
-  /* 鸦青 */
-  --tag-evergreen-page: #5A8A6E;
-  /* 竹青 */
-  --tag-arrow: #4A7C8C;
-  /* 扁青 */
-  --tag-project: #8B7E8B;
-  /* 藕荷 */
-  --tag-area: #6B8E6B;
-  /* 蛙绿 */
-  --tag-course: #4A7C8C;
-  /* 扁青 */
-  --tag-idea: #B8735A;
-  /* 檀色 */
+  --tag-tweet: #4A7C8C; /* 扁青 */
+  --tag-literature: #8B7E8B; /* 藕荷 */
+  --tag-evergreens: #5A8A6E; /* 竹青 */
+  --tag-seedling: #6B9088; /* 青螺 */
+  --tag-idea-bank: #B8735A; /* 檀色 */
+  --tag-illustrated: #4A7C8C; /* 扁青 */
+  --tag-garden: #6B8E6B; /* 蛙绿 */
+  --tag-video-tutorial: #A65B4B; /* 檀色偏红 */
+  --tag-essay: #6B8E6B; /* 蛙绿 */
+  --tag-livestream: #9C6B5A; /* 赭石 */
+  --tag-talk: #5A7A8A; /* 蟹青 */
+  --tag-waiting: #8B8B83; /* 艾绿 */
+  --tag-researching: #5A8A6E; /* 竹青 */
+  --tag-synthesising: #8B7E8B; /* 藕荷 */
+  --tag-alive: #A65B4B; /* 檀色 */
+  --tag-book: #5A6B7A; /* 鸦青 */
+  --tag-evergreen-page: #5A8A6E; /* 竹青 */
+  --tag-arrow: #4A7C8C; /* 扁青 */
+  --tag-project: #8B7E8B; /* 藕荷 */
+  --tag-area: #6B8E6B; /* 蛙绿 */
+  --tag-course: #4A7C8C; /* 扁青 */
+  --tag-idea: #B8735A; /* 檀色 */
 
   /* 注释标签色 - 柔和版 */
-  --tag-claim-color: #9C6B5A;
-  /* 赭石 */
-  --tag-questions-color: #4A7C8C;
-  /* 扁青 */
-  --tag-response-color: #8B7E8B;
-  /* 藕荷 */
-  --tag-evidence-color: #737C7B;
-  /* 蟹壳青 */
-  --tag-directquote-color: #5A8A6E;
-  /* 竹青 */
+  --tag-claim-color: #9C6B5A; /* 赭石 */
+  --tag-questions-color: #4A7C8C; /* 扁青 */
+  --tag-response-color: #8B7E8B; /* 藕荷 */
+  --tag-evidence-color: #737C7B; /* 蟹壳青 */
+  --tag-directquote-color: #5A8A6E; /* 竹青 */
 
   /* 块背景色 - 淡雅传统 */
-  --block-claim-bg: #faf5f5;
-  /* 淡胭脂 */
-  --block-questions-bg: #f0f6fa;
-  /* 淡群青 */
-  --block-response-bg: #f7f4f8;
-  /* 淡紫棠 */
-  --block-evidence-bg: #f5f5f3;
-  /* 淡灰 */
-  --block-directquote-bg: #f0f7f5;
-  /* 淡松柏绿 */
+  --block-claim-bg: #faf5f5; /* 淡胭脂 */
+  --block-questions-bg: #f0f6fa; /* 淡群青 */
+  --block-response-bg: #f7f4f8; /* 淡紫棠 */
+  --block-evidence-bg: #f5f5f3; /* 淡灰 */
+  --block-directquote-bg: #f0f7f5; /* 淡松柏绿 */
+
+  /* 高亮色 - 传统色 */
+  --highlight-yellow: #daa055; /* 琥珀 */
+  --highlight-green: #50b090; /* 松柏绿 */
+  --highlight-blue: #4a9ed0; /* 群青 */
+  --highlight-red: #e05545; /* 朱砂 */
+  --highlight-purple: #a07090; /* 紫棠 */
+  --highlight-orange: #daa055; /* 琥珀 */
 }
 
 /* ========================================================= */
@@ -182,10 +137,10 @@ body,
 
 .roam-article {
   padding-right: 10px !important;
-  padding-left: 0px !important;
+  padding-left: 0 !important;
 }
 
-.roam-article>div {
+.roam-article > div {
   padding: 40px 50px;
   background: var(--page-color);
   border: none;
@@ -200,7 +155,7 @@ body,
   height: 100% !important;
   width: auto !important;
   position: relative !important;
-  padding-left: 0px;
+  padding-left: 0;
 }
 
 .roam-main {
@@ -218,11 +173,25 @@ body,
 /* ========================================================= */
 .block-highlight-blue {
   background-color: transparent !important;
+  background: none !important;
   z-index: 99;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+  margin: 0;
 }
 
 .block-highlight-blue * {
-  color: var(--block-highlight-color) !important;
+  color: var(--block-highlight-color) !important; /* 基础高亮颜色 */
+  font-weight: 700; /* 加粗以增强辨识度 */
+  transition: color 0.2s ease-in-out;
+}
+
+.block-highlight-blue:hover *,
+.block-highlight-blue:focus-within * {
+  color: var(--color-secondary) !important; /* 悬停/选中时变为醒目的赭红色 */
+  text-shadow: 0 0 1px rgba(168, 90, 58, 0.2);
+  cursor: pointer;
 }
 
 .block-highlight-yellow {
@@ -232,14 +201,8 @@ body,
 /* ========================================================= */
 /* Typography - 排版样式                                      */
 /* ========================================================= */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.rm-level1,
-.rm-level2,
+h1, h2, h3, h4, h5, h6,
+.rm-level1, .rm-level2,
 .rm-level3 .rm-title-editing-display {
   font-family: var(--header-font);
   color: var(--text-color);
@@ -250,8 +213,7 @@ h6,
   font-size: 1em;
 }
 
-div,
-textarea {
+div, textarea {
   font-family: var(--body-font);
   font-size: var(--font-size);
   color: var(--text-color);
@@ -264,7 +226,7 @@ textarea {
 
 /* Headings - 使用变量 */
 .rm-level1,
-.rm-heading-level-1>.rm-block__self .rm-block__input {
+.rm-heading-level-1 > .rm-block__self .rm-block__input {
   color: var(--heading-h1-color);
   font-size: 1.8rem;
   font-weight: 600;
@@ -272,7 +234,7 @@ textarea {
 }
 
 .rm-level2,
-.rm-heading-level-2>.rm-block__self .rm-block__input {
+.rm-heading-level-2 > .rm-block__self .rm-block__input {
   color: var(--heading-h2-color);
   font-size: 1.6rem;
   font-weight: 500;
@@ -280,7 +242,7 @@ textarea {
 }
 
 .rm-level3,
-.rm-heading-level-3>.rm-block__self .rm-block__input {
+.rm-heading-level-3 > .rm-block__self .rm-block__input {
   color: var(--heading-h3-color);
   font-weight: 400;
   font-size: 1.4rem;
@@ -450,20 +412,18 @@ code::selection {
 }
 
 /* SHORTCUTS 标题样式 */
-div.flex-v-box.starred-pages-wrapper>div.flex-h-box {
-  gap: 0px;
-  /* 减少星星和文字的间距 */
+div.flex-v-box.starred-pages-wrapper > div.flex-h-box {
+  gap: 0; /* 减少星星和文字的间距 */
 }
 
-div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
+div.flex-v-box.starred-pages-wrapper > div.flex-h-box > span {
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--sidebar-star-color);
   padding: 16px 4px 8px 0;
-  margin-left: 0px;
-  /* 让文字更靠近星星 */
+  margin-left: 0; /* 让文字更靠近星星 */
   opacity: 0.9;
   margin-top: 8px;
 }
@@ -491,13 +451,13 @@ div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
 
 /* 侧边栏内容整体透明度控制 */
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page,
-.roam-body .roam-app .roam-sidebar-container>* {
+.roam-body .roam-app .roam-sidebar-container > * {
   opacity: 1;
   box-shadow: none;
 }
 
 /* 侧边栏字体设置 */
-div.roam-sidebar-container.noselect>div>div {
+div.roam-sidebar-container.noselect > div > div {
   font-size: 14px;
   letter-spacing: 0.02em;
 }
@@ -513,12 +473,54 @@ div.roam-sidebar-container.noselect>div>div {
   color: var(--color-primary);
 }
 
+/* ========================================================= */
+/* Sidebar Logo Fix - 侧边栏底部 Logo 修复                   */
+/* ========================================================= */
+
+/* 日间模式：反转 Logo 颜色为深色 (匹配 style 属性或 data 属性) */
+.roam-sidebar-container img[style*="astrolabe"],
+.roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"] {
+  filter: invert(1) brightness(0.2) !important;
+  opacity: 0.8;
+}
+
+/* 日间模式：强制文本颜色为主题主色 */
+.roam-sidebar-container img[style*="astrolabe"] ~ span,
+.roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"] ~ span {
+  color: var(--color-primary) !important;
+}
+
+/* 夜间模式：保持 Logo 原样 (白色) */
+body.bp3-dark .roam-sidebar-container img[style*="astrolabe"],
+body.bp3-dark .roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"] {
+  filter: none !important;
+  opacity: 1;
+}
+
+/* 夜间模式：保持文本白色 */
+body.bp3-dark .roam-sidebar-container img[style*="astrolabe"] ~ span,
+body.bp3-dark .roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"] ~ span {
+  color: white !important;
+}
+
+/* 修复鼠标悬停时出现的黑色背景 */
+#roam-sidebar-logo:hover {
+  background: transparent !important;
+  text-decoration: none !important;
+}
+
 /* Right Sidebar - 右侧边栏 */
-#right-sidebar>div {
-  background: var(--bg-color);
+#right-sidebar {
+  z-index: 999 !important;
+  background-color: var(--bg-color) !important;
+  border-left: 1px solid var(--color-subtle-border) !important;
+  transition: flex-basis 0.2s ease-in-out, width 0.2s ease-in-out;
+}
+
+#right-sidebar > div {
+  background: transparent;
   border-left: none;
   padding: 20px;
-  overflow: visible;
   box-shadow: none;
 }
 
@@ -529,7 +531,7 @@ div.roam-sidebar-container.noselect>div>div {
   background: white;
 }
 
-.roam-body #block-input>span>div {
+.roam-body #block-input > span > div {
   padding: 6px 24px;
   background: white;
 }
@@ -549,25 +551,28 @@ div.roam-sidebar-container.noselect>div>div {
   border-radius: 50%;
   width: 8px;
   height: 8px;
-  background-clip: content-box;
-  border: 4px solid transparent;
-  background-color: var(--bullet-bg);
+  background-clip: padding-box;
+  border: 2px solid var(--light-text-color);
+  background-color: transparent;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 2px;
 }
 
 .rm-bullet .rm-bullet__inner:hover {
   background-color: var(--color-primary);
-  transform: scale(1.4);
+  border-color: var(--color-primary);
+  transform: scale(1.25);
   box-shadow: 0 0 8px rgba(42, 90, 106, 0.3);
 }
 
 .rm-bullet.rm-bullet--closed .rm-bullet__inner {
   box-sizing: content-box;
-  background-color: transparent !important;
-  border: 2px solid var(--bullet-border) !important;
+  background-color: var(--color-primary) !important;
+  border: 4px solid transparent !important;
   width: 8px;
   height: 8px;
-  margin: 1px;
+  margin: 0;
+  box-shadow: 0 0 4px rgba(42, 90, 106, 0.5);
 }
 
 .rm-bullet__inner--user-icon {
@@ -584,24 +589,26 @@ div.roam-sidebar-container.noselect>div>div {
 }
 
 /* 正在编辑的块 - bullet 更显眼 */
-.rm-block__input:focus~.rm-bullet .rm-bullet__inner,
+.rm-block__input:focus ~ .rm-bullet .rm-bullet__inner,
 .rm-block--focused .rm-bullet .rm-bullet__inner,
-.roam-block-container:focus-within>.rm-block-main .rm-bullet .rm-bullet__inner {
+.roam-block-container:focus-within > .rm-block-main .rm-bullet .rm-bullet__inner {
   width: 8px;
   height: 8px;
-  background-color: #E05545 !important;
+  background-color: var(--highlight-red) !important;
   border: 3px solid rgba(224, 85, 69, 0.3) !important;
   box-shadow: 0 0 6px rgba(224, 85, 69, 0.5);
   transition: all 0.2s ease;
+  margin: 1px !important;
 }
 
 /* 夜间模式 - 编辑状态 bullet */
-body.bp3-dark .rm-block__input:focus~.rm-bullet .rm-bullet__inner,
+body.bp3-dark .rm-block__input:focus ~ .rm-bullet .rm-bullet__inner,
 body.bp3-dark .rm-block--focused .rm-bullet .rm-bullet__inner,
-body.bp3-dark .roam-block-container:focus-within>.rm-block-main .rm-bullet .rm-bullet__inner {
+body.bp3-dark .roam-block-container:focus-within > .rm-block-main .rm-bullet .rm-bullet__inner {
   background-color: #FF6B6B !important;
   border: 3px solid rgba(255, 107, 107, 0.4) !important;
   box-shadow: 0 0 8px rgba(255, 107, 107, 0.6);
+  margin: 1px !important;
 }
 
 /* ========================================================= */
@@ -671,7 +678,7 @@ body.bp3-dark .roam-block-container:focus-within>.rm-block-main .rm-bullet .rm-b
 
 .kanban-column {
   background: rgba(0, 0, 0, 0.02);
-  margin: 0px 6px;
+  margin: 0 6px;
   padding: 8px;
   border-radius: 10px;
   border: none;
@@ -679,56 +686,81 @@ body.bp3-dark .roam-block-container:focus-within>.rm-block-main .rm-bullet .rm-b
 }
 
 /* ========================================================= */
-/* Checkboxes - 复选框样式 (美化版)                            */
+/* Checkboxes - 复选框样式 (深度优化版)                        */
 /* ========================================================= */
 
-/* 复选框容器基础样式 */
+/* 复选框容器 - 布局定位 */
 .check-container {
-  height: 16px;
-  width: 16px;
-  border-radius: 4px;
-  /* 圆角化，更现代 */
-  border: 1.5px solid #94a3b8;
-  /* 未完成时的淡灰色边框 */
-  margin-right: 6px;
-  transition: var(--transition-fast);
-  /* 平滑过渡 */
+  height: 18px;
+  width: 18px;
+  margin-right: 8px;
+  position: relative;
+  top: 2px;
+  border: none !important; /* 移除容器边框，交给 checkmark 控制 */
+  background: transparent !important;
+  border-radius: 0 !important; /* Reset */
+}
+
+/* 复选框视觉主体 */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid var(--light-text-color); /* 默认边框 */
+  border-radius: var(--border-radius-sm); /* 6px 圆角 */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
 }
 
 /* 鼠标悬停效果 */
-.check-container:hover {
-  background-color: #f1f5f9;
-  border-color: #64748b;
+.check-container:hover .checkmark {
+  border-color: var(--color-primary);
+  background-color: rgba(42, 90, 106, 0.1);
+  transform: scale(1.05);
 }
 
-/* 复选框勾选标记基础 */
-.checkmark {
-  background: #fff;
-  border-radius: 3px;
-  transition: var(--transition-fast);
+/* 选中状态 - 主题色填充 */
+.check-container input:checked ~ .checkmark {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 2px 5px rgba(42, 90, 106, 0.3);
 }
 
-/* 完成后的复选框样式 - 绿色背景 */
-.check-container input:checked~.checkmark {
-  background-color: var(--checkbox-success) !important;
-  /* 完成后的绿色 */
-  border-color: var(--checkbox-success) !important;
-}
-
-.check-container input:checked~.checkmark:after {
-  border-color: #fff;
-  left: 5px !important;
+/* 选中状态 - 对勾图标 */
+.check-container input:checked ~ .checkmark:after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 6.5px !important;
   top: 2px !important;
-  width: 4px !important;
-  height: 8px !important;
+  width: 5px !important;
+  height: 10px !important;
+  border: solid #fff;
   border-width: 0 2px 2px 0 !important;
+  transform: rotate(45deg);
 }
 
-/* 任务完成后的文本效果：变灰并加删除线 */
+/* 任务完成后的文本效果 */
 .rm-checklist-item-resolved {
-  color: #94a3b8 !important;
+  color: var(--light-text-color) !important;
   text-decoration: line-through;
+  opacity: 0.8;
   transition: color 0.3s ease;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: var(--color-primary-light);
+}
+
+/* 夜间模式适配 */
+body.bp3-dark .checkmark {
+  border-color: #5C7080;
+}
+
+body.bp3-dark .check-container:hover .checkmark {
+  background-color: rgba(42, 90, 106, 0.4);
+  border-color: var(--color-primary);
 }
 
 /* ========================================================= */
@@ -831,41 +863,15 @@ span[data-link-title^="Alive"] .rm-page-ref {
 }
 
 /* Individual Tag Background Colors */
-span.rm-page-ref[data-tag="Tweet"] {
-  background: var(--tag-tweet);
-}
-
-span.rm-page-ref[data-tag="Literature Notes"] {
-  background: var(--tag-literature);
-}
-
-span.rm-page-ref[data-tag="Evergreens"] {
-  background: var(--tag-evergreens);
-}
-
-span.rm-page-ref[data-tag="Essay"] {
-  background: var(--tag-essay);
-}
-
-span.rm-page-ref[data-tag="Talk"] {
-  background: var(--tag-talk);
-}
-
-span.rm-page-ref[data-tag="Waiting"] {
-  background: var(--tag-waiting);
-}
-
-span.rm-page-ref[data-tag="Researching"] {
-  background: var(--tag-researching);
-}
-
-span.rm-page-ref[data-tag="Synthesising"] {
-  background: var(--tag-synthesising);
-}
-
-span.rm-page-ref[data-tag="Alive"] {
-  background: var(--tag-alive);
-}
+span.rm-page-ref[data-tag="Tweet"] { background: var(--tag-tweet); }
+span.rm-page-ref[data-tag="Literature Notes"] { background: var(--tag-literature); }
+span.rm-page-ref[data-tag="Evergreens"] { background: var(--tag-evergreens); }
+span.rm-page-ref[data-tag="Essay"] { background: var(--tag-essay); }
+span.rm-page-ref[data-tag="Talk"] { background: var(--tag-talk); }
+span.rm-page-ref[data-tag="Waiting"] { background: var(--tag-waiting); }
+span.rm-page-ref[data-tag="Researching"] { background: var(--tag-researching); }
+span.rm-page-ref[data-tag="Synthesising"] { background: var(--tag-synthesising); }
+span.rm-page-ref[data-tag="Alive"] { background: var(--tag-alive); }
 
 /* ========================================================= */
 /* Text-only Tags - 纯文字标签                                 */
@@ -982,29 +988,15 @@ span[data-link-title^="Idea/"] .rm-page-ref::before {
 .roam-block-container[data-page-links*='Evidence'],
 .roam-block-container[data-page-links*='DirectQuote'] {
   border-radius: 6px;
-  padding: 0.6em 0.4em 0.4em 0em;
+  padding: 0.6em 0.4em 0.4em 0;
   margin-top: 2px;
 }
 
-.roam-block-container[data-page-links*='Claim'] {
-  background: var(--block-claim-bg);
-}
-
-.roam-block-container[data-page-links*='Questions'] {
-  background: var(--block-questions-bg);
-}
-
-.roam-block-container[data-page-links*='Response'] {
-  background: var(--block-response-bg);
-}
-
-.roam-block-container[data-page-links*='Evidence'] {
-  background: var(--block-evidence-bg);
-}
-
-.roam-block-container[data-page-links*='DirectQuote'] {
-  background: var(--block-directquote-bg);
-}
+.roam-block-container[data-page-links*='Claim'] { background: var(--block-claim-bg); }
+.roam-block-container[data-page-links*='Questions'] { background: var(--block-questions-bg); }
+.roam-block-container[data-page-links*='Response'] { background: var(--block-response-bg); }
+.roam-block-container[data-page-links*='Evidence'] { background: var(--block-evidence-bg); }
+.roam-block-container[data-page-links*='DirectQuote'] { background: var(--block-directquote-bg); }
 
 /* Annotation Tag Colors */
 span.rm-page-ref[data-tag="Claim"],
@@ -1064,7 +1056,6 @@ span.rm-page-ref[data-tag="h/purple"],
 span.rm-page-ref[data-tag="h/orange"] {
   display: none;
 }
-
 
 /* ========================================================= */
 /* Misc UI Elements - 其他UI元素                              */
@@ -1131,8 +1122,8 @@ span.rm-page-ref[data-tag="h/orange"] {
 }
 
 /* Tree Node Expand/Collapse */
-div>.bp3-icon-caret-down+strong,
-div>.bp3-icon-caret-right+strong {
+div > .bp3-icon-caret-down + strong,
+div > .bp3-icon-caret-right + strong {
   color: var(--tree-node-color) !important;
 }
 
@@ -1186,132 +1177,74 @@ div>.bp3-icon-caret-right+strong {
 /* ========================================================= */
 body.bp3-dark {
   /* 背景色系 - 夜间护眼模式 */
-  --bg-color: #2A2A2A;
-  /* 缁色 - 深黑带灰 */
-  --page-color: #2A2A2A;
-  /* 与背景一致 */
-  --text-color: #D8D4C8;
-  /* 缟色 - 柔和米白 */
-  --light-text-color: #9A9A8E;
-  /* 艾绿灰 - 柔和灰绿 */
-  --page-tag-color: #A8A090;
-  /* 茶色亮版 */
+  --bg-color: #2A2A2A; /* 缁色 - 深黑带灰 */
+  --page-color: #2A2A2A; /* 与背景一致 */
+  --text-color: #D8D4C8; /* 缟色 - 柔和米白 */
+  --light-text-color: #9A9A8E; /* 艾绿灰 - 柔和灰绿 */
+  --page-tag-color: #A8A090; /* 茶色亮版 */
 
   /* 主色系 - 与日间保持一致色相，降低亮度 */
-  --color-primary: #6A9CAB;
-  /* 扁青亮版 */
-  --color-primary-light: #3A5A64;
-  /* 扁青暗版 */
-  --color-primary-highlight: #3A3A35;
-  /* 缁色高亮 */
-  --color-secondary: #C8937A;
-  /* 檀色亮版 */
-  --color-subtle-border: #4A4A42;
-  /* 缁色边框 */
+  --color-primary: #6A9CAB; /* 扁青亮版 */
+  --color-primary-light: #3A5A64; /* 扁青暗版 */
+  --color-primary-highlight: #3A3A35; /* 缁色高亮 */
+  --color-secondary: #C8937A; /* 檀色亮版 */
+  --color-subtle-border: #4A4A42; /* 缁色边框 */
 
   /* 强调色 - 夜间柔和版 */
-  --block-highlight-color: #A89EA8;
-  /* 藕荷亮版 */
-  --heading-h1-color: #E8E4D8;
-  /* 缟色 */
-  --heading-h2-color: #D8D4C8;
-  /* 缟色 */
-  --heading-h3-color: #B0ACA0;
-  /* 素色 */
-  --sidebar-title-color: #C8836A;
-  /* 檀色亮版 */
-  --sidebar-star-color: #C8836A;
-  /* 檀色 */
-  --reference-title-color: #6A9CAB;
-  /* 扁青亮版 */
-  --checkbox-checked-color: #7AAA8E;
-  /* 竹青亮版 */
-  --tree-node-color: #6A9CAB;
-  /* 扁青亮版 */
-  --code-selection-color: #4A6A74;
-  /* 扁青暗版 */
+  --block-highlight-color: #A89EA8; /* 藕荷亮版 */
+  --heading-h1-color: #E8E4D8; /* 缟色 */
+  --heading-h2-color: #D8D4C8; /* 缟色 */
+  --heading-h3-color: #B0ACA0; /* 素色 */
+  --sidebar-title-color: #C8836A; /* 檀色亮版 */
+  --sidebar-star-color: #C8836A; /* 檀色 */
+  --reference-title-color: #6A9CAB; /* 扁青亮版 */
+  --checkbox-checked-color: #7AAA8E; /* 竹青亮版 */
+  --tree-node-color: #6A9CAB; /* 扁青亮版 */
+  --code-selection-color: #4A6A74; /* 扁青暗版 */
 
   /* 标签色 - 与日间保持一致色相 */
-  --tag-tweet: #6A9CAB;
-  /* 扁青亮版 */
-  --tag-literature: #A89EA8;
-  /* 藕荷亮版 */
-  --tag-evergreens: #7AAA8E;
-  /* 竹青亮版 */
-  --tag-seedling: #8AB0A8;
-  /* 青螺亮版 */
-  --tag-idea-bank: #C8937A;
-  /* 檀色亮版 */
-  --tag-illustrated: #6A9CAB;
-  /* 扁青亮版 */
-  --tag-garden: #8AAC8A;
-  /* 蛙绿亮版 */
-  --tag-video-tutorial: #C8836A;
-  /* 檀色偏红 */
-  --tag-essay: #8AAC8A;
-  /* 蛙绿亮版 */
-  --tag-livestream: #B8836A;
-  /* 赭石亮版 */
-  --tag-talk: #7A9CA8;
-  /* 蟹青亮版 */
-  --tag-waiting: #A0A098;
-  /* 艾绿亮版 */
-  --tag-researching: #7AAA8E;
-  /* 竹青亮版 */
-  --tag-synthesising: #A89EA8;
-  /* 藕荷亮版 */
-  --tag-alive: #C8836A;
-  /* 檀色 */
-  --tag-book: #8A9AA8;
-  /* 鸦青亮版 */
-  --tag-evergreen-page: #7AAA8E;
-  /* 竹青亮版 */
-  --tag-arrow: #6A9CAB;
-  /* 扁青亮版 */
-  --tag-project: #A89EA8;
-  /* 藕荷亮版 */
-  --tag-area: #8AAC8A;
-  /* 蛙绿亮版 */
-  --tag-course: #6A9CAB;
-  /* 扁青亮版 */
-  --tag-idea: #C8937A;
-  /* 檀色亮版 */
-  --tag-claim-color: #B8836A;
-  /* 赭石亮版 */
-  --tag-questions-color: #6A9CAB;
-  /* 扁青亮版 */
-  --tag-response-color: #A89EA8;
-  /* 紫棠亮版 */
-  --tag-evidence-color: #a0a0a0;
-  /* 银灰 */
-  --tag-directquote-color: #50b090;
-  /* 松柏绿亮版 */
+  --tag-tweet: #6A9CAB; /* 扁青亮版 */
+  --tag-literature: #A89EA8; /* 藕荷亮版 */
+  --tag-evergreens: #7AAA8E; /* 竹青亮版 */
+  --tag-seedling: #8AB0A8; /* 青螺亮版 */
+  --tag-idea-bank: #C8937A; /* 檀色亮版 */
+  --tag-illustrated: #6A9CAB; /* 扁青亮版 */
+  --tag-garden: #8AAC8A; /* 蛙绿亮版 */
+  --tag-video-tutorial: #C8836A; /* 檀色偏红 */
+  --tag-essay: #8AAC8A; /* 蛙绿亮版 */
+  --tag-livestream: #B8836A; /* 赭石亮版 */
+  --tag-talk: #7A9CA8; /* 蟹青亮版 */
+  --tag-waiting: #A0A098; /* 艾绿亮版 */
+  --tag-researching: #7AAA8E; /* 竹青亮版 */
+  --tag-synthesising: #A89EA8; /* 藕荷亮版 */
+  --tag-alive: #C8836A; /* 檀色 */
+  --tag-book: #8A9AA8; /* 鸦青亮版 */
+  --tag-evergreen-page: #7AAA8E; /* 竹青亮版 */
+  --tag-arrow: #6A9CAB; /* 扁青亮版 */
+  --tag-project: #A89EA8; /* 藕荷亮版 */
+  --tag-area: #8AAC8A; /* 蛙绿亮版 */
+  --tag-course: #6A9CAB; /* 扁青亮版 */
+  --tag-idea: #C8937A; /* 檀色亮版 */
+  --tag-claim-color: #B8836A; /* 赭石亮版 */
+  --tag-questions-color: #6A9CAB; /* 扁青亮版 */
+  --tag-response-color: #A89EA8; /* 紫棠亮版 */
+  --tag-evidence-color: #a0a0a0; /* 银灰 */
+  --tag-directquote-color: #50b090; /* 松柏绿亮版 */
 
   /* 块背景色 - 传统色极淡 */
-  --block-claim-bg: rgba(192, 80, 80, 0.1);
-  /* 淡胭脂 */
-  --block-questions-bg: rgba(74, 158, 208, 0.1);
-  /* 淡群青 */
-  --block-response-bg: rgba(160, 112, 144, 0.1);
-  /* 淡紫棠 */
-  --block-evidence-bg: rgba(160, 160, 160, 0.08);
-  /* 淡银灰 */
-  --block-directquote-bg: rgba(80, 176, 144, 0.1);
-  /* 淡松柏绿 */
+  --block-claim-bg: rgba(192, 80, 80, 0.1); /* 淡胭脂 */
+  --block-questions-bg: rgba(74, 158, 208, 0.1); /* 淡群青 */
+  --block-response-bg: rgba(160, 112, 144, 0.1); /* 淡紫棠 */
+  --block-evidence-bg: rgba(160, 160, 160, 0.08); /* 淡银灰 */
+  --block-directquote-bg: rgba(80, 176, 144, 0.1); /* 淡松柏绿 */
 
   /* 高亮色 - 传统色 */
-  --highlight-yellow: #daa055;
-  /* 琥珀 */
-  --highlight-green: #50b090;
-  /* 松柏绿 */
-  --highlight-blue: #4a9ed0;
-  /* 群青 */
-  --highlight-red: #e05545;
-  /* 朱砂 */
-  --highlight-purple: #a07090;
-  /* 紫棠 */
-  --highlight-orange: #daa055;
-  /* 琥珀 */
+  --highlight-yellow: #daa055; /* 琥珀 */
+  --highlight-green: #50b090; /* 松柏绿 */
+  --highlight-blue: #4a9ed0; /* 群青 */
+  --highlight-red: #e05545; /* 朱砂 */
+  --highlight-purple: #a07090; /* 紫棠 */
+  --highlight-orange: #daa055; /* 琥珀 */
 }
 
 /* Dark Mode - General Overrides */
@@ -1320,7 +1253,7 @@ body.bp3-dark #app {
   background: var(--bg-color) !important;
 }
 
-body.bp3-dark .roam-article>div {
+body.bp3-dark .roam-article > div {
   background: var(--page-color);
   border-color: var(--color-subtle-border);
 }
@@ -1363,11 +1296,11 @@ body.bp3-dark h4,
 body.bp3-dark h5,
 body.bp3-dark h6,
 body.bp3-dark .rm-level1,
-body.bp3-dark .rm-heading-level-1>.rm-block__self .rm-block__input,
+body.bp3-dark .rm-heading-level-1 > .rm-block__self .rm-block__input,
 body.bp3-dark .rm-level2,
-body.bp3-dark .rm-heading-level-2>.rm-block__self .rm-block__input,
+body.bp3-dark .rm-heading-level-2 > .rm-block__self .rm-block__input,
 body.bp3-dark .rm-level3,
-body.bp3-dark .rm-heading-level-3>.rm-block__self .rm-block__input,
+body.bp3-dark .rm-heading-level-3 > .rm-block__self .rm-block__input,
 body.bp3-dark .rm-title-editing-display textarea {
   color: var(--text-color) !important;
 }
@@ -1412,7 +1345,7 @@ body.bp3-dark .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content
 }
 
 /* 夜间模式SHORTCUTS标题 */
-body.bp3-dark div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
+body.bp3-dark div.flex-v-box.starred-pages-wrapper > div.flex-h-box > span {
   color: #FF8787;
   border-top-color: #3a3a3c;
 }
@@ -1447,19 +1380,24 @@ body.bp3-dark .roam-sidebar-content .top-row:hover .bp3-icon {
 }
 
 /* 夜间模式右侧边栏 */
-body.bp3-dark #right-sidebar>div {
-  background: var(--bg-color);
+body.bp3-dark #right-sidebar {
+  background-color: var(--bg-color) !important;
+  border-left: 1px solid var(--color-subtle-border) !important;
+}
+
+body.bp3-dark #right-sidebar > div {
+  background: transparent;
   border-left: none;
   box-shadow: none;
 }
 
-body.bp3-dark .bp3-tree-node.bp3-tree-node-selected>.bp3-tree-node-content {
+body.bp3-dark .bp3-tree-node.bp3-tree-node-selected > .bp3-tree-node-content {
   background-color: var(--color-primary) !important;
   color: white !important;
 }
 
 body.bp3-dark .starred-pages .page .active,
-body.bp3-dark .bp3-text-overflow-ellipsis>a.bp3-active {
+body.bp3-dark .bp3-text-overflow-ellipsis > a.bp3-active {
   background-color: var(--color-primary-highlight) !important;
 }
 
@@ -1501,7 +1439,7 @@ body.bp3-dark .checkmark {
   background: #2c2c30;
 }
 
-body.bp3-dark .check-container input:checked~.checkmark {
+body.bp3-dark .check-container input:checked ~ .checkmark {
   background-color: var(--checkbox-success) !important;
   border-color: var(--checkbox-success) !important;
   box-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
@@ -1537,7 +1475,7 @@ body.bp3-dark .rm-reference-item:hover {
 }
 
 body.bp3-dark #block-input,
-body.bp3-dark .roam-body #block-input>span>div {
+body.bp3-dark .roam-body #block-input > span > div {
   background: var(--page-color);
 }
 
@@ -1574,12 +1512,9 @@ body.bp3-dark .kanban-title {
 /* Dark Mode - Tags */
 /* 使用半透明深色背景 + 暖色调文字，提高可读性和协调性 */
 body.bp3-dark span.rm-page-ref.rm-page-ref--tag {
-  background: rgba(200, 147, 122, 0.15);
-  /* 檀色淡底 */
-  border: 1px solid rgba(200, 147, 122, 0.4);
-  /* 檀色边框 */
-  color: var(--color-secondary) !important;
-  /* 檀色文字 */
+  background: rgba(200, 147, 122, 0.15); /* 檀色淡底 */
+  border: 1px solid rgba(200, 147, 122, 0.4); /* 檀色边框 */
+  color: var(--color-secondary) !important; /* 檀色文字 */
   padding: 2px 8px;
   border-radius: 15px;
 }
@@ -1589,8 +1524,7 @@ body.bp3-dark span.rm-page-ref[data-tag]::after {
   display: inline-block;
   font-size: 14px;
   line-height: 1.6;
-  color: var(--color-secondary);
-  /* 继承檀色 */
+  color: var(--color-secondary); /* 继承檀色 */
   font-weight: inherit;
 }
 
@@ -1605,8 +1539,7 @@ body.bp3-dark span.rm-page-ref[data-tag="Researching"],
 body.bp3-dark span.rm-page-ref[data-tag="Synthesising"],
 body.bp3-dark span.rm-page-ref[data-tag="Alive"] {
   background: transparent !important;
-  border-width: 1px;
-  border-style: solid;
+  border: 1px solid;
   padding: 1px 7px;
   line-height: 1.6;
 }
@@ -1671,115 +1604,18 @@ body.bp3-dark a {
 }
 
 body.bp3-dark .rm-bullet .rm-bullet__inner {
-  background-color: var(--light-text-color);
+  background-color: transparent;
+  border-color: var(--light-text-color);
 }
 
 body.bp3-dark .rm-bullet.rm-bullet--closed .rm-bullet__inner {
-  border: 4px solid var(--light-text-color);
+  border: 4px solid transparent;
+  background-color: var(--highlight-blue);
+  box-shadow: 0 0 6px var(--highlight-blue);
 }
 
 body.bp3-dark .rm-bullet__inner--user-icon {
   background-color: var(--tag-seedling);
-}
-
-/* ========================================================= */
-/* Todo Progress Bar Plugin - 进度条插件样式                  */
-/* ========================================================= */
-
-/* Common Styles */
-div[style*="width: 150px"][style*="overflow: hidden"]>div {
-  height: 100% !important;
-  width: 100% !important;
-}
-
-.wave-animation-v19,
-.wave-animation-v19-back {
-  height: 60px !important;
-  width: 200% !important;
-}
-
-/* Hide wave paths at 100% */
-div[style*="width: 150px"] svg.wave-front:not(.wave-animation-v19) path {
-  display: none !important;
-}
-
-div[style*="width: 150px"] svg.wave-back:not(.wave-animation-v19-back) {
-  display: none !important;
-}
-
-/* Light Mode - Progress Bar */
-div[style*="width: 150px"][style*="overflow: hidden"] {
-  height: 16px !important;
-  border-radius: 9px !important;
-  background: #eef5f9 !important;
-  border: 1px solid #dbeaf2 !important;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.wave-animation-v19 {
-  top: -28px !important;
-  opacity: 1 !important;
-  filter: drop-shadow(0 0 3px white);
-}
-
-.wave-front path {
-  fill: #3498db !important;
-}
-
-.wave-animation-v19-back {
-  top: -25px !important;
-  opacity: 0.8 !important;
-  filter: none !important;
-}
-
-.wave-back path {
-  fill: #2980b9 !important;
-}
-
-/* 100% Complete State */
-div[style*="width: 150px"] svg.wave-front:not(.wave-animation-v19) {
-  animation: none !important;
-  transform: none !important;
-  top: 0 !important;
-  height: 120% !important;
-  width: 100% !important;
-  left: 0 !important;
-  background: linear-gradient(180deg, #3498db 0%, #2980b9 100%) !important;
-  opacity: 1 !important;
-}
-
-/* Dark Mode - Progress Bar (Lava Theme) */
-body.bp3-dark div[style*="width: 150px"][style*="overflow: hidden"] {
-  background: #1a110f !important;
-  border: 1px solid #ff4800 !important;
-  box-shadow: inset 0 0 10px 2px rgba(255, 87, 34, 0.7), 0 0 12px rgba(255, 87, 34, 0.5);
-}
-
-body.bp3-dark .wave-animation-v19 {
-  top: -28px !important;
-  opacity: 1 !important;
-  filter: drop-shadow(0 0 6px #ffc107);
-}
-
-body.bp3-dark .wave-front path {
-  fill: #FFC107 !important;
-  opacity: 1 !important;
-}
-
-body.bp3-dark .wave-animation-v19-back {
-  top: -25px !important;
-  opacity: 1 !important;
-  filter: none !important;
-}
-
-body.bp3-dark .wave-back path {
-  fill: #E65100 !important;
-  opacity: 1 !important;
-}
-
-body.bp3-dark div[style*="width: 150px"] svg.wave-front:not(.wave-animation-v19) {
-  background: linear-gradient(180deg, #FFC107 0%, #FF9800 100%) !important;
-  box-shadow: 0 0 12px #FF5722;
 }
 
 /* ========================================================= */
@@ -1826,11 +1662,137 @@ body.bp3-dark .rm-code-warning .bp3-button:hover {
   padding: 0 !important;
 }
 
-.rm-topbar:has(.rm-open-left-sidebar-btn):not(:has(#todayTomorrow)):not(:has(#workspaces))>.speech-to-roam.speech-to-roam-container-top {
+.rm-topbar:has(.rm-open-left-sidebar-btn):not(:has(#todayTomorrow)):not(:has(#workspaces)) > .speech-to-roam.speech-to-roam-container-top {
   left: 0 !important;
 }
 
 /* 隐藏层级指示线 */
 .rm-multibar {
   display: none !important;
+}
+
+/* ========================================================= */
+/* Fix for Resize Handle & Caret - 修复调整手柄遮挡折叠图标    */
+/* ========================================================= */
+
+/* Fix for unclickable caret/triangle buttons - 修复无法点击的折叠/缩放图标 */
+.controls .rm-caret,
+.rm-caret,
+.rm-caret-hidden {
+  z-index: 1000 !important;
+  pointer-events: auto !important;
+  position: relative; /* Ensure z-index works */
+}
+
+/* Fix for rm-resize-handle blocking caret - 修复调整手柄遮挡折叠图标的问题 */
+.rm-resize-handle {
+  width: 4px !important;
+  left: -4px !important;
+  opacity: 0;
+  z-index: 10;
+}
+
+.rm-resize-handle:hover {
+  width: 8px !important;
+  left: -8px !important;
+  opacity: 0.5;
+  background-color: var(--color-primary-light);
+}
+
+/* ========================================================= */
+/* Popover & Menu - 弹出菜单优化 (椭圆风格) */
+/* ========================================================= */
+
+/* Popover Container - 整体圆润化 */
+.bp3-popover .bp3-popover-content {
+  background: var(--page-color) !important;
+  border-radius: 16px !important; /* 更大的圆角，接近椭圆视觉 */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important; /* 更柔和、深邃的阴影 */
+  border: 1px solid rgba(0, 0, 0, 0.05) !important; /* 极淡边框 */
+  padding: 8px !important; /* 增加内边距，让菜单项悬浮其中 */
+  color: var(--text-color) !important;
+}
+
+/* Menu List - 移除默认背景和内边距 */
+.bp3-menu {
+  background: transparent !important;
+  padding: 0 !important;
+  color: var(--text-color) !important;
+}
+
+/* Menu Item - 完美胶囊形 */
+.bp3-menu-item {
+  border-radius: 999px !important; /* 完美胶囊圆角 */
+  margin: 4px 0 !important; /* 项之间增加间距 */
+  padding: 10px 16px !important; /* 舒适的点击区域 */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-color) !important;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+/* Menu Item Hover - 日间模式 */
+.bp3-menu-item:hover,
+.bp3-menu-item.bp3-active {
+  background-color: var(--color-primary-light) !important; /* 使用淡青灰背景 */
+  color: var(--color-primary) !important; /* 墨青色文字 */
+  transform: translateX(2px); /* 悬停时微动，增加交互感 */
+}
+
+/* Icons in Menu */
+.bp3-menu-item .bp3-icon {
+  color: var(--light-text-color);
+  margin-right: 10px;
+  transition: color 0.2s ease;
+}
+
+.bp3-menu-item:hover .bp3-icon,
+.bp3-menu-item.bp3-active .bp3-icon {
+  color: var(--color-primary) !important;
+}
+
+/* Popover Arrow - 适配背景色 */
+.bp3-popover-arrow-fill {
+  fill: var(--page-color) !important;
+}
+
+.bp3-popover-arrow-border {
+  fill: transparent !important; /* 隐藏箭头边框以获得更清洁外观 */
+}
+
+/* ===================== Dark Mode Overrides ===================== */
+
+/* Popover - 夜间模式 */
+body.bp3-dark .bp3-popover .bp3-popover-content {
+  background: #333336 !important; /* 深灰背景，比纯黑略亮 */
+  border: 1px solid #454545 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+  color: var(--text-color) !important;
+}
+
+/* Menu Item Hover - 夜间模式 */
+body.bp3-dark .bp3-menu-item:hover,
+body.bp3-dark .bp3-menu-item.bp3-active {
+  background-color: var(--color-primary) !important; /* 选中时使用主色背景 */
+  color: #ffffff !important; /* 文字反白 */
+}
+
+/* Icons - 夜间模式 */
+body.bp3-dark .bp3-menu-item .bp3-icon {
+  color: #8a8a8e;
+}
+
+body.bp3-dark .bp3-menu-item:hover .bp3-icon,
+body.bp3-dark .bp3-menu-item.bp3-active .bp3-icon {
+  color: #ffffff !important; /* 图标反白 */
+}
+
+/* Arrow - 夜间模式 */
+body.bp3-dark .bp3-popover-arrow-fill {
+  fill: #333336 !important;
+}
+
+body.bp3-dark .bp3-popover-arrow-border {
+  fill: #454545 !important; /* 夜间模式保留微弱边框 */
 }
