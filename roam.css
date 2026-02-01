@@ -130,7 +130,7 @@ body,
 }
 
 .roam-article {
-  padding: 0 10px 0 0 !important;
+  padding: 0 !important;
 }
 
 .roam-article > div {
@@ -138,7 +138,7 @@ body,
   background: var(--page-color);
   border: none;
   border-radius: 0;
-  margin-top: 0 !important;
+  margin: 0 auto !important;
   width: auto;
   box-shadow: none;
 }
