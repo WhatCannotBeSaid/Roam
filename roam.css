@@ -683,19 +683,19 @@ div > .bp3-icon-caret-right + strong {
 .check-container {
   height: 18px;
   width: 18px;
-  position: absolute !important;
-  left: 0px !important;
-  top: 2px;
+  /* position: absolute !important; */
+  /* left: 0px !important; */
+  /* top: 2px; */
   border: none !important;
   background: transparent !important;
   border-radius: 0 !important;
-  z-index: 1000;
+  /* z-index: 1000; */
 }
 
 .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
   height: 100%;
   width: 100%;
   background-color: transparent;
