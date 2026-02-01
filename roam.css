@@ -604,7 +604,7 @@ div.roam-sidebar-container.noselect > div > div {
   width: 8px;
   height: 8px;
   background-color: var(--highlight-red) !important;
-  border: 3px solid rgba(224, 85, 69, 0.3) !important;
+  border: 2px solid rgba(224, 85, 69, 0.3) !important;
   box-shadow: 0 0 6px rgba(224, 85, 69, 0.5);
   transition: all 0.2s ease;
   margin: 1px !important;
