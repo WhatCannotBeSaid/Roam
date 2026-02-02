@@ -98,51 +98,6 @@
   --sidebar-icon-color: #94a3b8;
   --sidebar-icon-hover-color: var(--color-primary);
   --sidebar-icon-hover-filter: none;
-
-  /* Tag Colors - 中国传统颜色 */
-  /* 🔵 蓝青色系 - 理性思考、知识传播 */
-  --tag-tweet: #177CB0;           /* 靛青 - 清澈理性 */
-  --tag-illustrated: #177CB0;     /* 靛青 */
-  --tag-course: #177CB0;          /* 靛青 */
-  --tag-arrow: #177CB0;           /* 靛青 */
-  --tag-talk: #4C8DAE;            /* 群青 - 温和沟通 */
-  --tag-book: #3B2E7E;            /* 藏蓝 - 深邃知识 */
-  
-  /* 🟣 紫色系 - 综合思考、文献整理 */
-  --tag-literature: #574266;      /* 黛紫 - 文学气息 */
-  --tag-project: #574266;         /* 黛紫 */
-  --tag-synthesising: #574266;    /* 黛紫 */
-  --tag-response: #8C4356;        /* 绛紫 - 回应思考 */
-  
-  /* 🟢 绿色系 - 成长发展、常青内容 */
-  --tag-evergreens: #21A675;      /* 松柏绿 - 常青不衰 */
-  --tag-researching: #21A675;     /* 松柏绿 */
-  --tag-evergreen-page: #21A675;  /* 松柏绿 */
-  --tag-directquote-color: #21A675; /* 松柏绿 */
-  --tag-garden: #519A73;          /* 苍翠 - 生机勃勃 */
-  --tag-essay: #519A73;           /* 苍翠 */
-  --tag-area: #519A73;            /* 苍翠 */
-  --tag-seedling: #789262;        /* 竹青 - 新生嫩芽 */
-  
-  /* 🟠 橙红色系 - 创意灵感、活力内容 */
-  --tag-idea-bank: #B35C44;       /* 茶色 - 创意灵感 */
-  --tag-idea: #B35C44;            /* 茶色 */
-  --tag-video-tutorial: #955539;  /* 赭色 - 实践教学 */
-  --tag-alive: #955539;           /* 赭色 */
-  --tag-livestream: #955539;      /* 赭色 */
-  --tag-claim-color: #9C5333;     /* 赭 - 观点主张 */
-  
-  /* ⚪ 灰色系 - 中性、等待状态 */
-  --tag-waiting: #75878A;         /* 苍 - 等待中 */
-  --tag-evidence-color: #426666;  /* 黛绿 - 证据支撑 */
-  --tag-questions-color: #4C8DAE; /* 群青 - 问题探索 */
-
-  /* Block Backgrounds by Tag */
-  --block-claim-bg: #faf5f5;
-  --block-questions-bg: #f0f6fa;
-  --block-response-bg: #f7f4f8;
-  --block-evidence-bg: #f5f5f3;
-  --block-directquote-bg: #f0f7f5;
 }
 
 /* ========================================================= */
@@ -969,24 +924,27 @@ span.rm-page-ref {
   font-weight: 600;
 }
 
-/* Base tag style (pill shape) - 现代渐变设计 */
+/* Base tag style - Indigo to Purple gradient */
 span.rm-page-ref.rm-page-ref--tag {
   display: inline-block;
   padding: 3px 10px;
   margin-top: -2px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 6px;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); /* Indigo to Purple */
+  color: #ffffff;
+  border: none;
   font-weight: 500;
-  font-size: 13px;
+  font-size: 0; /* 隐藏 span 内直接文字，只显示 ::after */
   line-height: 1.5;
   vertical-align: middle;
-  box-shadow: 0 2px 6px rgba(102, 126, 234, 0.25);
+  box-shadow: 0 2px 5px rgba(168, 85, 247, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
 }
 
 span.rm-page-ref.rm-page-ref--tag:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(102, 126, 234, 0.35);
+  box-shadow: 0 4px 8px rgba(168, 85, 247, 0.5);
 }
 
 /* Tag content via data-tag attribute */
@@ -1000,12 +958,20 @@ span.rm-page-ref[data-tag]::after {
   display: inline-block;
   font-size: 14px;
   line-height: 1.6;
-  color: #fefefe;
+  color: #ffffff;
   font-weight: inherit;
 }
 
+/* Tag 只显示 ::after，隐藏 span 内直接文字 "#标签"，避免重复 */
+span.rm-page-ref.rm-page-ref--tag[data-tag] {
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
 span.rm-page-ref.rm-page-ref--tag[data-tag]::after {
-  color: #fefefe;
+  content: attr(data-tag);
+  font-size: 13px;
+  color: #ffffff;
 }
 
 span.rm-page-ref[data-tag] span,
@@ -1015,73 +981,14 @@ span.rm-page-ref[data-tag] .bp3-popover-target {
   line-height: inherit;
 }
 
-/* Annotation tag colors */
-span.rm-page-ref[data-tag="Claim"],
-span[data-link-title^="Claim"] .rm-page-ref,
-span.rm-page-ref[data-tag="Questions"],
-span[data-link-title^="Questions"] .rm-page-ref,
-span.rm-page-ref[data-tag="Response"],
-span[data-link-title^="Response"] .rm-page-ref,
-span.rm-page-ref[data-tag="Evidence"],
-span[data-link-title^="Evidence"] .rm-page-ref,
-span.rm-page-ref[data-tag="DirectQuote"],
-span[data-link-title^="DirectQuote"] .rm-page-ref {
-  opacity: 0.7;
-  font-size: 80%;
+/* Tag 只显示 ::after 的 attr(data-tag)，不恢复内部文字，避免「标签标签」重复 */
+span.rm-page-ref.rm-page-ref--tag[data-tag] span,
+span.rm-page-ref.rm-page-ref--tag[data-tag] .bp3-popover-wrapper,
+span.rm-page-ref.rm-page-ref--tag[data-tag] .bp3-popover-target {
+  font-size: 0 !important;
+  line-height: 0 !important;
+  overflow: hidden;
 }
-
-span.rm-page-ref[data-tag="Claim"],
-span[data-link-title^="Claim"] .rm-page-ref { 
-  color: var(--tag-claim-color); 
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-span.rm-page-ref[data-tag="Questions"],
-span[data-link-title^="Questions"] .rm-page-ref { 
-  color: var(--tag-questions-color); 
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-span.rm-page-ref[data-tag="Response"],
-span[data-link-title^="Response"] .rm-page-ref { 
-  color: var(--tag-response-color); 
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-span.rm-page-ref[data-tag="Evidence"],
-span[data-link-title^="Evidence"] .rm-page-ref { 
-  color: var(--tag-evidence-color); 
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-span.rm-page-ref[data-tag="DirectQuote"],
-span[data-link-title^="DirectQuote"] .rm-page-ref { 
-  color: var(--tag-directquote-color); 
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* Block styles by tag (using data-page-links attribute) */
-.roam-block-container[data-page-links*='Claim'],
-.roam-block-container[data-page-links*='Questions'],
-.roam-block-container[data-page-links*='Response'],
-.roam-block-container[data-page-links*='Evidence'],
-.roam-block-container[data-page-links*='DirectQuote'] {
-  border-radius: 6px;
-  padding: 0.6em 0.4em 0.4em 0;
-  margin-top: 2px;
-}
-
-.roam-block-container[data-page-links*='Claim'] { background: var(--block-claim-bg); }
-.roam-block-container[data-page-links*='Questions'] { background: var(--block-questions-bg); }
-.roam-block-container[data-page-links*='Response'] { background: var(--block-response-bg); }
-.roam-block-container[data-page-links*='Evidence'] { background: var(--block-evidence-bg); }
-.roam-block-container[data-page-links*='DirectQuote'] { background: var(--block-directquote-bg); }
-
 
 /* ========================================================= */
 /* 12. Highlights                                            */
@@ -1722,239 +1629,157 @@ body .rm-autocomplete__results .rm-autocomplete-result:hover .bp3-icon {
 }
 
 /* ========================================================= */
-/* 15. Dark Mode                                             */
+/* 15. Dark Mode (body.rm-dark-theme，与 roam-depo-dark-toggle 一致) */
 /* ========================================================= */
-@media (prefers-color-scheme: dark) {
+body.rm-dark-theme {
+  /* Dark mode variables (inherited by descendants) */
+  --bg-color: #2A2A2A;
+  --page-color: #2A2A2A;
+  --text-color: #D8D4C8;
+  --light-text-color: #9A9A8E;
+  --page-tag-color: #A8A090;
 
-  /* Dark mode variables */
-  :root {
-    --bg-color: #2A2A2A;
-    --page-color: #2A2A2A;
-    --text-color: #D8D4C8;
-    --light-text-color: #9A9A8E;
-    --page-tag-color: #A8A090;
+  --color-primary: #6A9CAB;
+  --color-primary-light: #3A5A64;
+  --color-primary-highlight: #3A3A35;
+  --color-secondary: #C8937A;
+  --color-subtle-border: #4A4A42;
 
-    --color-primary: #6A9CAB;
-    --color-primary-light: #3A5A64;
-    --color-primary-highlight: #3A3A35;
-    --color-secondary: #C8937A;
-    --color-subtle-border: #4A4A42;
+  --block-highlight-color: #A89EA8;
+  --heading-h1-color: #E9F1F6; /* 霜 - 明亮清透 */
+  --heading-h2-color: #D6ECF0; /* 月白 - 柔和宁静 */
+  --heading-h3-color: #A1AFC9; /* 蓝灰 - 温润柔和 */
+  --sidebar-title-color: #C8836A;
+  --sidebar-star-color: #C8836A;
+  --reference-title-color: #6A9CAB;
+  --checkbox-checked-color: #7AAA8E;
+  --tree-node-color: #6A9CAB;
+  --code-selection-color: #4A6A74;
 
-    --block-highlight-color: #A89EA8;
-    --heading-h1-color: #E9F1F6; /* 霜 - 明亮清透 */
-    --heading-h2-color: #D6ECF0; /* 月白 - 柔和宁静 */
-    --heading-h3-color: #A1AFC9; /* 蓝灰 - 温润柔和 */
-    --sidebar-title-color: #C8836A;
-    --sidebar-star-color: #C8836A;
-    --reference-title-color: #6A9CAB;
-    --checkbox-checked-color: #7AAA8E;
-    --tree-node-color: #6A9CAB;
-    --code-selection-color: #4A6A74;
+  --code-bg: rgba(255, 255, 255, 0.03);
+  --inline-code-bg: rgba(255, 255, 255, 0.06);
+  --embed-bg: rgba(255, 255, 255, 0.03);
+  --embed-hover-bg: rgba(255, 255, 255, 0.06);
+  --reference-item-bg: rgba(255, 255, 255, 0.04);
+  --reference-item-hover-bg: rgba(255, 255, 255, 0.08);
+  --kanban-column-bg: rgba(255, 255, 255, 0.02);
+  --kanban-card-bg: rgba(255, 255, 255, 0.04);
+  --kanban-card-hover-bg: rgba(255, 255, 255, 0.07);
 
-    /* Tag Colors - 中国传统颜色（夜间模式）*/
-    /* 🔵 蓝青色系 */
-    --tag-tweet: #70F3FF;           /* 蔚蓝 - 明亮清新 */
-    --tag-illustrated: #70F3FF;     /* 蔚蓝 */
-    --tag-course: #70F3FF;          /* 蔚蓝 */
-    --tag-arrow: #70F3FF;           /* 蔚蓝 */
-    --tag-talk: #4C8DAE;            /* 群青 - 柔和沟通 */
-    --tag-book: #A1AFC9;            /* 蓝灰 - 温润知识 */
-    
-    /* 🟣 紫色系 */
-    --tag-literature: #CCA4E3;      /* 丁香 - 优雅文学 */
-    --tag-project: #CCA4E3;         /* 丁香 */
-    --tag-synthesising: #CCA4E3;    /* 丁香 */
-    --tag-response: #B0A4E3;        /* 雪青 - 柔和回应 */
-    
-    /* 🟢 绿色系 */
-    --tag-evergreens: #2EDFA3;      /* 玉 - 温润常青 */
-    --tag-researching: #2EDFA3;     /* 玉 */
-    --tag-evergreen-page: #2EDFA3;  /* 玉 */
-    --tag-directquote-color: #2EDFA3; /* 玉 */
-    --tag-garden: #A4E2C6;          /* 艾绿 - 生机盎然 */
-    --tag-essay: #A4E2C6;           /* 艾绿 */
-    --tag-area: #A4E2C6;            /* 艾绿 */
-    --tag-seedling: #BCE672;        /* 松花 - 嫩绿新生 */
-    
-    /* 🟠 橙黄色系 */
-    --tag-idea-bank: #E29C45;       /* 黄栌 - 灵感火花 */
-    --tag-idea: #E29C45;            /* 黄栌 */
-    --tag-video-tutorial: #FFA631;  /* 杏黄 - 温暖教学 */
-    --tag-alive: #FFA631;           /* 杏黄 */
-    --tag-livestream: #FFA631;      /* 杏黄 */
-    --tag-claim-color: #FA8C35;     /* 橙色 - 鲜明观点 */
-    
-    /* ⚪ 灰色系 */
-    --tag-waiting: #BACAC6;         /* 老银 - 静待时机 */
-    --tag-evidence-color: #88ADA6;  /* 水 - 清澈证据 */
-    --tag-questions-color: #48C0A3; /* 青碧 - 探索问题 */
+  --popover-bg: #333336;
+  --popover-border: #454545;
+  --popover-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 
-    --block-claim-bg: rgba(192, 80, 80, 0.1);
-    --block-questions-bg: rgba(74, 158, 208, 0.1);
-    --block-response-bg: rgba(160, 112, 144, 0.1);
-    --block-evidence-bg: rgba(160, 160, 160, 0.08);
-    --block-directquote-bg: rgba(80, 176, 144, 0.1);
+  --highlight-underline: #15559A;
+  --highlight-text: #EEDEB0;
 
-    --code-bg: rgba(255, 255, 255, 0.03);
-    --inline-code-bg: rgba(255, 255, 255, 0.06);
-    --embed-bg: rgba(255, 255, 255, 0.03);
-    --embed-hover-bg: rgba(255, 255, 255, 0.06);
-    --reference-item-bg: rgba(255, 255, 255, 0.04);
-    --reference-item-hover-bg: rgba(255, 255, 255, 0.08);
-    --kanban-column-bg: rgba(255, 255, 255, 0.02);
-    --kanban-card-bg: rgba(255, 255, 255, 0.04);
-    --kanban-card-hover-bg: rgba(255, 255, 255, 0.07);
+  --sidebar-icon-color: #6a6a6e;
+  --sidebar-icon-hover-color: #61AFEF;
+  --sidebar-icon-hover-filter: drop-shadow(0 0 4px rgba(97, 175, 239, 0.4));
+}
 
-    --popover-bg: #333336;
-    --popover-border: #454545;
-    --popover-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-
-    --highlight-underline: #15559A;
-    --highlight-text: #EEDEB0;
-
-    --sidebar-icon-color: #6a6a6e;
-    --sidebar-icon-hover-color: #61AFEF;
-    --sidebar-icon-hover-filter: drop-shadow(0 0 4px rgba(97, 175, 239, 0.4));
-  }
-
-  /* Dark mode search input */
-  body #find-or-create-input {
+/* Dark mode search input */
+body.rm-dark-theme #find-or-create-input {
     background-color: rgba(255, 255, 255, 0.05) !important;
     color: var(--text-color) !important;
   }
 
-  body #find-or-create-input:focus {
+  body.rm-dark-theme #find-or-create-input:focus {
     background-color: var(--bg-color) !important;
     border-color: var(--color-primary) !important;
     box-shadow: 0 0 0 2px rgba(106, 156, 171, 0.3) !important;
   }
 
   /* Dark mode autocomplete */
-  body .rm-autocomplete__results .dont-unfocus-block {
+  body.rm-dark-theme .rm-autocomplete__results .dont-unfocus-block {
     background-color: transparent !important;
   }
 
-  body .rm-autocomplete__results .dont-unfocus-block:hover {
+  body.rm-dark-theme .rm-autocomplete__results .dont-unfocus-block:hover {
     background-color: rgba(106, 156, 171, 0.15) !important;
   }
 
   /* Code blocks */
-  body .cm-focused .cm-activeLineGutter {
+  body.rm-dark-theme .cm-focused .cm-activeLineGutter {
     background-color: rgba(255, 255, 255, 0.1) !important;
     color: var(--color-primary) !important;
   }
 
-  body .rm-code-warning,
-  body .roam-block-container[data-page-links*="roam/js"] .rm-code-warning,
-  body .bp3-card {
+  body.rm-dark-theme .rm-code-warning,
+  body.rm-dark-theme .roam-block-container[data-page-links*="roam/js"] .rm-code-warning,
+  body.rm-dark-theme .bp3-card {
     background-color: #2a2a2e !important;
     color: var(--text-color) !important;
   }
 
-  body .rm-code-warning .CodeMirror,
-  body .rm-code-warning pre,
-  body .rm-code-warning code,
-  body .rm-code-warning textarea {
+  body.rm-dark-theme .rm-code-warning .CodeMirror,
+  body.rm-dark-theme .rm-code-warning pre,
+  body.rm-dark-theme .rm-code-warning code,
+  body.rm-dark-theme .rm-code-warning textarea {
     background-color: #1e1e22 !important;
     color: #e8e4da !important;
   }
 
-  body .rm-code-warning .bp3-button {
+  body.rm-dark-theme .rm-code-warning .bp3-button {
     background-color: #3a3a3e !important;
     color: #e8e4da !important;
   }
 
-  body .rm-code-warning .bp3-button:hover {
+  body.rm-dark-theme .rm-code-warning .bp3-button:hover {
     background-color: #4a4a4e !important;
   }
 
-  /* Dark mode tags (stroked style) - 中国传统色 */
-  body span.rm-page-ref.rm-page-ref--tag {
-    background: rgba(239, 127, 130, 0.12); /* 嫣红底色 */
-    border: 1px solid rgba(239, 127, 130, 0.35);
-    color: #EF7A82 !important; /* 嫣红 - 柔和雅致 */
+  /* Dark mode tags - Neon 霓虹边框 + 深底白字，优先可读 */
+  body.rm-dark-theme span.rm-page-ref.rm-page-ref--tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px;
+    font-size: 0 !important; /* 隐藏 span 内直接文字，只显示 ::after */
+    font-weight: 600;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    /* 深紫内底，接近不透明，保证白字对比度 */
+    background-color: rgba(22, 12, 32, 0.96) !important;
+    transition: all 0.3s ease;
+    color: #ffffff !important;
+    border: 1px solid #d946ef !important;
+    text-shadow: none;
+    box-shadow:
+      0 0 6px rgba(217, 70, 239, 0.5),
+      inset 0 0 8px rgba(217, 70, 239, 0.1) !important;
   }
 
-  body span.rm-page-ref[data-tag="Tweet"],
-  body span.rm-page-ref[data-tag="Literature Notes"],
-  body span.rm-page-ref[data-tag="Evergreens"],
-  body span.rm-page-ref[data-tag="Essay"],
-  body span.rm-page-ref[data-tag="Talk"],
-  body span.rm-page-ref[data-tag="Waiting"],
-  body span.rm-page-ref[data-tag="Researching"],
-  body span.rm-page-ref[data-tag="Synthesising"],
-  body span.rm-page-ref[data-tag="Alive"] {
-    background: transparent !important;
-    border: 1px solid;
-    padding: 1px 7px;
-    line-height: 1.6;
+  body.rm-dark-theme span.rm-page-ref.rm-page-ref--tag:hover {
+    background-color: rgba(32, 18, 42, 0.98) !important;
+    box-shadow:
+      0 0 12px rgba(217, 70, 239, 0.7),
+      inset 0 0 10px rgba(217, 70, 239, 0.15) !important;
   }
 
-  body span.rm-page-ref[data-tag="Tweet"]::after,
-  body span.rm-page-ref[data-tag="Tweet"] {
-    color: var(--tag-tweet);
-    border-color: var(--tag-tweet);
+  /* 文字纯白 + 轻微深色描边，字号在 ::after 上设置 */
+  body.rm-dark-theme span.rm-page-ref.rm-page-ref--tag[data-tag]::after {
+    font-size: 12px;
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
   }
 
-  body span.rm-page-ref[data-tag="Literature Notes"]::after,
-  body span.rm-page-ref[data-tag="Literature Notes"] {
-    color: var(--tag-literature);
-    border-color: var(--tag-literature);
-  }
-
-  body span.rm-page-ref[data-tag="Evergreens"]::after,
-  body span.rm-page-ref[data-tag="Evergreens"] {
-    color: var(--tag-evergreens);
-    border-color: var(--tag-evergreens);
-  }
-
-  body span.rm-page-ref[data-tag="Essay"]::after,
-  body span.rm-page-ref[data-tag="Essay"] {
-    color: var(--tag-essay);
-    border-color: var(--tag-essay);
-  }
-
-  body span.rm-page-ref[data-tag="Talk"]::after,
-  body span.rm-page-ref[data-tag="Talk"] {
-    color: var(--tag-talk);
-    border-color: var(--tag-talk);
-  }
-
-  body span.rm-page-ref[data-tag="Waiting"]::after,
-  body span.rm-page-ref[data-tag="Waiting"] {
-    color: var(--tag-waiting);
-    border-color: var(--tag-waiting);
-  }
-
-  body span.rm-page-ref[data-tag="Researching"]::after,
-  body span.rm-page-ref[data-tag="Researching"] {
-    color: var(--tag-researching);
-    border-color: var(--tag-researching);
-  }
-
-  body span.rm-page-ref[data-tag="Synthesising"]::after,
-  body span.rm-page-ref[data-tag="Synthesising"] {
-    color: var(--tag-synthesising);
-    border-color: var(--tag-synthesising);
-  }
-
-  body span.rm-page-ref[data-tag="Alive"]::after,
-  body span.rm-page-ref[data-tag="Alive"] {
-    color: var(--tag-alive);
-    border-color: var(--tag-alive);
+  body.rm-dark-theme span.rm-page-ref.rm-page-ref--tag:hover[data-tag]::after {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
   }
 
   /* Popover arrows */
-  body .bp3-popover-arrow-fill {
+  body.rm-dark-theme .bp3-popover-arrow-fill {
     fill: #333336 !important;
   }
 
-  body .bp3-popover-arrow-border {
+  body.rm-dark-theme .bp3-popover-arrow-border {
     fill: #454545 !important;
   }
 
   /* Blockquote - 夜间雅致卡片风格 */
-  body .rm-bq {
+  body.rm-dark-theme .rm-bq {
     position: relative;
     background: linear-gradient(135deg,
       rgba(46, 223, 163, 0.08) 0%,
@@ -1971,7 +1796,7 @@ body .rm-autocomplete__results .rm-autocomplete-result:hover .bp3-icon {
     transition: all 0.25s ease;
   }
 
-  body .rm-bq:hover {
+  body.rm-dark-theme .rm-bq:hover {
     background: linear-gradient(135deg,
       rgba(46, 223, 163, 0.12) 0%,
       rgba(164, 226, 198, 0.06) 100%) !important;
@@ -1979,7 +1804,6 @@ body .rm-autocomplete__results .rm-autocomplete-result:hover .bp3-icon {
     border-color: rgba(164, 226, 198, 0.3) !important;
     box-shadow: 0 2px 10px rgba(46, 223, 163, 0.15) !important;
     transform: translateY(-1px); /* 轻微上浮 */
-  }
   }
 
   /* Inactive CSS block */
@@ -2067,4 +1891,11 @@ body .rm-autocomplete__results .rm-autocomplete-result:hover .bp3-icon {
     background-color: rgba(255, 255, 255, 0.1) !important;
     color: white !important;
   }
+
+/* ========================================================= */
+/* 16. Theme Toggle Button (与 roam-depo-dark-toggle 一致)    */
+/* ========================================================= */
+.rm-topbar #roam-theme-toggle-btn {
+  margin-left: auto !important;
+}
 
