@@ -927,27 +927,31 @@ span.rm-page-ref {
   font-weight: 600;
 }
 
-/* Base tag style - Indigo to Purple gradient */
+/* Tag 统一样式（日夜间布局一致，仅配色在下方/暗色里覆盖） */
 span.rm-page-ref.rm-page-ref--tag {
-  display: inline-block;
-  padding: 3px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
   margin-top: -2px;
   border-radius: 6px;
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); /* Indigo to Purple */
-  color: #ffffff;
-  border: none;
-  font-weight: 500;
   font-size: 0; /* 隐藏 span 内直接文字，只显示 ::after */
+  font-weight: 600;
   line-height: 1.5;
+  white-space: nowrap;
   vertical-align: middle;
-  box-shadow: 0 2px 5px rgba(168, 85, 247, 0.4);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
+  cursor: default;
+  border: none;
+  transition: background-color 0.2s;
+  /* 亮色模式配色 */
+  background-color: rgba(99, 102, 241, 0.18);
+  color: #4338ca;
+  box-shadow: 0 1px 3px rgba(99, 102, 241, 0.2);
 }
 
 span.rm-page-ref.rm-page-ref--tag:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(168, 85, 247, 0.5);
+  background-color: rgba(99, 102, 241, 0.28);
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.25);
 }
 
 /* Tag content via data-tag attribute */
@@ -973,8 +977,10 @@ span.rm-page-ref.rm-page-ref--tag[data-tag] {
 
 span.rm-page-ref.rm-page-ref--tag[data-tag]::after {
   content: attr(data-tag);
-  font-size: 13px;
-  color: #ffffff;
+  font-size: 12px;
+  line-height: 1.5;
+  color: inherit;
+  font-weight: 600;
 }
 
 span.rm-page-ref[data-tag] span,
@@ -1802,44 +1808,19 @@ body.rm-dark-theme #find-or-create-input {
     background-color: #4a4a4e !important;
   }
 
-  /* Dark mode tags - Neon 霓虹边框 + 深底白字，优先可读 */
+  /* Dark mode tags - 仅配色覆盖，布局与亮色一致 */
   body.rm-dark-theme span.rm-page-ref.rm-page-ref--tag {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 12px;
-    font-size: 0 !important; /* 隐藏 span 内直接文字，只显示 ::after */
-    font-weight: 600;
-    border-radius: 4px;
-    letter-spacing: 1px;
-    /* 深紫内底，接近不透明，保证白字对比度 */
-    background-color: rgba(22, 12, 32, 0.96) !important;
-    transition: all 0.3s ease;
-    color: #ffffff !important;
-    border: 1px solid #d946ef !important;
-    text-shadow: none;
-    box-shadow:
-      0 0 6px rgba(217, 70, 239, 0.5),
-      inset 0 0 8px rgba(217, 70, 239, 0.1) !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: #e8e6e3 !important;
+    box-shadow: none !important;
   }
 
   body.rm-dark-theme span.rm-page-ref.rm-page-ref--tag:hover {
-    background-color: rgba(32, 18, 42, 0.98) !important;
-    box-shadow:
-      0 0 12px rgba(217, 70, 239, 0.7),
-      inset 0 0 10px rgba(217, 70, 239, 0.15) !important;
+    background-color: rgba(255, 255, 255, 0.12) !important;
   }
 
-  /* 文字纯白 + 轻微深色描边，字号在 ::after 上设置 */
   body.rm-dark-theme span.rm-page-ref.rm-page-ref--tag[data-tag]::after {
-    font-size: 12px;
-    color: #ffffff !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-  }
-
-  body.rm-dark-theme span.rm-page-ref.rm-page-ref--tag:hover[data-tag]::after {
-    color: #ffffff !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    color: inherit !important;
   }
 
   /* Popover arrows */
