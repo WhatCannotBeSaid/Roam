@@ -28,7 +28,8 @@
   --header-font: "Futura", "方正颜真卿楷书 简";
   --body-font: "Optima", "HYKongShanKai", "汉仪空山楷 简", "汉仪空山楷", sans-serif;
   --code-font: "Fira Code", "方正屏显雅宋_GBK";
-  --heading-block-font: "Palatino Linotype", "方正清刻本悦宋简体"; /* 块级标题专用字体 */
+  --heading-block-font: "Palatino Linotype", "方正清刻本悦宋简体";
+  /* 块级标题专用字体 */
 
   /* ===================== Utility Variables / 工具变量 ===================== */
   /* 过渡效果 */
@@ -45,30 +46,32 @@
   --checkbox-success: #4ade80;
 
   /* ===================== Semantic Colors / 语义化颜色 (支持主题切换) ===================== */
-  
+
   /* 代码块与行内代码 */
   --code-bg: rgba(0, 0, 0, 0.03);
   --inline-code-bg: rgba(0, 0, 0, 0.04);
-  
+
   /* 嵌入与引用 */
   --embed-bg: rgba(0, 0, 0, 0.02);
   --embed-hover-bg: rgba(0, 0, 0, 0.04);
   --reference-item-bg: rgba(0, 0, 0, 0.03);
   --reference-item-hover-bg: rgba(0, 0, 0, 0.06);
-  
+
   /* 看板 */
   --kanban-column-bg: rgba(0, 0, 0, 0.02);
   --kanban-card-bg: rgba(0, 0, 0, 0.03);
   --kanban-card-hover-bg: rgba(0, 0, 0, 0.05);
-  
+
   /* 弹出窗口 (Popovers) */
   --popover-bg: var(--page-color);
   --popover-border: rgba(0, 0, 0, 0.05);
   --popover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  
+
   /* 高亮样式 */
-  --highlight-underline: #B0A4E3; /* 下划线/背景渐变色 */
-  --highlight-text: inherit;      /* 高亮文字颜色 */
+  --highlight-underline: #B0A4E3;
+  /* 下划线/背景渐变色 */
+  --highlight-text: inherit;
+  /* 高亮文字颜色 */
 
   /* 侧边栏图标 */
   --sidebar-icon-color: #94a3b8;
@@ -77,80 +80,139 @@
 
   /* ===================== Light Mode - Day / 日间模式 - 中国传统色 ===================== */
   /* 背景色系 - 护眼暖色调 */
-  --bg-color: #F5F0E6; /* 米黄 - 护眼暖底 */
-  --page-color: #F5F0E6; /* 与背景一致 */
-  --text-color: #3A3A3A; /* 深灰 - 清晰但不刺眼 */
-  --light-text-color: #6A6A6A; /* 中灰 */
-  --page-tag-color: #7A7A7A; /* 灰色 */
+  --bg-color: #F5F0E6;
+  /* 米黄 - 护眼暖底 */
+  --page-color: #F5F0E6;
+  /* 与背景一致 */
+  --text-color: #3A3A3A;
+  /* 深灰 - 清晰但不刺眼 */
+  --light-text-color: #6A6A6A;
+  /* 中灰 */
+  --page-tag-color: #7A7A7A;
+  /* 灰色 */
 
   /* 主色系 */
-  --color-primary: #2A5A6A; /* 墨青 - 沉稳 */
-  --color-primary-light: #D8E4E8; /* 淡青灰 */
-  --color-primary-highlight: #EDE8DC; /* 暖米 */
-  --color-secondary: #A85A3A; /* 赭红 - 更深更醒目 */
-  --color-subtle-border: #D8D0C4; /* 暖灰边框 */
+  --color-primary: #2A5A6A;
+  /* 墨青 - 沉稳 */
+  --color-primary-light: #D8E4E8;
+  /* 淡青灰 */
+  --color-primary-highlight: #EDE8DC;
+  /* 暖米 */
+  --color-secondary: #A85A3A;
+  /* 赭红 - 更深更醒目 */
+  --color-subtle-border: #D8D0C4;
+  /* 暖灰边框 */
 
   /* 强调色 - 高对比度 */
-  --block-highlight-color: #483D8B; /* 深岩蓝 - 高对比度 */
-  --heading-h1-color: #1A1A1A; /* 近黑 - 最清晰 */
-  --heading-h2-color: #2A2A2A; /* 深灰黑 */
-  --heading-h3-color: #3A3A3A; /* 深灰 */
-  --sidebar-title-color: #9A4A3A; /* 赭红 */
-  --sidebar-star-color: #9A4A3A; /* 赭红 */
-  --reference-title-color: #2A5A6A; /* 墨青 */
-  --checkbox-checked-color: #3A7A5A; /* 深绿 */
-  --tree-node-color: #2A5A6A; /* 墨青 */
-  --code-selection-color: #C8D8E0; /* 淡青 */
+  --block-highlight-color: #483D8B;
+  /* 深岩蓝 - 高对比度 */
+  --heading-h1-color: #1A1A1A;
+  /* 近黑 - 最清晰 */
+  --heading-h2-color: #2A2A2A;
+  /* 深灰黑 */
+  --heading-h3-color: #3A3A3A;
+  /* 深灰 */
+  --sidebar-title-color: #9A4A3A;
+  /* 赭红 */
+  --sidebar-star-color: #9A4A3A;
+  /* 赭红 */
+  --reference-title-color: #2A5A6A;
+  /* 墨青 */
+  --checkbox-checked-color: #3A7A5A;
+  /* 深绿 */
+  --tree-node-color: #2A5A6A;
+  /* 墨青 */
+  --code-selection-color: #C8D8E0;
+  /* 淡青 */
 
   /* 子弹点颜色 */
-  --bullet-bg: rgba(42, 90, 106, 0.5); /* 默认为半透明主色 */
+  --bullet-bg: rgba(42, 90, 106, 0.5);
+  /* 默认为半透明主色 */
   --bullet-border: var(--color-primary);
 
   /* 标签色 - 中国传统色（护眼柔和版） */
-  --tag-tweet: #4A7C8C; /* 扁青 */
-  --tag-literature: #8B7E8B; /* 藕荷 */
-  --tag-evergreens: #5A8A6E; /* 竹青 */
-  --tag-seedling: #6B9088; /* 青螺 */
-  --tag-idea-bank: #B8735A; /* 檀色 */
-  --tag-illustrated: #4A7C8C; /* 扁青 */
-  --tag-garden: #6B8E6B; /* 蛙绿 */
-  --tag-video-tutorial: #A65B4B; /* 檀色偏红 */
-  --tag-essay: #6B8E6B; /* 蛙绿 */
-  --tag-livestream: #9C6B5A; /* 赭石 */
-  --tag-talk: #5A7A8A; /* 蟹青 */
-  --tag-waiting: #8B8B83; /* 艾绿 */
-  --tag-researching: #5A8A6E; /* 竹青 */
-  --tag-synthesising: #8B7E8B; /* 藕荷 */
-  --tag-alive: #A65B4B; /* 檀色 */
-  --tag-book: #5A6B7A; /* 鸦青 */
-  --tag-evergreen-page: #5A8A6E; /* 竹青 */
-  --tag-arrow: #4A7C8C; /* 扁青 */
-  --tag-project: #8B7E8B; /* 藕荷 */
-  --tag-area: #6B8E6B; /* 蛙绿 */
-  --tag-course: #4A7C8C; /* 扁青 */
-  --tag-idea: #B8735A; /* 檀色 */
+  --tag-tweet: #4A7C8C;
+  /* 扁青 */
+  --tag-literature: #8B7E8B;
+  /* 藕荷 */
+  --tag-evergreens: #5A8A6E;
+  /* 竹青 */
+  --tag-seedling: #6B9088;
+  /* 青螺 */
+  --tag-idea-bank: #B8735A;
+  /* 檀色 */
+  --tag-illustrated: #4A7C8C;
+  /* 扁青 */
+  --tag-garden: #6B8E6B;
+  /* 蛙绿 */
+  --tag-video-tutorial: #A65B4B;
+  /* 檀色偏红 */
+  --tag-essay: #6B8E6B;
+  /* 蛙绿 */
+  --tag-livestream: #9C6B5A;
+  /* 赭石 */
+  --tag-talk: #5A7A8A;
+  /* 蟹青 */
+  --tag-waiting: #8B8B83;
+  /* 艾绿 */
+  --tag-researching: #5A8A6E;
+  /* 竹青 */
+  --tag-synthesising: #8B7E8B;
+  /* 藕荷 */
+  --tag-alive: #A65B4B;
+  /* 檀色 */
+  --tag-book: #5A6B7A;
+  /* 鸦青 */
+  --tag-evergreen-page: #5A8A6E;
+  /* 竹青 */
+  --tag-arrow: #4A7C8C;
+  /* 扁青 */
+  --tag-project: #8B7E8B;
+  /* 藕荷 */
+  --tag-area: #6B8E6B;
+  /* 蛙绿 */
+  --tag-course: #4A7C8C;
+  /* 扁青 */
+  --tag-idea: #B8735A;
+  /* 檀色 */
 
   /* 注释标签色 - 柔和版 */
-  --tag-claim-color: #9C6B5A; /* 赭石 */
-  --tag-questions-color: #4A7C8C; /* 扁青 */
-  --tag-response-color: #8B7E8B; /* 藕荷 */
-  --tag-evidence-color: #737C7B; /* 蟹壳青 */
-  --tag-directquote-color: #5A8A6E; /* 竹青 */
+  --tag-claim-color: #9C6B5A;
+  /* 赭石 */
+  --tag-questions-color: #4A7C8C;
+  /* 扁青 */
+  --tag-response-color: #8B7E8B;
+  /* 藕荷 */
+  --tag-evidence-color: #737C7B;
+  /* 蟹壳青 */
+  --tag-directquote-color: #5A8A6E;
+  /* 竹青 */
 
   /* 块背景色 - 淡雅传统 */
-  --block-claim-bg: #faf5f5; /* 淡胭脂 */
-  --block-questions-bg: #f0f6fa; /* 淡群青 */
-  --block-response-bg: #f7f4f8; /* 淡紫棠 */
-  --block-evidence-bg: #f5f5f3; /* 淡灰 */
-  --block-directquote-bg: #f0f7f5; /* 淡松柏绿 */
+  --block-claim-bg: #faf5f5;
+  /* 淡胭脂 */
+  --block-questions-bg: #f0f6fa;
+  /* 淡群青 */
+  --block-response-bg: #f7f4f8;
+  /* 淡紫棠 */
+  --block-evidence-bg: #f5f5f3;
+  /* 淡灰 */
+  --block-directquote-bg: #f0f7f5;
+  /* 淡松柏绿 */
 
   /* 高亮色 - 传统色 */
-  --highlight-yellow: #daa055; /* 琥珀 */
-  --highlight-green: #50b090; /* 松柏绿 */
-  --highlight-blue: #4a9ed0; /* 群青 */
-  --highlight-red: #e05545; /* 朱砂 */
-  --highlight-purple: #a07090; /* 紫棠 */
-  --highlight-orange: #daa055; /* 琥珀 */
+  --highlight-yellow: #daa055;
+  /* 琥珀 */
+  --highlight-green: #50b090;
+  /* 松柏绿 */
+  --highlight-blue: #4a9ed0;
+  /* 群青 */
+  --highlight-red: #e05545;
+  /* 朱砂 */
+  --highlight-purple: #a07090;
+  /* 紫棠 */
+  --highlight-orange: #daa055;
+  /* 琥珀 */
 }
 
 /* ========================================================= */
@@ -165,7 +227,7 @@ body,
   padding: 0 !important;
 }
 
-.roam-article > div {
+.roam-article>div {
   padding: 40px 50px;
   background: var(--page-color);
   border: none;
@@ -235,18 +297,19 @@ html body textarea {
 /* 🔧 FIX: H1 标题 - 使用更强的选择器确保变量生效 */
 html body h1,
 html body .rm-level1,
-html body .rm-heading-level-1 > .rm-block__self .rm-block__input {
+html body .rm-heading-level-1>.rm-block__self .rm-block__input {
   color: var(--heading-h1-color) !important;
   font-size: 1.8rem;
   font-weight: 600;
   font-family: var(--heading-block-font);
-  transition: color 0.2s ease; /* 添加过渡效果 */
+  transition: color 0.2s ease;
+  /* 添加过渡效果 */
 }
 
 /* 🔧 FIX: H2 标题 */
 html body h2,
 html body .rm-level2,
-html body .rm-heading-level-2 > .rm-block__self .rm-block__input {
+html body .rm-heading-level-2>.rm-block__self .rm-block__input {
   color: var(--heading-h2-color) !important;
   font-size: 1.6rem;
   font-weight: 500;
@@ -257,7 +320,7 @@ html body .rm-heading-level-2 > .rm-block__self .rm-block__input {
 /* 🔧 FIX: H3 标题 */
 html body h3,
 html body .rm-level3,
-html body .rm-heading-level-3 > .rm-block__self .rm-block__input {
+html body .rm-heading-level-3>.rm-block__self .rm-block__input {
   color: var(--heading-h3-color) !important;
   font-weight: 400;
   font-size: 1.4rem;
@@ -435,11 +498,11 @@ code::selection {
 }
 
 /* SHORTCUTS Title */
-div.flex-v-box.starred-pages-wrapper > div.flex-h-box {
+div.flex-v-box.starred-pages-wrapper>div.flex-h-box {
   gap: 0;
 }
 
-div.flex-v-box.starred-pages-wrapper > div.flex-h-box > span {
+div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -472,12 +535,12 @@ div.flex-v-box.starred-pages-wrapper > div.flex-h-box > span {
 }
 
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page,
-.roam-body .roam-app .roam-sidebar-container > * {
+.roam-body .roam-app .roam-sidebar-container>* {
   opacity: 1;
   box-shadow: none;
 }
 
-div.roam-sidebar-container.noselect > div > div {
+div.roam-sidebar-container.noselect>div>div {
   font-size: 14px;
   letter-spacing: 0.02em;
 }
@@ -501,8 +564,8 @@ div.roam-sidebar-container.noselect > div > div {
   opacity: 0.8;
 }
 
-.roam-sidebar-container img[style*="astrolabe"] ~ span,
-.roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"] ~ span {
+.roam-sidebar-container img[style*="astrolabe"]~span,
+.roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"]~span {
   color: var(--color-primary) !important;
 }
 
@@ -519,7 +582,7 @@ div.roam-sidebar-container.noselect > div > div {
   transition: flex-basis 0.2s ease-in-out, width 0.2s ease-in-out;
 }
 
-#right-sidebar > div {
+#right-sidebar>div {
   background: transparent;
   border-left: none;
   padding: 20px;
@@ -535,7 +598,7 @@ div.roam-sidebar-container.noselect > div > div {
   padding: 0 !important;
 }
 
-.rm-topbar:has(.rm-open-left-sidebar-btn):not(:has(#todayTomorrow)):not(:has(#workspaces)) > .speech-to-roam.speech-to-roam-container-top {
+.rm-topbar:has(.rm-open-left-sidebar-btn):not(:has(#todayTomorrow)):not(:has(#workspaces))>.speech-to-roam.speech-to-roam-container-top {
   left: 0 !important;
 }
 
@@ -551,7 +614,7 @@ div.roam-sidebar-container.noselect > div > div {
   background: white;
 }
 
-.roam-body #block-input > span > div {
+.roam-body #block-input>span>div {
   padding: 6px 24px;
   background: white;
 }
@@ -565,6 +628,11 @@ div.roam-sidebar-container.noselect > div > div {
   margin-right: 2px !important;
   padding-right: 0 !important;
   flex: 0 0 auto !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  /* Force a standard line-height equivalent */
 }
 
 /* Bullets */
@@ -614,9 +682,9 @@ div.roam-sidebar-container.noselect > div > div {
 }
 
 /* Focused Block Bullet */
-.rm-block__input:focus ~ .rm-bullet .rm-bullet__inner,
+.rm-block__input:focus~.rm-bullet .rm-bullet__inner,
 .rm-block--focused .rm-bullet .rm-bullet__inner,
-.roam-block-container:focus-within > .rm-block-main .rm-bullet .rm-bullet__inner {
+.roam-block-container:focus-within>.rm-block-main .rm-bullet .rm-bullet__inner {
   width: 8px;
   height: 8px;
   background-color: var(--highlight-red) !important;
@@ -694,8 +762,8 @@ div.roam-sidebar-container.noselect > div > div {
 }
 
 /* Tree Node Carets */
-div > .bp3-icon-caret-down + strong,
-div > .bp3-icon-caret-right + strong {
+div>.bp3-icon-caret-down+strong,
+div>.bp3-icon-caret-right+strong {
   color: var(--tree-node-color) !important;
 }
 
@@ -723,66 +791,122 @@ div > .bp3-icon-caret-right + strong {
 }
 
 /* ========================================================= */
-/* 8. Checkboxes - 复选框样式                                   */
+/* 8. Checkboxes - 复选框样式 (Smiley Toggle Design)            */
 /* ========================================================= */
 .check-container {
+  position: relative;
+  width: 36px;
   height: 18px;
-  width: 18px;
-  border: none !important;
-  background: transparent !important;
-  border-radius: 0 !important;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 8px 0 4px;
 }
 
-.checkmark {
-  height: 100%;
-  width: 100%;
-  background-color: transparent;
-  border: 2px solid var(--light-text-color);
-  border-radius: var(--border-radius-sm);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-sizing: border-box;
-}
-
-.check-container:hover .checkmark {
-  border-color: var(--color-primary);
-  background-color: rgba(42, 90, 106, 0.1);
-  transform: scale(1.05);
-}
-
-.check-container input:checked ~ .checkmark {
-  display: none !important;
+/* Hide default checkbox */
+.check-container input {
   opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
 }
 
-.check-container input:checked ~ .checkmark:after {
+/* Track (The sliding background) */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fe0000;
+  /* Unchecked: Red */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(254, 0, 0, 0.4);
+  transition: 0.5s;
+  border: none !important;
+}
+
+/* Checked State: Flip Track and Color */
+.check-container input:checked~.checkmark {
+  background: #05be05;
+  /* Checked: Green */
+  box-shadow: 0 -4px 10px rgba(5, 190, 5, 0.4);
+  transform: rotate(180deg);
+}
+
+/* Face Knob (The white circle) */
+.smiley-face {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.5s;
+  transition-delay: 0.2s;
+  display: block;
+}
+
+/* Checked State: Slide Knob and Rotate Face */
+/* Logic: Since .checkmark rotates 180deg, 'left: 2px' in rotated space is screen-right. */
+.check-container input:checked~.checkmark .smiley-face {
+  left: 2px;
+  transform: rotate(180deg);
+}
+
+/* Hide default Roam checkmark/icons inside the checkmark container */
+.checkmark> :not(.smiley-face) {
   display: none !important;
 }
 
-/* Enhanced Strikethrough Logic - 增强的删除线逻辑 */
-.rm-block-text:has(.check-container input:checked),
-.roam-block:has(.check-container input:checked) {
-  color: var(--light-text-color) !important;
-  opacity: 0.75;
-  text-decoration: line-through !important;
-  text-decoration-thickness: 1.5px !important;
-  text-decoration-color: rgba(42, 90, 106, 0.6) !important;
-  text-decoration-style: solid;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Eyes */
+.smiley-face::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 3px;
+  width: 2.5px;
+  height: 2.5px;
+  background: #fe0000;
+  border-radius: 50%;
+  box-shadow: 6px 0 #fe0000;
+  transition: 0.5s;
 }
 
-.rm-checklist-item-resolved {
-  color: var(--light-text-color) !important;
-  opacity: 0.75;
-  text-decoration: line-through !important;
-  text-decoration-thickness: 1.5px !important;
-  text-decoration-color: rgba(42, 90, 106, 0.6) !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.check-container input:checked~.checkmark .smiley-face::before {
+  background: #05be05;
+  box-shadow: 6px 0 #05be05;
 }
 
-.rm-block-text:has(.check-container input:checked) .check-container,
-.roam-block:has(.check-container input:checked) .check-container {
-  text-decoration: none !important;
+/* Mouth */
+.smiley-face::after {
+  content: '';
+  position: absolute;
+  bottom: 3.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 1.2px;
+  border-radius: 1px;
+  background: #fe0000;
+  transition: 0.5s;
 }
+
+.check-container input:checked~.checkmark .smiley-face::after {
+  bottom: 2.5px;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  background: #05be05;
+}
+
+
+/* Accessibility: Focus State */
+.check-container input:focus~.checkmark {
+  box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px #05be05;
+}
+
+
 
 /* ========================================================= */
 /* 9. Kanban - 看板样式                                        */
@@ -905,15 +1029,41 @@ span[data-link-title^="Alive"] .rm-page-ref {
   font-weight: 500;
 }
 
-span.rm-page-ref[data-tag="Tweet"] { background: var(--tag-tweet); }
-span.rm-page-ref[data-tag="Literature Notes"] { background: var(--tag-literature); }
-span.rm-page-ref[data-tag="Evergreens"] { background: var(--tag-evergreens); }
-span.rm-page-ref[data-tag="Essay"] { background: var(--tag-essay); }
-span.rm-page-ref[data-tag="Talk"] { background: var(--tag-talk); }
-span.rm-page-ref[data-tag="Waiting"] { background: var(--tag-waiting); }
-span.rm-page-ref[data-tag="Researching"] { background: var(--tag-researching); }
-span.rm-page-ref[data-tag="Synthesising"] { background: var(--tag-synthesising); }
-span.rm-page-ref[data-tag="Alive"] { background: var(--tag-alive); }
+span.rm-page-ref[data-tag="Tweet"] {
+  background: var(--tag-tweet);
+}
+
+span.rm-page-ref[data-tag="Literature Notes"] {
+  background: var(--tag-literature);
+}
+
+span.rm-page-ref[data-tag="Evergreens"] {
+  background: var(--tag-evergreens);
+}
+
+span.rm-page-ref[data-tag="Essay"] {
+  background: var(--tag-essay);
+}
+
+span.rm-page-ref[data-tag="Talk"] {
+  background: var(--tag-talk);
+}
+
+span.rm-page-ref[data-tag="Waiting"] {
+  background: var(--tag-waiting);
+}
+
+span.rm-page-ref[data-tag="Researching"] {
+  background: var(--tag-researching);
+}
+
+span.rm-page-ref[data-tag="Synthesising"] {
+  background: var(--tag-synthesising);
+}
+
+span.rm-page-ref[data-tag="Alive"] {
+  background: var(--tag-alive);
+}
 
 /* Text-only Tags / 纯文本标签 */
 span.rm-page-ref[data-tag="Seedling"],
@@ -1028,11 +1178,25 @@ span[data-link-title^="Idea/"] .rm-page-ref::before {
   margin-top: 2px;
 }
 
-.roam-block-container[data-page-links*='Claim'] { background: var(--block-claim-bg); }
-.roam-block-container[data-page-links*='Questions'] { background: var(--block-questions-bg); }
-.roam-block-container[data-page-links*='Response'] { background: var(--block-response-bg); }
-.roam-block-container[data-page-links*='Evidence'] { background: var(--block-evidence-bg); }
-.roam-block-container[data-page-links*='DirectQuote'] { background: var(--block-directquote-bg); }
+.roam-block-container[data-page-links*='Claim'] {
+  background: var(--block-claim-bg);
+}
+
+.roam-block-container[data-page-links*='Questions'] {
+  background: var(--block-questions-bg);
+}
+
+.roam-block-container[data-page-links*='Response'] {
+  background: var(--block-response-bg);
+}
+
+.roam-block-container[data-page-links*='Evidence'] {
+  background: var(--block-evidence-bg);
+}
+
+.roam-block-container[data-page-links*='DirectQuote'] {
+  background: var(--block-directquote-bg);
+}
 
 /* Annotation Tag Colors */
 span.rm-page-ref[data-tag="Claim"],
@@ -1050,19 +1214,29 @@ span[data-link-title^="DirectQuote"] .rm-page-ref {
 }
 
 span.rm-page-ref[data-tag="Claim"],
-span[data-link-title^="Claim"] .rm-page-ref { color: var(--tag-claim-color); }
+span[data-link-title^="Claim"] .rm-page-ref {
+  color: var(--tag-claim-color);
+}
 
 span.rm-page-ref[data-tag="Questions"],
-span[data-link-title^="Questions"] .rm-page-ref { color: var(--tag-questions-color); }
+span[data-link-title^="Questions"] .rm-page-ref {
+  color: var(--tag-questions-color);
+}
 
 span.rm-page-ref[data-tag="Response"],
-span[data-link-title^="Response"] .rm-page-ref { color: var(--tag-response-color); }
+span[data-link-title^="Response"] .rm-page-ref {
+  color: var(--tag-response-color);
+}
 
 span.rm-page-ref[data-tag="Evidence"],
-span[data-link-title^="Evidence"] .rm-page-ref { color: var(--tag-evidence-color); }
+span[data-link-title^="Evidence"] .rm-page-ref {
+  color: var(--tag-evidence-color);
+}
 
 span.rm-page-ref[data-tag="DirectQuote"],
-span[data-link-title^="DirectQuote"] .rm-page-ref { color: var(--tag-directquote-color); }
+span[data-link-title^="DirectQuote"] .rm-page-ref {
+  color: var(--tag-directquote-color);
+}
 
 /* ========================================================= */
 /* 11. Highlights - 高亮样式                                   */
@@ -1132,9 +1306,9 @@ span.rm-page-ref[data-tag="h/orange"] {
   background-color: rgba(0, 0, 0, 0.04) !important;
   border: 1px solid transparent !important;
   padding-left: 36px !important;
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-              background-color 0.2s ease, 
-              box-shadow 0.2s ease !important;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.2s ease,
+    box-shadow 0.2s ease !important;
   box-shadow: none !important;
   color: var(--text-color) !important;
 }
@@ -1158,7 +1332,7 @@ span.rm-page-ref[data-tag="h/orange"] {
     background-color: rgba(255, 255, 255, 0.05) !important;
     color: var(--text-color) !important;
   }
-  
+
   body #find-or-create-input:focus {
     background-color: var(--bg-color) !important;
     border-color: var(--color-primary) !important;
@@ -1168,9 +1342,19 @@ span.rm-page-ref[data-tag="h/orange"] {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  #find-or-create-input { width: 180px !important; }
-  #find-or-create-input:focus { width: 300px !important; max-width: 70vw !important; }
-  .rm-find-or-create-wrapper { left: 50% !important; transform: translateX(-50%) !important; }
+  #find-or-create-input {
+    width: 180px !important;
+  }
+
+  #find-or-create-input:focus {
+    width: 300px !important;
+    max-width: 70vw !important;
+  }
+
+  .rm-find-or-create-wrapper {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
 }
 
 /* Hide Help Button */
@@ -1397,7 +1581,7 @@ span.rm-page-ref[data-tag="h/orange"] {
   z-index: 1001;
 }
 
-.rm-find-or-create-wrapper:hover ~ .rm-sync,
+.rm-find-or-create-wrapper:hover~.rm-sync,
 .rm-sync:hover {
   opacity: 1;
   pointer-events: auto;
@@ -1419,7 +1603,7 @@ span.rm-page-ref[data-tag="h/orange"] {
 .rm-topbar:has(.rm-sync--synced) #find-or-create-input {
   border: 1.5px solid transparent !important;
   box-shadow: none !important;
-  border-color: rgba(46, 196, 182, 0.3) !important; 
+  border-color: rgba(46, 196, 182, 0.3) !important;
 }
 
 .rm-topbar:has(.rm-sync) #find-or-create-input:focus {
@@ -1429,12 +1613,17 @@ span.rm-page-ref[data-tag="h/orange"] {
 
 .rm-topbar:has(.rm-sync--synced) #find-or-create-input:focus {
   border-color: var(--color-primary) !important;
-  box-shadow: 0 0 0 2px rgba(42, 90, 106, 0.2), 0 4px 12px rgba(0,0,0,0.1) !important;
+  box-shadow: 0 0 0 2px rgba(42, 90, 106, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1) !important;
 }
 
 @media (max-width: 768px) {
-  .rm-sync { margin-left: 90px; }
-  .rm-topbar:has(#find-or-create-input:focus) .rm-sync { margin-left: 35vw; }
+  .rm-sync {
+    margin-left: 90px;
+  }
+
+  .rm-topbar:has(#find-or-create-input:focus) .rm-sync {
+    margin-left: 35vw;
+  }
 }
 
 /* Sync Tooltip Optimization */
@@ -1452,7 +1641,7 @@ span.rm-page-ref[data-tag="h/orange"] {
 }
 
 .rm-sync-tooltip__text,
-.rm-sync-tooltip__content > div > div {
+.rm-sync-tooltip__content>div>div {
   color: var(--text-color) !important;
   font-family: var(--body-font) !important;
   font-size: 0.95em !important;
@@ -1563,7 +1752,7 @@ span.rm-page-ref[data-tag="h/orange"] {
   body .bp3-datepicker {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   }
-  
+
   body .DayPicker-Day:hover {
     background-color: rgba(255, 255, 255, 0.1) !important;
     color: white !important;
@@ -1579,34 +1768,55 @@ span.rm-page-ref[data-tag="h/orange"] {
  */
 
 @media (prefers-color-scheme: dark) {
+
   /* 🔧 FIX: 使用:root而非body以确保变量全局可用 */
   :root {
     /* 背景色系 - 夜间护眼模式 */
-    --bg-color: #2A2A2A; /* 缁色 - 深黑带灰 */
-    --page-color: #2A2A2A; /* 与背景一致 */
-    --text-color: #D8D4C8; /* 缟色 - 柔和米白 */
-    --light-text-color: #9A9A8E; /* 艾绿灰 - 柔和灰绿 */
-    --page-tag-color: #A8A090; /* 茶色亮版 */
-  
+    --bg-color: #2A2A2A;
+    /* 缁色 - 深黑带灰 */
+    --page-color: #2A2A2A;
+    /* 与背景一致 */
+    --text-color: #D8D4C8;
+    /* 缟色 - 柔和米白 */
+    --light-text-color: #9A9A8E;
+    /* 艾绿灰 - 柔和灰绿 */
+    --page-tag-color: #A8A090;
+    /* 茶色亮版 */
+
     /* 主色系 - 与日间保持一致色相，降低亮度 */
-    --color-primary: #6A9CAB; /* 扁青亮版 */
-    --color-primary-light: #3A5A64; /* 扁青暗版 */
-    --color-primary-highlight: #3A3A35; /* 缁色高亮 */
-    --color-secondary: #C8937A; /* 檀色亮版 */
-    --color-subtle-border: #4A4A42; /* 缁色边框 */
-  
+    --color-primary: #6A9CAB;
+    /* 扁青亮版 */
+    --color-primary-light: #3A5A64;
+    /* 扁青暗版 */
+    --color-primary-highlight: #3A3A35;
+    /* 缁色高亮 */
+    --color-secondary: #C8937A;
+    /* 檀色亮版 */
+    --color-subtle-border: #4A4A42;
+    /* 缁色边框 */
+
     /* 🔧 FIX: 强调色 - 确保标题颜色在暗黑模式下正确更新 */
-    --block-highlight-color: #A89EA8; /* 藕荷亮版 */
-    --heading-h1-color: #E8E4D8; /* 缟色 */
-    --heading-h2-color: #D8D4C8; /* 缟色 */
-    --heading-h3-color: #B0ACA0; /* 素色 */
-    --sidebar-title-color: #C8836A; /* 檀色亮版 */
-    --sidebar-star-color: #C8836A; /* 檀色 */
-    --reference-title-color: #6A9CAB; /* 扁青亮版 */
-    --checkbox-checked-color: #7AAA8E; /* 竹青亮版 */
-    --tree-node-color: #6A9CAB; /* 扁青亮版 */
-    --code-selection-color: #4A6A74; /* 扁青暗版 */
-  
+    --block-highlight-color: #A89EA8;
+    /* 藕荷亮版 */
+    --heading-h1-color: #E8E4D8;
+    /* 缟色 */
+    --heading-h2-color: #D8D4C8;
+    /* 缟色 */
+    --heading-h3-color: #B0ACA0;
+    /* 素色 */
+    --sidebar-title-color: #C8836A;
+    /* 檀色亮版 */
+    --sidebar-star-color: #C8836A;
+    /* 檀色 */
+    --reference-title-color: #6A9CAB;
+    /* 扁青亮版 */
+    --checkbox-checked-color: #7AAA8E;
+    /* 竹青亮版 */
+    --tree-node-color: #6A9CAB;
+    /* 扁青亮版 */
+    --code-selection-color: #4A6A74;
+    /* 扁青暗版 */
+
     /* 标签色 - 与日间保持一致色相 */
     --tag-tweet: #6A9CAB;
     --tag-literature: #A89EA8;
@@ -1635,14 +1845,14 @@ span.rm-page-ref[data-tag="h/orange"] {
     --tag-response-color: #A89EA8;
     --tag-evidence-color: #a0a0a0;
     --tag-directquote-color: #50b090;
-  
+
     /* 块背景色 - 传统色极淡 */
     --block-claim-bg: rgba(192, 80, 80, 0.1);
     --block-questions-bg: rgba(74, 158, 208, 0.1);
     --block-response-bg: rgba(160, 112, 144, 0.1);
     --block-evidence-bg: rgba(160, 160, 160, 0.08);
     --block-directquote-bg: rgba(80, 176, 144, 0.1);
-  
+
     /* 高亮色 - 传统色 */
     --highlight-yellow: #daa055;
     --highlight-green: #50b090;
@@ -1654,20 +1864,20 @@ span.rm-page-ref[data-tag="h/orange"] {
     /* Semantic Variable Overrides / 语义变量覆盖 */
     --code-bg: rgba(255, 255, 255, 0.03);
     --inline-code-bg: rgba(255, 255, 255, 0.06);
-    
+
     --embed-bg: rgba(255, 255, 255, 0.03);
     --embed-hover-bg: rgba(255, 255, 255, 0.06);
     --reference-item-bg: rgba(255, 255, 255, 0.04);
     --reference-item-hover-bg: rgba(255, 255, 255, 0.08);
-    
+
     --kanban-column-bg: rgba(255, 255, 255, 0.02);
     --kanban-card-bg: rgba(255, 255, 255, 0.04);
     --kanban-card-hover-bg: rgba(255, 255, 255, 0.07);
-    
+
     --popover-bg: #333336;
     --popover-border: #454545;
     --popover-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-    
+
     --highlight-underline: #15559A;
     --highlight-text: #EEDEB0;
 
@@ -1698,15 +1908,59 @@ span.rm-page-ref[data-tag="h/orange"] {
     line-height: 1.6;
   }
 
-  body span.rm-page-ref[data-tag="Tweet"]::after, body span.rm-page-ref[data-tag="Tweet"] { color: var(--tag-tweet); border-color: var(--tag-tweet); }
-  body span.rm-page-ref[data-tag="Literature Notes"]::after, body span.rm-page-ref[data-tag="Literature Notes"] { color: var(--tag-literature); border-color: var(--tag-literature); }
-  body span.rm-page-ref[data-tag="Evergreens"]::after, body span.rm-page-ref[data-tag="Evergreens"] { color: var(--tag-evergreens); border-color: var(--tag-evergreens); }
-  body span.rm-page-ref[data-tag="Essay"]::after, body span.rm-page-ref[data-tag="Essay"] { color: var(--tag-essay); border-color: var(--tag-essay); }
-  body span.rm-page-ref[data-tag="Talk"]::after, body span.rm-page-ref[data-tag="Talk"] { color: var(--tag-talk); border-color: var(--tag-talk); }
-  body span.rm-page-ref[data-tag="Waiting"]::after, body span.rm-page-ref[data-tag="Waiting"] { color: var(--tag-waiting); border-color: var(--tag-waiting); }
-  body span.rm-page-ref[data-tag="Researching"]::after, body span.rm-page-ref[data-tag="Researching"] { color: var(--tag-researching); border-color: var(--tag-researching); }
-  body span.rm-page-ref[data-tag="Synthesising"]::after, body span.rm-page-ref[data-tag="Synthesising"] { color: var(--tag-synthesising); border-color: var(--tag-synthesising); }
-  body span.rm-page-ref[data-tag="Alive"]::after, body span.rm-page-ref[data-tag="Alive"] { color: var(--tag-alive); border-color: var(--tag-alive); }
+  body span.rm-page-ref[data-tag="Tweet"]::after,
+  body span.rm-page-ref[data-tag="Tweet"] {
+    color: var(--tag-tweet);
+    border-color: var(--tag-tweet);
+  }
+
+  body span.rm-page-ref[data-tag="Literature Notes"]::after,
+  body span.rm-page-ref[data-tag="Literature Notes"] {
+    color: var(--tag-literature);
+    border-color: var(--tag-literature);
+  }
+
+  body span.rm-page-ref[data-tag="Evergreens"]::after,
+  body span.rm-page-ref[data-tag="Evergreens"] {
+    color: var(--tag-evergreens);
+    border-color: var(--tag-evergreens);
+  }
+
+  body span.rm-page-ref[data-tag="Essay"]::after,
+  body span.rm-page-ref[data-tag="Essay"] {
+    color: var(--tag-essay);
+    border-color: var(--tag-essay);
+  }
+
+  body span.rm-page-ref[data-tag="Talk"]::after,
+  body span.rm-page-ref[data-tag="Talk"] {
+    color: var(--tag-talk);
+    border-color: var(--tag-talk);
+  }
+
+  body span.rm-page-ref[data-tag="Waiting"]::after,
+  body span.rm-page-ref[data-tag="Waiting"] {
+    color: var(--tag-waiting);
+    border-color: var(--tag-waiting);
+  }
+
+  body span.rm-page-ref[data-tag="Researching"]::after,
+  body span.rm-page-ref[data-tag="Researching"] {
+    color: var(--tag-researching);
+    border-color: var(--tag-researching);
+  }
+
+  body span.rm-page-ref[data-tag="Synthesising"]::after,
+  body span.rm-page-ref[data-tag="Synthesising"] {
+    color: var(--tag-synthesising);
+    border-color: var(--tag-synthesising);
+  }
+
+  body span.rm-page-ref[data-tag="Alive"]::after,
+  body span.rm-page-ref[data-tag="Alive"] {
+    color: var(--tag-alive);
+    border-color: var(--tag-alive);
+  }
 
   /* roam/js Code Block Warning */
   body .rm-code-warning,
@@ -1737,7 +1991,7 @@ span.rm-page-ref[data-tag="h/orange"] {
   body .bp3-popover-arrow-fill {
     fill: #333336 !important;
   }
-  
+
   body .bp3-popover-arrow-border {
     fill: #454545 !important;
   }
@@ -1745,13 +1999,18 @@ span.rm-page-ref[data-tag="h/orange"] {
   /* Enhanced Blockquote Style (Dark Mode) - Optimized for visibility and contrast */
   /* 增强的引用块样式 (夜间模式) - 优化可见性和对比度 */
   body .rm-bq {
-    background-color: rgba(56, 62, 71, 0.6) !important; /* 更深、独特的背景 */
-    border-left: 4px solid #61AFEF !important; /* 亮蓝色强调边框 */
-    color: #E6EDF3 !important; /* 高对比度文本 */
-    font-style: italic; /* 斜体以区分正文 */
+    background-color: rgba(56, 62, 71, 0.6) !important;
+    /* 更深、独特的背景 */
+    border-left: 4px solid #61AFEF !important;
+    /* 亮蓝色强调边框 */
+    color: #E6EDF3 !important;
+    /* 高对比度文本 */
+    font-style: italic;
+    /* 斜体以区分正文 */
     padding: 12px 18px !important;
     border-radius: 0 6px 6px 0 !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* 细微提升感 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    /* 细微提升感 */
     margin: 10px 0 !important;
   }
 }
