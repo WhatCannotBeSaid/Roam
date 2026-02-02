@@ -1,71 +1,44 @@
 /* ========================================================= */
-/* Roam Research Custom Theme - Deep Optimized Version       */
-/* 深度优化版：独立颜色、变量化、无冗余、无冲突              */
+/* Roam Research Custom Theme - Optimized Version            */
 /* ========================================================= */
 /*
- * 目录 (TOC):
- * 1. CSS Variables - 变量定义 (:root, 夜间模式变量)
- * 2. Global Overrides - 全局样式覆盖 (修复内联样式冲突)
- * 3. Base Layout - 基础布局
- * 4. Typography - 排版样式
- * 5. Code Blocks - 代码块样式
- * 6. Embed & Query - 嵌入和查询样式
- * 7. Sidebar - 侧边栏样式
- * 8. Bullet Points & References - 圆点和引用
- * 9. Checkboxes - 复选框样式
- * 10. Kanban - 看板样式
- * 11. Tags & Labels - 标签样式
- * 12. Highlights - 高亮样式
- * 13. Settings & Plugins - 设置与插件
- * 14. Dark Mode Specifics - 夜间模式专用逻辑
+ * Table of Contents:
+ * 1. CSS Variables (Light Mode)
+ * 2. Global Overrides (Inline Style Fixes)
+ * 3. Base Layout
+ * 4. Typography
+ * 5. Code Blocks
+ * 6. Embed & Query
+ * 7. Sidebar
+ * 8. Bullet Points & Block References
+ * 9. Checkboxes (Smiley Toggle)
+ * 10. Kanban
+ * 11. Tags & Labels
+ * 12. Highlights
+ * 13. Settings & Plugins
+ * 14. Autocomplete & Menus
+ * 15. Dark Mode
  */
 
 /* ========================================================= */
-/* 1. CSS Variables - 颜色变量定义                            */
+/* 1. CSS Variables                                          */
 /* ========================================================= */
 :root {
-  /* ===================== Typography / 排版 ===================== */
+  /* Typography */
   --header-font: "Futura", "方正颜真卿楷书 简";
   --body-font: "Optima", "HYKongShanKai", "汉仪空山楷 简", "汉仪空山楷", sans-serif;
   --code-font: "Fira Code", "方正屏显雅宋_GBK";
   --heading-block-font: "Palatino Linotype", "方正清刻本悦宋简体";
 
-  /* ===================== Utility Variables / 工具变量 ===================== */
+  /* Transitions & Borders */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.25s ease;
-  
   --border-radius-sm: 6px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
   --border-radius-pill: 20px;
 
-  --checkbox-success: #4ade80;
-
-  /* ===================== Semantic Colors / 语义化颜色 ===================== */
-  --code-bg: rgba(0, 0, 0, 0.03);
-  --inline-code-bg: rgba(0, 0, 0, 0.04);
-
-  --embed-bg: rgba(0, 0, 0, 0.02);
-  --embed-hover-bg: rgba(0, 0, 0, 0.04);
-  --reference-item-bg: rgba(0, 0, 0, 0.03);
-  --reference-item-hover-bg: rgba(0, 0, 0, 0.06);
-
-  --kanban-column-bg: rgba(0, 0, 0, 0.02);
-  --kanban-card-bg: rgba(0, 0, 0, 0.03);
-  --kanban-card-hover-bg: rgba(0, 0, 0, 0.05);
-
-  --popover-bg: var(--page-color);
-  --popover-border: rgba(0, 0, 0, 0.05);
-  --popover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-
-  --highlight-underline: #B0A4E3;
-  --highlight-text: inherit;
-
-  --sidebar-icon-color: #94a3b8;
-  --sidebar-icon-hover-color: var(--color-primary);
-  --sidebar-icon-hover-filter: none;
-
-  /* ===================== Light Mode - Day / 日间模式 ===================== */
+  /* Light Mode Colors */
   --bg-color: #F5F0E6;
   --page-color: #F5F0E6;
   --text-color: #3A3A3A;
@@ -78,10 +51,13 @@
   --color-secondary: #A85A3A;
   --color-subtle-border: #D8D0C4;
 
+  /* Headings - 中国传统颜色 */
+  --heading-h1-color: #50616D; /* 墨 - 最深、稳重大气 */
+  --heading-h2-color: #424C50; /* 鸦青 - 古朴典雅 */
+  --heading-h3-color: #75878A; /* 苍 - 清新雅致 */
+
+  /* Semantic Colors */
   --block-highlight-color: #483D8B;
-  --heading-h1-color: #1A1A1A;
-  --heading-h2-color: #2A2A2A;
-  --heading-h3-color: #3A3A3A;
   --sidebar-title-color: #9A4A3A;
   --sidebar-star-color: #9A4A3A;
   --reference-title-color: #2A5A6A;
@@ -92,65 +68,95 @@
   --bullet-bg: rgba(42, 90, 106, 0.5);
   --bullet-border: var(--color-primary);
 
-  /* Tags */
-  --tag-tweet: #4A7C8C;
-  --tag-literature: #8B7E8B;
-  --tag-evergreens: #5A8A6E;
-  --tag-seedling: #6B9088;
-  --tag-idea-bank: #B8735A;
-  --tag-illustrated: #4A7C8C;
-  --tag-garden: #6B8E6B;
-  --tag-video-tutorial: #A65B4B;
-  --tag-essay: #6B8E6B;
-  --tag-livestream: #9C6B5A;
-  --tag-talk: #5A7A8A;
-  --tag-waiting: #8B8B83;
-  --tag-researching: #5A8A6E;
-  --tag-synthesising: #8B7E8B;
-  --tag-alive: #A65B4B;
-  --tag-book: #5A6B7A;
-  --tag-evergreen-page: #5A8A6E;
-  --tag-arrow: #4A7C8C;
-  --tag-project: #8B7E8B;
-  --tag-area: #6B8E6B;
-  --tag-course: #4A7C8C;
-  --tag-idea: #B8735A;
+  /* Component Backgrounds */
+  --code-bg: rgba(0, 0, 0, 0.03);
+  --inline-code-bg: rgba(0, 0, 0, 0.04);
+  --embed-bg: rgba(0, 0, 0, 0.02);
+  --embed-hover-bg: rgba(0, 0, 0, 0.04);
+  --reference-item-bg: rgba(0, 0, 0, 0.03);
+  --reference-item-hover-bg: rgba(0, 0, 0, 0.06);
+  --kanban-column-bg: rgba(0, 0, 0, 0.02);
+  --kanban-card-bg: rgba(0, 0, 0, 0.03);
+  --kanban-card-hover-bg: rgba(0, 0, 0, 0.05);
 
-  /* Annotation Tags */
-  --tag-claim-color: #9C6B5A;
-  --tag-questions-color: #4A7C8C;
-  --tag-response-color: #8B7E8B;
-  --tag-evidence-color: #737C7B;
-  --tag-directquote-color: #5A8A6E;
-
-  /* Block Backgrounds */
-  --block-claim-bg: #faf5f5;
-  --block-questions-bg: #f0f6fa;
-  --block-response-bg: #f7f4f8;
-  --block-evidence-bg: #f5f5f3;
-  --block-directquote-bg: #f0f7f5;
+  /* Popover */
+  --popover-bg: var(--page-color);
+  --popover-border: rgba(0, 0, 0, 0.05);
+  --popover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 
   /* Highlights */
+  --highlight-underline: #B0A4E3;
+  --highlight-text: inherit;
   --highlight-yellow: #daa055;
   --highlight-green: #50b090;
   --highlight-blue: #4a9ed0;
   --highlight-red: #e05545;
   --highlight-purple: #a07090;
   --highlight-orange: #daa055;
+
+  /* Sidebar Icons */
+  --sidebar-icon-color: #94a3b8;
+  --sidebar-icon-hover-color: var(--color-primary);
+  --sidebar-icon-hover-filter: none;
+
+  /* Tag Colors - 中国传统颜色 */
+  /* 🔵 蓝青色系 - 理性思考、知识传播 */
+  --tag-tweet: #177CB0;           /* 靛青 - 清澈理性 */
+  --tag-illustrated: #177CB0;     /* 靛青 */
+  --tag-course: #177CB0;          /* 靛青 */
+  --tag-arrow: #177CB0;           /* 靛青 */
+  --tag-talk: #4C8DAE;            /* 群青 - 温和沟通 */
+  --tag-book: #3B2E7E;            /* 藏蓝 - 深邃知识 */
+  
+  /* 🟣 紫色系 - 综合思考、文献整理 */
+  --tag-literature: #574266;      /* 黛紫 - 文学气息 */
+  --tag-project: #574266;         /* 黛紫 */
+  --tag-synthesising: #574266;    /* 黛紫 */
+  --tag-response: #8C4356;        /* 绛紫 - 回应思考 */
+  
+  /* 🟢 绿色系 - 成长发展、常青内容 */
+  --tag-evergreens: #21A675;      /* 松柏绿 - 常青不衰 */
+  --tag-researching: #21A675;     /* 松柏绿 */
+  --tag-evergreen-page: #21A675;  /* 松柏绿 */
+  --tag-directquote-color: #21A675; /* 松柏绿 */
+  --tag-garden: #519A73;          /* 苍翠 - 生机勃勃 */
+  --tag-essay: #519A73;           /* 苍翠 */
+  --tag-area: #519A73;            /* 苍翠 */
+  --tag-seedling: #789262;        /* 竹青 - 新生嫩芽 */
+  
+  /* 🟠 橙红色系 - 创意灵感、活力内容 */
+  --tag-idea-bank: #B35C44;       /* 茶色 - 创意灵感 */
+  --tag-idea: #B35C44;            /* 茶色 */
+  --tag-video-tutorial: #955539;  /* 赭色 - 实践教学 */
+  --tag-alive: #955539;           /* 赭色 */
+  --tag-livestream: #955539;      /* 赭色 */
+  --tag-claim-color: #9C5333;     /* 赭 - 观点主张 */
+  
+  /* ⚪ 灰色系 - 中性、等待状态 */
+  --tag-waiting: #75878A;         /* 苍 - 等待中 */
+  --tag-evidence-color: #426666;  /* 黛绿 - 证据支撑 */
+  --tag-questions-color: #4C8DAE; /* 群青 - 问题探索 */
+
+  /* Block Backgrounds by Tag */
+  --block-claim-bg: #faf5f5;
+  --block-questions-bg: #f0f6fa;
+  --block-response-bg: #f7f4f8;
+  --block-evidence-bg: #f5f5f3;
+  --block-directquote-bg: #f0f7f5;
 }
 
 /* ========================================================= */
-/* 2. Global Overrides - 全局样式覆盖 (修复内联样式冲突)        */
+/* 2. Global Overrides (Fix Inline Styles)                   */
 /* ========================================================= */
 
-/* 修复: 强制覆盖带有内联背景色的菜单项 (Active State Override) */
+/* Override active menu item inline background */
 body .rm-menu-item[style*="background-color"],
 body .rm-menu-item[style*="background"] {
   background-color: var(--color-primary-light) !important;
   color: #ffffff !important;
 }
 
-/* 修复: 搜索结果中的高亮文本 (Yellow Highlight Override) */
+/* Override search result yellow highlight */
 body .rm-search-list-item span[style*="background-color: yellow"],
 body .rm-search-list-item span[style*="background-color:yellow"] {
   background-color: rgba(218, 160, 85, 0.4) !important;
@@ -160,7 +166,7 @@ body .rm-search-list-item span[style*="background-color:yellow"] {
 }
 
 /* ========================================================= */
-/* 3. Base Layout - 基础布局                                    */
+/* 3. Base Layout                                            */
 /* ========================================================= */
 body,
 #app {
@@ -171,7 +177,7 @@ body,
   padding: 0 !important;
 }
 
-.roam-article>div {
+.roam-article > div {
   padding: 40px 50px;
   background: var(--page-color);
   border: none;
@@ -201,8 +207,10 @@ body,
 }
 
 /* ========================================================= */
-/* 4. Typography - 排版样式                                    */
+/* 4. Typography                                             */
 /* ========================================================= */
+
+/* Headings base font */
 html body h1,
 html body h2,
 html body h3,
@@ -223,6 +231,7 @@ html body .rm-title-editing-display textarea {
   color: var(--text-color);
 }
 
+/* Body text */
 html body div,
 html body textarea {
   font-family: var(--body-font);
@@ -230,17 +239,29 @@ html body textarea {
   color: var(--text-color);
 }
 
+/* Block text sizing and line-height */
 .rm-block-text,
 .roam-block {
   font-size: 1.1em;
+  line-height: 1.6 !important;
+  min-height: 1.6em;
+}
+
+/* 页面标题 */
+.roam-body .roam-app .roam-main .roam-article .rm-title-display {
+  font-size: 2em !important; /* 最大 - 页面主题 */
+  line-height: 1.4 !important;
+  font-weight: 700;
+  font-family: var(--heading-block-font);
 }
 
 /* H1 */
 html body h1,
 html body .rm-level1,
-html body .rm-heading-level-1>.rm-block__self .rm-block__input {
+html body .rm-heading-level-1 > .rm-block__self .rm-block__input {
   color: var(--heading-h1-color) !important;
-  font-size: 1.8rem;
+  font-size: 1.6em; /* 重要章节 */
+  line-height: 1.4 !important;
   font-weight: 600;
   font-family: var(--heading-block-font);
   transition: color 0.2s ease;
@@ -249,9 +270,10 @@ html body .rm-heading-level-1>.rm-block__self .rm-block__input {
 /* H2 */
 html body h2,
 html body .rm-level2,
-html body .rm-heading-level-2>.rm-block__self .rm-block__input {
+html body .rm-heading-level-2 > .rm-block__self .rm-block__input {
   color: var(--heading-h2-color) !important;
-  font-size: 1.6rem;
+  font-size: 1.4em; /* 次级章节 */
+  line-height: 1.4 !important;
   font-weight: 500;
   font-family: var(--heading-block-font) !important;
   transition: color 0.2s ease;
@@ -260,10 +282,11 @@ html body .rm-heading-level-2>.rm-block__self .rm-block__input {
 /* H3 */
 html body h3,
 html body .rm-level3,
-html body .rm-heading-level-3>.rm-block__self .rm-block__input {
+html body .rm-heading-level-3 > .rm-block__self .rm-block__input {
   color: var(--heading-h3-color) !important;
+  font-size: 1.25em; /* 三级标题 */
+  line-height: 1.4 !important;
   font-weight: 400;
-  font-size: 1.4rem;
   font-family: var(--heading-block-font);
   transition: color 0.2s ease;
 }
@@ -279,8 +302,18 @@ a {
   font-weight: 600;
 }
 
+/* Inline elements alignment */
+.rm-inline-code,
+code,
+.rm-highlight,
+strong,
+em {
+  vertical-align: baseline !important;
+  line-height: inherit !important;
+}
+
 /* ========================================================= */
-/* 5. Code Blocks - 代码块样式                                  */
+/* 5. Code Blocks                                            */
 /* ========================================================= */
 .rm-code-block .cm-editor,
 .rm-code-block .cm-content,
@@ -311,7 +344,7 @@ code {
   vertical-align: baseline;
 }
 
-/* Code Selection */
+/* Code selection */
 .cm-selectionBackground,
 .cm-focused .cm-selectionBackground,
 .cm-content ::selection,
@@ -322,7 +355,7 @@ code::selection {
 }
 
 /* ========================================================= */
-/* 6. Embed & Query - 嵌入和查询样式                            */
+/* 6. Embed & Query                                          */
 /* ========================================================= */
 .rm-embed-container {
   background: var(--embed-bg);
@@ -388,7 +421,7 @@ code::selection {
   background-color: var(--reference-item-hover-bg);
 }
 
-/* Linked References Title Override */
+/* Linked references title override */
 .rm-reference-wrapper div[style*="color: rgb(206, 217, 224)"] {
   color: var(--reference-title-color) !important;
 }
@@ -398,35 +431,42 @@ code::selection {
 }
 
 /* ========================================================= */
-/* 7. Sidebar - 侧边栏样式                                      */
+/* 7. Sidebar                                                */
 /* ========================================================= */
+
+/* Left sidebar container - 优化宽度 */
 .roam-body .roam-app .roam-sidebar-container {
   background: var(--bg-color);
   border-right: none;
   box-shadow: none;
+  width: 240px !important; /* 设置固定宽度，更紧凑 */
+  min-width: 240px !important;
+  max-width: 240px !important;
+  flex-shrink: 0;
 }
 
 .roam-sidebar-container .rm-db-title-container .rm-db-title {
   color: var(--sidebar-title-color);
-  padding: 8px 12px;
-  font-size: 1.25rem;
+  padding: 8px 10px; /* 减小内边距 */
+  font-size: 1.15rem; /* 略微减小标题字号 */
   font-weight: 700;
   font-family: "Felix Titling", "方正清刻本悦宋简体";
   letter-spacing: 0.02em;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* Navigation Buttons */
+/* Navigation buttons - 优化间距 */
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button,
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row {
   color: #5a5a5a;
-  padding: 10px 16px;
-  margin: 2px 8px;
+  padding: 8px 12px; /* 减小内边距 */
+  margin: 2px 6px; /* 减小外边距 */
   border-radius: 6px;
   font-weight: 500;
   transition: all 0.2s ease;
   border: none;
   background: transparent;
+  font-size: 13.5px; /* 略微减小字号 */
 }
 
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:hover,
@@ -437,12 +477,12 @@ code::selection {
   transform: translateX(2px);
 }
 
-/* SHORTCUTS Title */
-div.flex-v-box.starred-pages-wrapper>div.flex-h-box {
+/* Shortcuts title */
+div.flex-v-box.starred-pages-wrapper > div.flex-h-box {
   gap: 0;
 }
 
-div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
+div.flex-v-box.starred-pages-wrapper > div.flex-h-box > span {
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -454,14 +494,14 @@ div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
   margin-top: 8px;
 }
 
-/* Starred Pages */
+/* Starred pages - 优化间距 */
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page {
-  padding: 8px 16px;
-  margin: 2px 8px;
+  padding: 8px 12px; /* 减小内边距 */
+  margin: 2px 6px; /* 减小外边距 */
   color: #6a6a6a;
   border-radius: 6px;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 13.5px; /* 优化字号 */
   transition: var(--transition-fast);
   border-left: none;
   background: transparent;
@@ -470,22 +510,22 @@ div.flex-v-box.starred-pages-wrapper>div.flex-h-box>span {
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page:hover {
   background: rgba(255, 255, 255, 0.6);
   color: #1a1a1a;
-  padding-left: 20px;
+  padding-left: 16px; /* 减小 hover 时的左边距 */
   box-shadow: none;
 }
 
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page,
-.roam-body .roam-app .roam-sidebar-container>* {
+.roam-body .roam-app .roam-sidebar-container > * {
   opacity: 1;
   box-shadow: none;
 }
 
-div.roam-sidebar-container.noselect>div>div {
-  font-size: 14px;
+div.roam-sidebar-container.noselect > div > div {
+  font-size: 13.5px; /* 统一字号 */
   letter-spacing: 0.02em;
 }
 
-/* Sidebar Icons */
+/* Sidebar icons */
 .roam-sidebar-content .bp3-icon {
   color: var(--sidebar-icon-color);
   transition: color 0.2s ease;
@@ -497,15 +537,15 @@ div.roam-sidebar-container.noselect>div>div {
   filter: var(--sidebar-icon-hover-filter);
 }
 
-/* Sidebar Logo Fix */
+/* Sidebar logo fix */
 .roam-sidebar-container img[style*="astrolabe"],
 .roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"] {
   filter: invert(1) brightness(0.2) !important;
   opacity: 0.8;
 }
 
-.roam-sidebar-container img[style*="astrolabe"]~span,
-.roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"]~span {
+.roam-sidebar-container img[style*="astrolabe"] ~ span,
+.roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"] ~ span {
   color: var(--color-primary) !important;
 }
 
@@ -514,7 +554,7 @@ div.roam-sidebar-container.noselect>div>div {
   text-decoration: none !important;
 }
 
-/* Right Sidebar */
+/* Right sidebar */
 #right-sidebar {
   z-index: 999 !important;
   background-color: var(--bg-color) !important;
@@ -522,14 +562,14 @@ div.roam-sidebar-container.noselect>div>div {
   transition: flex-basis 0.2s ease-in-out, width 0.2s ease-in-out;
 }
 
-#right-sidebar>div {
+#right-sidebar > div {
   background: transparent;
   border-left: none;
   padding: 20px;
   box-shadow: none;
 }
 
-/* Hidden Menu Button */
+/* Hidden menu button */
 .bp3-icon-menu,
 .rm-open-left-sidebar-btn {
   display: none !important;
@@ -538,7 +578,7 @@ div.roam-sidebar-container.noselect>div>div {
   padding: 0 !important;
 }
 
-.rm-topbar:has(.rm-open-left-sidebar-btn):not(:has(#todayTomorrow)):not(:has(#workspaces))>.speech-to-roam.speech-to-roam-container-top {
+.rm-topbar:has(.rm-open-left-sidebar-btn):not(:has(#todayTomorrow)):not(:has(#workspaces)) > .speech-to-roam.speech-to-roam-container-top {
   left: 0 !important;
 }
 
@@ -547,13 +587,13 @@ div.roam-sidebar-container.noselect>div>div {
 }
 
 /* ========================================================= */
-/* 8. Bullet Points & References - 圆点和引用                 */
+/* 8. Bullet Points & Block References                       */
 /* ========================================================= */
 #block-input {
   background: white;
 }
 
-.roam-body #block-input>span>div {
+.roam-body #block-input > span > div {
   padding: 6px 24px;
   background: white;
 }
@@ -562,55 +602,41 @@ div.roam-sidebar-container.noselect>div>div {
   color: black !important;
 }
 
-/* Compact Layout & Alignment */
+/* ============================================
+   统一对齐方案 - 简洁优雅版
+   ============================================ */
+
+/* Block 容器 */
+.roam-block-container .rm-block-main {
+  align-items: flex-start !important;
+}
+
+/* Bullet 容器 - 统一样式 */
 .controls {
   margin-right: 6px !important;
   padding-right: 0 !important;
   flex: 0 0 auto !important;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  height: 24px !important;
+  height: 2.05em !important; /* 微调以完美对齐 */
   align-self: flex-start !important;
-  margin-top: 2px !important;
 }
 
-/* Heading Bullet Alignment */
-.rm-heading-level-1 .controls {
-  margin-top: 10px !important;
-  transform: scale(1.2);
+/* 标题 Bullet - 分别精调 */
+.rm-heading-level-1 .controls { height: calc(1.6em * 1.4) !important; } /* H1 偏下→减小 */
+.rm-heading-level-2 .controls { height: calc(1.4em * 1.55) !important; } /* H2 偏上→增大 */
+.rm-heading-level-3 .controls { height: calc(1.25em * 1.75) !important; }
+
+/* 引用块 Bullet */
+.roam-block-container:has(.rm-bq) .controls {
+  margin-top: 14.5px !important; /* Quote 偏上→增大 */
 }
 
-.rm-heading-level-2 .controls {
-  margin-top: 7px !important;
-  transform: scale(1.1);
-}
-
-.rm-heading-level-3 .controls {
-  margin-top: 5px !important;
-  transform: scale(1.05);
-}
-
-/* Text Line Height & Alignment */
-.rm-block-text,
-.roam-block {
-  line-height: 1.6 !important;
-  min-height: 1.6em;
-  padding-top: 1px;
-}
-
-/* Inline Elements Alignment */
-.rm-inline-code,
-code,
-.rm-highlight,
-strong,
-em {
-  vertical-align: baseline !important;
-  line-height: inherit !important;
-}
-
-/* Bullets */
-.rm-bullet .rm-bullet__inner {
+/* Bullet inner circle */
+.rm-bullet .rm-bullet__inner,
+.rm-bullet.rm-bullet--closed .rm-bullet__inner,
+.rm-bullet__inner--user-icon {
   box-sizing: content-box;
   display: flex;
   align-items: center;
@@ -618,11 +644,14 @@ em {
   border-radius: 50%;
   width: 8px;
   height: 8px;
+}
+
+.rm-bullet .rm-bullet__inner {
   background-clip: padding-box;
   border: 2px solid var(--light-text-color);
   background-color: transparent;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  margin: 2px;
+  margin: 1px;
 }
 
 .rm-bullet .rm-bullet__inner:hover {
@@ -632,33 +661,24 @@ em {
   box-shadow: 0 0 8px rgba(42, 90, 106, 0.3);
 }
 
+/* Closed bullet (has children) */
 .rm-bullet.rm-bullet--closed .rm-bullet__inner {
-  box-sizing: content-box;
   background-color: var(--color-primary) !important;
   border: 4px solid transparent !important;
-  width: 8px;
-  height: 8px;
   margin: 0;
   box-shadow: 0 0 4px rgba(42, 90, 106, 0.5);
 }
 
 .rm-bullet__inner--user-icon {
-  box-sizing: content-box;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 50%;
-  width: 8px;
-  height: 8px;
   background-clip: content-box;
   border: 4px solid transparent;
   background-color: #000000;
 }
 
-/* Focused Block Bullet */
-.rm-block__input:focus~.rm-bullet .rm-bullet__inner,
+/* Focused block bullet */
+.rm-block__input:focus ~ .rm-bullet .rm-bullet__inner,
 .rm-block--focused .rm-bullet .rm-bullet__inner,
-.roam-block-container:focus-within>.rm-block-main .rm-bullet .rm-bullet__inner {
+.roam-block-container:focus-within > .rm-block-main .rm-bullet .rm-bullet__inner {
   width: 8px;
   height: 8px;
   background-color: var(--highlight-red) !important;
@@ -668,7 +688,7 @@ em {
   margin: 1px !important;
 }
 
-/* Bullet Tooltip Optimization */
+/* Bullet tooltip */
 .rm-bullet__tooltip {
   background-color: var(--popover-bg, #F5F0E6) !important;
   color: var(--text-color, #3A3A3A) !important;
@@ -690,7 +710,7 @@ em {
   font-weight: 500 !important;
 }
 
-/* Block References */
+/* Block references */
 .rm-block-ref::before {
   content: "";
   display: inline-block;
@@ -721,28 +741,44 @@ em {
   top: -10px;
 }
 
-/* Blockquote */
+/* Blockquote - 雅致卡片风格 */
 .rm-bq {
-  background-color: rgba(42, 90, 106, 0.08);
-  border-left: 3px solid rgba(42, 90, 106, 0.5);
-  border-radius: 0 8px 8px 0;
-  padding: 16px 20px;
-  margin: 12px 0;
+  position: relative;
+  background: linear-gradient(135deg, 
+    rgba(242, 236, 222, 0.6) 0%, 
+    rgba(245, 240, 230, 0.4) 100%); /* 缟色对角渐变 */
+  border: 1px solid rgba(81, 154, 115, 0.2); /* 淡绿色全边框 */
+  border-left: 4px solid #519A73; /* 左侧强调 - 苍翠 */
+  border-radius: 6px; /* 统一圆角 */
+  padding: 12px 18px 12px 14px;
+  margin: 0;
   font-family: "HYKongShanKai", "汉仪空山楷 简", "汉仪空山楷", cursive;
-  font-size: 0.95em;
-  color: var(--text-color);
+  font-size: 0.96em;
+  line-height: 1.6;
+  color: #50616D; /* 墨色 */
   text-align: left;
   word-wrap: break-word;
-  opacity: 1;
+  box-shadow: 0 1px 4px rgba(81, 154, 115, 0.1);
+  transition: all 0.25s ease;
 }
 
-/* Tree Node Carets */
-div>.bp3-icon-caret-down+strong,
-div>.bp3-icon-caret-right+strong {
+.rm-bq:hover {
+  background: linear-gradient(135deg, 
+    rgba(242, 236, 222, 0.8) 0%, 
+    rgba(245, 240, 230, 0.6) 100%);
+  border-left-color: #21A675; /* 松柏绿 */
+  border-color: rgba(81, 154, 115, 0.3);
+  box-shadow: 0 2px 8px rgba(81, 154, 115, 0.15);
+  transform: translateY(-1px); /* 轻微上浮 */
+}
+
+/* Tree node carets */
+div > .bp3-icon-caret-down + strong,
+div > .bp3-icon-caret-right + strong {
   color: var(--tree-node-color) !important;
 }
 
-/* Resize Handle & Caret */
+/* Resize handle & caret */
 .controls .rm-caret,
 .rm-caret,
 .rm-caret-hidden {
@@ -766,7 +802,7 @@ div>.bp3-icon-caret-right+strong {
 }
 
 /* ========================================================= */
-/* 9. Checkboxes - 复选框样式 (Smiley Toggle Design)            */
+/* 9. Checkboxes (Smiley Toggle Design)                      */
 /* ========================================================= */
 .check-container {
   position: relative;
@@ -775,7 +811,7 @@ div>.bp3-icon-caret-right+strong {
   cursor: pointer;
   display: inline-block;
   vertical-align: middle;
-  margin: 0 8px 0 4px;
+  margin: -5.5px 8px 0 0;
 }
 
 .check-container input {
@@ -790,7 +826,7 @@ div>.bp3-icon-caret-right+strong {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 18px;
   background: #fe0000;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(254, 0, 0, 0.4);
@@ -798,7 +834,7 @@ div>.bp3-icon-caret-right+strong {
   border: none !important;
 }
 
-.check-container input:checked~.checkmark {
+.check-container input:checked ~ .checkmark {
   background: #05be05;
   box-shadow: 0 -4px 10px rgba(5, 190, 5, 0.4);
   transform: rotate(180deg);
@@ -817,15 +853,16 @@ div>.bp3-icon-caret-right+strong {
   display: block;
 }
 
-.check-container input:checked~.checkmark .smiley-face {
+.check-container input:checked ~ .checkmark .smiley-face {
   left: 2px;
   transform: rotate(180deg);
 }
 
-.checkmark> :not(.smiley-face) {
+.checkmark > :not(.smiley-face) {
   display: none !important;
 }
 
+/* Smiley eyes */
 .smiley-face::before {
   content: '';
   position: absolute;
@@ -839,11 +876,12 @@ div>.bp3-icon-caret-right+strong {
   transition: 0.5s;
 }
 
-.check-container input:checked~.checkmark .smiley-face::before {
+.check-container input:checked ~ .checkmark .smiley-face::before {
   background: #05be05;
   box-shadow: 6px 0 #05be05;
 }
 
+/* Smiley mouth */
 .smiley-face::after {
   content: '';
   position: absolute;
@@ -857,19 +895,19 @@ div>.bp3-icon-caret-right+strong {
   transition: 0.5s;
 }
 
-.check-container input:checked~.checkmark .smiley-face::after {
+.check-container input:checked ~ .checkmark .smiley-face::after {
   bottom: 2.5px;
   height: 3px;
   border-radius: 0 0 3px 3px;
   background: #05be05;
 }
 
-.check-container input:focus~.checkmark {
+.check-container input:focus ~ .checkmark {
   box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px #05be05;
 }
 
 /* ========================================================= */
-/* 10. Kanban - 看板样式                                        */
+/* 10. Kanban                                                */
 /* ========================================================= */
 .kanban-board {
   background: transparent;
@@ -912,8 +950,10 @@ div>.bp3-icon-caret-right+strong {
 }
 
 /* ========================================================= */
-/* 11. Tags & Labels - 标签样式                                */
+/* 11. Tags & Labels                                         */
 /* ========================================================= */
+
+/* Hide brackets */
 .rm-page-ref-brackets {
   display: none;
 }
@@ -929,16 +969,27 @@ span.rm-page-ref {
   font-weight: 600;
 }
 
-/* Base Tag Style */
+/* Base tag style (pill shape) - 现代渐变设计 */
 span.rm-page-ref.rm-page-ref--tag {
   display: inline-block;
-  padding: 2px 8px;
-  border-radius: 15px;
-  background: #FF3300;
-  line-height: 1.6;
-  font-weight: 600;
+  padding: 3px 10px;
+  margin-top: -2px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.5;
+  vertical-align: middle;
+  box-shadow: 0 2px 6px rgba(102, 126, 234, 0.25);
+  transition: all 0.2s ease;
 }
 
+span.rm-page-ref.rm-page-ref--tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(102, 126, 234, 0.35);
+}
+
+/* Tag content via data-tag attribute */
 span.rm-page-ref[data-tag] {
   font-size: 0;
   line-height: 0;
@@ -964,201 +1015,7 @@ span.rm-page-ref[data-tag] .bp3-popover-target {
   line-height: inherit;
 }
 
-/* Filled Tags */
-span.rm-page-ref[data-tag="Tweet"],
-span.rm-page-ref[data-tag="Literature Notes"],
-span.rm-page-ref[data-tag="Evergreens"],
-span.rm-page-ref[data-tag="Essay"],
-span.rm-page-ref[data-tag="Talk"],
-span.rm-page-ref[data-tag="Waiting"],
-span.rm-page-ref[data-tag="Researching"],
-span.rm-page-ref[data-tag="Synthesising"],
-span.rm-page-ref[data-tag="Alive"],
-span[data-link-title^="Tweet"] .rm-page-ref,
-span[data-link-title^="Literature Notes"] .rm-page-ref,
-span[data-link-title^="Evergreens"] .rm-page-ref,
-span[data-link-title^="Essay"] .rm-page-ref,
-span[data-link-title^="Talk"] .rm-page-ref,
-span[data-link-title^="Waiting"] .rm-page-ref,
-span[data-link-title^="Researching"] .rm-page-ref,
-span[data-link-title^="Synthesising"] .rm-page-ref,
-span[data-link-title^="Alive"] .rm-page-ref {
-  color: white;
-  padding: 3px 7px;
-  line-height: 2em;
-  font-weight: 500;
-}
-
-span.rm-page-ref[data-tag="Tweet"] {
-  background: var(--tag-tweet);
-}
-
-span.rm-page-ref[data-tag="Literature Notes"] {
-  background: var(--tag-literature);
-}
-
-span.rm-page-ref[data-tag="Evergreens"] {
-  background: var(--tag-evergreens);
-}
-
-span.rm-page-ref[data-tag="Essay"] {
-  background: var(--tag-essay);
-}
-
-span.rm-page-ref[data-tag="Talk"] {
-  background: var(--tag-talk);
-}
-
-span.rm-page-ref[data-tag="Waiting"] {
-  background: var(--tag-waiting);
-}
-
-span.rm-page-ref[data-tag="Researching"] {
-  background: var(--tag-researching);
-}
-
-span.rm-page-ref[data-tag="Synthesising"] {
-  background: var(--tag-synthesising);
-}
-
-span.rm-page-ref[data-tag="Alive"] {
-  background: var(--tag-alive);
-}
-
-/* Text-only Tags */
-span.rm-page-ref[data-tag="Seedling"],
-span[data-link-title^="Seedling"] .rm-page-ref {
-  color: var(--tag-seedling);
-  padding: 2px;
-  font-weight: 600;
-  line-height: 1.4em;
-  font-size: 0.7em;
-  vertical-align: 10%;
-  opacity: 0.8;
-}
-
-span.rm-page-ref[data-tag="Idea Bank"],
-span[data-link-title^="Idea Bank"] .rm-page-ref {
-  color: var(--tag-idea-bank);
-  padding: 3px 4px;
-  font-weight: 700;
-  line-height: 1.4em;
-}
-
-span.rm-page-ref[data-tag="Idea Bank"]:before {
-  content: "✦ ";
-}
-
-span.rm-page-ref[data-tag="Illustrated Notes"],
-span[data-link-title^="Illustrated Notes"] .rm-page-ref,
-span.rm-page-ref[data-tag="Garden Notes"],
-span[data-link-title^="Garden Notes"] .rm-page-ref,
-span.rm-page-ref[data-tag="Video Tutorial"],
-span[data-link-title^="Video Tutorial"] .rm-page-ref {
-  padding: 3px 4px;
-  font-weight: 700;
-  line-height: 1.4em;
-}
-
-span.rm-page-ref[data-tag="Illustrated Notes"],
-span[data-link-title^="Illustrated Notes"] .rm-page-ref {
-  color: var(--tag-illustrated);
-}
-
-span.rm-page-ref[data-tag="Garden Notes"],
-span[data-link-title^="Garden Notes"] .rm-page-ref {
-  color: var(--tag-garden);
-}
-
-span.rm-page-ref[data-tag="Video Tutorial"],
-span[data-link-title^="Video Tutorial"] .rm-page-ref {
-  color: var(--tag-video-tutorial);
-}
-
-/* Link Title Prefix Tags */
-span[data-link-title^="Book/"] .rm-page-ref,
-span[data-link-title^="Article/"] .rm-page-ref,
-span[data-link-title^="Video/"] .rm-page-ref,
-span[data-link-title^="Evergreen/"] .rm-page-ref,
-span[data-link-title^="Area/"] .rm-page-ref,
-span[data-link-title^="Course/"] .rm-page-ref {
-  font-weight: 600;
-}
-
-span[data-link-title^="➽"] .rm-page-ref,
-span[data-link-title^="Project/"] .rm-page-ref {
-  font-weight: 700;
-}
-
-span[data-link-title^="Book/"] .rm-page-ref,
-span[data-link-title^="Article/"] .rm-page-ref,
-span[data-link-title^="Video/"] .rm-page-ref {
-  color: var(--tag-book);
-}
-
-span[data-link-title^="Evergreen/"] .rm-page-ref {
-  color: var(--tag-evergreen-page);
-}
-
-span[data-link-title^="➽"] .rm-page-ref {
-  color: var(--tag-arrow);
-}
-
-span[data-link-title^="Project/"] .rm-page-ref {
-  color: var(--tag-project);
-}
-
-span[data-link-title^="Area/"] .rm-page-ref {
-  color: var(--tag-area);
-}
-
-span[data-link-title^="Course/"] .rm-page-ref {
-  color: var(--tag-course);
-}
-
-span[data-link-title^="Idea/"] .rm-page-ref {
-  color: var(--tag-idea);
-  padding: 3px 4px;
-  font-weight: 700;
-  line-height: 1.4em;
-}
-
-span[data-link-title^="Idea/"] .rm-page-ref::before {
-  content: "✦ ";
-}
-
-/* Block Styles by Tag */
-.roam-block-container[data-page-links*='Claim'],
-.roam-block-container[data-page-links*='Questions'],
-.roam-block-container[data-page-links*='Response'],
-.roam-block-container[data-page-links*='Evidence'],
-.roam-block-container[data-page-links*='DirectQuote'] {
-  border-radius: 6px;
-  padding: 0.6em 0.4em 0.4em 0;
-  margin-top: 2px;
-}
-
-.roam-block-container[data-page-links*='Claim'] {
-  background: var(--block-claim-bg);
-}
-
-.roam-block-container[data-page-links*='Questions'] {
-  background: var(--block-questions-bg);
-}
-
-.roam-block-container[data-page-links*='Response'] {
-  background: var(--block-response-bg);
-}
-
-.roam-block-container[data-page-links*='Evidence'] {
-  background: var(--block-evidence-bg);
-}
-
-.roam-block-container[data-page-links*='DirectQuote'] {
-  background: var(--block-directquote-bg);
-}
-
-/* Annotation Tag Colors */
+/* Annotation tag colors */
 span.rm-page-ref[data-tag="Claim"],
 span[data-link-title^="Claim"] .rm-page-ref,
 span.rm-page-ref[data-tag="Questions"],
@@ -1174,32 +1031,60 @@ span[data-link-title^="DirectQuote"] .rm-page-ref {
 }
 
 span.rm-page-ref[data-tag="Claim"],
-span[data-link-title^="Claim"] .rm-page-ref {
-  color: var(--tag-claim-color);
+span[data-link-title^="Claim"] .rm-page-ref { 
+  color: var(--tag-claim-color); 
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 span.rm-page-ref[data-tag="Questions"],
-span[data-link-title^="Questions"] .rm-page-ref {
-  color: var(--tag-questions-color);
+span[data-link-title^="Questions"] .rm-page-ref { 
+  color: var(--tag-questions-color); 
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 span.rm-page-ref[data-tag="Response"],
-span[data-link-title^="Response"] .rm-page-ref {
-  color: var(--tag-response-color);
+span[data-link-title^="Response"] .rm-page-ref { 
+  color: var(--tag-response-color); 
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 span.rm-page-ref[data-tag="Evidence"],
-span[data-link-title^="Evidence"] .rm-page-ref {
-  color: var(--tag-evidence-color);
+span[data-link-title^="Evidence"] .rm-page-ref { 
+  color: var(--tag-evidence-color); 
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 span.rm-page-ref[data-tag="DirectQuote"],
-span[data-link-title^="DirectQuote"] .rm-page-ref {
-  color: var(--tag-directquote-color);
+span[data-link-title^="DirectQuote"] .rm-page-ref { 
+  color: var(--tag-directquote-color); 
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
+/* Block styles by tag (using data-page-links attribute) */
+.roam-block-container[data-page-links*='Claim'],
+.roam-block-container[data-page-links*='Questions'],
+.roam-block-container[data-page-links*='Response'],
+.roam-block-container[data-page-links*='Evidence'],
+.roam-block-container[data-page-links*='DirectQuote'] {
+  border-radius: 6px;
+  padding: 0.6em 0.4em 0.4em 0;
+  margin-top: 2px;
+}
+
+.roam-block-container[data-page-links*='Claim'] { background: var(--block-claim-bg); }
+.roam-block-container[data-page-links*='Questions'] { background: var(--block-questions-bg); }
+.roam-block-container[data-page-links*='Response'] { background: var(--block-response-bg); }
+.roam-block-container[data-page-links*='Evidence'] { background: var(--block-evidence-bg); }
+.roam-block-container[data-page-links*='DirectQuote'] { background: var(--block-directquote-bg); }
+
+
 /* ========================================================= */
-/* 12. Highlights - 高亮样式                                   */
+/* 12. Highlights                                            */
 /* ========================================================= */
 .block-highlight-blue {
   background: none !important;
@@ -1236,7 +1121,7 @@ span.rm-page-ref[data-tag="h/orange"] {
 }
 
 /* ========================================================= */
-/* 13. Settings & Plugins - 设置与插件                         */
+/* 13. Settings & Plugins                                    */
 /* ========================================================= */
 .rm-topbar {
   display: flex !important;
@@ -1244,7 +1129,7 @@ span.rm-page-ref[data-tag="h/orange"] {
   position: relative !important;
 }
 
-/* Search Wrapper */
+/* Search wrapper centered */
 .rm-find-or-create-wrapper {
   position: absolute !important;
   left: 50% !important;
@@ -1256,10 +1141,11 @@ span.rm-page-ref[data-tag="h/orange"] {
   flex: 0 0 auto !important;
 }
 
-/* Search Input Styling */
+/* Search input */
 #find-or-create-input {
-  width: 300px !important;
-  min-width: 200px;
+  width: 30vw !important;
+  max-width: 400px !important;
+  min-width: 150px !important;
   height: 34px !important;
   border-radius: 20px !important;
   background-color: rgba(0, 0, 0, 0.04) !important;
@@ -1278,28 +1164,14 @@ span.rm-page-ref[data-tag="h/orange"] {
 }
 
 #find-or-create-input:focus {
-  width: 600px !important;
-  max-width: 60vw !important;
+  width: 50vw !important;
+  max-width: 600px !important;
   background-color: var(--page-color) !important;
   border-color: var(--color-primary) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Dark Mode Support for Input */
-@media (prefers-color-scheme: dark) {
-  body #find-or-create-input {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-    color: var(--text-color) !important;
-  }
-
-  body #find-or-create-input:focus {
-    background-color: var(--bg-color) !important;
-    border-color: var(--color-primary) !important;
-    box-shadow: 0 0 0 2px rgba(106, 156, 171, 0.3) !important;
-  }
-}
-
-/* Mobile Responsive */
+/* Mobile responsive search */
 @media (max-width: 768px) {
   #find-or-create-input {
     width: 180px !important;
@@ -1316,7 +1188,7 @@ span.rm-page-ref[data-tag="h/orange"] {
   }
 }
 
-/* Hide Help Button */
+/* Hide help button */
 .rm-topbar .rm-topbar__help,
 .bp3-icon-help {
   display: none !important;
@@ -1341,13 +1213,13 @@ span.rm-page-ref[data-tag="h/orange"] {
   color: white;
 }
 
-/* Extension Settings */
+/* Extension settings */
 .rm-extensions-settings .rm-extensions-installed .rm-extension-installed__name {
   font-size: 14px;
   font-weight: 600;
 }
 
-/* Find & Replace */
+/* Hotkeys */
 .rm-hotkeys-action {
   color: var(--color-primary);
 }
@@ -1368,7 +1240,7 @@ span.rm-page-ref[data-tag="h/orange"] {
   color: white !important;
 }
 
-/* Popover & Menu */
+/* Popover & menu */
 .bp3-popover .bp3-popover-content {
   background: var(--popover-bg) !important;
   border-radius: 16px !important;
@@ -1421,7 +1293,7 @@ span.rm-page-ref[data-tag="h/orange"] {
   fill: transparent !important;
 }
 
-/* Settings Panel - Specific/Legacy */
+/* Settings panel (legacy) */
 .rm-settings .rm-settings-panel .rm-settings-panel__description {
   color: #f8f8f8;
 }
@@ -1461,7 +1333,7 @@ span.rm-page-ref[data-tag="h/orange"] {
   color: #f8f8f8;
 }
 
-/* Search Menu Optimization */
+/* Search menu */
 .bp3-popover .bp3-popover-content:has(.rm-find-or-create__menu) {
   background-color: var(--page-color) !important;
   border: 1px solid var(--color-subtle-border) !important;
@@ -1526,7 +1398,7 @@ span.rm-page-ref[data-tag="h/orange"] {
   font-weight: 600;
 }
 
-/* Sync Status Integration */
+/* Sync status */
 .rm-sync {
   position: absolute !important;
   left: 50% !important;
@@ -1540,7 +1412,7 @@ span.rm-page-ref[data-tag="h/orange"] {
   z-index: 1001;
 }
 
-.rm-find-or-create-wrapper:hover~.rm-sync,
+.rm-find-or-create-wrapper:hover ~ .rm-sync,
 .rm-sync:hover {
   opacity: 1;
   pointer-events: auto;
@@ -1553,7 +1425,7 @@ span.rm-page-ref[data-tag="h/orange"] {
   display: none !important;
 }
 
-/* Light Bar Visual Effect */
+/* Sync indicator on search input */
 .rm-topbar:has(.rm-sync) #find-or-create-input {
   border: 1.5px solid #FF9F1C !important;
   box-shadow: 0 0 12px rgba(255, 159, 28, 0.25) !important;
@@ -1585,7 +1457,7 @@ span.rm-page-ref[data-tag="h/orange"] {
   }
 }
 
-/* Sync Tooltip Optimization */
+/* Sync tooltip */
 .rm-sync-tooltip__content {
   padding: 8px 12px !important;
   min-width: 240px;
@@ -1600,7 +1472,7 @@ span.rm-page-ref[data-tag="h/orange"] {
 }
 
 .rm-sync-tooltip__text,
-.rm-sync-tooltip__content>div>div {
+.rm-sync-tooltip__content > div > div {
   color: var(--text-color) !important;
   font-family: var(--body-font) !important;
   font-size: 0.95em !important;
@@ -1630,7 +1502,7 @@ span.rm-page-ref[data-tag="h/orange"] {
   margin: 8px 0 !important;
 }
 
-/* Datepicker Optimization */
+/* Datepicker */
 .bp3-datepicker {
   background-color: var(--page-color) !important;
   border-radius: 12px !important;
@@ -1707,43 +1579,171 @@ span.rm-page-ref[data-tag="h/orange"] {
   opacity: 0.3;
 }
 
-@media (prefers-color-scheme: dark) {
-  body .bp3-datepicker {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  }
+/* ========================================================= */
+/* 14. Autocomplete & Menus                                  */
+/* ========================================================= */
+body .rm-autocomplete__results {
+  background-color: var(--popover-bg) !important;
+  border: 1px solid var(--popover-border) !important;
+  box-shadow: var(--popover-shadow) !important;
+  color: var(--text-color) !important;
+  border-radius: 8px !important;
+  padding: 8px !important;
+  min-width: auto !important;
+  max-width: none !important;
+  width: fit-content !important;
+  box-sizing: border-box !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  max-height: 50vh !important;
+  right: auto !important;
+  /* Grid layout for split view */
+  display: grid !important;
+  grid-template-columns: auto auto !important;
+  align-items: start !important;
+  gap: 0 !important;
+  position: absolute !important;
+  z-index: 9999 !important;
+}
 
-  body .DayPicker-Day:hover {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    color: white !important;
-  }
+/* Autocomplete results (left column) */
+body .rm-autocomplete__results .dont-focus-block,
+body .rm-autocomplete__results .rm-autocomplete-result {
+  grid-column: 1 !important;
+  width: 100% !important;
+  display: block !important;
+  color: var(--text-color) !important;
+  padding: 4px 12px !important;
+  line-height: 1.2 !important;
+  border-radius: 6px;
+  background-color: transparent !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+/* Text wrapping for children */
+body .rm-autocomplete__results .dont-focus-block *,
+body .rm-autocomplete__results .rm-autocomplete-result * {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+body .rm-autocomplete__results.alias-container .dont-focus-block {
+  width: fit-content !important;
+}
+
+/* Aliases container (right column) */
+body .rm-autocomplete__results .rm-aliases {
+  grid-column: 2 !important;
+  grid-row: 1 / 100 !important;
+  width: fit-content !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  position: sticky !important;
+  top: 0 !important;
+  height: fit-content !important;
+  margin-left: 8px !important;
+  padding-left: 8px !important;
+  border-left: 1px solid var(--color-subtle-border) !important;
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+  background: transparent !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+body .rm-autocomplete__results .rm-aliases .dont-focus-block {
+  width: fit-content !important;
+}
+
+body .rm-autocomplete__results .rm-aliases .sub-title {
+  display: none !important;
+  color: var(--light-text-color) !important;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  border-bottom: 1px dashed var(--color-subtle-border);
+  margin-bottom: 4px;
+}
+
+/* Autocomplete hover states */
+body .rm-autocomplete__results .dont-focus-block:hover,
+body .rm-autocomplete__results .rm-autocomplete-result:hover,
+body .rm-autocomplete__results .rm-aliases .dont-focus-block:hover button {
+  background-color: transparent !important;
+  color: var(--color-primary) !important;
+  text-decoration: none !important;
+}
+
+body .rm-autocomplete__results .bp3-button {
+  color: var(--text-color) !important;
+  padding: 6px 12px !important;
+  justify-content: flex-start;
+  width: 100%;
+  border-radius: 4px;
+}
+
+body .rm-autocomplete__results .bp3-button:hover {
+  background-color: var(--color-primary-light) !important;
+  color: var(--color-primary) !important;
+}
+
+/* Highlight match text */
+body .rm-autocomplete__results .result-highlight {
+  background-color: rgba(255, 199, 115, 0.25) !important;
+  color: var(--color-secondary) !important;
+  padding: 0 2px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+/* Autocomplete icons */
+body .rm-autocomplete__results .bp3-icon {
+  color: var(--light-text-color) !important;
+  margin-left: auto !important;
+}
+
+body .rm-autocomplete__results .rm-autocomplete-result:hover .bp3-icon {
+  color: var(--color-primary) !important;
 }
 
 /* ========================================================= */
-/* 14. Dark Mode Specifics - 夜间模式专用逻辑                  */
+/* 15. Dark Mode                                             */
 /* ========================================================= */
 @media (prefers-color-scheme: dark) {
 
-  /* ------------------- 14.1 Variables ------------------- */
+  /* Dark mode variables */
   :root {
-    /* Backgrounds */
     --bg-color: #2A2A2A;
     --page-color: #2A2A2A;
     --text-color: #D8D4C8;
     --light-text-color: #9A9A8E;
     --page-tag-color: #A8A090;
 
-    /* Primary Colors */
     --color-primary: #6A9CAB;
     --color-primary-light: #3A5A64;
     --color-primary-highlight: #3A3A35;
     --color-secondary: #C8937A;
     --color-subtle-border: #4A4A42;
 
-    /* Highlights */
     --block-highlight-color: #A89EA8;
-    --heading-h1-color: #E8E4D8;
-    --heading-h2-color: #D8D4C8;
-    --heading-h3-color: #B0ACA0;
+    --heading-h1-color: #E9F1F6; /* 霜 - 明亮清透 */
+    --heading-h2-color: #D6ECF0; /* 月白 - 柔和宁静 */
+    --heading-h3-color: #A1AFC9; /* 蓝灰 - 温润柔和 */
     --sidebar-title-color: #C8836A;
     --sidebar-star-color: #C8836A;
     --reference-title-color: #6A9CAB;
@@ -1751,51 +1751,56 @@ span.rm-page-ref[data-tag="h/orange"] {
     --tree-node-color: #6A9CAB;
     --code-selection-color: #4A6A74;
 
-    /* Tags */
-    --tag-tweet: #6A9CAB;
-    --tag-literature: #A89EA8;
-    --tag-evergreens: #7AAA8E;
-    --tag-seedling: #8AB0A8;
-    --tag-idea-bank: #C8937A;
-    --tag-illustrated: #6A9CAB;
-    --tag-garden: #8AAC8A;
-    --tag-video-tutorial: #C8836A;
-    --tag-essay: #8AAC8A;
-    --tag-livestream: #B8836A;
-    --tag-talk: #7A9CA8;
-    --tag-waiting: #A0A098;
-    --tag-researching: #7AAA8E;
-    --tag-synthesising: #A89EA8;
-    --tag-alive: #C8836A;
-    --tag-book: #8A9AA8;
-    --tag-evergreen-page: #7AAA8E;
-    --tag-arrow: #6A9CAB;
-    --tag-project: #A89EA8;
-    --tag-area: #8AAC8A;
-    --tag-course: #6A9CAB;
-    --tag-idea: #C8937A;
-    --tag-claim-color: #B8836A;
-    --tag-questions-color: #6A9CAB;
-    --tag-response-color: #A89EA8;
-    --tag-evidence-color: #a0a0a0;
-    --tag-directquote-color: #50b090;
+    /* Tag Colors - 中国传统颜色（夜间模式）*/
+    /* 🔵 蓝青色系 */
+    --tag-tweet: #70F3FF;           /* 蔚蓝 - 明亮清新 */
+    --tag-illustrated: #70F3FF;     /* 蔚蓝 */
+    --tag-course: #70F3FF;          /* 蔚蓝 */
+    --tag-arrow: #70F3FF;           /* 蔚蓝 */
+    --tag-talk: #4C8DAE;            /* 群青 - 柔和沟通 */
+    --tag-book: #A1AFC9;            /* 蓝灰 - 温润知识 */
+    
+    /* 🟣 紫色系 */
+    --tag-literature: #CCA4E3;      /* 丁香 - 优雅文学 */
+    --tag-project: #CCA4E3;         /* 丁香 */
+    --tag-synthesising: #CCA4E3;    /* 丁香 */
+    --tag-response: #B0A4E3;        /* 雪青 - 柔和回应 */
+    
+    /* 🟢 绿色系 */
+    --tag-evergreens: #2EDFA3;      /* 玉 - 温润常青 */
+    --tag-researching: #2EDFA3;     /* 玉 */
+    --tag-evergreen-page: #2EDFA3;  /* 玉 */
+    --tag-directquote-color: #2EDFA3; /* 玉 */
+    --tag-garden: #A4E2C6;          /* 艾绿 - 生机盎然 */
+    --tag-essay: #A4E2C6;           /* 艾绿 */
+    --tag-area: #A4E2C6;            /* 艾绿 */
+    --tag-seedling: #BCE672;        /* 松花 - 嫩绿新生 */
+    
+    /* 🟠 橙黄色系 */
+    --tag-idea-bank: #E29C45;       /* 黄栌 - 灵感火花 */
+    --tag-idea: #E29C45;            /* 黄栌 */
+    --tag-video-tutorial: #FFA631;  /* 杏黄 - 温暖教学 */
+    --tag-alive: #FFA631;           /* 杏黄 */
+    --tag-livestream: #FFA631;      /* 杏黄 */
+    --tag-claim-color: #FA8C35;     /* 橙色 - 鲜明观点 */
+    
+    /* ⚪ 灰色系 */
+    --tag-waiting: #BACAC6;         /* 老银 - 静待时机 */
+    --tag-evidence-color: #88ADA6;  /* 水 - 清澈证据 */
+    --tag-questions-color: #48C0A3; /* 青碧 - 探索问题 */
 
-    /* Block Backgrounds */
     --block-claim-bg: rgba(192, 80, 80, 0.1);
     --block-questions-bg: rgba(74, 158, 208, 0.1);
     --block-response-bg: rgba(160, 112, 144, 0.1);
     --block-evidence-bg: rgba(160, 160, 160, 0.08);
     --block-directquote-bg: rgba(80, 176, 144, 0.1);
 
-    /* Semantic Overrides */
     --code-bg: rgba(255, 255, 255, 0.03);
     --inline-code-bg: rgba(255, 255, 255, 0.06);
-
     --embed-bg: rgba(255, 255, 255, 0.03);
     --embed-hover-bg: rgba(255, 255, 255, 0.06);
     --reference-item-bg: rgba(255, 255, 255, 0.04);
     --reference-item-hover-bg: rgba(255, 255, 255, 0.08);
-
     --kanban-column-bg: rgba(255, 255, 255, 0.02);
     --kanban-card-bg: rgba(255, 255, 255, 0.04);
     --kanban-card-hover-bg: rgba(255, 255, 255, 0.07);
@@ -1812,14 +1817,33 @@ span.rm-page-ref[data-tag="h/orange"] {
     --sidebar-icon-hover-filter: drop-shadow(0 0 4px rgba(97, 175, 239, 0.4));
   }
 
-  /* ------------------- 14.2 Code Blocks ------------------- */
-  /* Code Mirror Active Line Gutter */
+  /* Dark mode search input */
+  body #find-or-create-input {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: var(--text-color) !important;
+  }
+
+  body #find-or-create-input:focus {
+    background-color: var(--bg-color) !important;
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 2px rgba(106, 156, 171, 0.3) !important;
+  }
+
+  /* Dark mode autocomplete */
+  body .rm-autocomplete__results .dont-unfocus-block {
+    background-color: transparent !important;
+  }
+
+  body .rm-autocomplete__results .dont-unfocus-block:hover {
+    background-color: rgba(106, 156, 171, 0.15) !important;
+  }
+
+  /* Code blocks */
   body .cm-focused .cm-activeLineGutter {
     background-color: rgba(255, 255, 255, 0.1) !important;
     color: var(--color-primary) !important;
   }
 
-  /* roam/js Code Block Warning */
   body .rm-code-warning,
   body .roam-block-container[data-page-links*="roam/js"] .rm-code-warning,
   body .bp3-card {
@@ -1844,12 +1868,11 @@ span.rm-page-ref[data-tag="h/orange"] {
     background-color: #4a4a4e !important;
   }
 
-  /* ------------------- 14.3 Tags ------------------- */
-  /* Stroked Style in Dark Mode */
+  /* Dark mode tags (stroked style) - 中国传统色 */
   body span.rm-page-ref.rm-page-ref--tag {
-    background: rgba(200, 147, 122, 0.15);
-    border: 1px solid rgba(200, 147, 122, 0.4);
-    color: var(--color-secondary) !important;
+    background: rgba(239, 127, 130, 0.12); /* 嫣红底色 */
+    border: 1px solid rgba(239, 127, 130, 0.35);
+    color: #EF7A82 !important; /* 嫣红 - 柔和雅致 */
   }
 
   body span.rm-page-ref[data-tag="Tweet"],
@@ -1921,8 +1944,7 @@ span.rm-page-ref[data-tag="h/orange"] {
     border-color: var(--tag-alive);
   }
 
-  /* ------------------- 14.4 Components ------------------- */
-  /* Popover Arrows */
+  /* Popover arrows */
   body .bp3-popover-arrow-fill {
     fill: #333336 !important;
   }
@@ -1931,26 +1953,51 @@ span.rm-page-ref[data-tag="h/orange"] {
     fill: #454545 !important;
   }
 
-  /* Enhanced Blockquote */
+  /* Blockquote - 夜间雅致卡片风格 */
   body .rm-bq {
-    background-color: rgba(56, 62, 71, 0.6) !important;
-    border-left: 4px solid #61AFEF !important;
-    color: #E6EDF3 !important;
-    font-style: italic;
-    padding: 12px 18px !important;
-    border-radius: 0 6px 6px 0 !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    margin: 10px 0 !important;
+    position: relative;
+    background: linear-gradient(135deg,
+      rgba(46, 223, 163, 0.08) 0%,
+      rgba(164, 226, 198, 0.04) 100%) !important; /* 玉色对角渐变 */
+    border: 1px solid rgba(164, 226, 198, 0.2) !important; /* 艾绿全边框 */
+    border-left: 4px solid #A4E2C6 !important; /* 左侧强调 - 艾绿 */
+    border-radius: 6px !important; /* 统一圆角 */
+    padding: 12px 18px 12px 14px !important;
+    margin: 0 !important;
+    font-style: normal;
+    line-height: 1.6;
+    color: #D6ECF0 !important; /* 月白 */
+    box-shadow: 0 1px 6px rgba(46, 223, 163, 0.08) !important;
+    transition: all 0.25s ease;
   }
 
-  /* Sidebar Text Visibility */
+  body .rm-bq:hover {
+    background: linear-gradient(135deg,
+      rgba(46, 223, 163, 0.12) 0%,
+      rgba(164, 226, 198, 0.06) 100%) !important;
+    border-left-color: #2EDFA3 !important; /* 玉色 */
+    border-color: rgba(164, 226, 198, 0.3) !important;
+    box-shadow: 0 2px 10px rgba(46, 223, 163, 0.15) !important;
+    transform: translateY(-1px); /* 轻微上浮 */
+  }
+  }
+
+  /* Inactive CSS block */
+  body .rm-roam-css--inactive {
+    background-color: rgba(106, 55, 55, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 6px !important;
+    backdrop-filter: blur(5px);
+  }
+
+  /* Sidebar text */
   .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page,
   .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button,
   .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .top-row {
     color: #D8D4C8 !important;
   }
 
-  /* ------------------- 14.5 Command Palette ------------------- */
+  /* Command palette */
   body .rm-command-palette {
     background-color: var(--popover-bg) !important;
     border: 1px solid var(--popover-border) !important;
@@ -2002,7 +2049,7 @@ span.rm-page-ref[data-tag="h/orange"] {
     color: white !important;
   }
 
-  /* Shortcut Text */
+  /* Command palette shortcut text */
   html body .rm-command-palette .rm-menu-item .rm-command-palette__shortcut,
   html body .rm-command-palette .rm-command-palette__shortcut {
     color: #000000 !important;
@@ -2010,4 +2057,14 @@ span.rm-page-ref[data-tag="h/orange"] {
     font-weight: 500 !important;
     visibility: visible !important;
   }
-}
+
+  /* Datepicker */
+  body .bp3-datepicker {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  body .DayPicker-Day:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+  }
+
