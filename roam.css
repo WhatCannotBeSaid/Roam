@@ -195,21 +195,33 @@ body,
 }
 
 /* ========================================================= */
-/* 3. Typography - 排版样式                                     */
+/* 3. Typography - 排版样式 (修复：增强选择器权重)              */
 /* ========================================================= */
-h1, h2, h3, h4, h5, h6,
-.rm-level1, .rm-level2,
-.rm-level3 .rm-title-editing-display {
+
+/* 🔧 FIX: 基础标题样式 - 提升选择器优先级，确保变量正确应用 */
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5,
+html body h6,
+html body .rm-level1,
+html body .rm-level2,
+html body .rm-level3,
+html body .rm-title-editing-display {
   font-family: var(--header-font);
   color: var(--text-color);
 }
 
-.rm-title-editing-display textarea {
+/* 🔧 FIX: 标题输入框 */
+html body .rm-title-editing-display textarea {
   font-family: var(--header-font);
   font-size: 1em;
+  color: var(--text-color);
 }
 
-div, textarea {
+html body div,
+html body textarea {
   font-family: var(--body-font);
   font-size: var(--font-size);
   color: var(--text-color);
@@ -220,32 +232,37 @@ div, textarea {
   font-size: 1.1em;
 }
 
-/* Headings / 标题 */
-h1,
-.rm-level1,
-.rm-heading-level-1 > .rm-block__self .rm-block__input {
+/* 🔧 FIX: H1 标题 - 使用更强的选择器确保变量生效 */
+html body h1,
+html body .rm-level1,
+html body .rm-heading-level-1 > .rm-block__self .rm-block__input {
   color: var(--heading-h1-color) !important;
   font-size: 1.8rem;
   font-weight: 600;
   font-family: var(--heading-block-font);
+  transition: color 0.2s ease; /* 添加过渡效果 */
 }
 
-h2,
-.rm-level2,
-.rm-heading-level-2 > .rm-block__self .rm-block__input {
+/* 🔧 FIX: H2 标题 */
+html body h2,
+html body .rm-level2,
+html body .rm-heading-level-2 > .rm-block__self .rm-block__input {
   color: var(--heading-h2-color) !important;
   font-size: 1.6rem;
   font-weight: 500;
   font-family: var(--heading-block-font) !important;
+  transition: color 0.2s ease;
 }
 
-h3,
-.rm-level3,
-.rm-heading-level-3 > .rm-block__self .rm-block__input {
+/* 🔧 FIX: H3 标题 */
+html body h3,
+html body .rm-level3,
+html body .rm-heading-level-3 > .rm-block__self .rm-block__input {
   color: var(--heading-h3-color) !important;
   font-weight: 400;
   font-size: 1.4rem;
   font-family: var(--heading-block-font);
+  transition: color 0.2s ease;
 }
 
 /* Links / 链接 */
@@ -1554,15 +1571,16 @@ span.rm-page-ref[data-tag="h/orange"] {
 }
 
 /* ========================================================= */
-/* 13. Dark Mode Specifics - 夜间模式专用逻辑                  */
+/* 13. Dark Mode Specifics - 夜间模式专用逻辑 (修复：变量作用域) */
 /* ========================================================= */
 /* 
- * 设计理念：玄墨为底，月白为字，传统五色点缀
- * 逻辑：主要通过变量覆盖实现，仅保留必要的特殊样式覆盖
+ * 设计理念：玄墨为底,月白为字,传统五色点缀
+ * 🔧 FIX: 将变量定义从body移至:root确保正确继承
  */
 
 @media (prefers-color-scheme: dark) {
-  body {
+  /* 🔧 FIX: 使用:root而非body以确保变量全局可用 */
+  :root {
     /* 背景色系 - 夜间护眼模式 */
     --bg-color: #2A2A2A; /* 缁色 - 深黑带灰 */
     --page-color: #2A2A2A; /* 与背景一致 */
@@ -1577,7 +1595,7 @@ span.rm-page-ref[data-tag="h/orange"] {
     --color-secondary: #C8937A; /* 檀色亮版 */
     --color-subtle-border: #4A4A42; /* 缁色边框 */
   
-    /* 强调色 - 夜间柔和版 */
+    /* 🔧 FIX: 强调色 - 确保标题颜色在暗黑模式下正确更新 */
     --block-highlight-color: #A89EA8; /* 藕荷亮版 */
     --heading-h1-color: #E8E4D8; /* 缟色 */
     --heading-h2-color: #D8D4C8; /* 缟色 */
