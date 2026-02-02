@@ -25,11 +25,13 @@
 /* 1. CSS Variables                                          */
 /* ========================================================= */
 :root {
-  /* Typography */
-  --header-font: "Futura", "方正颜真卿楷书 简";
-  --body-font: "Optima", "HYKongShanKai", "汉仪空山楷 简", "汉仪空山楷", sans-serif;
-  --code-font: "Fira Code", "方正屏显雅宋_GBK";
-  --heading-block-font: "Palatino Linotype", "方正清刻本悦宋简体";
+  /* Typography - 页面标题 / h1-h3 / 正文 / 引用 / 标签 / 代码块 */
+  --title-font: 'Arno Pro Display', '文悦古典明朝体 简入繁出 (需授权)';          /* 页面标题 */
+  --heading-font: 'Optima', '方正颜真卿楷书 简';         /* h1-h3 */
+  --body-font: "Palatino Linotype", "方正屏显雅宋_GBK"; /* 正文 */
+  --quote-font: "Centaur MT Pro", "方正清刻本悦宋 简繁";             /* 引用 */
+  --tag-font: "Cronos Pro", '方正宋刻本秀楷简体';  /* 标签 */
+  --code-font: "Operator Mono", "Sarasa Term SC";                      /* 代码块 */
 
   /* Transitions & Borders */
   --transition-fast: 0.2s ease;
@@ -177,12 +179,12 @@ html body .rm-level1,
 html body .rm-level2,
 html body .rm-level3,
 html body .rm-title-editing-display {
-  font-family: var(--header-font);
+  font-family: var(--heading-font);
   color: var(--text-color);
 }
 
 html body .rm-title-editing-display textarea {
-  font-family: var(--header-font);
+  font-family: var(--heading-font);
   font-size: 1em;
   color: var(--text-color);
 }
@@ -205,10 +207,10 @@ html body textarea {
 
 /* 页面标题 */
 .roam-body .roam-app .roam-main .roam-article .rm-title-display {
-  font-size: 2em !important; /* 最大 - 页面主题 */
-  line-height: 1.4 !important;
-  font-weight: 700;
-  font-family: var(--heading-block-font);
+  font-size: 2.4em !important; /* 最大 - 页面主题 */
+  line-height: 1.1 !important;
+  font-weight: 600;
+  font-family: var(--title-font);
 }
 
 /* H1 */
@@ -219,7 +221,7 @@ html body .rm-heading-level-1 > .rm-block__self .rm-block__input {
   font-size: 1.6em; /* 重要章节 */
   line-height: 1.4 !important;
   font-weight: 600;
-  font-family: var(--heading-block-font);
+  font-family: var(--heading-font);
   transition: color 0.2s ease;
 }
 
@@ -231,7 +233,7 @@ html body .rm-heading-level-2 > .rm-block__self .rm-block__input {
   font-size: 1.4em; /* 次级章节 */
   line-height: 1.4 !important;
   font-weight: 500;
-  font-family: var(--heading-block-font) !important;
+  font-family: var(--heading-font) !important;
   transition: color 0.2s ease;
 }
 
@@ -243,7 +245,7 @@ html body .rm-heading-level-3 > .rm-block__self .rm-block__input {
   font-size: 1.25em; /* 三级标题 */
   line-height: 1.4 !important;
   font-weight: 400;
-  font-family: var(--heading-block-font);
+  font-family: var(--heading-font);
   transition: color 0.2s ease;
 }
 
@@ -716,7 +718,7 @@ div.roam-sidebar-container.noselect > div > div {
   border-radius: 0;
   padding: 4px 0 4px 14px;
   margin: 0;
-  font-family: "HYKongShanKai", "汉仪空山楷 简", "汉仪空山楷", cursive;
+  font-family: var(--quote-font);
   font-size: 0.96em;
   line-height: 1.6;
   color: #50616D;
@@ -977,6 +979,7 @@ span.rm-page-ref.rm-page-ref--tag[data-tag] {
 
 span.rm-page-ref.rm-page-ref--tag[data-tag]::after {
   content: attr(data-tag);
+  font-family: var(--tag-font);
   font-size: 12px;
   line-height: 1.5;
   color: inherit;
@@ -1451,7 +1454,7 @@ span.rm-page-ref[data-tag="h/orange"] {
 
 .rm-sync-tooltip__title {
   color: var(--text-color) !important;
-  font-family: var(--header-font) !important;
+  font-family: var(--heading-font) !important;
   font-size: 1.1em !important;
   font-weight: 600 !important;
   margin-bottom: 8px !important;
@@ -1509,7 +1512,7 @@ span.rm-page-ref[data-tag="h/orange"] {
 .bp3-datepicker-caption select {
   color: var(--text-color) !important;
   font-weight: 600 !important;
-  font-family: var(--header-font) !important;
+  font-family: var(--heading-font) !important;
 }
 
 .bp3-datepicker-caption .bp3-icon {
