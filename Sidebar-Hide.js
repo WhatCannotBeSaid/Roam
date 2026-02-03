@@ -12,7 +12,8 @@
     const CONFIG = {
         triggerWidth: 15,          // 触发区域宽度（像素）
         collapseDelay: 300,        // 鼠标离开后收回的延迟（毫秒）
-        sidebarWidth: '300px',     // 悬浮侧边栏宽度
+        sidebarWidth: '240px',     // 侧栏宽度（与 roam.css .roam-sidebar-container 一致）
+        sidebarMinWidth: '200px',  // 侧栏最小宽度
     };
 
     let collapseTimer = null;
@@ -33,16 +34,16 @@
             width: ${CONFIG.sidebarWidth} !important;
             z-index: 2000 !important;
             
-            /* 视觉样式 */
-            background-color: var(--bg-color, #ffffff) !important;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25) !important;
+            /* 视觉样式 - 使用主题变量，日夜自适应 */
+            background-color: var(--bg-color, #F3F9F1) !important;
+            box-shadow: var(--shadow-floating, 0 10px 30px rgba(80, 97, 109, 0.16)) !important;
             border-radius: 0 16px 16px 0 !important;
             
             /* 动画与过渡 */
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
             transform: translateX(-105%) !important; /* 默认隐藏 */
             opacity: 0.95;
-            overflow: hidden !important;
+            overflow: visible !important; /* 让图下拉 popover 能超出侧栏宽度 */
         }
 
         /* 展开状态 */
@@ -50,7 +51,13 @@
             transform: translateX(0) !important; /* 滑入显示 */
             opacity: 1;
         }
-        
+
+        /* 标题行（含图下拉）提到最前，避免被同级的 shortcuts 遮住 */
+        .roam-sidebar-container .roam-sidebar-content .top-row {
+            z-index: 99999 !important;
+            position: relative;
+        }
+
         /* 触发区域样式 */
         .roam-sidebar-expander {
             position: fixed;

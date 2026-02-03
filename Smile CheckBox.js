@@ -26,8 +26,34 @@ if (!existing) {
     injectSmileyFace();
 
     // 2. 监听页面变化（因为 Roam 是动态加载的）
-    var observer = new MutationObserver(injectSmileyFace);
-    observer.observe(document.body, { childList: true, subtree: true });
+    var pending = false;
+    var scheduleInject = () => {
+        if (pending) return;
+        pending = true;
+        requestAnimationFrame(() => {
+            pending = false;
+            injectSmileyFace();
+        });
+    };
+
+    var observer = new MutationObserver((mutations) => {
+        const shouldCheck = mutations.some((mutation) => {
+            if (!mutation.addedNodes || mutation.addedNodes.length === 0) return false;
+            return Array.from(mutation.addedNodes).some((node) => {
+                if (node.nodeType !== 1) return false;
+                const el = node;
+                return el.classList?.contains('roam-block-container')
+                    || el.querySelector?.('.roam-block-container')
+                    || el.classList?.contains('rm-block__input')
+                    || el.querySelector?.('.rm-block__input');
+            });
+        });
+        if (!shouldCheck) return;
+        scheduleInject();
+    });
+
+    var root = document.querySelector('.roam-app') || document.body;
+    observer.observe(root, { childList: true, subtree: true });
 
     document.getElementsByTagName("head")[0].appendChild(extension);
 }
