@@ -45,10 +45,15 @@
  * 14. Autocomplete & Menus
  * 15. Dark Mode
  * 16. Theme Toggle Button
+ * 17. Deep Borderless & Accessibility
+ * 18. References - Borderless Immersion
+ *
+ * Optimization (参考 lesswrong.css / system.css)：布局与动效使用 --layout-* / --transition-* 变量，
+ * 日间 .bp3-dark 覆盖已合并为少组选择器；字体与配色未改动。
  */
 
 /* ========================================================= */
-/* 1. CSS Variables                                          */
+/* 1. CSS Variables (Light) - 格式/顺序对齐 lesswrong.css   */
 /* ========================================================= */
 :root,
 .roam-app {
@@ -59,12 +64,11 @@
   --quote-font: 'Centaur MT Pro', 'Centaur', '方正灵飞经小楷 简', serif;
   --tag-font: 'Cronos Pro', 'Cronos', 'FZSongKeBenXiuKai-R-GBK', '方正宋刻本秀楷 简', '方正宋刻本秀楷', sans-serif;
   --code-font: 'Operator Mono', 'Operator Mono SSm', 'Sarasa Term SC', '更纱黑体 SC', monospace;
-
-  /* Typography base */
   --font-size: 1rem;
 
-  /* Transitions & Borders */
+  /* Transitions & Borders (bt/br/bb/bl/bd 顺序) */
   --transition-normal: 0.25s ease;
+  --transition-fast: 0.18s ease;
   --border-radius-sm: 6px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
@@ -76,13 +80,9 @@
   --m-text: #313233;     /* 墨色 - 正文 */
   --m-ink: #424C50;      /* 鸦青 - 避免纯黑 #000 */
   --m-text-muted: #758A99; /* 墨灰 */
-
-  /* 主色相：竹青 / 枯黄（类比色 ΔH≈30°） */
   --m-primary: #789262;   /* 竹青 */
   --m-secondary: #D3B17D; /* 枯黄 - 秋香系辅助 */
   --m-sidebar-title: var(--m-primary);
-
-  /* 辅助色（全部来自 Masantu 传统色） */
   --m-title-display: #161823;     /* 页面标题 - 漆黑 */
   --m-page-tag: #75878A;          /* 苍色 - 弱化标签 */
   --m-heading-h1: #177CB0;        /* 靛青 */
@@ -108,31 +108,26 @@
   --m-warn: #CA6924;                /* 琥珀 - 警示 */
   --m-popover: var(--m-surface);
   --m-page-ref: #48C0A3;            /* 双链 - 青碧 */
-  --m-page-ref-hover: #1BD1A5;      /* 双链 hover - 碧，饱和度更高、可点击提示 */
+  --m-page-ref-hover: #1BD1A5;      /* 双链 hover - 碧 */
   --m-link: #4B5CC4;                /* 普通链接 - 宝蓝 */
 
-  /* 映射到既有主题语义变量（全文件只使用这一套变量名） */
+  /* 映射到既有主题语义变量（bc/co 顺序） */
   --bg-color: var(--m-bg);
   --page-color: var(--m-surface);
   --text-color: var(--m-text);
   --light-text-color: var(--m-text-muted);
   --page-tag-color: var(--m-page-tag);
-
   --color-primary: var(--m-primary);
   --color-secondary: var(--m-secondary);
   --color-primary-light: oklch(from var(--m-primary) l c h / 0.14);
   --color-primary-highlight: oklch(from var(--m-primary) l c h / 0.10);
   --color-subtle-border: oklch(from var(--m-text) l c h / 0.10);
-
-  /* Headings & 页面标题 */
   --title-display-color: var(--m-title-display);
   --heading-h1-color: var(--m-heading-h1);
   --heading-h2-color: var(--m-heading-h2);
   --heading-h3-color: var(--m-heading-h3);
   --blockquote-text: var(--m-blockquote);
   --reference-strong-color: var(--m-reference-strong);
-
-  /* Semantic Colors（选中高亮 .block-highlight-blue 使用单一背景） */
   --block-highlight-bg: oklch(from var(--m-primary) l c h / 0.58);
   --sidebar-title-color: var(--m-sidebar-title);
   --sidebar-star-color: var(--m-sidebar-star);
@@ -140,11 +135,10 @@
   --checkbox-checked-color: var(--m-checkbox-checked);
   --tree-node-color: var(--m-primary);
   --code-selection-color: var(--m-code-selection);
-
-  --bullet-bg: oklch(from var(--m-primary) l c h / 0.4); /* 竹青 40% */
+  --bullet-bg: oklch(from var(--m-primary) l c h / 0.4);
   --bullet-border: var(--color-primary);
 
-  /* Component Backgrounds - 墨/竹青微透明 */
+  /* Component Backgrounds (bc) */
   --code-bg: oklch(from var(--m-text) l c h / 0.04);
   --inline-code-bg: oklch(from var(--m-text) l c h / 0.06);
   --embed-bg: oklch(from var(--m-text) l c h / 0.03);
@@ -155,7 +149,7 @@
   --kanban-card-bg: oklch(from var(--m-primary) l c h / 0.05);
   --kanban-card-hover-bg: oklch(from var(--m-primary) l c h / 0.10);
 
-  /* Shadows / Focus / Selection / Scrollbar（同名变量，日夜仅值不同） */
+  /* Shadows / Focus / Selection / Scrollbar (sd) */
   --shadow-soft: 0 6px 18px oklch(from var(--m-ink) l c h / 0.12);
   --shadow-floating: 0 10px 30px oklch(from var(--m-ink) l c h / 0.16);
   --focus-ring: 0 0 0 3px oklch(from var(--m-primary) l c h / 0.28);
@@ -164,78 +158,61 @@
   --scrollbar-track: oklch(from var(--m-text) l c h / 0.06);
   --scrollbar-thumb: oklch(from var(--m-primary) l c h / 0.35);
   --scrollbar-thumb-hover: oklch(from var(--m-primary) l c h / 0.52);
-
-  /* 组件内部“近白”文字（避免纯白） */
   --on-accent: var(--m-on-accent);
 
-  /* Popover */
+  /* Popover (bc / border / sd) */
   --popover-bg: var(--m-popover);
   --popover-border: transparent;
   --popover-shadow: var(--shadow-floating);
 
-  /* 交互语义（用于“日夜结构同构”，仅变量值切换） */
+  /* 交互语义 / Datepicker / Find-or-Create */
   --menu-hover-bg: var(--color-primary-light);
   --menu-hover-text: var(--text-color);
   --btn-disabled-text: oklch(from var(--m-text) l c h / 0.55);
   --tooltip-text: var(--text-color);
-
-  /* Datepicker（同构语义变量） */
   --datepicker-day-hover-bg: var(--color-primary-light);
   --datepicker-day-hover-text: var(--text-color);
   --datepicker-day-selected-bg: var(--color-primary);
   --datepicker-day-selected-text: var(--on-accent);
-
-  /* Find-or-Create / Autocomplete（同构语义变量） */
   --find-input-bg: oklch(from var(--m-text) l c h / 0.06);
   --find-input-focus-bg: var(--page-color);
   --find-input-focus-shadow: var(--shadow-soft);
   --autocomplete-row-hover-bg: transparent;
   --autocomplete-row-hover-text: var(--color-primary);
-
   --ui-surface-bg: var(--popover-bg);
   --ui-surface-text: var(--text-color);
   --ui-surface-shadow: var(--popover-shadow);
   --ui-surface-radius: var(--border-radius-lg);
 
-  /* Sync Indicator（同构语义变量） */
+  /* Sync Indicator (border / sd) */
   --sync-warn-border: var(--m-warn);
   --sync-warn-shadow: 0 0 12px oklch(from var(--m-warn) l c h / 0.25);
   --sync-warn-focus-shadow: 0 0 0 2px oklch(from var(--m-warn) l c h / 0.20), 0 4px 16px oklch(from var(--m-warn) l c h / 0.10);
   --sync-synced-border: transparent;
   --sync-synced-border-color: oklch(from var(--m-primary) l c h / 0.30);
   --sync-synced-focus-shadow: 0 0 0 2px oklch(from var(--m-sidebar-star) l c h / 0.20), 0 4px 12px oklch(from var(--m-ink) l c h / 0.12);
-
-  /* Inline Fix / Search hit */
   --search-hit-bg: oklch(from var(--m-highlight-yellow) l c h / 0.40);
   --autocomplete-match-bg: oklch(from var(--m-highlight-yellow) l c h / 0.30);
 
-  /* Typography accents */
+  /* Typography accents / Tags / Blockquote / Warnings */
   --strong-color: var(--heading-h1-color);
-
-  /* Tags / Blockquote / Warnings */
   --tag-bg: oklch(from var(--m-primary) l c h / 0.12);
   --tag-bg-hover: oklch(from var(--m-primary) l c h / 0.18);
   --tag-text: var(--m-tag);
   --blockquote-bar: oklch(from var(--m-primary) l c h / 0.55);
-
   --code-warning-surface: var(--popover-bg);
   --code-warning-code-bg: var(--code-bg);
   --code-warning-text: var(--text-color);
   --code-warning-btn-bg: var(--color-primary-light);
   --code-warning-btn-hover-bg: var(--color-primary-highlight);
-
   --danger-bg: oklch(from var(--m-highlight-red) l c h / 0.20);
   --danger-border: oklch(from var(--m-highlight-red) l c h / 0.28);
 
-  /* Sidebar */
+  /* Sidebar (co / sd) */
   --sidebar-text-day: var(--heading-h2-color);
   --sidebar-hover-bg: var(--color-primary-highlight);
   --title-text-shadow: 0 1px 2px oklch(from var(--m-ink) l c h / 0.05);
-
-  /* Solid ink（用于用户头像 bullet 等需要“实心色块”的地方） */
   --ink-solid: var(--m-ink);
-
-  /* Bullet micro-interaction */
   --bullet-hover-shadow: 0 0 8px oklch(from var(--m-primary) l c h / 0.35);
   --bullet-closed-shadow: 0 0 4px oklch(from var(--m-primary) l c h / 0.45);
   --bullet-focus-border: oklch(from var(--m-secondary) l c h / 0.35);
@@ -249,11 +226,9 @@
   --toggle-face-bg: var(--on-accent);
   --toggle-eye-off: var(--color-secondary);
   --toggle-eye-on: var(--checkbox-checked-color);
-
-  /* Settings */
   --settings-accent-bg: var(--color-primary);
 
-  /* Highlights - 中国传统色 */
+  /* Highlights - 中国传统色 (co) */
   --highlight-underline: var(--m-highlight-underline);
   --highlight-underline-fade: oklch(from var(--m-highlight-yellow) l c h / 0);
   --highlight-text: inherit;
@@ -263,9 +238,7 @@
   --highlight-red: var(--m-highlight-red);
   --highlight-purple: var(--m-highlight-purple);
   --highlight-orange: var(--m-highlight-orange);
-
-  /* Sidebar - 日间浅底用深色字，夜间深底用浅色字（夜间在 body.rm-dark-theme 中覆盖） */
-  --sidebar-icon-color: var(--m-sidebar-icon);  /* 墨 - 日间图标 */
+  --sidebar-icon-color: var(--m-sidebar-icon);
   --sidebar-icon-hover-color: var(--color-primary);
   --sidebar-icon-hover-filter: none;
   --sidebar-title-color-day: var(--m-sidebar-title-day);
@@ -274,25 +247,19 @@
   color-scheme: light;
 }
 
-/* Night Mode - Masantu 中国传统色（APCA 负极性 Lc 60–80，正文非 #FFF） */
+/* Night Mode - Masantu（APCA 负极性 Lc 60–80，正文非 #FFF）
+ * 仅以 rm-dark-theme 作为暗色真值来源。
+ */
 html.rm-dark-theme,
 body.rm-dark-theme,
-.rm-dark-theme,
-.bp3-dark,
-[data-theme="dark"],
-.roam-body.dark,
 html.rm-dark-theme .roam-app,
 body.rm-dark-theme .roam-app,
-.rm-dark-theme .roam-app,
-.bp3-dark .roam-app,
-[data-theme="dark"] .roam-app,
-.roam-body.dark .roam-app {
+.rm-dark-theme .roam-app {
   --m-bg: #2B333E;         /* 玄青 - 主背景 */
   --m-surface: #2B333E;    /* 玄青 */
-  --m-text: #E6EAE9;       /* 月影白 - 正文，Lc 60–80 */
+  --m-text: #E6EAE9;       /* 月影白 - 正文 Lc 60–80 */
   --m-text-muted: #A1AFC9; /* 蓝灰 */
   --m-page-tag: #B0A4E3;   /* 雪青 - 弱化标签 */
-
   --m-primary: #1685A9;      /* 石青 - 主色 */
   --m-secondary: #C83C23;    /* 绯红 - 分裂补色强调 */
   --m-sidebar-title: #48C0A3; /* 青碧 */
@@ -311,13 +278,10 @@ body.rm-dark-theme .roam-app,
   --m-tag: #8C4356;               /* 标签 - 绛紫 */
   --m-link: #D2F0F4;              /* 水蓝 - 普通链接 */
   --m-page-ref: #3DE1AD;          /* 双链 */
-  --m-page-ref-hover: #2EDFA3;    /* 双链 hover - 玉，略降明度模拟按压 */
+  --m-page-ref-hover: #2EDFA3;    /* 双链 hover - 玉 */
   --m-reference-strong: var(--m-sidebar-star);
-
   --block-highlight-bg: oklch(from var(--m-primary) l c h / 0.58);
-
   --color-subtle-border: oklch(from var(--m-text) l c h / 0.08);
-
   --code-bg: oklch(from var(--m-text) l c h / 0.03);
   --inline-code-bg: oklch(from var(--m-text) l c h / 0.06);
   --embed-bg: oklch(from var(--m-text) l c h / 0.03);
@@ -327,67 +291,55 @@ body.rm-dark-theme .roam-app,
   --kanban-column-bg: oklch(from var(--m-text) l c h / 0.02);
   --kanban-card-bg: oklch(from var(--m-text) l c h / 0.04);
   --kanban-card-hover-bg: oklch(from var(--m-text) l c h / 0.07);
-
   --popover-shadow: 0 4px 24px oklch(from var(--m-ink) l c h / 0.35);
-
   --shadow-soft: 0 8px 24px oklch(from var(--m-ink) l c h / 0.32);
   --shadow-floating: 0 10px 30px oklch(from var(--m-ink) l c h / 0.38);
   --focus-ring: 0 0 0 3px oklch(from var(--m-primary) l c h / 0.35);
   --selection-bg: oklch(from var(--m-primary) l c h / 0.58);
   --selection-text: var(--m-on-accent);
-
   --scrollbar-track: oklch(from var(--m-text) l c h / 0.05);
   --scrollbar-thumb: oklch(from var(--m-primary) l c h / 0.40);
   --scrollbar-thumb-hover: oklch(from var(--m-primary) l c h / 0.55);
-
   --menu-hover-bg: oklch(from var(--m-primary) l c h / 0.25);
   --menu-hover-text: var(--on-accent);
   --btn-disabled-text: oklch(from var(--m-text) l c h / 0.55);
-
   --datepicker-day-hover-bg: oklch(from var(--m-text) l c h / 0.10);
   --datepicker-day-hover-text: var(--on-accent);
-
   --find-input-bg: oklch(from var(--m-text) l c h / 0.05);
   --find-input-focus-bg: var(--bg-color);
   --find-input-focus-shadow: 0 0 0 2px oklch(from var(--m-primary) l c h / 0.30);
   --autocomplete-row-hover-bg: oklch(from var(--m-primary) l c h / 0.15);
   --autocomplete-row-hover-text: var(--text-color);
-
   --search-hit-bg: oklch(from var(--m-highlight-yellow) l c h / 0.25);
   --autocomplete-match-bg: oklch(from var(--m-highlight-yellow) l c h / 0.20);
-
   --tag-bg: oklch(from var(--m-text) l c h / 0.08);
   --tag-bg-hover: oklch(from var(--m-text) l c h / 0.12);
   --tag-text: var(--m-tag);
   --blockquote-bar: oklch(from var(--m-primary) l c h / 0.55);
-
   --code-warning-surface: var(--popover-bg);
   --code-warning-code-bg: oklch(from var(--m-ink) l c h / 0.55);
   --code-warning-text: var(--on-accent);
   --code-warning-btn-bg: oklch(from var(--m-primary) l c h / 0.20);
   --code-warning-btn-hover-bg: oklch(from var(--m-primary) l c h / 0.28);
-
   --danger-bg: oklch(from var(--m-highlight-red) l c h / 0.40);
   --danger-border: oklch(from var(--m-text) l c h / 0.10);
-
   --bullet-hover-shadow: 0 0 8px oklch(from var(--m-primary) l c h / 0.35);
   --bullet-closed-shadow: 0 0 4px oklch(from var(--m-primary) l c h / 0.45);
   --bullet-focus-border: oklch(from var(--m-secondary) l c h / 0.35);
   --bullet-focus-shadow: oklch(from var(--m-secondary) l c h / 0.30);
-
   --toggle-off-shadow: 0 4px 10px oklch(from var(--m-secondary) l c h / 0.25);
   --toggle-on-shadow: 0 -4px 10px oklch(from var(--m-checkbox-checked) l c h / 0.30);
-
   --ink-solid: var(--m-ink);
 
   color-scheme: dark;
 }
 
-/* 布局参数（日夜共享，仅颜色在 .rm-dark-theme 覆盖） */
+/* 布局参数（日夜共享；与 lesswrong/system 思路一致） */
 .roam-app {
   --layout-padding-sm: 8px;
   --layout-padding-md: 16px;
   --layout-padding-lg: 24px;
+  --layout-padding-xl: 40px;
   --layout-radius-sm: 6px;
   --layout-radius-md: 8px;
   --layout-radius-lg: 12px;
@@ -404,75 +356,109 @@ body.rm-dark-theme .roam-app,
 /* 2. Global Overrides (Fix Inline Styles)                   */
 /* ========================================================= */
 
-/* Override active menu item inline background */
 body .rm-menu-item[style*="background-color"],
 body .rm-menu-item[style*="background"] {
   background-color: var(--color-primary-light) !important;
   color: var(--text-color) !important;
 }
 
-/* Override search result yellow highlight */
 body .rm-search-list-item span[style*="background-color: yellow"],
 body .rm-search-list-item span[style*="background-color:yellow"] {
   background-color: var(--search-hit-bg) !important;
+  border-radius: 2px;
   color: var(--text-color) !important;
   padding: 0 2px;
-  border-radius: 2px;
+}
+
+html:not(.rm-dark-theme),
+body:not(.rm-dark-theme) {
+  background: var(--m-bg) !important;
+}
+
+body:not(.rm-dark-theme) .roam-app {
+  background: var(--bg-color) !important;
+}
+
+body:not(.rm-dark-theme) .bp3-dark,
+body:not(.rm-dark-theme) .bp3-dark .bp3-menu,
+body:not(.rm-dark-theme) .bp3-dark .bp3-popover-content {
+  background: var(--page-color) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+
+body:not(.rm-dark-theme) .bp3-dark .bp3-menu-item,
+body:not(.rm-dark-theme) .bp3-dark .bp3-button {
+  color: var(--text-color) !important;
+}
+
+body:not(.rm-dark-theme) .bp3-dark .bp3-button:not([class*="bp3-intent-"]) {
+  background: transparent !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+
+body:not(.rm-dark-theme) .bp3-dark .bp3-menu-item:hover,
+body:not(.rm-dark-theme) .bp3-dark .bp3-button:hover,
+body:not(.rm-dark-theme) .bp3-dark .bp3-button:not([class*="bp3-intent-"]):hover {
+  background: var(--sidebar-hover-bg) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+
+body:not(.rm-dark-theme) .bp3-dark .bp3-input {
+  background: var(--embed-bg) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
 }
 
 /* ========================================================= */
 /* 3. Base Layout                                            */
 /* ========================================================= */
-/* DOM: .roam-body-main > .rm-article-wrapper > .roam-article > div(主内容区) */
+
 .roam-article {
   padding: 0 !important;
 }
 
 .roam-article > div {
-  margin: 0 auto !important;
-  padding: 40px 50px;
-  width: auto;
   background: var(--page-color);
   border: none;
   border-radius: 0;
   box-shadow: none;
+  margin: 0 auto !important;
+  padding: var(--layout-padding-xl) 50px;
+  width: auto;
 }
 
-/* 日间模式：H1-H3 块背景透明，避免从夜间切回后残留黑底 */
-body:not(.rm-dark-theme) .roam-block-container:is(.rm-level1, .rm-level2, .rm-level3, .rm-heading-level-1, .rm-heading-level-2, .rm-heading-level-3) {
-  background: transparent !important;
-}
-
-body:not(.rm-dark-theme) .roam-block-container.rm-level1 :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
-body:not(.rm-dark-theme) .roam-block-container.rm-heading-level-1 :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
-body:not(.rm-dark-theme) .roam-block-container.rm-level2 :is(.rm-block-main, .rm-block__input, .rm-block-text),
-body:not(.rm-dark-theme) .roam-block-container.rm-heading-level-2 :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
-body:not(.rm-dark-theme) .roam-block-container.rm-level3 :is(.rm-block-main, .rm-block__input, .rm-block-text),
-body:not(.rm-dark-theme) .roam-block-container.rm-heading-level-3 :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text) {
-  background: transparent !important;
-}
-
-body:not(.rm-dark-theme) .roam-block-container.rm-heading-level-1 [style*="background"],
-body:not(.rm-dark-theme) .roam-block-container.rm-heading-level-2 [style*="background"],
-body:not(.rm-dark-theme) .roam-block-container.rm-heading-level-3 [style*="background"] {
+/* 仅标题块自身内容区透明，不作用到其子块（避免回车后新块被当成标题样式） */
+body:not(.rm-dark-theme) .roam-block-container:is(.rm-level1, .rm-level2, .rm-level3, .rm-heading-level-1, .rm-heading-level-2, .rm-heading-level-3) > .rm-block-main,
+body:not(.rm-dark-theme) .roam-block-container.rm-level1 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body:not(.rm-dark-theme) .roam-block-container.rm-heading-level-1 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body:not(.rm-dark-theme) .roam-block-container.rm-level2 > .rm-block-main :is(.rm-block-main, .rm-block__input, .rm-block-text),
+body:not(.rm-dark-theme) .roam-block-container.rm-heading-level-2 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body:not(.rm-dark-theme) .roam-block-container.rm-level3 > .rm-block-main :is(.rm-block-main, .rm-block__input, .rm-block-text),
+body:not(.rm-dark-theme) .roam-block-container.rm-heading-level-3 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body:not(.rm-dark-theme) .roam-block-container.rm-heading-level-1 > .rm-block-main [style*="background"],
+body:not(.rm-dark-theme) .roam-block-container.rm-heading-level-2 > .rm-block-main [style*="background"],
+body:not(.rm-dark-theme) .roam-block-container.rm-heading-level-3 > .rm-block-main [style*="background"] {
   background: transparent !important;
 }
 
 .roam-body-main {
+  position: relative !important;
   top: 0 !important;
   height: 100% !important;
   width: auto !important;
-  position: relative !important;
   padding-left: 0;
 }
 
 .roam-main {
+  margin: auto;
   width: unset !important;
   max-width: 100% !important;
   height: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
-  margin: auto;
   transition: padding-left 0.15s ease-out;
 }
 
@@ -480,84 +466,71 @@ body:not(.rm-dark-theme) .roam-block-container.rm-heading-level-3 [style*="backg
 /* 4. Typography                                             */
 /* ========================================================= */
 
-/* ---------------------------------------------------------
-   4.1 Base Font Settings
-   --------------------------------------------------------- */
-
-/* Headings base font - !important 覆盖 Roam 默认 */
+/* 标题字体：仅 h1–h6 与页面标题编辑区，不包含 .rm-level* 以免子块继承 */
 html body h1,
 html body h2,
 html body h3,
 html body h4,
 html body h5,
 html body h6,
-html body .rm-level1,
-html body .rm-level2,
-html body .rm-level3,
 html body .rm-title-editing-display {
-  font-family: var(--heading-font) !important;
   color: var(--text-color) !important;
-}
-
-html body .rm-title-editing-display textarea {
   font-family: var(--heading-font) !important;
-  font-size: 1rem;
+}
+
+/* 与 .rm-title-display 一致，focus 编辑时字号不缩小 */
+html body .rm-title-editing-display textarea {
   color: var(--text-color);
-}
-
-/* Body text - !important 覆盖 Roam 默认 */
-html body div,
-html body textarea {
-  font-family: var(--body-font) !important;
-  font-size: var(--font-size);
-  color: var(--text-color);
-}
-
-/* 正文阅读 - 血肉 (Palatino)，黄金行高
- * DOM: .roam-block-container > .rm-block-main > .rm-block__input.rm-block-text */
-.roam-article,
-.roam-article .rm-block-text,
-.rm-block-text,
-.roam-block {
-  font-family: var(--body-font) !important;
-  font-size: 1.125rem !important; /* 18px @16px */
-  line-height: 1.7 !important;
-  color: var(--text-color) !important; /* 墨 */
-  -webkit-font-smoothing: antialiased;
-  min-height: 1.6em;
-}
-
-/* ---------------------------------------------------------
-   4.2 Bold & Italic
-   --------------------------------------------------------- */
-
-.roam-article strong,
-.roam-article b,
-strong,
-b {
-  font-family: 'Palatino Linotype', 'Palatino', 'FZPingXianYaSong-B', '方正屏显雅宋', serif !important;
-  font-weight: 700 !important;
-  color: var(--strong-color) !important;
-}
-
-/* ---------------------------------------------------------
-   4.3 Page Title
-   --------------------------------------------------------- */
-
-/* 门面 (Arno Pro Display)，2.5rem ≈ 40px
- * DOM: .roam-article > .rm-title-display-container > .rm-title-display */
-.rm-title-display-container .rm-title-display,
-.roam-article .rm-title-display,
-h1.rm-title-display,
-.rm-title-display {
   font-family: var(--title-font) !important;
   font-size: 2.5rem !important;
   font-weight: 600 !important;
   line-height: 1.1 !important;
   letter-spacing: -0.02em !important;
-  color: var(--title-display-color) !important; /* 页面标题 */
+}
+
+html body div,
+html body textarea {
+  color: var(--text-color);
+  font-family: var(--body-font) !important;
+  font-size: var(--font-size);
+}
+
+/* 正文：展示态 .rm-block-text 与编辑态 .rm-block__input 字号/样式一致，focus 不缩小 */
+.roam-article,
+.roam-article .rm-block-text,
+.roam-article .rm-block__input,
+.rm-block-text,
+.roam-block {
+  color: var(--text-color) !important;
+  font-family: var(--body-font) !important;
+  font-size: 1.125rem !important;
+  line-height: 1.7 !important;
+  min-height: 1.6em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.roam-article strong,
+.roam-article b,
+strong,
+b {
+  color: var(--strong-color) !important;
+  font-family: 'Palatino Linotype', 'Palatino', 'FZPingXianYaSong-B', '方正屏显雅宋', serif !important;
+  font-weight: 700 !important;
+}
+
+.rm-title-display-container .rm-title-display,
+.roam-article .rm-title-display,
+h1.rm-title-display,
+.rm-title-display {
+  color: var(--title-display-color) !important;
+  font-family: var(--title-font) !important;
+  font-size: 2.5rem !important;
+  font-weight: 600 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
   font-optical-sizing: auto;
 }
+
 .roam-article .rm-title-display em,
 .roam-article .rm-title-display i,
 .rm-title-display em,
@@ -568,85 +541,70 @@ h1.rm-title-display,
   padding-right: 0.1em;
 }
 
-/* ---------------------------------------------------------
-   4.4 Headings (H1/H2/H3)
-   --------------------------------------------------------- */
-
-/* H1 - 骨架 (Optima)：1.875rem ≈ 30px */
+/* 仅标题块自身内容区，不作用到 .rm-block-children 内子块（回车后新块保持正文） */
 html body h1:not(.rm-title-display),
-html body .rm-level1,
-html body .roam-block-container.rm-level1 .rm-block-text,
-html body .rm-heading-level-1 > .rm-block__self .rm-block__input,
-html body .rm-heading-level-1 .rm-block__input,
-html body .rm-heading-level-1 .rm-block-text {
-  font-family: var(--heading-font) !important;
-  font-weight: 700 !important;
+html body .roam-block-container.rm-level1 > .rm-block-main,
+html body .roam-block-container.rm-level1 > .rm-block-main .rm-block-text,
+html body .roam-block-container.rm-heading-level-1 > .rm-block__self .rm-block__input,
+html body .roam-block-container.rm-heading-level-1 > .rm-block-main .rm-block__input,
+html body .roam-block-container.rm-heading-level-1 > .rm-block-main .rm-block-text {
   color: var(--heading-h1-color) !important;
+  font-family: var(--heading-font) !important;
   font-size: 1.875rem !important;
-  letter-spacing: 0.03em !important;
+  font-weight: 700 !important;
   line-height: 1.4 !important;
+  letter-spacing: 0.03em !important;
   transition: color 0.2s ease;
 }
 
-/* H1 底线与间距：加在块容器上，保证 bullet 与文字一起移动
- * DOM: .roam-article > .rm-block-children > .roam-block-container.rm-level1 */
 .roam-article .roam-block-container.rm-level1 {
+  border-bottom: 1px solid var(--color-subtle-border) !important;
   margin: 1em 0 0.35em !important;
   padding-bottom: 0.35em !important;
-  border-bottom: 1px solid var(--color-subtle-border) !important;
 }
 
-/* H2 - 1.5rem ≈ 24px */
 html body h2,
-html body .rm-level2,
-html body .roam-block-container.rm-level2 .rm-block-text,
-html body .rm-heading-level-2 > .rm-block__self .rm-block__input,
-html body .rm-heading-level-2 .rm-block__input,
-html body .rm-heading-level-2 .rm-block-text {
-  font-family: var(--heading-font) !important;
-  font-weight: 700 !important;
+html body .roam-block-container.rm-level2 > .rm-block-main,
+html body .roam-block-container.rm-level2 > .rm-block-main .rm-block-text,
+html body .roam-block-container.rm-heading-level-2 > .rm-block__self .rm-block__input,
+html body .roam-block-container.rm-heading-level-2 > .rm-block-main .rm-block__input,
+html body .roam-block-container.rm-heading-level-2 > .rm-block-main .rm-block-text {
   color: var(--heading-h2-color) !important;
+  font-family: var(--heading-font) !important;
   font-size: 1.5rem !important;
-  letter-spacing: 0.01em !important;
+  font-weight: 700 !important;
   line-height: 1.4 !important;
+  letter-spacing: 0.01em !important;
   transition: color 0.2s ease;
 }
 
-/* H2 轻微间距：加在块容器上 */
 .roam-article .roam-block-container.rm-level2 {
   margin: 0.6em 0 0.2em !important;
 }
 
-/* H3 - 1.25rem ≈ 20px */
 html body h3,
-html body .rm-level3,
-html body .roam-block-container.rm-level3 .rm-block-text,
-html body .rm-heading-level-3 > .rm-block__self .rm-block__input,
-html body .rm-heading-level-3 .rm-block__input,
-html body .rm-heading-level-3 .rm-block-text {
-  font-family: var(--heading-font) !important;
-  font-weight: 700 !important;
+html body .roam-block-container.rm-level3 > .rm-block-main,
+html body .roam-block-container.rm-level3 > .rm-block-main .rm-block-text,
+html body .roam-block-container.rm-heading-level-3 > .rm-block__self .rm-block__input,
+html body .roam-block-container.rm-heading-level-3 > .rm-block-main .rm-block__input,
+html body .roam-block-container.rm-heading-level-3 > .rm-block-main .rm-block-text {
   color: var(--heading-h3-color) !important;
+  font-family: var(--heading-font) !important;
   font-size: 1.25rem !important;
+  font-weight: 700 !important;
   line-height: 1.4 !important;
   transition: color 0.2s ease;
 }
 
-/* H3 轻微间距：加在块容器上 */
 .roam-article .roam-block-container.rm-level3 {
   margin: 0.4em 0 0.15em !important;
 }
-
-/* ---------------------------------------------------------
-   4.5 Links
-   --------------------------------------------------------- */
 
 a {
   color: var(--color-secondary);
   font-weight: 600;
 }
 
-/* 日间模式：普通链接 - 宝蓝 #4B5CC4（双链单独用 .rm-page-ref--link / .rm-alias--page） */
 :root:not(.rm-dark-theme) body:not(.rm-dark-theme) a:not(.rm-alias--page):not(.rm-alias--block),
 :root:not(.rm-dark-theme) body:not(.rm-dark-theme) .rm-alias--external {
   color: var(--m-link) !important;
@@ -657,32 +615,30 @@ a {
   font-weight: 600;
 }
 
-/* Inline elements alignment */
 .rm-inline-code,
 code,
 .rm-highlight,
 strong,
 em {
-  vertical-align: baseline !important;
   line-height: inherit !important;
+  vertical-align: baseline !important;
 }
 
 /* ========================================================= */
 /* 5. Code Blocks                                            */
 /* ========================================================= */
-/* 代码块 - 全站强制使用 code 字体，0.875rem ≈ 14px */
+
 .rm-code-block .cm-editor,
 .rm-code-block .cm-content,
 .rm-code-block .cm-line,
 .rm-code-block .cm-gutters {
+  background: transparent !important;
+  border: none !important;
+  color: var(--text-color);
   font-family: var(--code-font) !important;
   font-size: 0.875rem !important;
-  background: transparent !important;
-  color: var(--text-color);
-  border: none !important;
 }
 
-/* 代码块当前行行号：日夜一致，仅文字变色（主色），无背景 */
 .cm-focused .cm-activeLineGutter {
   background-color: transparent !important;
   color: var(--color-primary) !important;
@@ -702,23 +658,22 @@ pre {
 }
 
 .rm-code-block {
-  padding: 12px 16px;
-  margin: 4px 0 8px;
   background: var(--code-bg);
   border: none;
   border-radius: var(--border-radius-md);
+  margin: 4px 0 var(--layout-padding-sm);
+  padding: 12px var(--layout-padding-md);
 }
 
 .rm-inline-code,
 code {
   background: var(--inline-code-bg);
-  color: var(--color-secondary);
   border: none;
-  padding: 2px 6px;
   border-radius: 4px;
+  color: var(--color-secondary);
+  padding: 2px 6px;
 }
 
-/* 代码注释/变量 - Operator Mono 斜体 */
 .cm-comment,
 .cm-variable-2,
 .cm-attribute {
@@ -727,11 +682,11 @@ code {
   opacity: 0.9;
 }
 
-/* Code 内选中：与正文统一，使用同一套 --block-highlight-*（仅此一种选中高亮） */
 .cm-selectionBackground,
 .cm-focused .cm-selectionBackground {
   background-color: var(--block-highlight-bg) !important;
 }
+
 .rm-code-block .cm-line::selection,
 .cm-content ::selection,
 code::selection {
@@ -742,13 +697,14 @@ code::selection {
 /* ========================================================= */
 /* 6. Embed & Query                                          */
 /* ========================================================= */
+
 .rm-embed-container {
-  padding: 16px 20px;
-  margin: 4px 0 12px;
   background: var(--embed-bg);
   border: none;
-  border-radius: 8px;
+  border-radius: var(--layout-radius-md);
   box-shadow: none;
+  margin: 4px 0 12px;
+  padding: var(--layout-padding-md) 20px;
   transition: var(--transition-normal);
 }
 
@@ -759,7 +715,7 @@ code::selection {
 .rm-query {
   background: transparent;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--layout-radius-md);
   box-shadow: none;
   overflow: hidden;
 }
@@ -771,11 +727,10 @@ code::selection {
 
 .rm-query .rm-query-title {
   background-color: transparent;
+  border-bottom: 1px solid var(--color-subtle-border);
   color: var(--light-text-color);
   font-size: 0.8rem;
-  border-bottom: 1px solid var(--color-subtle-border);
 }
-
 
 .rm-reference-main,
 .rm-reference-item {
@@ -788,14 +743,16 @@ code::selection {
 }
 
 .rm-reference-item {
-  margin: 8px 8px 0 0;
-  padding: 10px 18px;
-  flex: 1 1 100%;
-  word-break: break-word;
   background-color: var(--reference-item-bg);
   border: none;
-  border-radius: 6px;
+  border-radius: var(--layout-radius-sm);
+  flex: 0 1 auto;
+  margin: var(--layout-padding-sm) var(--layout-padding-sm) 0 0;
+  max-width: 100%;
+  padding: 10px 18px;
   transition: var(--transition-fast);
+  width: fit-content;
+  word-break: break-word;
 }
 
 .rm-reference-item:hover {
@@ -810,13 +767,11 @@ code::selection {
 /* 7. Sidebar                                                */
 /* ========================================================= */
 
-/* Left sidebar container - 优化宽度；z-index 压低，使图下拉等面板能覆盖 shortcuts
- * DOM: .roam-app > .roam-sidebar-container > .roam-sidebar-content */
 .roam-app .roam-sidebar-container {
   position: relative;
   z-index: 1;
   flex-shrink: 0;
-  width: 240px !important; /* 设置固定宽度，更紧凑 */
+  width: 240px !important;
   min-width: 240px !important;
   max-width: 240px !important;
   background: var(--bg-color);
@@ -825,12 +780,12 @@ code::selection {
 }
 
 .roam-sidebar-container .rm-db-title-container .rm-db-title {
+  color: var(--sidebar-title-color);
   font-family: "Felix Titling", "方正清刻本悦宋简体";
-  font-size: 1.45rem; /* 左侧边栏标题字号 */
+  font-size: 1.45rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: var(--sidebar-title-color);
-  padding: 8px 10px;
+  padding: var(--layout-padding-sm) 10px;
   text-shadow: var(--title-text-shadow);
 }
 
@@ -838,13 +793,13 @@ code::selection {
   color: var(--sidebar-title-color-day);
 }
 
-/* 日间模式：左侧边栏导航/收藏页浅色背景+深色字，覆盖 Roam 默认深色 */
 :root:not(.rm-dark-theme) body:not(.rm-dark-theme) .roam-sidebar-content .log-button,
 :root:not(.rm-dark-theme) body:not(.rm-dark-theme) .roam-sidebar-content .top-row,
 :root:not(.rm-dark-theme) body:not(.rm-dark-theme) .roam-sidebar-content .starred-pages .page {
   background: transparent !important;
   color: var(--sidebar-text-day) !important;
 }
+
 :root:not(.rm-dark-theme) body:not(.rm-dark-theme) .roam-sidebar-content .log-button:hover,
 :root:not(.rm-dark-theme) body:not(.rm-dark-theme) .roam-sidebar-content .top-row:hover,
 :root:not(.rm-dark-theme) body:not(.rm-dark-theme) .roam-sidebar-content .starred-pages .page:hover {
@@ -852,48 +807,47 @@ code::selection {
   color: var(--sidebar-text-day) !important;
 }
 
-/* Navigation buttons - 随主题：日间墨色、夜间浅色 */
 .roam-sidebar-content .log-button,
 .roam-sidebar-content .top-row {
-  font-size: 1.05rem; /* 导航按钮字号 */
-  font-weight: 500;
-  padding: 8px 12px;
-  margin: 2px 6px; /* 减小外边距 */
-  color: var(--text-color);
   background: transparent;
   border: none;
-  border-radius: 6px;
-  transition: all 0.2s ease;
+  border-radius: var(--layout-radius-sm);
+  color: var(--text-color);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 2px 6px;
+  padding: var(--layout-padding-sm) 12px;
+  transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .roam-sidebar-content .log-button:hover,
 .roam-sidebar-content .top-row:hover {
   background: var(--sidebar-hover-bg);
-  color: var(--text-color);
   box-shadow: none;
+  color: var(--text-color);
   transform: translateX(2px);
 }
 
-/* 侧栏标题行：去掉 Axiom 右侧空白，标题居中显示 */
 .roam-sidebar-container .roam-sidebar-content .top-row {
   justify-content: center !important;
 }
+
 .roam-sidebar-container .roam-sidebar-content .top-row > .flex-h-box:first-child {
-  z-index: 99999 !important;
   position: relative;
+  z-index: 99999 !important;
   flex: 0 0 auto !important;
   width: fit-content !important;
   min-width: 0;
 }
+
 .roam-sidebar-container .rm-db-title-container {
   width: fit-content;
 }
 
-/* Shortcuts 区域压低 z-index，保证图下拉等面板能盖住 shortcuts 而非被盖住 */
 .flex-v-box.starred-pages-wrapper,
 .roam-sidebar-container .starred-pages-wrapper {
-  z-index: 0;
   position: relative;
+  z-index: 0;
 }
 
 .flex-v-box.starred-pages-wrapper > div.flex-h-box.title,
@@ -901,20 +855,19 @@ code::selection {
   z-index: 0;
 }
 
-/* Shortcuts title - DOM: .starred-pages-wrapper > .flex-h-box.title > span */
 .starred-pages-wrapper > .flex-h-box.title {
   gap: 0;
 }
 
 .starred-pages-wrapper > .flex-h-box.title > span {
-  font-size: 1.05rem; /* SHORTCUTS 标题字号 */
+  color: var(--sidebar-star-color);
+  font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--sidebar-star-color);
-  padding: 16px 4px 8px 0;
   margin-left: 0;
-  margin-top: 8px;
+  margin-top: var(--layout-padding-sm);
+  padding: var(--layout-padding-md) 4px var(--layout-padding-sm) 0;
+  text-transform: uppercase;
   opacity: 0.9;
 }
 
@@ -922,85 +875,84 @@ code::selection {
   color: var(--sidebar-star-color-day) !important;
 }
 
-/* Starred pages - DOM: .starred-pages-wrapper > .starred-pages > a > .page */
 .roam-sidebar-content .starred-pages .page {
-  font-size: 1.05rem; /* 收藏页字号 */
-  font-weight: 500;
-  padding: 8px 12px;
-  margin: 2px 6px;
-  color: var(--text-color);
   background: transparent;
   border-left: none;
-  border-radius: 6px;
+  border-radius: var(--layout-radius-sm);
+  box-shadow: none;
+  color: var(--text-color);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 2px 6px;
+  opacity: 1;
+  padding: var(--layout-padding-sm) 12px;
   transition: var(--transition-fast);
 }
 
 .roam-sidebar-content .starred-pages .page:hover {
   background: var(--sidebar-hover-bg);
-  color: var(--text-color);
-  padding-left: 16px; /* 减小 hover 时的左边距 */
   box-shadow: none;
+  color: var(--text-color);
+  padding-left: 16px;
 }
 
-.roam-sidebar-content .starred-pages .page,
 .roam-sidebar-container > * {
-  opacity: 1;
   box-shadow: none;
+  opacity: 1;
 }
 
-/* 仅限侧栏内容区，不包含 .bp3-popover（图下拉），避免与 graph dropdown 冲突
- * DOM: .roam-sidebar-content 下的 log-button/top-row/starred-pages 等 */
 .roam-sidebar-content > div > div {
-  font-size: 1.05rem; /* 左侧边栏统一字号 */
-  letter-spacing: 0.02em;
   color: var(--text-color);
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
 }
 
 :root:not(.rm-dark-theme) body:not(.rm-dark-theme) .roam-sidebar-content > div > div {
   color: var(--sidebar-text-day) !important;
 }
 
-/* 图下拉 popover 提到最前，不被 shortcuts 及侧栏文字遮住 */
 .bp3-overlay {
   z-index: 10000 !important;
 }
+
 .bp3-popover:has(.rm-graph-dropdown),
 .bp3-overlay .bp3-popover:has(.rm-graph-dropdown) {
+  position: relative;
   z-index: 99999 !important;
-  position: relative;
 }
+
 .bp3-popover-content:has(.rm-graph-dropdown) {
-  z-index: 1;
   position: relative;
-  /* 保证至少能包住「Graphs and Settings」一行，再随更长内容（如 Sign out 邮箱）变宽 */
+  z-index: 1;
   min-width: 260px !important;
   width: max-content !important;
   max-width: min(520px, 92vw);
 }
 
-/* 图下拉菜单：由内容撑开宽度（含 Graphs and Settings），至少 260px 避免裁切 */
 .bp3-menu.rm-graph-dropdown {
   min-width: 260px !important;
   width: max-content !important;
 }
+
 .bp3-menu.rm-graph-dropdown .rm-graphs__search,
 .bp3-menu.rm-graph-dropdown .bp3-input-group.rm-graphs__search {
   width: 100%;
   min-width: 0;
 }
+
 .bp3-menu.rm-graph-dropdown .bp3-input-group .bp3-input {
   min-width: 0;
   width: 100%;
 }
+
 .bp3-menu.rm-graph-dropdown .signout {
+  max-width: 100%;
   overflow: visible;
   text-overflow: clip;
   white-space: normal;
   word-break: break-all;
-  max-width: 100%;
 }
 
-/* Sidebar icons */
 .roam-sidebar-content .bp3-icon {
   color: var(--sidebar-icon-color);
   transition: color 0.2s ease;
@@ -1012,16 +964,15 @@ code::selection {
   filter: var(--sidebar-icon-hover-filter);
 }
 
-/* Sidebar logo fix */
 .roam-sidebar-container img[style*="astrolabe"],
 .roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"] {
-  filter: sepia(0.3) saturate(1.2) brightness(0.6) !important; /* 暖色调 */
+  filter: sepia(0.3) saturate(1.2) brightness(0.6) !important;
   opacity: 0.8;
 }
 
 .roam-sidebar-container img[style*="astrolabe"] ~ span,
 .roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"] ~ span {
-  color: var(--color-primary) !important; /* 竹青 */
+  color: var(--color-primary) !important;
 }
 
 #roam-sidebar-logo:hover {
@@ -1029,22 +980,20 @@ code::selection {
   text-decoration: none !important;
 }
 
-/* Right sidebar */
 #right-sidebar {
-  z-index: 999 !important;
   background-color: var(--bg-color) !important;
   border-left: 1px solid var(--color-subtle-border) !important;
+  z-index: 999 !important;
   transition: flex-basis 0.2s ease-in-out, width 0.2s ease-in-out;
 }
 
 #right-sidebar > div {
   background: transparent;
   border-left: none;
-  padding: 20px;
   box-shadow: none;
+  padding: 20px;
 }
 
-/* Hidden menu button */
 .bp3-icon-menu,
 .rm-open-left-sidebar-btn {
   display: none !important;
@@ -1065,62 +1014,85 @@ code::selection {
 /* 8. Bullet Points & Block References                       */
 /* ========================================================= */
 
-/* ---------------------------------------------------------
-   8.1 Block Input
-   --------------------------------------------------------- */
-
 #block-input {
-  background: var(--bg-color); /* 茶白 */
+  background: var(--bg-color);
 }
 
 #block-input > span > div {
+  background: var(--bg-color);
   padding: 6px 24px;
-  background: var(--bg-color); /* 茶白 */
 }
 
 #block-input-ghost span {
-  color: var(--text-color) !important; /* 墨 */
+  color: var(--text-color) !important;
 }
 
-/* ---------------------------------------------------------
-   8.2 Block Container & Controls
-   --------------------------------------------------------- */
 .roam-block-container .rm-block-main {
   align-items: flex-start !important;
 }
 
-/* Bullet 容器 - 统一样式 */
+.rm-sidebar-outline .roam-block-container,
+.rm-zoom .roam-block-container {
+  width: fit-content !important;
+  max-width: 100% !important;
+}
+
+.rm-sidebar-outline .roam-block-container .rm-block-main,
+.rm-zoom .roam-block-container .rm-block-main,
+.rm-reference-item .roam-block-container .rm-block-main {
+  width: fit-content !important;
+  max-width: 100% !important;
+}
+
+.rm-sidebar-outline .roam-block-container .rm-block__input,
+.rm-zoom .roam-block-container .rm-block__input,
+.rm-reference-item .roam-block-container .rm-block__input {
+  width: fit-content !important;
+  max-width: 100% !important;
+  min-width: 0;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+.rm-sidebar-outline .roam-block-container .rm-block__input a[href],
+.rm-zoom .roam-block-container .rm-block__input a[href],
+.rm-reference-item .roam-block-container .rm-block__input a[href] {
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
 .controls {
   display: flex;
   align-items: center;
   justify-content: center;
   align-self: flex-start !important;
   flex: 0 0 auto !important;
-  height: 2.05em !important; /* 微调以完美对齐 */
+  height: 2.05em !important;
   margin-right: 6px !important;
   padding-right: 0 !important;
 }
 
-/* 标题 Bullet - 分别精调 */
-.rm-heading-level-1 .controls { height: calc(1.6em * 1.4) !important; } /* H1 偏下→减小 */
-.rm-heading-level-2 .controls { height: calc(1.4em * 1.55) !important; } /* H2 偏上→增大 */
-.rm-heading-level-3 .controls { height: calc(1.25em * 1.75) !important; }
+.rm-heading-level-1 .controls {
+  height: calc(1.6em * 1.4) !important;
+}
 
-/* 引用块 bullet - DOM: .roam-block-container 内含 .rm-bq */
+.rm-heading-level-2 .controls {
+  height: calc(1.4em * 1.55) !important;
+}
+
+.rm-heading-level-3 .controls {
+  height: calc(1.25em * 1.75) !important;
+}
+
 .roam-block-container:has(.rm-bq) .controls {
-  margin-top: 4px !important;  /* 微调 bullet 上移，与首行垂直对齐（同 check-container 的 -5.5px 思路） */
+  margin-top: 4px !important;
   margin-right: 6px !important;
   height: 2.05em !important;
 }
 
-/* 复选框块：与正文间距 2px，与 check-container 右 2px 合计 4px，和 bullet↔复选框 4px 一致 */
 .roam-block-container:has(.check-container) .controls {
   margin-right: 2px !important;
 }
-
-/* ---------------------------------------------------------
-   8.3 Bullet Styles
-   --------------------------------------------------------- */
 
 .rm-bullet .rm-bullet__inner,
 .rm-bullet.rm-bullet--closed .rm-bullet__inner,
@@ -1129,27 +1101,26 @@ code::selection {
   display: flex;
   align-items: center;
   overflow: hidden;
-  border-radius: 50%;
   width: 8px;
   height: 8px;
+  border-radius: 50%;
 }
 
 .rm-bullet .rm-bullet__inner {
+  background-color: transparent;
   background-clip: padding-box;
   border: 2px solid var(--light-text-color);
-  background-color: transparent;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 1px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .rm-bullet .rm-bullet__inner:hover {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
-  transform: scale(1.25);
   box-shadow: var(--bullet-hover-shadow);
+  transform: scale(1.25);
 }
 
-/* Closed bullet (has children) */
 .rm-bullet.rm-bullet--closed .rm-bullet__inner {
   background-color: var(--color-primary) !important;
   border: 4px solid transparent !important;
@@ -1158,33 +1129,32 @@ code::selection {
 }
 
 .rm-bullet__inner--user-icon {
+  background-color: var(--ink-solid);
   background-clip: content-box;
   border: 4px solid transparent;
-  background-color: var(--ink-solid);
 }
 
-/* Focused block bullet - DOM: .rm-block-main > .controls .rm-bullet（与 .rm-block__input 同层） */
+/* 内容块 focus 时圆点也无外框，无边界 */
 .rm-block--focused .rm-bullet .rm-bullet__inner,
 .roam-block-container:focus-within .rm-bullet .rm-bullet__inner {
+  background-color: var(--color-secondary) !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 1px !important;
   width: 8px;
   height: 8px;
-  background-color: var(--color-secondary) !important; /* 靛青 - 聚焦 */
-  border: 2px solid var(--bullet-focus-border) !important;
-  box-shadow: 0 0 6px var(--bullet-focus-shadow);
   transition: all 0.2s ease;
-  margin: 1px !important;
 }
 
-/* Bullet tooltip - 无边界沉浸 */
 .rm-bullet__tooltip {
-  padding: 8px 12px !important;
   background-color: var(--popover-bg) !important;
-  color: var(--text-color) !important;
   border: none !important;
-  border-radius: 8px !important;
+  border-radius: var(--layout-radius-md) !important;
   box-shadow: var(--popover-shadow) !important;
-  font-size: 0.8125rem !important; /* 13px @16px */
+  color: var(--text-color) !important;
+  font-size: 0.8125rem !important;
   line-height: 1.4 !important;
+  padding: var(--layout-padding-sm) 12px !important;
   opacity: 1 !important;
   z-index: 9999 !important;
 }
@@ -1197,17 +1167,13 @@ code::selection {
   font-weight: 500 !important;
 }
 
-/* ---------------------------------------------------------
-   8.4 Block References
-   --------------------------------------------------------- */
-
 .rm-block-ref::before {
   content: "";
   display: inline-block;
   width: 2px;
-  border-radius: 2px;
   height: 10px;
   background: var(--color-primary-light);
+  border-radius: 2px;
   margin-right: 6px;
   vertical-align: middle;
   transform: translateY(-1px);
@@ -1215,8 +1181,8 @@ code::selection {
 
 .rm-block-ref {
   border-bottom: none;
-  font-size: 1rem;
   color: var(--text-color);
+  font-size: 1rem;
   opacity: 0.9;
 }
 
@@ -1231,41 +1197,53 @@ code::selection {
   top: -10px;
 }
 
-/* ---------------------------------------------------------
-   8.5 Blockquote
-   --------------------------------------------------------- */
-
-/* 呼吸 (Centaur)：1.35rem ≈ 22px，仅字体/颜色/左边线 */
+/* 引用块：展示态与编辑态 .rm-block__input 字号/样式一致，focus 不缩小；竖线与文字同高 */
 .roam-article .rm-bq .rm-block-text,
+.roam-article .rm-bq .rm-block__input,
 .roam-article .rm-bq,
 .rm-bq,
 blockquote {
-  font-family: var(--quote-font) !important;
-  font-style: normal !important;
-  font-size: 1.35rem !important;
-  line-height: 1.6 !important;
-  color: var(--blockquote-text) !important; /* 引用块正文 */
+  background: transparent;
   border: none;
-  border-left: 3px solid var(--color-primary); /* 竹青边线 */
-  padding-left: 16px;
-  margin: 0 !important; /* 不加垂直 margin，避免 bullet 与文字错位 */
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--blockquote-text) !important;
+  font-family: var(--quote-font) !important;
+  font-size: 1.35rem !important;
+  font-style: normal !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+  padding-left: var(--layout-padding-md);
   position: relative;
-  display: block !important; /* 占满块宽，与正文对齐 */
+  display: block !important;
   width: 100%;
   max-width: 100%;
-  background: transparent;
-  border-radius: 0;
   text-align: left;
   word-wrap: break-word;
-  box-shadow: none;
   transition: border-color 0.25s ease;
 }
 
-.rm-bq:hover {
-  border-left-color: var(--color-secondary); /* 靛青 - hover 加深 */
+/* 竖线用伪元素绘制，上下收口与文字等高（不占满整行行高） */
+.rm-bq::before,
+.roam-article .rm-bq::before,
+blockquote::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  bottom: 0.25em;
+  width: 3px;
+  background: var(--color-primary);
+  border-radius: 0;
+  transition: background 0.25s ease;
 }
 
-/* 引用块整块轻微间距：加在容器上，保证 bullet 与文字一起移动 */
+.rm-bq:hover::before,
+.roam-article .rm-bq:hover::before,
+blockquote:hover::before {
+  background: var(--color-secondary);
+}
+
 .roam-article .roam-block-container:has(.rm-bq) {
   margin-top: 0.5em !important;
   margin-bottom: 0.35em !important;
@@ -1280,31 +1258,29 @@ blockquote i {
   font-weight: 400;
 }
 
-/* Tree node carets */
 div > .bp3-icon-caret-down + strong,
 div > .bp3-icon-caret-right + strong {
   color: var(--tree-node-color) !important;
 }
 
-/* Resize handle & caret */
 .controls .rm-caret,
 .rm-caret,
 .rm-caret-hidden {
+  position: relative;
   z-index: 1000 !important;
   pointer-events: auto !important;
-  position: relative;
 }
 
 .rm-resize-handle {
-  width: 4px !important;
   left: -4px !important;
+  width: 4px !important;
   opacity: 0;
   z-index: 10;
 }
 
 .rm-resize-handle:hover {
-  width: 8px !important;
   left: -8px !important;
+  width: 8px !important;
   opacity: 0.5;
   background-color: var(--color-primary-light);
 }
@@ -1312,21 +1288,22 @@ div > .bp3-icon-caret-right + strong {
 /* ========================================================= */
 /* 9. Checkboxes (Smiley Toggle Design)                      */
 /* ========================================================= */
+
 .check-container {
   position: relative;
+  display: inline-block;
   width: 36px;
   height: 18px;
-  cursor: pointer;
-  display: inline-block;
+  margin: -5.5px 2px 0 4px;
   vertical-align: middle;
-  margin: -5.5px 2px 0 4px; /* bullet↔复选框 4px = 复选框↔文本 2px+2px */
+  cursor: pointer;
 }
 
 .check-container input {
-  opacity: 0;
+  position: absolute;
   width: 0;
   height: 0;
-  position: absolute;
+  opacity: 0;
 }
 
 .checkmark {
@@ -1336,10 +1313,10 @@ div > .bp3-icon-caret-right + strong {
   width: 100%;
   height: 18px;
   background: var(--toggle-off-bg);
+  border: none !important;
   border-radius: 10px;
   box-shadow: var(--toggle-off-shadow);
   transition: 0.5s;
-  border: none !important;
 }
 
 .check-container input:checked ~ .checkmark {
@@ -1352,13 +1329,13 @@ div > .bp3-icon-caret-right + strong {
   position: absolute;
   top: 2px;
   left: 2px;
+  display: block;
   width: 14px;
   height: 14px;
   background: var(--toggle-face-bg);
   border-radius: 50%;
   transition: 0.5s;
   transition-delay: 0.2s;
-  display: block;
 }
 
 .check-container input:checked ~ .checkmark .smiley-face {
@@ -1370,7 +1347,6 @@ div > .bp3-icon-caret-right + strong {
   display: none !important;
 }
 
-/* Smiley eyes */
 .smiley-face::before {
   content: '';
   position: absolute;
@@ -1389,25 +1365,24 @@ div > .bp3-icon-caret-right + strong {
   box-shadow: 6px 0 var(--toggle-eye-on);
 }
 
-/* Smiley mouth */
 .smiley-face::after {
   content: '';
   position: absolute;
   bottom: 3.5px;
   left: 50%;
-  transform: translateX(-50%);
   width: 6px;
   height: 1.2px;
-  border-radius: 1px;
   background: var(--toggle-eye-off);
+  border-radius: 1px;
+  transform: translateX(-50%);
   transition: 0.5s;
 }
 
 .check-container input:checked ~ .checkmark .smiley-face::after {
   bottom: 2.5px;
   height: 3px;
-  border-radius: 0 0 3px 3px;
   background: var(--toggle-eye-on);
+  border-radius: 0 0 3px 3px;
 }
 
 .check-container input:focus ~ .checkmark {
@@ -1417,6 +1392,7 @@ div > .bp3-icon-caret-right + strong {
 /* ========================================================= */
 /* 10. Kanban                                                */
 /* ========================================================= */
+
 .kanban-board {
   background: transparent;
   border-radius: var(--border-radius-lg);
@@ -1425,35 +1401,35 @@ div > .bp3-icon-caret-right + strong {
 
 .kanban-card {
   background: var(--kanban-card-bg);
-  margin: 10px 6px;
-  box-shadow: none;
-  padding: 14px 16px;
-  border-radius: var(--border-radius-md);
   border: none;
+  border-radius: var(--border-radius-md);
+  box-shadow: none;
+  margin: 10px 6px;
+  padding: 14px 16px;
   transition: var(--transition-normal);
 }
 
 .kanban-card:hover {
-  transform: translateY(-2px);
   background: var(--kanban-card-hover-bg);
   box-shadow: none;
+  transform: translateY(-2px);
 }
 
 .kanban-title {
-  text-align: center;
-  font-weight: 700;
-  padding: 10px 8px;
   color: var(--heading-h2-color);
   font-size: 0.95rem;
+  font-weight: 700;
   letter-spacing: 0.02em;
+  padding: 10px 8px;
+  text-align: center;
 }
 
 .kanban-column {
   background: var(--kanban-column-bg);
+  border: none;
+  border-radius: 10px;
   margin: 0 6px;
   padding: 8px;
-  border-radius: 10px;
-  border: none;
   min-width: 200px;
 }
 
@@ -1461,7 +1437,6 @@ div > .bp3-icon-caret-right + strong {
 /* 11. Tags & Labels                                         */
 /* ========================================================= */
 
-/* Hide brackets */
 .rm-page-ref-brackets {
   display: none;
 }
@@ -1477,7 +1452,6 @@ span.rm-page-ref {
   transition: color 0.2s ease, text-decoration 0.2s ease, filter 0.2s ease;
 }
 
-/* 日间模式：双链 #48C0A3，hover #1BD1A5 + 下划线 + 饱和度提升 */
 :root:not(.rm-dark-theme) body:not(.rm-dark-theme) .rm-page-ref--link,
 :root:not(.rm-dark-theme) body:not(.rm-dark-theme) a.rm-alias--page,
 :root:not(.rm-dark-theme) body:not(.rm-dark-theme) a.rm-alias--block {
@@ -1494,7 +1468,6 @@ span.rm-page-ref {
   filter: saturate(1.25);
 }
 
-/* 夜间模式：普通链接 - 水蓝 #D2F0F4 */
 body.rm-dark-theme a:not(.rm-alias--page):not(.rm-alias--block),
 body.rm-dark-theme .rm-alias--external {
   color: var(--m-link) !important;
@@ -1503,12 +1476,11 @@ body.rm-dark-theme .rm-alias--external {
 body.rm-dark-theme a:not(.rm-alias--page):not(.rm-alias--block):hover,
 body.rm-dark-theme .rm-alias--external:hover {
   color: var(--m-link) !important;
-  filter: brightness(1.08);
   text-decoration: underline;
   text-underline-offset: 2px;
+  filter: brightness(1.08);
 }
 
-/* 夜间模式：双链 #3DE1AD，hover #2EDFA3（玉）+ 下划线 + 略降明度模拟按压 */
 body.rm-dark-theme .rm-page-ref--link,
 body.rm-dark-theme a.rm-alias--page,
 body.rm-dark-theme a.rm-alias--block {
@@ -1525,28 +1497,26 @@ body.rm-dark-theme a.rm-alias--block:hover {
   filter: brightness(0.92);
 }
 
-/* Tag 统一样式 - 眉批 (Cronos)，font.css 人文字栈 */
 span.rm-page-ref.rm-page-ref--tag,
 span.rm-page-ref[data-tag] {
+  background-color: var(--tag-bg) !important;
+  border: 1px solid var(--color-subtle-border) !important;
+  border-radius: 4px;
+  box-shadow: none;
+  color: var(--tag-text) !important;
   font-family: var(--tag-font) !important;
+  font-size: 0;
+  font-weight: 500 !important;
+  line-height: 1.5;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1px 8px;
   margin-top: -2px;
-  border-radius: 4px;
-  font-size: 0; /* 隐藏 span 内直接文字，只显示 ::after */
-  font-weight: 500 !important;
-  line-height: 1.5;
-  white-space: nowrap;
+  padding: 1px 8px;
   vertical-align: 1px;
+  white-space: nowrap;
   cursor: default;
   transition: background-color 0.2s;
-  /* 中国传统色·青白系标签 */
-  background-color: var(--tag-bg) !important;
-  color: var(--tag-text) !important;
-  border: 1px solid var(--color-subtle-border) !important;
-  box-shadow: none;
 }
 
 span.rm-page-ref.rm-page-ref--tag:hover,
@@ -1554,19 +1524,17 @@ span.rm-page-ref[data-tag]:hover {
   background-color: var(--tag-bg-hover) !important;
 }
 
-/* Tag ::after 显示标签内容，隐藏原始 "#标签" 文字避免重复 */
 span.rm-page-ref[data-tag]::after,
 span.rm-page-ref.rm-page-ref--tag[data-tag]::after {
   content: attr(data-tag);
   display: inline-block;
+  color: var(--tag-text) !important;
   font-family: var(--tag-font) !important;
   font-size: 0.875rem !important;
-  line-height: 1.5;
-  color: var(--tag-text) !important;
   font-weight: 500 !important;
+  line-height: 1.5;
 }
 
-/* Tag 内部元素隐藏，避免「标签标签」重复 */
 span.rm-page-ref.rm-page-ref--tag[data-tag] span,
 span.rm-page-ref.rm-page-ref--tag[data-tag] .bp3-popover-wrapper,
 span.rm-page-ref.rm-page-ref--tag[data-tag] .bp3-popover-target {
@@ -1578,17 +1546,16 @@ span.rm-page-ref.rm-page-ref--tag[data-tag] .bp3-popover-target {
 /* ========================================================= */
 /* 12. Highlights                                            */
 /* ========================================================= */
-/* 选中高亮：日/夜由 --block-highlight-bg 控制，仅保留背景 */
+
 .block-highlight-blue {
+  background: var(--block-highlight-bg) !important;
   border: none !important;
   box-shadow: none !important;
-  background: var(--block-highlight-bg) !important;
-  padding: 0;
   margin: 0;
+  padding: 0;
   z-index: 99;
 }
 
-/* H1–H3 标题块在选中时也使用同一高亮（覆盖标题 background） */
 .block-highlight-blue .roam-block-container.rm-heading-level-1,
 .block-highlight-blue .roam-block-container.rm-heading-level-2,
 .block-highlight-blue .roam-block-container.rm-heading-level-3,
@@ -1606,19 +1573,12 @@ span.rm-page-ref.rm-page-ref--tag[data-tag] .bp3-popover-target {
 .block-highlight-blue .roam-block-container.rm-heading-level-2 .rm-block-main,
 .block-highlight-blue .roam-block-container.rm-heading-level-2 .rm-block__input,
 .block-highlight-blue .roam-block-container.rm-heading-level-3 .rm-block-main,
-.block-highlight-blue .roam-block-container.rm-heading-level-3 .rm-block__input {
-  background: var(--block-highlight-bg) !important;
-}
-
-/* 当高亮在块容器内：块本体与 .rm-block__input 上选中色 */
+.block-highlight-blue .roam-block-container.rm-heading-level-3 .rm-block__input,
 .roam-block-container:has(.block-highlight-blue) .rm-block-main,
 .roam-block-container:has(.block-highlight-blue) .rm-block__input,
 .roam-block-container:has(.block-highlight-blue) .rm-block__input.rm-block-text,
 .roam-block-container:has(.block-highlight-blue) .rm-block__input span,
-.roam-block-container:has(.block-highlight-blue) .rm-bq {
-  background: var(--block-highlight-bg) !important;
-}
-/* 当高亮紧邻块（兄弟）：该块的 .rm-block__input 上选中色（高亮在块前或块后都覆盖） */
+.roam-block-container:has(.block-highlight-blue) .rm-bq,
 .roam-block-container:has(+ .block-highlight-blue) .rm-block-main,
 .roam-block-container:has(+ .block-highlight-blue) .rm-block__input,
 .roam-block-container:has(+ .block-highlight-blue) .rm-block__input span,
@@ -1630,7 +1590,6 @@ span.rm-page-ref.rm-page-ref--tag[data-tag] .bp3-popover-target {
   background: var(--block-highlight-bg) !important;
 }
 
-/* 统一选中高亮样式：yellow 与 blue 同背景，避免两种选中效果 */
 .block-highlight-yellow {
   background: var(--block-highlight-bg) !important;
   border: none !important;
@@ -1638,12 +1597,11 @@ span.rm-page-ref.rm-page-ref--tag[data-tag] .bp3-popover-target {
 }
 
 span.rm-highlight {
-  text-decoration: none !important;
   background: linear-gradient(180deg, var(--highlight-underline-fade) 60%, var(--highlight-underline) 60%);
   color: var(--highlight-text);
+  text-decoration: none !important;
 }
 
-/* Hide highlight control tags */
 span.rm-page-ref[data-tag="h/yellow"],
 span.rm-page-ref[data-tag="h/blue"],
 span.rm-page-ref[data-tag="h/red"],
@@ -1657,39 +1615,36 @@ span.rm-page-ref[data-tag="h/orange"] {
 /* ========================================================= */
 /* 13. Settings & Plugins                                    */
 /* ========================================================= */
+
 .rm-topbar {
+  position: relative !important;
   display: flex !important;
   align-items: center !important;
-  position: relative !important;
 }
 
-/* Search wrapper centered */
 .rm-find-or-create-wrapper {
   position: absolute !important;
   left: 50% !important;
-  transform: translateX(-50%) !important;
+  z-index: 1000;
   display: flex !important;
   align-items: center !important;
   margin-right: 0 !important;
-  z-index: 1000;
   flex: 0 0 auto !important;
+  transform: translateX(-50%) !important;
 }
 
-/* Search input */
 #find-or-create-input {
+  background-color: var(--find-input-bg) !important;
+  border: 1px solid transparent !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+  color: var(--text-color) !important;
   width: 30vw !important;
   max-width: 400px !important;
   min-width: 150px !important;
   height: 34px !important;
-  border-radius: 20px !important;
-  background-color: var(--find-input-bg) !important;
-  border: 1px solid transparent !important;
   padding-left: 36px !important;
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 0.2s ease,
-    box-shadow 0.2s ease !important;
-  box-shadow: none !important;
-  color: var(--text-color) !important;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 .rm-find-or-create-wrapper .bp3-icon-search {
@@ -1698,11 +1653,11 @@ span.rm-page-ref[data-tag="h/orange"] {
 }
 
 #find-or-create-input:focus {
-  width: 50vw !important;
-  max-width: 600px !important;
   background-color: var(--find-input-focus-bg) !important;
   border-color: var(--color-primary) !important;
   box-shadow: var(--find-input-focus-shadow) !important;
+  width: 50vw !important;
+  max-width: 600px !important;
 }
 
 /* Mobile responsive search */
@@ -1740,10 +1695,7 @@ span.rm-page-ref[data-tag="h/orange"] {
 }
 
 /* Hotkeys */
-.rm-hotkeys-action {
-  color: var(--color-primary);
-}
-
+.rm-hotkeys-action,
 .rm-settings-panel__section .rm-depot-readme-wrapper h1,
 .rm-settings-panel__section .rm-depot-readme-wrapper h2,
 .rm-settings-panel__section .rm-depot-readme-wrapper h3,
@@ -1760,7 +1712,6 @@ span.rm-page-ref[data-tag="h/orange"] {
   color: var(--btn-disabled-text) !important;
 }
 
-/* Popover & menu - 无边界沉浸 */
 .bp3-popover .bp3-popover-content,
 .bp3-popover2 .bp3-popover2-content,
 .bp3-dialog,
@@ -1770,9 +1721,9 @@ span.rm-page-ref[data-tag="h/orange"] {
 .rm-command-palette,
 .rm-autocomplete__results {
   background: var(--ui-surface-bg) !important;
+  border: none !important;
   border-radius: var(--ui-surface-radius) !important;
   box-shadow: var(--ui-surface-shadow) !important;
-  border: none !important;
   color: var(--ui-surface-text) !important;
 }
 
@@ -1785,19 +1736,28 @@ span.rm-page-ref[data-tag="h/orange"] {
 
 .bp3-menu {
   background: transparent !important;
-  padding: 0 !important;
   color: var(--text-color) !important;
+  padding: 0 !important;
+  width: fit-content;
+  min-width: 0;
 }
 
 .bp3-menu-item {
   border-radius: 999px !important;
-  margin: 4px 0 !important;
-  padding: 10px 16px !important;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--text-color) !important;
   font-weight: 500;
+  margin: 4px 0 !important;
+  padding: 10px 16px !important;
   display: flex;
   align-items: center;
+  align-self: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bp3-menu-item .bp3-fill {
+  flex: 0 0 auto;
 }
 
 .bp3-menu-item:hover,
@@ -1826,10 +1786,6 @@ span.rm-page-ref[data-tag="h/orange"] {
   fill: transparent !important;
 }
 
-/* ========================================================= */
-/* 关闭固定侧边栏确认弹窗 - 二合一无层次（与遮罩同平面）       */
-/* ========================================================= */
-/* 遮罩与页面同色，弹窗透明无阴影，视觉上融为一体 */
 .bp3-overlay:has(.rm-modal-dialog--confirmation-with-content) .bp3-overlay-backdrop {
   background-color: var(--bg-color) !important;
   opacity: 1 !important;
@@ -1839,16 +1795,16 @@ span.rm-page-ref[data-tag="h/orange"] {
 .bp3-dialog.rm-modal-dialog--confirmation-with-content .confirmation-content-dialog.rm-close-pinned-sidebar-window {
   background-color: transparent !important;
   border: none !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
   color: var(--text-color) !important;
-  border-radius: 0 !important;
 }
 
 .bp3-dialog.rm-modal-dialog--confirmation-with-content .confirmation-content-header {
   color: var(--text-color) !important;
   font-family: inherit !important;
-  font-weight: 600 !important;
   font-size: 1.05rem !important;
+  font-weight: 600 !important;
 }
 
 .bp3-dialog.rm-modal-dialog--confirmation-with-content .confirmation-content,
@@ -1867,8 +1823,8 @@ span.rm-page-ref[data-tag="h/orange"] {
 
 .bp3-dialog.rm-modal-dialog--confirmation-with-content .rm-close-pinned-sidebar-window__content__end-hint {
   color: var(--text-color) !important;
-  opacity: 0.85;
   font-size: 0.9rem;
+  opacity: 0.85;
 }
 
 .bp3-dialog.rm-modal-dialog--confirmation-with-content .confirmation-content-buttons .bp3-button {
@@ -1896,7 +1852,6 @@ span.rm-page-ref[data-tag="h/orange"] {
   color: inherit !important;
 }
 
-/* Settings panel (legacy) */
 .rm-settings .rm-settings-panel .rm-settings-panel__description {
   color: var(--light-text-color);
 }
@@ -1928,40 +1883,46 @@ span.rm-page-ref[data-tag="h/orange"] {
   background-color: var(--page-color);
 }
 
-.rm-settings-panel__panel-config {
-  background-color: var(--settings-accent-bg);
-}
-
 .rm-settings .rm-settings-panel .rm-select-wrapper {
+  background-color: var(--embed-bg);
   color: var(--text-color);
 }
 
-/* ========== Settings 面板整体：与主页面配色一致（日/夜随变量切换） ========== */
+.rm-settings .rm-settings-panel .rm-select-wrapper .bp3-button,
+.rm-settings .rm-settings-panel .rm-select-wrapper .bp3-popover-target .bp3-button {
+  background-color: var(--embed-bg) !important;
+  border: 1px solid var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+
+.rm-settings .rm-settings-panel .rm-select-wrapper .bp3-button:hover {
+  background-color: var(--sidebar-hover-bg) !important;
+  color: var(--text-color) !important;
+}
+
 .bp3-tabs.rm-settings-tabs,
 .bp3-tabs.rm-settings-tabs .bp3-tab-list,
 .bp3-tabs.rm-settings-tabs .bp3-tab-panel,
 .rm-settings-panel,
 .rm-settings-panel__contents {
   background: var(--page-color) !important;
-  color: var(--text-color) !important;
   border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
 }
 
 .bp3-tabs.rm-settings-tabs .bp3-tab-list {
   border-right: 1px solid var(--color-subtle-border) !important;
 }
 
-/* Settings 标题：Settings / Extension Settings */
 .rm-settings-heading,
 .rm-extension-settings-heading {
   color: var(--heading-h1-color) !important;
   font-weight: 700 !important;
 }
 
-/* Tab 项：默认 / hover / 选中 */
 .bp3-tab.rm-settings__tab {
-  color: var(--text-color) !important;
   background: transparent !important;
+  color: var(--text-color) !important;
 }
 
 .bp3-tab.rm-settings__tab:hover {
@@ -1969,32 +1930,16 @@ span.rm-page-ref[data-tag="h/orange"] {
   color: var(--text-color) !important;
 }
 
-.bp3-tab.rm-settings__tab[aria-selected="true"] {
-  background: var(--color-primary-light) !important;
-  color: var(--text-color) !important;
-}
-
-/* 日间模式：选中 tab 必须为浅色背景，覆盖 .bp3-dark 等深色 */
-:root:not(.rm-dark-theme) body:not(.rm-dark-theme) .rm-settings--desktop .rm-settings__tab:not(.rm-settings__panel-wrapper)[aria-selected="true"] {
-  background: var(--color-primary-light) !important;
-  color: var(--text-color) !important;
-}
-
-/* 夜间模式：选中 tab 与主页面一致 */
+.bp3-tab.rm-settings__tab[aria-selected="true"],
+:root:not(.rm-dark-theme) body:not(.rm-dark-theme) .rm-settings--desktop .rm-settings__tab:not(.rm-settings__panel-wrapper)[aria-selected="true"],
 body.rm-dark-theme .rm-settings--desktop .rm-settings__tab:not(.rm-settings__panel-wrapper)[aria-selected="true"] {
   background: var(--color-primary-light) !important;
   color: var(--text-color) !important;
 }
 
-/* 右侧面板区：背景与主页面一致，文字随主题 */
 .bp3-tab-panel.rm-settings__panel-wrapper,
 .rm-settings-panel,
-.rm-settings-panel__contents {
-  background: var(--page-color) !important;
-  color: var(--text-color) !important;
-}
-
-/* Roam Depot / 扩展列表页（.rm-extensions-settings，无 panel-config 包裹） */
+.rm-settings-panel__contents,
 .rm-settings-panel__contents .rm-extensions-settings {
   background: var(--page-color) !important;
   color: var(--text-color) !important;
@@ -2005,10 +1950,7 @@ body.rm-dark-theme .rm-settings--desktop .rm-settings__tab:not(.rm-settings__pan
   color: var(--heading-h2-color) !important;
 }
 
-.rm-settings-panel__contents .rm-extensions-settings .rm-settings-panel__description {
-  color: var(--text-color) !important;
-}
-
+.rm-settings-panel__contents .rm-extensions-settings .rm-settings-panel__description,
 .rm-settings-panel__contents .rm-extensions-installed__header,
 .rm-settings-panel__contents .rm-extension-installed__name {
   color: var(--text-color) !important;
@@ -2053,11 +1995,10 @@ body.rm-dark-theme .rm-settings--desktop .rm-settings__tab:not(.rm-settings__pan
 
 .rm-settings-panel__panel-config {
   background: var(--embed-bg) !important;
-  border-radius: var(--border-radius-md) !important;
   border: 1px solid var(--color-subtle-border) !important;
+  border-radius: var(--border-radius-md) !important;
 }
 
-/* panel-config 内文字强制主题色（含第三方插件设置页），日/夜均可读 */
 .rm-settings-panel__panel-config .rm-settings-panel__section h4,
 .rm-settings-panel__panel-config .rm-settings-panel__section h3,
 .rm-settings-panel__panel-config .rm-settings-panel__section .rm-settings-panel__description,
@@ -2110,12 +2051,9 @@ body.rm-dark-theme .rm-settings--desktop .rm-settings__tab:not(.rm-settings__pan
   border-color: var(--color-primary) !important;
 }
 
-.rm-settings-panel__panel-config .rm-settings__permissions-button .bp3-button-text,
-.rm-settings-panel__panel-config .rm-settings__permissions-button .bp3-icon {
-  color: var(--text-color) !important;
-}
-
 /* panel-config 内任意子元素文字兜底（第三方插件未知结构） */
+.rm-settings-panel__panel-config .rm-settings__permissions-button .bp3-button-text,
+.rm-settings-panel__panel-config .rm-settings__permissions-button .bp3-icon,
 .rm-settings-panel__panel-config .rm-settings-panel__section {
   color: var(--text-color) !important;
 }
@@ -2134,6 +2072,22 @@ body.rm-dark-theme .rm-settings--desktop .rm-settings__tab:not(.rm-settings__pan
 .rm-settings-panel__description,
 .rm-settings-panel__section .rm-settings-panel__description {
   color: var(--light-text-color) !important;
+}
+
+/* 输入框+动作按钮（如 Graph History 时间戳+Go）：防止溢出，保证按钮可见 */
+.rm-settings-panel .bp3-popover-wrapper:has(.bp3-input-group .bp3-input-action) {
+  min-width: 0;
+  max-width: 100%;
+}
+.rm-settings-panel .bp3-input-group {
+  min-width: 0;
+  max-width: 100%;
+}
+.rm-settings-panel .bp3-input-group .bp3-input {
+  min-width: 0;
+}
+.rm-settings-panel .bp3-input-group .bp3-input-action {
+  flex-shrink: 0;
 }
 
 /* 输入框、下拉、按钮（面板内统一） */
@@ -2265,7 +2219,6 @@ body.rm-dark-theme .rm-settings--desktop .rm-settings__tab:not(.rm-settings__pan
   background: var(--sidebar-hover-bg) !important;
 }
 
-/* Search menu */
 .bp3-popover .bp3-popover-content:has(.rm-find-or-create__menu) {
   background-color: var(--page-color) !important;
   border: 1px solid var(--color-subtle-border) !important;
@@ -2277,19 +2230,19 @@ body.rm-dark-theme .rm-settings--desktop .rm-settings__tab:not(.rm-settings__pan
 .bp3-menu.rm-find-or-create__menu {
   background-color: transparent !important;
   border: none !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
   padding: 0 !important;
-  border-radius: 0 !important;
 }
 
 .bp3-menu.rm-find-or-create__menu div[style*="color: rgb(206, 217, 224)"] {
   color: var(--light-text-color) !important;
-  font-weight: 600 !important;
   font-size: 0.85rem !important;
-  text-transform: uppercase;
+  font-weight: 600 !important;
   letter-spacing: 0.05em;
-  opacity: 1 !important;
   padding: 8px 16px !important;
+  text-transform: uppercase;
+  opacity: 1 !important;
 }
 
 .bp3-menu.rm-find-or-create__menu .rm-menu-item {
@@ -2302,8 +2255,8 @@ body.rm-dark-theme .rm-settings--desktop .rm-settings__tab:not(.rm-settings__pan
 .rm-search-title.bp3-text-overflow-ellipsis,
 .rm-search-list-item-title.bp3-text-overflow-ellipsis {
   color: var(--text-color) !important;
-  font-weight: 500 !important;
   font-size: 1rem !important;
+  font-weight: 500 !important;
   text-shadow: none !important;
 }
 
@@ -2330,7 +2283,6 @@ body.rm-dark-theme .rm-settings--desktop .rm-settings__tab:not(.rm-settings__pan
   font-weight: 600;
 }
 
-/* Sync status */
 .rm-sync {
   position: absolute !important;
   top: 50%;
@@ -2357,7 +2309,6 @@ body.rm-dark-theme .rm-settings--desktop .rm-settings__tab:not(.rm-settings__pan
   display: none !important;
 }
 
-/* Sync indicator on search input */
 .rm-topbar:has(.rm-sync) #find-or-create-input {
   border: 1.5px solid var(--sync-warn-border) !important;
   box-shadow: var(--sync-warn-shadow) !important;
@@ -2389,10 +2340,9 @@ body.rm-dark-theme .rm-settings--desktop .rm-settings__tab:not(.rm-settings__pan
   }
 }
 
-/* Sync tooltip */
 .rm-sync-tooltip__content {
-  padding: 8px 12px !important;
   min-width: 240px;
+  padding: 8px 12px !important;
 }
 
 .rm-sync-tooltip__title {
@@ -2434,7 +2384,6 @@ body.rm-dark-theme .rm-settings--desktop .rm-settings__tab:not(.rm-settings__pan
   margin: 8px 0 !important;
 }
 
-/* Datepicker */
 .bp3-datepicker {
   background-color: var(--page-color) !important;
   border-radius: 12px !important;
@@ -2454,14 +2403,11 @@ body.rm-dark-theme .rm-settings--desktop .rm-settings__tab:not(.rm-settings__pan
 
 .bp3-datepicker-caption select {
   color: var(--text-color) !important;
-  font-weight: 600 !important;
   font-family: var(--heading-font) !important;
+  font-weight: 600 !important;
 }
 
-.bp3-datepicker-caption .bp3-icon {
-  color: var(--color-primary) !important;
-}
-
+.bp3-datepicker-caption .bp3-icon,
 .DayPicker-NavButton {
   color: var(--color-primary) !important;
 }
@@ -2514,51 +2460,50 @@ body.rm-dark-theme .rm-settings--desktop .rm-settings__tab:not(.rm-settings__pan
 /* ========================================================= */
 /* 14. Autocomplete & Menus                                  */
 /* ========================================================= */
+
 body .rm-autocomplete__results {
   background-color: var(--popover-bg) !important;
   border: none !important;
+  border-radius: var(--border-radius-md) !important;
   box-shadow: var(--popover-shadow) !important;
-  color: var(--text-color) !important;
-  border-radius: 10px !important;
-  padding: 8px !important;
-  min-width: auto !important;
-  max-width: none !important;
-  width: fit-content !important;
   box-sizing: border-box !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-  max-height: 50vh !important;
-  right: auto !important;
-  /* Grid layout for split view */
+  color: var(--text-color) !important;
   display: grid !important;
   grid-template-columns: auto auto !important;
   align-items: start !important;
   gap: 0 !important;
   position: absolute !important;
+  right: auto !important;
   z-index: 9999 !important;
+  min-width: auto !important;
+  max-width: none !important;
+  width: fit-content !important;
+  max-height: 50vh !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: var(--layout-padding-sm) !important;
 }
 
-/* Autocomplete results (left column)，含 .dont-unfocus-block 覆盖内联 background；无边框/阴影，与日间一致 */
 body .rm-autocomplete__results .dont-focus-block,
 body .rm-autocomplete__results .dont-unfocus-block,
 body .rm-autocomplete__results .rm-autocomplete-result {
-  grid-column: 1 !important;
-  width: 100% !important;
-  display: block !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: var(--layout-radius-sm);
+  box-shadow: none !important;
   color: var(--text-color) !important;
+  outline: none !important;
+  grid-column: 1 !important;
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
   padding: 4px 12px !important;
   line-height: 1.2 !important;
-  border-radius: 6px;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background-color: transparent !important;
   white-space: normal !important;
   word-wrap: break-word !important;
   overflow-wrap: anywhere !important;
   word-break: break-word !important;
-  min-width: 0 !important;
-  max-width: 100% !important;
 }
 
 /* Text wrapping for children */
@@ -2574,25 +2519,24 @@ body .rm-autocomplete__results.alias-container .dont-focus-block {
   width: fit-content !important;
 }
 
-/* Aliases container (right column) */
 body .rm-autocomplete__results .rm-aliases {
+  background: transparent !important;
+  border-left: 1px solid var(--color-subtle-border) !important;
+  border-bottom: none !important;
+  display: flex !important;
+  flex-direction: column !important;
   grid-column: 2 !important;
   grid-row: 1 / 100 !important;
+  gap: 4px !important;
+  position: sticky !important;
+  top: 0 !important;
   width: fit-content !important;
   min-width: 0 !important;
   max-width: 100% !important;
-  position: sticky !important;
-  top: 0 !important;
   height: fit-content !important;
   margin-left: 8px !important;
-  padding-left: 8px !important;
-  border-left: 1px solid var(--color-subtle-border) !important;
-  border-bottom: none !important;
   margin-bottom: 0 !important;
-  background: transparent !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 4px !important;
+  padding-left: 8px !important;
   white-space: normal !important;
   word-wrap: break-word !important;
   overflow-wrap: anywhere !important;
@@ -2607,26 +2551,25 @@ body .rm-autocomplete__results .rm-aliases .sub-title {
   display: none !important;
 }
 
-/* Autocomplete hover / 选中行（覆盖内联 style background）；无双层边框/焦点环，与日间一致 */
 body .rm-autocomplete__results .dont-focus-block:hover,
 body .rm-autocomplete__results .dont-focus-block:focus-within,
 body .rm-autocomplete__results .rm-autocomplete-result:hover,
 body .rm-autocomplete__results .rm-aliases .dont-focus-block:hover button,
 body .rm-autocomplete__results .dont-unfocus-block:hover {
   background-color: var(--autocomplete-row-hover-bg) !important;
-  color: var(--autocomplete-row-hover-text) !important;
-  text-decoration: none !important;
   border: none !important;
-  outline: none !important;
   box-shadow: none !important;
+  color: var(--autocomplete-row-hover-text) !important;
+  outline: none !important;
+  text-decoration: none !important;
 }
 
 body .rm-autocomplete__results .bp3-button {
+  border-radius: 4px;
   color: var(--text-color) !important;
   padding: 6px 12px !important;
-  justify-content: flex-start;
   width: 100%;
-  border-radius: 4px;
+  justify-content: flex-start;
 }
 
 body .rm-autocomplete__results .bp3-button:hover {
@@ -2634,16 +2577,14 @@ body .rm-autocomplete__results .bp3-button:hover {
   color: var(--autocomplete-row-hover-text) !important;
 }
 
-/* Highlight match text */
 body .rm-autocomplete__results .result-highlight {
   background-color: var(--autocomplete-match-bg) !important;
-  color: var(--color-primary) !important; /* 竹青 */
-  padding: 0 2px;
   border-radius: 2px;
+  color: var(--color-primary) !important;
+  padding: 0 2px;
   font-weight: 600;
 }
 
-/* Autocomplete icons */
 body .rm-autocomplete__results .bp3-icon {
   color: var(--light-text-color) !important;
   margin-left: auto !important;
@@ -2654,33 +2595,24 @@ body .rm-autocomplete__results .rm-autocomplete-result:hover .bp3-icon {
 }
 
 /* ========================================================= */
-/* 15. Dark Mode (body.rm-dark-theme，与 roam-depo-dark-toggle 一致) */
+/* 15. Dark Mode (body.rm-dark-theme)                       */
 /* ========================================================= */
-/* 说明：夜间变量已在文件顶部的 Night Mode 选择器组集中定义；此段仅保留夜间必要的结构/组件修正。 */
 
-/* 夜间模式：文章区与 H1-H3 块背景统一为深色，避免浅色块 */
 body.rm-dark-theme .roam-article > div {
   background: var(--page-color) !important;
 }
 
-body.rm-dark-theme .roam-block-container:is(.rm-level1, .rm-level2, .rm-level3, .rm-heading-level-1, .rm-heading-level-2, .rm-heading-level-3) {
-  background: transparent !important;
-}
-
-/* 覆盖 .rm-block-main.rm-block__self 及内部 .rm-block__input */
-body.rm-dark-theme .roam-block-container.rm-level1 :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
-body.rm-dark-theme .roam-block-container.rm-heading-level-1 :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
-body.rm-dark-theme .roam-block-container.rm-level2 :is(.rm-block-main, .rm-block__input, .rm-block-text),
-body.rm-dark-theme .roam-block-container.rm-heading-level-2 :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
-body.rm-dark-theme .roam-block-container.rm-level3 :is(.rm-block-main, .rm-block__input, .rm-block-text),
-body.rm-dark-theme .roam-block-container.rm-heading-level-3 :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text) {
-  background: transparent !important;
-}
-
-/* 强制覆盖 H1-H3 块上可能存在的内联 background 样式 */
-body.rm-dark-theme .roam-block-container.rm-heading-level-1 [style*="background"],
-body.rm-dark-theme .roam-block-container.rm-heading-level-2 [style*="background"],
-body.rm-dark-theme .roam-block-container.rm-heading-level-3 [style*="background"] {
+/* 仅标题块自身内容区，不作用到子块（与日间一致） */
+body.rm-dark-theme .roam-block-container:is(.rm-level1, .rm-level2, .rm-level3, .rm-heading-level-1, .rm-heading-level-2, .rm-heading-level-3) > .rm-block-main,
+body.rm-dark-theme .roam-block-container.rm-level1 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body.rm-dark-theme .roam-block-container.rm-heading-level-1 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body.rm-dark-theme .roam-block-container.rm-level2 > .rm-block-main :is(.rm-block-main, .rm-block__input, .rm-block-text),
+body.rm-dark-theme .roam-block-container.rm-heading-level-2 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body.rm-dark-theme .roam-block-container.rm-level3 > .rm-block-main :is(.rm-block-main, .rm-block__input, .rm-block-text),
+body.rm-dark-theme .roam-block-container.rm-heading-level-3 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body.rm-dark-theme .roam-block-container.rm-heading-level-1 > .rm-block-main [style*="background"],
+body.rm-dark-theme .roam-block-container.rm-heading-level-2 > .rm-block-main [style*="background"],
+body.rm-dark-theme .roam-block-container.rm-heading-level-3 > .rm-block-main [style*="background"] {
   background: transparent !important;
 }
 
@@ -2708,36 +2640,37 @@ body.rm-dark-theme .rm-code-warning .bp3-button:hover {
   background-color: var(--code-warning-btn-hover-bg) !important;
 }
 
-/* Blockquote - 夜间无边界沉浸：仅左侧线，不破坏块对齐 */
 body.rm-dark-theme .rm-bq {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--text-color) !important;
   position: relative;
   display: block !important;
   width: 100% !important;
   max-width: 100% !important;
-  background: transparent !important;
-  border: none !important;
-  border-left: 3px solid var(--blockquote-bar) !important;
-  border-radius: 0 !important;
-  padding: 4px 0 4px 14px !important;
   margin: 0 !important;
+  padding: 4px 0 4px 14px !important;
   font-style: normal;
   line-height: 1.6;
-  color: var(--text-color) !important;
-  box-shadow: none !important;
   transition: border-color 0.25s ease;
 }
 
-body.rm-dark-theme .rm-bq:hover {
-  border-left-color: var(--color-primary) !important;
+body.rm-dark-theme .rm-bq::before {
+  background: var(--blockquote-bar) !important;
 }
 
-/* 夜间 Popover / Menu：与夜间背景一致（参考日间变量用法） */
+body.rm-dark-theme .rm-bq:hover::before {
+  background: var(--color-primary) !important;
+}
+
 body.rm-dark-theme .bp3-popover .bp3-popover-content,
 body.rm-dark-theme .bp3-popover2 .bp3-popover2-content {
   background: var(--page-color) !important;
-  color: var(--text-color) !important;
   border: none !important;
   box-shadow: var(--shadow-floating) !important;
+  color: var(--text-color) !important;
 }
 
 body.rm-dark-theme .bp3-popover-content .bp3-menu,
@@ -2763,11 +2696,7 @@ body.rm-dark-theme .bp3-menu.rm-graph-dropdown .setting {
 }
 
 body.rm-dark-theme .bp3-menu.rm-graph-dropdown .bp3-menu-item.setting:hover,
-body.rm-dark-theme .bp3-menu.rm-graph-dropdown .bp3-menu-item.setting.bp3-active {
-  background-color: var(--menu-hover-bg) !important;
-  color: var(--menu-hover-text) !important;
-}
-
+body.rm-dark-theme .bp3-menu.rm-graph-dropdown .bp3-menu-item.setting.bp3-active,
 body.rm-dark-theme .bp3-popover-content .bp3-menu-item:hover,
 body.rm-dark-theme .bp3-popover-content .bp3-menu-item.bp3-active,
 body.rm-dark-theme .bp3-popover .bp3-popover-content .bp3-menu-item:hover,
@@ -2798,15 +2727,26 @@ body.rm-dark-theme .bp3-popover-content .bp3-menu-item.bp3-intent-primary {
   color: var(--on-accent) !important;
 }
 
+/* 夜间：.bp3-dark 内默认按钮（无 intent）与主题一致 */
+body.rm-dark-theme .bp3-dark .bp3-button:not([class*="bp3-intent-"]) {
+  background: transparent !important;
+  color: var(--text-color) !important;
+  border-color: var(--color-subtle-border) !important;
+}
+body.rm-dark-theme .bp3-dark .bp3-button:not([class*="bp3-intent-"]):hover {
+  background: var(--sidebar-hover-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--color-subtle-border) !important;
+}
+
 body.rm-dark-theme .bp3-popover-arrow-fill {
   fill: var(--page-color) !important;
 }
 
-/* 夜间 Autocomplete 下拉：与 Popover/菜单同套背景与文字，覆盖内联或默认浅色 */
 body.rm-dark-theme .rm-autocomplete__results {
   background: var(--page-color) !important;
-  color: var(--text-color) !important;
   box-shadow: var(--shadow-floating) !important;
+  color: var(--text-color) !important;
 }
 
 body.rm-dark-theme .rm-autocomplete__results .dont-focus-block,
@@ -2851,7 +2791,6 @@ body.rm-dark-theme .rm-autocomplete__results .result-highlight {
   color: var(--color-primary) !important;
 }
 
-/* Inactive CSS block（唯一 blur，用于未激活 CSS 块提示，非大量使用） */
 body .rm-roam-css--inactive {
   background-color: var(--danger-bg) !important;
   border: 1px solid var(--danger-border) !important;
@@ -2941,14 +2880,16 @@ body.rm-dark-theme .rm-settings-panel__panel-config .rm-settings-panel__descript
   color: var(--color-primary) !important;
 }
 
-body.rm-dark-theme .rm-settings-panel__panel-config input.rm-settings-panel__value,
-body.rm-dark-theme .rm-settings-panel__panel-config input[type="text"],
-body.rm-dark-theme .rm-settings-panel__panel-config input[type="password"] {
-  background: var(--embed-bg) !important;
+body.rm-dark-theme .rm-settings .rm-settings-panel .rm-select-wrapper,
+body.rm-dark-theme .rm-settings .rm-settings-panel .rm-select-wrapper .bp3-button {
+  background-color: var(--embed-bg) !important;
   color: var(--text-color) !important;
   border-color: var(--color-subtle-border) !important;
 }
 
+body.rm-dark-theme .rm-settings-panel__panel-config input.rm-settings-panel__value,
+body.rm-dark-theme .rm-settings-panel__panel-config input[type="text"],
+body.rm-dark-theme .rm-settings-panel__panel-config input[type="password"],
 body.rm-dark-theme .rm-settings-panel__panel-config .rm-settings__permissions-button,
 body.rm-dark-theme .rm-settings-panel__panel-config .bp3-button.bp3-minimal.rm-settings__permissions-button {
   background: var(--embed-bg) !important;
@@ -2956,12 +2897,9 @@ body.rm-dark-theme .rm-settings-panel__panel-config .bp3-button.bp3-minimal.rm-s
   border-color: var(--color-subtle-border) !important;
 }
 
-body.rm-dark-theme .rm-settings-panel__panel-config .rm-settings__permissions-button .bp3-button-text,
-body.rm-dark-theme .rm-settings-panel__panel-config .rm-settings__permissions-button .bp3-icon {
-  color: var(--text-color) !important;
-}
-
 /* 夜间：右侧任意 section 兜底 */
+body.rm-dark-theme .rm-settings-panel__panel-config .rm-settings__permissions-button .bp3-button-text,
+body.rm-dark-theme .rm-settings-panel__panel-config .rm-settings__permissions-button .bp3-icon,
 body.rm-dark-theme .rm-settings-panel__contents .rm-settings-panel__section h4,
 body.rm-dark-theme .rm-settings-panel__contents .rm-settings-panel__section .rm-settings-panel__description {
   color: var(--text-color) !important;
@@ -3026,25 +2964,20 @@ body .rm-command-palette .rm-menu-item.rm-menu-item--active {
 }
 
 body .rm-command-palette .rm-menu-item:hover .rm-command-palette__label,
-body .rm-command-palette .rm-menu-item.rm-menu-item--active .rm-command-palette__label {
-  color: var(--menu-hover-text) !important;
-}
-
+body .rm-command-palette .rm-menu-item.rm-menu-item--active .rm-command-palette__label,
 body .rm-command-palette .rm-menu-item:hover .rm-command-palette__shortcut,
 body .rm-command-palette .rm-menu-item.rm-menu-item--active .rm-command-palette__shortcut {
   color: var(--menu-hover-text) !important;
 }
 
-/* Command palette shortcut text */
 html body .rm-command-palette .rm-menu-item .rm-command-palette__shortcut,
 html body .rm-command-palette .rm-command-palette__shortcut {
   color: var(--text-color) !important;
-  opacity: 1 !important;
   font-weight: 500 !important;
+  opacity: 1 !important;
   visibility: visible !important;
 }
 
-/* Datepicker */
 body .bp3-datepicker {
   box-shadow: var(--shadow-floating);
 }
@@ -3054,12 +2987,11 @@ body .DayPicker-Day:hover {
   color: var(--datepicker-day-hover-text) !important;
 }
 
-/* 关闭固定侧边栏确认弹窗 - 与全局二合一规则一致，不覆盖 */
 body.rm-dark-theme .rm-modal-dialog--confirmation-with-content.bp3-dialog,
 body.rm-dark-theme .rm-close-pinned-sidebar-window.confirmation-content-dialog {
   background-color: transparent !important;
-  box-shadow: none !important;
   border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
 body.rm-dark-theme .rm-close-pinned-sidebar-window .confirmation-content-header {
@@ -3074,7 +3006,6 @@ body.rm-dark-theme .rm-close-pinned-sidebar-window .rm-close-pinned-sidebar-wind
   color: var(--text-color) !important;
 }
 
-/* 弹窗内引用块：仅左侧线，无外框 */
 body.rm-dark-theme .rm-close-pinned-sidebar-window .rm-bq.rm-sidebar-window-display-str {
   background: transparent !important;
   border: none !important;
@@ -3116,20 +3047,16 @@ body.rm-dark-theme .rm-close-pinned-sidebar-window .confirmation-content-buttons
 }
 
 /* ========================================================= */
-/* 16. Theme Toggle Button (与 roam-depo-dark-toggle 一致)    */
+/* 16. Theme Toggle Button                                    */
 /* ========================================================= */
+
 .rm-topbar #roam-theme-toggle-btn {
   margin-left: auto !important;
 }
 
-
 /* ========================================================= */
-/* 17. Dual-Mode Upgrade (Non-destructive / Incremental)     */
+/* 17. Gap-Filling & Global Resets                            */
 /* ========================================================= */
-/* 说明：日/夜两套变量已在文件顶部集中定义；此节从这里开始只做 UI 盲区补全与结构同构修正。 */
-
-/* === Gap-Filling & Global Resets === */
-/* 目标：补齐 1.html 暴露的盲区（右键菜单、Popover、搜索下拉、滚动条、空白背景） */
 
 html,
 body,
@@ -3138,7 +3065,6 @@ body,
   color: var(--text-color, var(--m-text, #50616D));
 }
 
-/* 选中高亮仅用 .block-highlight-blue，关闭原生 ::selection 美化避免双层 */
 ::selection,
 .roam-article ::selection,
 .rm-block__input ::selection,
@@ -3157,22 +3083,33 @@ a *::selection,
   color: inherit !important;
 }
 
-/* Focus 可见性（无障碍）：避免仅靠颜色变化 */
 *:focus-visible {
   outline: none;
   box-shadow: var(--focus-ring);
   border-radius: inherit;
 }
 
-/* Autocomplete 选中行不叠加 focus-ring，避免双层边框（与日间简洁选中一致） */
+/* 内容块 focus 无外框，无边界 */
+.roam-article .roam-block-container:focus-within,
+.roam-article .roam-block-container.rm-block--focused,
+.roam-article .rm-block__input:focus,
+.roam-article .rm-block__input:focus-visible,
+.roam-article .roam-block-container .rm-block__input:focus,
+.roam-article .roam-block-container .rm-block__input:focus-visible,
+.roam-article .roam-block-container .rm-block-main:focus,
+.roam-article .roam-block-container .rm-block-main:focus-visible,
+.rm-title-editing-display:focus-within,
+.rm-title-editing-display textarea:focus,
+.rm-title-editing-display textarea:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
 body .rm-autocomplete__results .dont-focus-block:focus,
 body .rm-autocomplete__results .dont-focus-block:focus-visible,
 body .rm-autocomplete__results .dont-unfocus-block:focus,
-body .rm-autocomplete__results .dont-unfocus-block:focus-visible {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
+body .rm-autocomplete__results .dont-unfocus-block:focus-visible,
 /* 有时焦点落在内部节点（如 .rm-autocomplete-result / <a>），这里统一兜底 */
 body .rm-autocomplete__results *:focus,
 body .rm-autocomplete__results *:focus-visible {
@@ -3180,17 +3117,14 @@ body .rm-autocomplete__results *:focus-visible {
   box-shadow: none !important;
 }
 
-/* Blueprint / Roam 浮层与菜单：已在上方对应组件区域统一定义，避免重复堆叠覆盖。 */
-
-/* 输入框/搜索框：避免纯黑/纯白，统一到主题变量 */
 .bp3-input,
 .bp3-input-group .bp3-input,
 .rm-settings input[type="text"] {
   background-color: var(--embed-bg) !important;
-  color: var(--text-color) !important;
   border: 1px solid transparent !important;
   border-radius: var(--border-radius-md) !important;
   box-shadow: none !important;
+  color: var(--text-color) !important;
 }
 
 .bp3-input::placeholder,
@@ -3207,13 +3141,11 @@ body .rm-autocomplete__results *:focus-visible {
   box-shadow: var(--focus-ring) !important;
 }
 
-/* Scrollbar（WebKit + Firefox）- 与主题一致，变量带 Safe Fallback */
 * {
   scrollbar-color: var(--scrollbar-thumb, oklch(from var(--m-primary, #789262) l c h / 0.35)) var(--scrollbar-track, oklch(from var(--m-text, #50616D) l c h / 0.06));
   scrollbar-width: thin;
 }
 
-/* WebKit scrollbar（双冒号版本，保证生效） */
 html::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -3225,9 +3157,9 @@ html::-webkit-scrollbar-track {
 
 html::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb, oklch(from var(--m-primary, #789262) l c h / 0.35));
-  border-radius: 999px;
-  border: 2px solid transparent;
   background-clip: padding-box;
+  border: 2px solid transparent;
+  border-radius: 999px;
 }
 
 html::-webkit-scrollbar-thumb:hover {
@@ -3235,26 +3167,19 @@ html::-webkit-scrollbar-thumb:hover {
   background-clip: padding-box;
 }
 
-/* === Deep Borderless === */
-/* 目标：Sidebar / Main Page / Cards 去边框，改用 soft shadow；语义边框（blockquote/代码块）不动 */
-
 .roam-sidebar-container,
 #right-sidebar,
 .rm-sidebar-window,
-.bp3-card {
-  border: none !important;
-}
-
-/* 右侧 Sidebar Window 常见的 inline border-bottom 兜底（1.html 已暴露） */
+.bp3-card,
 #right-sidebar .rm-sidebar-window[style*="border"],
 #right-sidebar .rm-sidebar-window[style*="border-bottom"] {
   border: none !important;
 }
 
-/* 主页面内容区的“卡片感”：仅夜间加阴影；日间无阴影以消除左侧/引用区边界感 */
 .roam-article > div {
   box-shadow: var(--shadow-soft);
 }
+
 body:not(.rm-dark-theme) .roam-article > div {
   box-shadow: none !important;
 }
@@ -3263,7 +3188,6 @@ body:not(.rm-dark-theme) .roam-article > div {
 /* 18. References - Borderless Immersion                     */
 /* ========================================================= */
 
-/* 引用区外层：彻底去“卡片边界”，让沉浸感回到内容本身 */
 .rm-reference-wrapper,
 .rm-reference-main,
 .rm-reference-main__child-wrapper,
@@ -3274,9 +3198,8 @@ body:not(.rm-dark-theme) .roam-article > div {
 .rm-unlink-aliases {
   background: transparent !important;
   border: none !important;
-  border-top: none !important;
-  box-shadow: none !important;
   border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
 /* 日间模式专用：压过 Roam 默认在浅色主题下加的引用区上边框/分隔线（夜间无此问题） */
@@ -3324,7 +3247,6 @@ body:not(.rm-dark-theme) .roam-article .rm-reference-main[style*="padding-top"] 
 .rm-reference-wrapper .rm-unlinked-reference-container > .flex-h-box {
   background: transparent !important;
   border: none !important;
-  border-top: none !important;
   box-shadow: none !important;
   padding-top: 0 !important;
   margin-top: 0 !important;
@@ -3363,12 +3285,11 @@ body:not(.rm-dark-theme) .roam-article .rm-reference-main[style*="padding-top"] 
   text-decoration: none !important;
 }
 
-/* 引用条目：无描边/阴影，圆角柔和（不方），hover 极轻背景提示 */
 .rm-reference-wrapper .rm-reference-item {
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: var(--border-radius-md) !important;
   background-color: transparent !important;
+  border: none !important;
+  border-radius: var(--border-radius-md) !important;
+  box-shadow: none !important;
   backdrop-filter: none;
 }
 
@@ -3377,14 +3298,13 @@ body:not(.rm-dark-theme) .roam-article .rm-reference-main[style*="padding-top"] 
   box-shadow: none !important;
 }
 
-/* 引用区顶部的搜索框与按钮：无边界一致性（不改尺寸/布局） */
 .rm-reference-wrapper .rm-mentions-search .bp3-input,
 .rm-reference-wrapper .rm-mentions-search__input.bp3-input {
   background-color: var(--embed-bg) !important;
-  color: var(--text-color) !important;
   border: 1px solid transparent !important;
   border-radius: var(--border-radius-pill) !important;
   box-shadow: none !important;
+  color: var(--text-color) !important;
 }
 
 .rm-reference-wrapper .rm-mentions-search .bp3-input:focus,
