@@ -106,7 +106,8 @@ description: Reads and optimizes Roam Research CSS/JS to build a perceptually co
 - [ ] 无新增对字体的意外覆盖。
 - [ ] 无因 MutationObserver/JS 导致的打字延迟。
 
-## 参考
+## 参考与模板
 
 - APCA 计算与色相调整细则见 [reference.md](reference.md)。
-- DOM 结构以项目根目录下 `index.html` 为准。
+- **DOM 结构**：以本 skill 内 [index.html](index.html) 为准，选择器必须严格匹配其中实际存在的类/ID/结构。
+- **样式模板**：本 skill 内 [system.css](system.css) 与 [things.css](things.css) 作为样式参考与模板；编辑 roam.css 时需与二者保持架构一致、避免冲突。
