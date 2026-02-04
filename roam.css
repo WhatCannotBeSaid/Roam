@@ -27,28 +27,32 @@
   --m-heading-h1: #1C1C1C;        /* 乌色 - H1 */
   --m-heading-h2: #424C50;        /* 鸦青 - H2 */
   --m-heading-h3: #50616D;        /* 岩灰 - H3 */
-  --m-blockquote: #424C50;        /* 鸦青 - 引用块正文 */
+  --m-blockquote: #2B2B2B;        /* 皂色 - 引用块正文（高雅深色） */
+  --m-blockquote-bar: #177CB0;    /* 靛青 - 引用块竖条（高雅显眼） */
+  --m-blockquote-bar-hover: #125A82; /* 靛青加深 - 引用块竖条 hover */
   /* 彩色系（黄 / 蓝 / 红紫，色相环不临近，标签避绿不撞背景） */
   --m-page-tag: #75878A;          /* 苍色 - 弱化标签区 */
   --m-tag: #CA6924;               /* 琥珀 - 标签（黄色系） */
   --m-tag-hover: #A8551E;         /* 琥珀加深 - 标签 hover */
-  --m-page-ref: #177CB0;            /* 靛青 - 双链（蓝） */
-  --m-page-ref-hover: #125A82;      /* 双链 hover */
-  --m-link: #8C4356;                /* 绛紫 - 外链（红紫，与绿/蓝隔开） */
-  --m-link-hover: #6B3442;          /* 绛紫加深 - 外链 hover */
+  /* Links 专用（不与 blockquote-bar / sidebar-star / tag / 高亮 重复） */
+  --m-page-ref: #0D9488;            /* 青绿 - 双链（teal，与主色/引用条/侧栏星标区分） */
+  --m-page-ref-hover: #0F766E;       /* 深青绿 - 双链 hover */
+  --m-link: #7C3AED;                /* 紫 - 外链（violet，与绛紫/高亮系区分） */
+  --m-link-hover: #6D28D9;          /* 深紫 - 外链 hover */
   /* 其他 */
   --m-reference-strong: #118b6e;  /* 青碧 - 引用区 strong */
   --m-sidebar-star: #177CB0;      /* 靛青 */
   --m-checkbox-checked: #21A675;  /* 松柏绿 */
   --m-code-selection: #D6ECF0;    /* 月白 */
   --m-on-accent: #F2ECDE;         /* 缟 */
-  --m-highlight-underline: #CCA4E3; /* 丁香 */
-  --m-highlight-yellow: #F0C239;    /* 缃色 */
-  --m-highlight-green: #3B8E6F;     /* 碧色 */
-  --m-highlight-blue: #4C8DAE;      /* 群青 */
-  --m-highlight-red: #C83C23;       /* 绯红 */
-  --m-highlight-purple: #B0A4E3;    /* 雪青 */
-  --m-highlight-orange: #CA6924;    /* 琥珀 */
+  --m-highlight-underline: #DB5A6B; /* 海棠红 - 粉色系 */
+  --m-highlight-yellow: #F47983;    /* 桃红 - 粉色系 */
+  --m-highlight-green: #E4C4D8;     /* 藕荷 - 粉色系 */
+  --m-highlight-blue: #FFB3A7;      /* 粉红 - 粉色系 */
+  --m-highlight-red: #EF7A82;       /* 嫣红 - 粉色系 */
+  --m-bullet-focus: #DB5A6B;        /* 海棠红 - bullet 编辑态泛光（中国传统色） */
+  --m-highlight-purple: #D2A4C8;    /* 绛紫亮 - 粉色系 */
+  --m-highlight-orange: #DB5A6B;    /* 海棠红 - 粉色系 */
   --m-sidebar-icon: #3D3B4F;        /* 玄色 */
   --m-sidebar-title-day: #057748;   /* 松花绿 */
   --m-sidebar-star-day: #065279;    /* 靛蓝 */
@@ -84,8 +88,6 @@
   --checkbox-checked-color: var(--m-checkbox-checked);
   --tree-node-color: var(--m-primary);
   --code-selection-color: var(--m-code-selection);
-  --bullet-bg: oklch(from var(--m-primary) l c h / 0.4);
-  --bullet-border: var(--color-primary);
 
   /* Component Backgrounds (bc) */
   --code-bg: oklch(from var(--m-text) l c h / 0.04);
@@ -151,10 +153,10 @@
   /* Typography accents / Blockquote / Warnings / Divider（标签仅用隐迹，无 pill 变量） */
   --hr-color: var(--m-tag);
   --strong-color: var(--heading-h1-color);
-  --blockquote-bar: oklch(from var(--m-primary) l c h / 0.55);
+  --blockquote-bar: var(--m-blockquote-bar);
   --blockquote-text-color: var(--blockquote-text);
-  --blockquote-bar-color: var(--color-primary);
-  --blockquote-bar-hover-color: var(--hover-secondary);
+  --blockquote-bar-color: var(--m-blockquote-bar);
+  --blockquote-bar-hover-color: var(--m-blockquote-bar-hover);
   --code-warning-surface: var(--popover-bg);
   --code-warning-code-bg: var(--code-bg);
   --code-warning-text: var(--text-color);
@@ -168,11 +170,6 @@
   --sidebar-hover-bg: var(--hover-primary-soft);
   --title-text-shadow: 0 1px 2px oklch(from var(--m-ink) l c h / 0.05);
   --ink-solid: var(--m-ink);
-  --bullet-hover-shadow: 0 0 8px oklch(from var(--m-primary) l c h / 0.35);
-  --bullet-closed-shadow: 0 0 4px oklch(from var(--m-primary) l c h / 0.45);
-  --bullet-focus-border: oklch(from var(--m-secondary) l c h / 0.35);
-  --bullet-focus-shadow: oklch(from var(--m-secondary) l c h / 0.40);
-  --bullet-focus-fill: var(--m-highlight-red);     /* 绯红 - 圆点 focus 环内填充（红色系） */
 
   /* Smiley Toggle（未完成=红系与夜间一致，完成=绿） */
   --m-checkbox-unchecked: #C83C23;  /* 绯红 - 未勾选/未完成，日夜统一 */
@@ -187,7 +184,7 @@
 
   /* Highlights - 中国传统色 (co) */
   --highlight-underline: var(--m-highlight-underline);
-  --highlight-underline-fade: oklch(from var(--m-highlight-yellow) l c h / 0);
+  --highlight-underline-fade: oklch(from var(--m-highlight-underline) l c h / 0);
   --highlight-text: inherit;
   --highlight-yellow: var(--m-highlight-yellow);
   --highlight-green: var(--m-highlight-green);
@@ -223,8 +220,7 @@
   --layout-margin-block: 0.5rem;
   --fs-app-base: 16px;
   --block-spacing: 0; /* 正文块间距：0 为最紧，无空隙；可改为如 0.05em 保留极细缝 */
-  --block-row-min-height: 2.05em; /* 正文块行统一最小高度，便于对齐 bullet/箭头/文字 */
-  --controls-height: var(--block-row-min-height); /* 箭头+bullet 区域高度，所有显示模式统一 */
+  --block-row-min-height: 2.05em; /* 正文块行统一最小高度 */
   --ref-block-row-min-height: 1.25em; /* 引用区块行更紧凑 */
   --block-content-line-height: var(--lh-content); /* 正文块展示态与编辑态统一行高 */
   --block-line-min-height: calc(1em * var(--block-content-line-height)); /* 单行最小高度，与行高一致 */
@@ -279,23 +275,27 @@ body.rm-dark-theme .roam-app .roam-app,
   --m-heading-h1: #F2ECDE;       /* 缟 - H1 */
   --m-heading-h2: #E6EAE9;       /* 月影白 - H2 */
   --m-heading-h3: #C8CED8;       /* 灰蓝 - H3 */
-  --m-blockquote: #A1AFC9;       /* 蓝灰 - 引用块正文 */
+  --m-blockquote: #E9F1F6;       /* 霜色 - 引用块正文（高雅浅色） */
+  --m-blockquote-bar: #B0A4E3;   /* 雪青 - 引用块竖条（高雅显眼） */
+  --m-blockquote-bar-hover: #CCA4E3; /* 丁香 - 引用块竖条 hover */
   /* 彩色系（黄·蓝·红紫，与日间 标签/双链/外链 色相一一对应） */
   --m-page-tag: #75878A;         /* 苍色 - 弱化标签区 */
   --m-tag: #E8A84B;              /* 琥珀亮 - 标签（黄色系） */
   --m-tag-hover: #F0C239;        /* 缃色 - 标签 hover */
-  --m-page-ref: #44CEF6;         /* 蓝 - 双链（蓝系，与日间靛青同色相） */
-  --m-page-ref-hover: #70F3FF;   /* 蔚蓝 - 双链 hover */
-  --m-link: #D2A4C8;             /* 绛紫亮 - 外链（红紫） */
-  --m-link-hover: #E8C4DC;       /* 外链 hover */
-  /* 行内高亮（与日间同色相，亮度适配深底，Lc 60–80） */
-  --m-highlight-underline: #6E6290;   /* 雪青加深 */
-  --m-highlight-yellow: #F0C239;      /* 缃色 */
-  --m-highlight-green: #4BAF88;      /* 碧色亮 - 深底可读 */
-  --m-highlight-blue: #5BA3C9;       /* 群青亮 */
-  --m-highlight-red: #E85A5A;        /* 绯红亮 */
-  --m-highlight-purple: #B0A4E3;     /* 雪青 */
-  --m-highlight-orange: #E8A84B;     /* 琥珀亮 */
+  /* Links 专用（不与 blockquote-bar / sidebar-star / 高亮 重复） */
+  --m-page-ref: #2DD4BF;           /* 青绿亮 - 双链（teal，与主色/侧栏星标/原蓝区分） */
+  --m-page-ref-hover: #5EEAD4;    /* 青绿浅 - 双链 hover */
+  --m-link: #A78BFA;              /* 紫亮 - 外链（violet，与引用条雪青/高亮区分） */
+  --m-link-hover: #C4B5FD;        /* 薰衣草 - 外链 hover */
+  /* 行内高亮（粉色系，亮色 + 适度透明保证浅字可读） */
+  --m-highlight-underline: oklch(from #F47983 l c h / 0.55);
+  --m-highlight-yellow: oklch(from #F47983 l c h / 0.52);
+  --m-highlight-green: oklch(from #E4C4D8 l c h / 0.50);
+  --m-highlight-blue: oklch(from #FFB3A7 l c h / 0.48);
+  --m-highlight-red: oklch(from #EF7A82 l c h / 0.55);
+  --m-bullet-focus: #F05654;        /* 银红 - bullet 编辑态泛光（有光泽浅红，适配深底） */
+  --m-highlight-purple: oklch(from #D2A4C8 l c h / 0.52);
+  --m-highlight-orange: oklch(from #F47983 l c h / 0.52);
 
   --block-highlight-bg: oklch(from var(--m-primary) l c h / 0.20);
   --color-subtle-border: oklch(from var(--m-text) l c h / 0.08);
@@ -338,12 +338,12 @@ body.rm-dark-theme .roam-app .roam-app,
   --confirmation-btn-hover-bg: var(--reference-item-hover-bg);
   --reference-divider-color: transparent;
   --reference-icon-hover-bg: oklch(from var(--m-primary) l c h / 0.18);
-  --blockquote-bar: oklch(from var(--m-primary) l c h / 0.55);
-  --blockquote-text-color: var(--text-color);
-  --blockquote-bar-color: var(--blockquote-bar);
-  --blockquote-bar-hover-color: oklch(from var(--m-primary) l c h / 1);
+  --blockquote-bar: var(--m-blockquote-bar);
+  --blockquote-text-color: var(--blockquote-text);
+  --blockquote-bar-color: var(--m-blockquote-bar);
+  --blockquote-bar-hover-color: var(--m-blockquote-bar-hover);
   --highlight-underline: var(--m-highlight-underline);
-  --highlight-underline-fade: oklch(from var(--m-highlight-yellow) l c h / 0);
+  --highlight-underline-fade: oklch(from var(--m-highlight-underline) l c h / 0);
   --highlight-text: inherit;
   --highlight-yellow: var(--m-highlight-yellow);
   --highlight-green: var(--m-highlight-green);
@@ -358,15 +358,10 @@ body.rm-dark-theme .roam-app .roam-app,
   --code-warning-btn-hover-bg: oklch(from var(--m-primary) l c h / 0.28);
   --danger-bg: oklch(from var(--m-highlight-red) l c h / 0.40);
   --danger-border: oklch(from var(--m-text) l c h / 0.10);
-  --bullet-hover-shadow: 0 0 8px oklch(from var(--m-primary) l c h / 0.35);
-  --bullet-closed-shadow: 0 0 4px oklch(from var(--m-primary) l c h / 0.45);
-  --bullet-focus-border: oklch(from var(--m-secondary) l c h / 0.35);
-  --bullet-focus-shadow: oklch(from var(--m-secondary) l c h / 0.30);
-  --bullet-focus-fill: var(--m-highlight-red);     /* 绯红亮 - 夜间圆点 focus 环内填充（红色系） */
   --toggle-off-shadow: 0 4px 10px oklch(from var(--m-secondary) l c h / 0.25);
   --toggle-on-shadow: 0 -4px 10px oklch(from var(--m-checkbox-checked) l c h / 0.30);
   --ink-solid: var(--m-ink);
-  --hr-color: var(--m-highlight-yellow);
+  --hr-color: var(--m-tag);
 
   color-scheme: dark;
 }
@@ -509,7 +504,13 @@ body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-3 > .r
   font-size: var(--fs-body);
 }
 
-/* 正文块行/对齐/input/textarea 等：仅版式，已移除 */
+/* 正文块编辑态 textarea 与展示态字号统一 */
+.roam-app .roam-article .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main > .rm-block__input textarea,
+.roam-app .roam-article .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main .rm-autocomplete__wrapper textarea,
+.rm-ref-page-view .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main > .rm-block__input textarea,
+.rm-ref-page-view .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main .rm-autocomplete__wrapper textarea {
+  font-size: var(--fs-body) !important;
+}
 
 .roam-app .roam-article strong,
 .roam-app .roam-article b,
@@ -640,16 +641,15 @@ body:not(.rm-dark-theme) .roam-app .rm-alias--external:hover {
   font-family: 'Operator Mono', monospace;
 }
 
+/* 代码块选区：背景用主题变量（system.css 有 .cm-selectionBackground / .cmt-line::selection，此处统一透明 + 变量） */
 .roam-app .cm-selectionBackground,
 .roam-app .cm-focused .cm-selectionBackground {
   background-color: var(--block-highlight-bg) !important;
 }
 
-.roam-app .rm-code-block .cm-line::selection,
-.roam-app .cm-content ::selection,
-.roam-app code::selection {
-  background: transparent;
-  color: inherit;
+.roam-app :is(.rm-code-block .cm-line, .cm-content, code)::selection {
+  background: transparent !important;
+  color: inherit !important;
 }
 
 /* ========================================================= */
@@ -678,8 +678,6 @@ body:not(.rm-dark-theme) .roam-app .rm-alias--external:hover {
 .roam-app .rm-reference-item {
   font-size: 0.95rem;
 }
-
-/* .rm-reference-item .controls / .rm-reference-item 版式：已移除 */
 
 .roam-app .rm-reference-item {
   background-color: var(--reference-item-bg);
@@ -721,7 +719,7 @@ body:not(.rm-dark-theme) .roam-app .roam-sidebar-container .rm-db-title-containe
 
 .roam-app .starred-pages-wrapper > .flex-h-box.title > span {
   color: var(--sidebar-star-color);
-  font-size: 13px;
+  font-size: 1.05rem;
 }
 
 body:not(.rm-dark-theme) .roam-app .starred-pages-wrapper > .flex-h-box.title > span {
@@ -960,12 +958,18 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
   color: var(--m-warn) !important;
 }
 
-.roam-app #right-sidebar .rm-sidebar-outline .rm-title-display,
-.roam-app #right-sidebar .rm-sidebar-outline .rm-title-editing-display,
 .roam-app #right-sidebar .rm-reference-main,
 .roam-app #right-sidebar .rm-sidebar-card {
   color: var(--text-color);
   font-family: var(--body-font);
+}
+
+.roam-app #right-sidebar .rm-sidebar-outline .rm-title-display,
+.roam-app #right-sidebar .rm-sidebar-outline .rm-title-editing-display,
+.roam-app #right-sidebar .rm-sidebar-outline .rm-title-editing-display textarea {
+  color: var(--heading-h1-color);
+  font-family: var(--heading-font);
+  font-size: var(--fs-h1);
 }
 
 .roam-app #right-sidebar .rm-sidebar-outline .roam-block-container,
@@ -975,11 +979,42 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
   font-family: var(--body-font);
 }
 
-/* .rm-multibar：仅版式，已移除 */
+/* 隐藏 multibar（块操作条） */
+.roam-app .rm-multibar {
+  display: none !important;
+}
+
+/* Bullet 圆点：日间 #3D3B4F，夜间浅色系（淡色，不抢眼） */
+body:not(.rm-dark-theme) .roam-app .rm-bullet .rm-bullet__inner,
+body:not(.rm-dark-theme) .roam-app .rm-bullet.rm-bullet--closed .rm-bullet__inner {
+  background-color: #50616D !important;
+  border-color: oklch(from #3D3B4F l c h / 0.5) !important;
+}
+body.rm-dark-theme .roam-app .rm-bullet .rm-bullet__inner,
+body.rm-dark-theme .roam-app .rm-bullet.rm-bullet--closed .rm-bullet__inner {
+  background-color: #E9F1F6 !important;
+  border-color: oklch(from var(--m-text-muted) l c h / 0.5) !important;
+}
+/* 展示模式：bullet 不显示 border H*/
+.roam-app .roam-block-container:not(:focus-within) .rm-bullet .rm-bullet__inner,
+.roam-app .roam-block-container:not(:focus-within) .rm-bullet.rm-bullet--closed .rm-bullet__inner {
+  border-color: transparent !important;
+}
+/* 编辑态：bullet 红色（无泛光，无 border） */
+body:not(.rm-dark-theme) .roam-app .roam-block-container:focus-within .rm-bullet .rm-bullet__inner,
+body:not(.rm-dark-theme) .roam-app .roam-block-container:focus-within .rm-bullet.rm-bullet--closed .rm-bullet__inner {
+  background-color: oklch(from var(--m-bullet-focus) l c h / 0.68) !important;
+  border-color: transparent !important;
+}
+body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet .rm-bullet__inner,
+body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bullet--closed .rm-bullet__inner {
+  background-color: oklch(from var(--m-bullet-focus) l c h / 0.65) !important;
+  border-color: transparent !important;
+}
+
 
 /* ========================================================= */
-/* 8. Bullet Points & Block References                       */
-/* 已比对 system.css：选择器部分重叠但本块用主题变量/不同布局（controls-height、bullet、block-ref、rm-bq），全部保留 */
+/* 8. Block References & Blockquote                          */
 /* ========================================================= */
 
 .roam-app #block-input {
@@ -996,52 +1031,6 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
 
 
 
-
-
-
-
-/* .rm-block__input a[href] overflow-wrap/word-break：仅版式，已移除 */
-
-/* .controls 箭头+bullet 区域等：仅版式，已移除 */
-
-/* .controls margin-right / .rm-bullet / .rm-bullet__inner 等：仅版式，已移除 */
-
-.roam-app .rm-bullet .rm-bullet__inner {
-  background-color: transparent;
-  border-color: var(--light-text-color);
-}
-
-.roam-app .rm-bullet .rm-bullet__inner:hover {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-}
-
-.roam-app .rm-bullet.rm-bullet--closed .rm-bullet__inner {
-  background-color: var(--color-primary) !important;
-  border-color: transparent !important;
-}
-
-.roam-app .rm-bullet__inner--user-icon {
-  background-color: var(--ink-solid);
-  border-color: transparent;
-}
-
-.roam-app .rm-block--focused .rm-bullet .rm-bullet__inner,
-.roam-app .roam-block-container:focus-within .rm-bullet .rm-bullet__inner {
-  background-color: oklch(from var(--bullet-focus-fill) l c h / 0.5) !important;
-  border-color: var(--light-text-color) !important;
-}
-
-.roam-app .rm-bullet__tooltip {
-  background-color: var(--popover-bg) !important;
-  color: var(--text-color) !important;
-  font-size: 0.8125rem !important;
-}
-
-.roam-app .rm-bullet-tooltip__time {
-  color: var(--light-text-color, var(--m-text-muted, #758A99)) !important;
-  font-size: 0.9rem !important;
-}
 
 /* .rm-block-ref::before：仅版式，已移除 */
 
@@ -1063,6 +1052,13 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
   font-size: var(--fs-quote) !important;
 }
 
+.roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote) {
+  border-left-width: 3px !important;
+  border-left-color: var(--blockquote-bar-color) !important;
+}
+.roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote):hover {
+  border-left-color: var(--blockquote-bar-hover-color) !important;
+}
 .roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote)::before {
   background: var(--blockquote-bar-color);
 }
@@ -1077,7 +1073,32 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
 }
 
 .roam-app hr.rm-hr {
+  border-width: 1.5px 0 0 0;
   border-color: var(--hr-color);
+}
+
+/* Strikethrough 删除线文字：降低灰度，更淡；横线加粗 */
+.roam-app .rm-Falsified,
+.roam-app .rm-falsified > .rm-block-main,
+.roam-app .rm-falsified.rm-block-ref,
+.roam-app .rm-strikethrough,
+.roam-app s,
+.roam-app del,
+.roam-app [style*="text-decoration: line-through"],
+.roam-app [style*="text-decoration:line-through"] {
+  color: oklch(from var(--m-text) l c h / 0.45) !important;
+  text-decoration-thickness: 1.5px !important;
+}
+body.rm-dark-theme .roam-app .rm-Falsified,
+body.rm-dark-theme .roam-app .rm-falsified > .rm-block-main,
+body.rm-dark-theme .roam-app .rm-falsified.rm-block-ref,
+body.rm-dark-theme .roam-app .rm-strikethrough,
+body.rm-dark-theme .roam-app s,
+body.rm-dark-theme .roam-app del,
+body.rm-dark-theme .roam-app [style*="text-decoration: line-through"],
+body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
+  color: oklch(from var(--m-text) l c h / 0.48) !important;
+  text-decoration-thickness: 2px !important;
 }
 
 .roam-app div > .bp3-icon-caret-down + strong,
@@ -1085,56 +1106,126 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
   color: var(--tree-node-color) !important;
 }
 
-/* .controls .rm-caret / .rm-caret-hidden：仅版式，已移除 */
-
-.roam-app .rm-caret.bp3-icon-standard,
-.roam-app .rm-caret .bp3-icon-standard,
-.roam-app .bp3-icon-caret-down.bp3-icon-standard.rm-caret,
-.roam-app .bp3-icon-caret-right.bp3-icon-standard {
-  color: var(--light-text-color) !important;
+/* 侧栏拖拽条：视觉隐藏，保留拖拽调整宽度功能 */
+.roam-app .rm-resize-handle {
+  opacity: 0 !important;
+  pointer-events: auto;
 }
-.roam-app .rm-caret-hidden.bp3-icon-standard {
-  color: var(--light-text-color) !important;
-}
-
-/* .controls .block-expand / .rm-resize-handle：仅版式，已移除 */
-
 .roam-app .rm-resize-handle:hover {
-  background-color: var(--color-primary-light);
+  opacity: 0 !important;
+  background-color: transparent !important;
 }
 
 /* ========================================================= */
 /* 9. Checkboxes (Smiley Toggle Design)                      */
-/* 仅保留配色；版式见 system.css */
 /* ========================================================= */
 
+.roam-app .check-container {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 18px;
+  margin: -5.5px 2px 0 4px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.roam-app .check-container input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
 .roam-app .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 18px;
   background: var(--toggle-off-bg);
-  border-color: #A7B6C2;
+  border: none !important;
+  border-radius: 10px;
+  box-shadow: var(--toggle-off-shadow);
+  transition: 0.5s;
 }
 
 .roam-app .check-container input:checked ~ .checkmark {
   background: var(--toggle-on-bg);
+  box-shadow: var(--toggle-on-shadow);
+  transform: rotate(180deg);
 }
 
 .roam-app .smiley-face {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  display: block;
+  width: 14px;
+  height: 14px;
   background: var(--toggle-face-bg);
+  border-radius: 50%;
+  transition: 0.5s;
+  transition-delay: 0.2s;
+}
+
+.roam-app .check-container input:checked ~ .checkmark .smiley-face {
+  left: 2px;
+  transform: rotate(180deg);
+}
+
+.roam-app .checkmark > :not(.smiley-face) {
+  display: none !important;
+}
+
+/* 隐藏 system.css 用 ::after 画的默认对勾，只保留笑脸 */
+.roam-app .check-container .checkmark::after {
+  content: none !important;
+  display: none !important;
+  border: none !important;
 }
 
 .roam-app .smiley-face::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 3px;
+  width: 2.5px;
+  height: 2.5px;
   background: var(--toggle-eye-off);
+  border-radius: 50%;
+  box-shadow: 6px 0 var(--toggle-eye-off);
+  transition: 0.5s;
 }
 
 .roam-app .check-container input:checked ~ .checkmark .smiley-face::before {
   background: var(--toggle-eye-on);
+  box-shadow: 6px 0 var(--toggle-eye-on);
 }
 
+/* 嘴：未勾选 = 哭脸（下弯弧），勾选 = 笑脸（上弯弧） */
 .roam-app .smiley-face::after {
+  content: '';
+  position: absolute;
+  bottom: 2.5px;
+  left: 50%;
+  width: 6px;
+  height: 3px;
   background: var(--toggle-eye-off);
+  transform: translateX(-50%);
+  /* 哭脸：上缘圆角，弧线向下 */
+  border-radius: 3px 3px 0 0;
+  transition: 0.5s;
 }
 
 .roam-app .check-container input:checked ~ .checkmark .smiley-face::after {
   background: var(--toggle-eye-on);
+  /* 笑脸：下缘圆角，弧线向上 */
+  border-radius: 0 0 3px 3px;
+}
+
+.roam-app .check-container input:focus ~ .checkmark {
+  box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--toggle-eye-on);
 }
 
 /* ========================================================= */
@@ -1166,41 +1257,102 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
 
 /* ========================================================= */
 /* 11. Tags & Labels                                         */
-/* 已比对 system.css：无相同规则块（本块用主题变量/隐迹标签等），全部保留 */
 /* ========================================================= */
 
-/* .rm-page-ref-brackets display / span.rm-page-ref 版式：已移除 */
+.roam-app .rm-page-ref-brackets {
+  display: none;
+}
+
+.roam-app span.rm-page-ref {
+  border-radius: 2px;
+  padding: 0 1px;
+}
 
 .roam-app .rm-page-ref--link {
   color: var(--color-primary);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-shadow: none;
+  transition: color 0.2s ease, background 0.2s ease, text-decoration 0.2s ease, filter 0.2s ease, letter-spacing 0.2s ease, text-shadow 0.2s ease;
 }
 
 body:not(.rm-dark-theme) .roam-app .rm-page-ref--link,
 body:not(.rm-dark-theme) .roam-app a.rm-alias--page,
 body:not(.rm-dark-theme) .roam-app a.rm-alias--block {
   color: var(--m-page-ref) !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  letter-spacing: 0;
+  text-shadow: none;
 }
 
 body:not(.rm-dark-theme) .roam-app .rm-page-ref--link:hover,
 body:not(.rm-dark-theme) .roam-app a.rm-alias--page:hover,
 body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   color: var(--m-page-ref-hover) !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.03em;
+  text-shadow: 0 0 0.5px currentColor, 0 1px 2px rgba(0,0,0,0.08);
 }
 
+/* 「隐迹」The Hidden Path：中式极简标签，无背景无边框，底部下划线 + scaleX 以 GPU 加速；排除 #Streamer 等特殊标签 */
 body .roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]),
 body .roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]) {
+  position: relative;
+  display: inline-block;
   color: inherit !important;
   background: transparent !important;
+  padding: 1px 4px !important;
+  border: none !important;
   font-family: var(--tag-font), var(--body-font) !important;
   font-size: var(--fs-tag) !important;
+  font-weight: 500;
+  line-height: var(--lh-tag) !important;
+  letter-spacing: 0.02em;
+  text-decoration: none !important;
+  transition: opacity 0.3s ease;
 }
-
+body .roam-app span.rm-page-ref--tag:not([data-tag="Streamer"])::before,
+body .roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"])::before {
+  content: "" !important;
+}
 body .roam-app span.rm-page-ref--tag:not([data-tag="Streamer"])::after,
 body .roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"])::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
   background: currentColor;
+  opacity: 0.15;
+  transform: scaleX(0.25);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s;
+  will-change: transform;
+}
+body .roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]):hover,
+body .roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]):hover {
+  opacity: 0.85;
+}
+body .roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]):hover::after,
+body .roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]):hover::after {
+  transform: scaleX(1);
+  opacity: 0.5;
 }
 
-/* .tag-ink-pulse：仅版式，已移除 */
+/* 墨迹脉冲点击反馈用（由 Tag-HideHash.js 创建） */
+.roam-app .tag-ink-pulse {
+  position: absolute;
+  background: currentColor;
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 10;
+}
 
 /* ========================================================= */
 /* 12. Highlights (.rm-highlight 相关，参考 system.css)      */
@@ -2483,12 +2635,21 @@ body.rm-dark-theme .roam-app .rm-page-ref--link,
 body.rm-dark-theme .roam-app a.rm-alias--page,
 body.rm-dark-theme .roam-app a.rm-alias--block {
   color: var(--m-page-ref) !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  letter-spacing: 0;
+  text-shadow: none;
 }
 
 body.rm-dark-theme .roam-app .rm-page-ref--link:hover,
 body.rm-dark-theme .roam-app a.rm-alias--page:hover,
 body.rm-dark-theme .roam-app a.rm-alias--block:hover {
   color: var(--m-page-ref-hover) !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.03em;
+  text-shadow: 0 0 6px oklch(from var(--m-page-ref) l c h / 0.5), 0 0 12px oklch(from var(--m-page-ref) l c h / 0.25);
 }
 
 /* 仅标题块自身内容区，不作用到子块（与日间一致） */
@@ -2801,7 +2962,7 @@ body .roam-app .DayPicker-Day:hover {
 
 /* ========================================================= */
 /* 17. Gap-Filling & Global Resets                            */
-/* 已比对 system.css：本块为全局兜底/selection/滚动条等，与 system 选择器或值不同，全部保留 */
+/* 已比对 system.css：兜底/selection/滚动条等，与 system 选择器或值不同，全部保留 */
 /* ========================================================= */
 
 html,
@@ -2811,37 +2972,37 @@ body,
   color: var(--text-color, var(--m-text, #313233));
 }
 
+/* --- Selection（对齐 system.css：正文/链接透明；输入与标题区显式高亮，变量见 :root / .rm-dark-theme）--- */
 .roam-app ::selection,
-.roam-app .roam-article ::selection,
-.roam-app .roam-block-container ::selection,
+.roam-app :is(.roam-article, .roam-block-container) ::selection,
 .roam-app .rm-page-ref::selection,
-.roam-app .rm-page-ref--link::selection,
-.roam-app span.rm-page-ref.rm-page-ref--tag::selection,
-.roam-app span.rm-page-ref[data-tag]::selection,
 .roam-app .rm-page-ref *::selection,
+.roam-app :is(.rm-page-ref--link, span.rm-page-ref.rm-page-ref--tag, span.rm-page-ref[data-tag])::selection,
 .roam-app a::selection,
 .roam-app a *::selection,
-.roam-app .rm-alias--page::selection,
-.roam-app .rm-alias--block::selection,
-.roam-app .rm-alias--external::selection {
+.roam-app :is(.rm-alias--page, .rm-alias--block, .rm-alias--external)::selection {
   background: transparent !important;
   color: inherit !important;
 }
 
-/* 输入框/文本框内选中可见（对齐 system.css ::selection / bc-main__textarea-selection） */
-.roam-app input::selection,
-.roam-app textarea::selection,
-.roam-app .rm-block__input::selection,
-.roam-app .bp3-input::selection {
-  background-color: var(--selection-bg) !important;
+/* 页面标题：强制可选中（避免被 noselect 等阻断） */
+.roam-body .roam-app .roam-article :is(.rm-title-display-container, .rm-title-display, h1.rm-title-display) {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
+
+/* 输入框 + 页面标题：选中高亮（--selection-bg / --selection-text）；标题用层级限定避免 .container * 卡顿 */
+.roam-app :is(input, textarea, .rm-block__input, .bp3-input)::selection,
+.roam-body .roam-app .roam-article :is(.rm-title-display-container, .rm-title-display-container > *, .rm-title-display-container > * *, .rm-title-display, h1.rm-title-display, .rm-title-display *, h1.rm-title-display *)::selection {
+  background: var(--selection-bg) !important;
   color: var(--selection-text) !important;
 }
 
-.roam-app input::-moz-selection,
-.roam-app textarea::-moz-selection,
-.roam-app .rm-block__input::-moz-selection,
-.roam-app .bp3-input::-moz-selection {
-  background-color: var(--selection-bg) !important;
+.roam-app :is(input, textarea, .rm-block__input, .bp3-input)::-moz-selection,
+.roam-body .roam-app .roam-article :is(.rm-title-display-container, .rm-title-display-container > *, .rm-title-display-container > * *, .rm-title-display, h1.rm-title-display, .rm-title-display *, h1.rm-title-display *)::-moz-selection {
+  background: var(--selection-bg) !important;
   color: var(--selection-text) !important;
 }
 
@@ -2916,11 +3077,7 @@ body,
   border-color: var(--color-primary) !important;
 }
 
-.roam-app,
-.roam-app * {
-  scrollbar-color: var(--scrollbar-thumb, oklch(from var(--m-primary, #789262) l c h / 0.35)) var(--scrollbar-track, oklch(from var(--m-text, #313233) l c h / 0.06));
-  scrollbar-width: thin;
-}
+
 
 html::-webkit-scrollbar {
   width: 10px;
@@ -2967,54 +3124,8 @@ html::-webkit-scrollbar-thumb:hover {
 /* 18. References - Borderless Immersion                     */
 /* ========================================================= */
 
-.roam-app :is(.rm-reference-wrapper, .rm-reference-main, .rm-reference-main__child-wrapper, .rm-reference-container, .rm-mentions, .rm-mentions.refs-by-page-view, .rm-unlinked-reference-container, .rm-unlink-aliases) {
-  background: transparent !important;
-  border: none !important;
-}
-
-/* 日间模式：引用区与 Roam 默认样式对齐，仅保留 padding 覆盖 */
-body:not(.rm-dark-theme) .roam-app .roam-article :is(.rm-reference-wrapper, .rm-reference-main, .rm-reference-main__child-wrapper, .rm-reference-container) {
-  background: transparent !important;
-}
-body:not(.rm-dark-theme) .roam-app .roam-article .rm-reference-main[style*="padding-top"] {
-  padding-top: 0 !important;
-}
-
-/* reference 与正文的“交界”消除：强制抹平 inline padding/margin（覆盖 Roam 内联 padding-top: 12px） */
-.roam-app .roam-article .rm-reference-main,
-.roam-app .rm-reference-wrapper .rm-reference-main {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-  border-top: none !important;
-}
-
-.roam-app .rm-reference-main__child-wrapper {
-  margin: 0 !important;
-  border-top: none !important;
-}
-
-.roam-article .rm-reference-wrapper,
-.rm-reference-wrapper {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  border-top: none !important;
-}
-
-/* 正文最后一块与引用区之间：收拢间距，避免“断档” */
-.roam-app .roam-article > div > .rm-block-children.rm-level-0 > .roam-block-container:last-of-type {
-  margin-bottom: 0 !important;
-}
 
 /* 标题行（Linked/Unlinked References）：分割线始终 1px，仅用变量控制颜色，避免日夜切换位移 */
-.roam-app .rm-reference-wrapper .rm-reference-container > .flex-h-box,
-.roam-app .rm-reference-wrapper .rm-unlinked-reference-container > .flex-h-box {
-  background: transparent !important;
-  border: none !important;
-  border-top: 1px solid var(--reference-divider-color) !important;
-  border-bottom: 1px solid var(--reference-divider-color) !important;
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
 
 .roam-app .rm-reference-wrapper .rm-reference-container > .flex-h-box strong,
 .roam-app .rm-reference-wrapper .rm-unlinked-reference-container strong,
@@ -3034,47 +3145,14 @@ body:not(.rm-dark-theme) .roam-app .roam-article .rm-reference-main[style*="padd
   border: none !important;
 }
 
-.rm-ref-page-view {
-  padding: 0.2em 0 !important;
-  margin: 0 !important;
-}
-
 .rm-reference-wrapper .rm-ref-page-view-title .rm-page__title,
 .rm-reference-wrapper .rm-ref-page-view-title a,
 .rm-reference-wrapper .rm-ref-page-view-title span {
   color: var(--text-color) !important;
 }
 
-.roam-app .rm-reference-wrapper .rm-reference-item {
-  margin: 0 !important;
-  background-color: transparent !important;
-  border: none !important;
-  backdrop-filter: none;
-}
 
-.roam-app .rm-reference-wrapper .rm-reference-item:hover {
-  background-color: var(--reference-item-hover-bg) !important;
-}
 
-/* 引用区块行更紧凑：降低行高与 controls 高度 */
-.roam-app .rm-reference-wrapper .rm-reference-item .roam-block-container > .rm-block-main {
-  min-height: var(--ref-block-row-min-height) !important;
-}
-.roam-app .rm-reference-wrapper .rm-reference-item .roam-block-container .controls {
-  height: var(--ref-block-row-min-height) !important;
-  min-height: var(--ref-block-row-min-height) !important;
-}
-
-/* 引用区块左侧箭头：默认隐藏，悬浮在该行区域时显示 */
-.roam-app .rm-reference-main .roam-block-container .block-expand {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transition: opacity 0.15s ease;
-}
-.roam-app .rm-reference-main .flex-h-box.flex-align-start:hover .roam-block-container .block-expand {
-  opacity: 1 !important;
-  pointer-events: auto !important;
-}
 
 .roam-app .rm-reference-wrapper .rm-mentions-search .bp3-input,
 .roam-app .rm-reference-wrapper .rm-mentions-search__input.bp3-input {
