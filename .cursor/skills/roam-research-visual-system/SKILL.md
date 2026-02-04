@@ -1,18 +1,25 @@
 ---
 name: roam-research-visual-system
-description: Reads and optimizes Roam Research CSS/JS to build a perceptually consistent day/night visual system. Uses colors from colors.masantu.com, APCA contrast validation, and DOM from index.html. Use when editing roam.css, Roam JS blocks, theme variables, dark mode, or Roam UI/UX styling.
+description: Reads and optimizes Roam Research CSS/JS to build a perceptually consistent day/night visual system with a borderless, immersive design. Uses colors from colors.masantu.com, APCA contrast validation, and DOM from index.html. Use when editing roam.css, Roam JS blocks, theme variables, dark mode, or Roam UI/UX styling.
 ---
 
 # Roam Research 日夜统一视觉系统
 
-作为 Roam Research 资深 UI/UX 架构师，读取并优化项目内所有 CSS 与 JS，构建具备「感知一致性」的日夜统一视觉系统。
+作为 Roam Research 资深 UI/UX 架构师，读取并优化项目内所有 CSS 与 JS，构建具备「感知一致性」的日夜统一视觉系统。**设计风格**遵循**无边界、沉浸式**：以内容为中心，减少视觉割裂与界面「框感」，让阅读与编辑融为一体。
 
 ## 核心协议（必须始终遵守）
 
+### 不可修改（锁定项）
+
+- **font-family**：严禁修改任何 `font-family`，保持现有字体设定。
+- **配色**：严禁修改色值、色板与色彩方案；色值仅限使用 https://colors.masantu.com/#/ 且不得替换或重定义现有配色变量/值。
+
+### 可修改（除此以外均可）
+
+布局、间距（padding/margin）、字号与行高（font-size/line-height）、组件结构样式、交互态表现、滚动条与选中样式、变量命名以外的变量逻辑、性能优化、选择器与权重等，在不动字体与配色的前提下均可调整。
+
 ### A. 样式约束
 
-- **零动字体**：严禁修改任何 `font-family`、`font-size`、`line-height`。
-- **色彩主权**：色值仅限使用 https://colors.masantu.com/#/ 。
 - **DOM 匹配**：仅使用原生 DOM 结构，严禁猜测类名；选择器必须严格匹配 `index.html` 中实际存在的类/ID/结构。
 
 ### B. 算法驱动
@@ -26,18 +33,25 @@ description: Reads and optimizes Roam Research CSS/JS to build a perceptually co
 - **变量驱动**：统一使用 `--m-` 前缀的 CSS 变量；通过 ID 选择器或更具体路径提升权重，避免 `!important`。
 - **性能审计**：优化 `MutationObserver` 等 JS 过滤器，确保不产生打字延迟或输入卡顿。
 
+### D. 设计风格（无边界、沉浸式）
+
+- **无边界**：尽量减少边框、分割线、卡片描边与明显「框」；让内容与背景自然过渡，避免区块化割裂。
+- **沉浸式**：减少 chrome、装饰性元素；留白与内容区统一呼吸感，优先满幅/全屏阅读与编辑体验，弱化「在操作软件」的感知。
+
 ---
 
 ## 资源与权限
 
 - **范围**：允许 read 和 edit 项目内所有 `.css` 与 `.js` 文件；确保与现有代码逻辑互不冲突。
-- 上述核心协议 A/B/C 覆盖 DOM、字体、色彩、变量与性能，其余条款不得与之冲突。
+- **不可修改**项（font-family、配色）必须始终遵守；**可修改**范围内的工作须符合协议 A/B/C 中关于 DOM、变量与性能的约定，其余条款不得与之冲突。
 
 ## 色彩与变量架构
 
+**说明**：配色（色值/色板）为不可修改项；以下内容描述既有配制的来源与用法，不得用于新增或替换色值/色板。
+
 ### 色彩来源与变量化
 
-- **唯一色值来源**：仅使用来自 https://colors.masantu.com/#/ 的色值（见核心协议 A）。
+- **唯一色值来源**：仅使用来自 https://colors.masantu.com/#/ 的色值（见核心协议 A）；不得修改既有配色。
 - **变量管理**：所有颜色通过 `:root` 中带 `--m-` 前缀的 CSS 变量定义；日夜模式共用同一套变量名，仅在 `.rm-dark-theme`（或项目内实际使用的暗色类名）下修改变量值。
 - **作用域**：变量定义在 `.roam-app` 级别，确保对第三方插件 UI 的最大覆盖；所有变量引用必须带安全回退色，例如：`color: var(--m-text, #2F2F2F);`。
 
@@ -86,7 +100,7 @@ description: Reads and optimizes Roam Research CSS/JS to build a perceptually co
 ### 4. 最终复核（Self-Correction）
 
 - 检查日夜模式切换时是否因 Padding/Margin 差异导致「闪烁」或「位移」。
-- 确认没有任何样式意外覆盖系统字体设定（`font-family` / `font-size` / `line-height` 未被修改）。
+- 确认没有任何样式意外覆盖或修改 `font-family` 与现有配色（色值/色板）；其余样式可自由调整。
 - 若修改了 JS：确认 `MutationObserver` 等观察逻辑不会导致输入/打字延迟。
 
 ## 工作流检查清单
@@ -96,15 +110,17 @@ description: Reads and optimizes Roam Research CSS/JS to build a perceptually co
 - [ ] 色值均来自 colors.masantu.com，且已写入 `:root` / `.rm-dark-theme` 的 `--m-` 变量。
 - [ ] 每组正文/背景配色已做 APCA 校验并满足 Lc 阈值（日间 ≥75，夜间 60–80）。
 - [ ] 选择器仅使用 index.html 中存在的类/ID/结构，未猜测类名。
-- [ ] 未改动 font-family、font-size、line-height。
+- [ ] 未改动 font-family 与配色（色值/色板）；其余样式可改。
 - [ ] 滚动条与 Selection 使用 `--m-` 变量；变量引用带 fallback。
 - [ ] 未引入过多 blur 或复杂阴影；交互态优先用 oklch() 派生。
+- [ ] 样式符合无边界、沉浸式：少边框/分割线，内容与背景自然过渡，留白与内容一体。
 
 执行编辑后请确认：
 
 - [ ] 日夜切换无布局闪烁或位移。
-- [ ] 无新增对字体的意外覆盖。
+- [ ] 无新增对 font-family 与配色的意外覆盖或修改。
 - [ ] 无因 MutationObserver/JS 导致的打字延迟。
+- [ ] 无新增强边框/框感，整体仍保持无边界、沉浸式。
 
 ## 参考与模板
 
