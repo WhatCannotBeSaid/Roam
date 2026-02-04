@@ -835,10 +835,8 @@ body:not(.rm-dark-theme) .roam-app .rm-alias--external:hover {
   border-radius: var(--border-radius-sm);
   flex: 0 1 auto;
   margin: var(--layout-padding-sm) var(--layout-padding-sm) 0 0;
-  max-width: 100%;
   padding: 10px 18px;
   transition: var(--transition-fast);
-  width: fit-content;
   word-break: break-word;
 }
 
