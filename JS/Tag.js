@@ -1,5 +1,5 @@
 /**
- * Roam Research 标签：隐藏前缀 "#" + 酷炫标签方案
+ * Roam Research 标签：隐藏前缀 "#" + 「隐迹」The Hidden Path
  * - 当 "#" 在 span 的文本里时，用 JS 去掉首字
  * - 用 data-tag-hash-hidden 标记已处理，避免重复
  * - 主样式由 roam.css「隐迹」提供：无背景、底部 scaleX 下划线，currentColor 适配日夜
