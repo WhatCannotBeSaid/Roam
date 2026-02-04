@@ -1027,9 +1027,7 @@ body:not(.rm-dark-theme) .roam-app .roam-sidebar-content > div > div {
 .bp3-overlay .bp3-popover:has(.rm-graph-dropdown) {
   position: relative;
   z-index: 99999 !important;
-  width: 210px !important;
-  min-width: 210px !important;
-  max-width: 210px !important;
+  width: 220px !important;
 }
 
 .roam-app .bp3-menu.rm-graph-dropdown {
@@ -1186,32 +1184,11 @@ body:not(.rm-dark-theme) .roam-app .roam-sidebar-content > div > div {
   color: var(--text-color) !important;
 }
 
-.roam-app .roam-block-container .rm-block-main {
-  align-items: flex-start !important;
-}
 
-.roam-app .rm-sidebar-outline .roam-block-container,
-.roam-app .rm-zoom .roam-block-container {
-  width: fit-content !important;
-  max-width: 100% !important;
-}
 
-.roam-app .rm-sidebar-outline .roam-block-container .rm-block-main,
-.roam-app .rm-zoom .roam-block-container .rm-block-main,
-.roam-app .rm-reference-item .roam-block-container .rm-block-main {
-  width: fit-content !important;
-  max-width: 100% !important;
-}
 
-.roam-app .rm-sidebar-outline .roam-block-container .rm-block__input,
-.roam-app .rm-zoom .roam-block-container .rm-block__input,
-.roam-app .rm-reference-item .roam-block-container .rm-block__input {
-  width: fit-content !important;
-  max-width: 100% !important;
-  min-width: 0;
-  overflow-wrap: break-word !important;
-  word-break: break-word !important;
-}
+
+
 
 .roam-app .rm-sidebar-outline .roam-block-container .rm-block__input a[href],
 .roam-app .rm-zoom .roam-block-container .rm-block__input a[href],
@@ -3628,15 +3605,40 @@ body,
   border-radius: inherit;
 }
 
-/* 内容块 focus 无外框，无边界；页面标题 focus 与 unfocus 视觉一致（无焦点环） */
+/* 内容块 focus 无外框，无边界（正文 + 侧栏大纲 + 引用等全场景）；页面标题 focus 与 unfocus 视觉一致（无焦点环） */
 .roam-app .roam-article .roam-block-container:focus-within,
 .roam-app .roam-article .roam-block-container.rm-block--focused,
-.roam-app .roam-article .rm-block__input:focus,
-.roam-app .roam-article .rm-block__input:focus-visible,
+.roam-app .roam-article .roam-block-container.rm-focused,
 .roam-app .roam-article .roam-block-container .rm-block__input:focus,
 .roam-app .roam-article .roam-block-container .rm-block__input:focus-visible,
 .roam-app .roam-article .roam-block-container .rm-block-main:focus,
 .roam-app .roam-article .roam-block-container .rm-block-main:focus-visible,
+.roam-app .roam-article .rm-block__input:focus,
+.roam-app .roam-article .rm-block__input:focus-visible,
+/* 侧栏大纲 / Zoom / 引用项内的块编辑态同样无外框 */
+.roam-app .rm-sidebar-outline .roam-block-container:focus-within,
+.roam-app .rm-sidebar-outline .roam-block-container.rm-block--focused,
+.roam-app .rm-sidebar-outline .roam-block-container.rm-focused,
+.roam-app .rm-sidebar-outline .roam-block-container .rm-block__input:focus,
+.roam-app .rm-sidebar-outline .roam-block-container .rm-block__input:focus-visible,
+.roam-app .rm-zoom .roam-block-container:focus-within,
+.roam-app .rm-zoom .roam-block-container.rm-block--focused,
+.roam-app .rm-zoom .roam-block-container.rm-focused,
+.roam-app .rm-zoom .roam-block-container .rm-block__input:focus,
+.roam-app .rm-zoom .roam-block-container .rm-block__input:focus-visible,
+.roam-app .rm-reference-item .roam-block-container:focus-within,
+.roam-app .rm-reference-item .roam-block-container.rm-block--focused,
+.roam-app .rm-reference-item .roam-block-container.rm-focused,
+.roam-app .rm-reference-item .roam-block-container .rm-block__input:focus,
+.roam-app .rm-reference-item .roam-block-container .rm-block__input:focus-visible,
+/* 任意位置的块容器编辑态兜底 */
+.roam-app .roam-block-container:focus-within,
+.roam-app .roam-block-container.rm-block--focused,
+.roam-app .roam-block-container.rm-focused,
+.roam-app .roam-block-container .rm-block__input:focus,
+.roam-app .roam-block-container .rm-block__input:focus-visible,
+.roam-app .roam-block-container .rm-block-main:focus,
+.roam-app .roam-block-container .rm-block-main:focus-visible,
 .roam-app .rm-title-display:focus,
 .roam-app .rm-title-display:focus-visible,
 .roam-app .rm-title-display-container .rm-title-display:focus,
