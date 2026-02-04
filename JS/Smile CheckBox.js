@@ -43,7 +43,11 @@ if (!existing) {
                 if (node.nodeType !== 1) return false;
                 const el = node;
                 return el.classList?.contains('roam-block-container')
+                    || el.classList?.contains('check-container')
+                    || el.classList?.contains('checkmark')
                     || el.querySelector?.('.roam-block-container')
+                    || el.querySelector?.('.check-container')
+                    || el.querySelector?.('.checkmark')
                     || el.classList?.contains('rm-block__input')
                     || el.querySelector?.('.rm-block__input');
             });
@@ -54,6 +58,17 @@ if (!existing) {
 
     var root = document.querySelector('.roam-app') || document.body;
     observer.observe(root, { childList: true, subtree: true });
+
+    // 3. 点击复选框时立即补注笑脸（Roam 有时会替换 DOM，不依赖刷新）
+    root.addEventListener('click', (e) => {
+        if (e.target.closest('.check-container')) {
+            requestAnimationFrame(() => { injectSmileyFace(); });
+        }
+    }, true);
+
+    // 4. 延迟再跑两次，兜底晚渲染的块
+    setTimeout(injectSmileyFace, 500);
+    setTimeout(injectSmileyFace, 1500);
 
     document.getElementsByTagName("head")[0].appendChild(extension);
 }
