@@ -454,9 +454,15 @@ body:not(.rm-dark-theme) .bp3-dark .bp3-button:not([class*="bp3-intent-"]):hover
 }
 
 body:not(.rm-dark-theme) .bp3-dark .bp3-input {
-  background: var(--embed-bg) !important;
+  background: var(--page-color) !important;
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
+}
+
+/* 夜间：.bp3-dark 容器内输入框与页面背景统一 */
+.rm-dark-theme .bp3-input,
+.rm-dark-theme .bp3-dark .bp3-input {
+  background: var(--page-color) !important;
 }
 
 /* ========================================================= */
@@ -993,7 +999,7 @@ body:not(.rm-dark-theme) .roam-app .roam-sidebar-content > div > div {
 
 .roam-app .bp3-menu.rm-graph-dropdown .rm-graphs__search .bp3-input,
 .roam-app .bp3-menu.rm-graph-dropdown .bp3-input-group.rm-graphs__search .bp3-input {
-  background-color: var(--embed-bg);
+  background-color: var(--page-color);
   color: var(--text-color);
   font-family: var(--body-font);
   font-size: var(--font-size);
@@ -1923,7 +1929,7 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
 }
 
 .bp3-dialog.full-results-modal .full-results-chat-input.bp3-input {
-  background: var(--find-input-bg);
+  background: var(--page-color);
   color: var(--text-color);
   border-color: var(--color-subtle-border);
   font-family: var(--body-font);
@@ -1934,7 +1940,7 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
 }
 
 .bp3-dialog.full-results-modal .full-results-chat-input.bp3-input:focus {
-  background: var(--find-input-focus-bg);
+  background: var(--page-color);
   border-color: var(--color-primary);
 }
 
@@ -2040,7 +2046,7 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
 
 .bp3-menu.str-aicommands-menu .str-aicommands-input .bp3-input,
 .bp3-menu.str-aicommands-menu .bp3-input-group.str-aicommands-input .bp3-input {
-  background: var(--find-input-bg) !important;
+  background: var(--page-color) !important;
   color: var(--text-color) !important;
   border-color: var(--color-subtle-border);
   font-family: var(--body-font);
@@ -2420,7 +2426,7 @@ body:not(.rm-dark-theme) .rm-settings--desktop .rm-settings__tab:not(.rm-setting
 .rm-settings-panel .bp3-input,
 .rm-settings-panel input[type="text"],
 .rm-settings-panel input[type="password"] {
-  background-color: var(--embed-bg) !important;
+  background-color: var(--page-color) !important;
   color: var(--text-color) !important;
   border-color: var(--color-subtle-border) !important;
 }
@@ -3002,7 +3008,7 @@ body.rm-dark-theme .roam-app .bp3-dialog:has(.rm-settings-tabs) .bp3-dialog-clos
 }
 
 body .roam-app .rm-command-palette .bp3-input {
-  background-color: var(--find-input-bg) !important;
+  background-color: var(--page-color) !important;
   color: var(--text-color) !important;
   border-color: transparent !important;
 }
@@ -3033,6 +3039,16 @@ body .roam-app .rm-command-palette .rm-menu-item.rm-menu-item--active {
   color: var(--menu-hover-text) !important;
 }
 
+/* 命令面板选中项：与日夜间主题统一（覆盖默认/扩展可能的高优先级规则） */
+.rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active {
+  background-color: var(--menu-hover-bg) !important;
+  color: var(--menu-hover-text) !important;
+}
+.rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__label,
+.rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__shortcut {
+  color: var(--menu-hover-text) !important;
+}
+
 body .roam-app .rm-command-palette .rm-menu-item:hover .rm-command-palette__label,
 body .roam-app .rm-command-palette .rm-menu-item.rm-menu-item--active .rm-command-palette__label,
 body .roam-app .rm-command-palette .rm-menu-item:hover .rm-command-palette__shortcut,
@@ -3043,6 +3059,50 @@ body .roam-app .rm-command-palette .rm-menu-item.rm-menu-item--active .rm-comman
 html body .roam-app .rm-command-palette .rm-menu-item .rm-command-palette__shortcut,
 html body .roam-app .rm-command-palette .rm-command-palette__shortcut {
   color: var(--text-color) !important;
+}
+
+/* 命令面板快捷键文字：与日夜间主题统一 */
+.roam-app .rm-command-palette .rm-command-palette__shortcut {
+  background-color: transparent !important;
+  color: var(--text-color) !important;
+}
+.roam-app .rm-command-palette .rm-menu-item:hover .rm-command-palette__shortcut,
+.roam-app .rm-command-palette .rm-menu-item.rm-menu-item--active .rm-command-palette__shortcut {
+  background-color: transparent !important;
+  color: var(--menu-hover-text) !important;
+}
+.rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__shortcut {
+  background-color: transparent !important;
+  color: var(--menu-hover-text) !important;
+}
+
+/* 命令面板底部：与日夜间主题统一 */
+.roam-app .rm-command-palette .rm-command-palette__footer {
+  background-color: var(--page-color) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+.roam-app .rm-command-palette .rm-command-palette__footer-title {
+  color: var(--text-color) !important;
+}
+.roam-app .rm-command-palette .bcp-sort-controls .bcp-sort-label {
+  color: var(--light-text-color) !important;
+}
+.roam-app .rm-command-palette .bcp-sort-button {
+  background-color: transparent !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+.roam-app .rm-command-palette .bcp-sort-button:hover {
+  background-color: var(--menu-hover-bg) !important;
+  color: var(--menu-hover-text) !important;
+  border-color: var(--color-subtle-border) !important;
+}
+.roam-app .rm-command-palette .bcp-sort-button[aria-pressed="true"],
+.roam-app .rm-command-palette .bcp-sort-button[data-active="1"] {
+  background-color: var(--menu-hover-bg) !important;
+  color: var(--menu-hover-text) !important;
+  border-color: var(--color-primary) !important;
 }
 
 /* body .bp3-datepicker：仅 box-shadow，已移除 */
@@ -3155,7 +3215,7 @@ body,
 .roam-app .bp3-input,
 .roam-app .bp3-input-group .bp3-input,
 .roam-app .rm-settings input[type="text"] {
-  background-color: var(--embed-bg) !important;
+  background-color: var(--page-color) !important;
   border-color: transparent !important;
   color: var(--text-color) !important;
 }
@@ -3251,7 +3311,7 @@ html::-webkit-scrollbar-thumb:hover {
 
 .roam-app .rm-reference-wrapper .rm-mentions-search .bp3-input,
 .roam-app .rm-reference-wrapper .rm-mentions-search__input.bp3-input {
-  background-color: var(--embed-bg) !important;
+  background-color: var(--page-color) !important;
   border-color: transparent !important;
   color: var(--text-color) !important;
 }
@@ -3312,4 +3372,72 @@ body.rm-dark-theme .roam-app .roam-article .rm-reference-main::after {
 }
 body.rm-dark-theme .roam-app .roam-article .rm-reference-main[style*="padding-top"] {
   padding-top: 0 !important;
+}
+
+/* ========================================================= */
+/* 命令面板：最高优先级覆盖（含 portaled / 扩展注入后的样式）  */
+/* 同时匹配 .roam-app 内 与 body 直下，确保生效              */
+/* ========================================================= */
+html body .roam-app .rm-command-palette .rm-command-palette__shortcut,
+html body .rm-command-palette .rm-command-palette__shortcut {
+  background-color: transparent !important;
+  color: var(--text-color) !important;
+}
+html body .roam-app .rm-command-palette .rm-menu-item:hover .rm-command-palette__shortcut,
+html body .roam-app .rm-command-palette .rm-menu-item.rm-menu-item--active .rm-command-palette__shortcut,
+html body .rm-command-palette .rm-menu-item:hover .rm-command-palette__shortcut,
+html body .rm-command-palette .rm-menu-item.rm-menu-item--active .rm-command-palette__shortcut {
+  background-color: transparent !important;
+  color: var(--menu-hover-text) !important;
+}
+html body .roam-app .rm-command-palette .rm-command-palette__footer,
+html body .rm-command-palette .rm-command-palette__footer {
+  background-color: var(--page-color) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+html body .roam-app .rm-command-palette .rm-command-palette__footer-title,
+html body .rm-command-palette .rm-command-palette__footer-title {
+  color: var(--text-color) !important;
+}
+html body .roam-app .rm-command-palette .bcp-sort-label,
+html body .rm-command-palette .bcp-sort-label {
+  color: var(--light-text-color) !important;
+}
+html body .roam-app .rm-command-palette .bcp-sort-button,
+html body .rm-command-palette .bcp-sort-button {
+  background-color: transparent !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+html body .roam-app .rm-command-palette .bcp-sort-button:hover,
+html body .rm-command-palette .bcp-sort-button:hover {
+  background-color: var(--menu-hover-bg) !important;
+  color: var(--menu-hover-text) !important;
+  border-color: var(--color-subtle-border) !important;
+}
+html body .roam-app .rm-command-palette .bcp-sort-button[aria-pressed="true"],
+html body .roam-app .rm-command-palette .bcp-sort-button[data-active="1"],
+html body .rm-command-palette .bcp-sort-button[aria-pressed="true"],
+html body .rm-command-palette .bcp-sort-button[data-active="1"] {
+  background-color: var(--menu-hover-bg) !important;
+  color: var(--menu-hover-text) !important;
+  border-color: var(--color-primary) !important;
+}
+html body .roam-app .rm-command-palette .rm-menu-item.rm-menu-item--active,
+html body .rm-command-palette .rm-menu-item.rm-menu-item--active {
+  background-color: var(--menu-hover-bg) !important;
+  color: var(--menu-hover-text) !important;
+}
+html body .roam-app .rm-command-palette .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active,
+html body .rm-command-palette .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active {
+  background-color: var(--menu-hover-bg) !important;
+  color: var(--menu-hover-text) !important;
+}
+html body .roam-app .rm-command-palette .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__label,
+html body .roam-app .rm-command-palette .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__shortcut,
+html body .rm-command-palette .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__label,
+html body .rm-command-palette .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__shortcut {
+  background-color: transparent !important;
+  color: var(--menu-hover-text) !important;
 }
