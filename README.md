@@ -1,46 +1,73 @@
 # Roam Research 深度优化套件 (roam)
 
-这是一个针对 Roam Research 的深度优化方案，包含精心设计的 **CSS 主题**与** JavaScript 增强插件**，旨在提供沉浸、护眼且高效的写作与管理体验。
+针对 Roam Research 的深度优化方案，包含 **roam.css** 主题与 **Roam.js** 增强脚本，提供日夜统一、护眼且沉浸的写作与管理体验。
+
+---
 
 ## ✨ 主要特性
 
-### 🎨 护眼配色方案 (CSS)
-*   **日间模式**：以米黄（`#F5F0E6`）为底，搭配墨青（`#2A5A6A`）主色，采用低饱和度的中国传统色，阅读舒适。
-*   **夜间模式**：适配 `roam-native-dark`，使用深灰（`#2A2A2A`）背景与柔和的文字颜色，降低视觉疲劳。
-*   **精美排版**：标题使用 Futura / 颜真卿楷体，正文使用 Optima / 空山楷，代码使用 Fira Code。
+### 🎨 roam.css — 主题与排版
 
-### 🛠 UI/UX 功能增强 (CSS)
-*   **沉浸式代码块**：无边框设计，透明背景，专注于代码内容。
-*   **增强复选框**：完成任务后自动添加优雅的删除线样式，且复选框自动隐藏。
-*   **智能搜索框**：集成同步状态指示灯，支持动态展开。
-*   **标签美化**：为 `#Tweet`, `#Book`, `#Idea` 等特定标签定制了专属样式。
+* **日夜统一视觉**  
+  日间：苍艾底（`#C7D1C6`）、墨色正文、竹青主色、靛青引用条等；夜间：玄青底（`#2B333E`）、月影白正文、石青主色、雪青引用条等。配色来自中国传统色，APCA 对比度合规（日间 Lc≥75，夜间 Lc 60–80），无纯白刺眼。
 
-### 🔌 插件增强 (JavaScript)
-*   **[Sidebar-Hide.js](Sidebar-Hide.js)**：**悬浮侧边栏**。禁用原生侧边栏占位，鼠标移至屏幕左侧边缘时自动滑出，离开后自动隐藏。
-*   **[TDD Sidebar.js](TDD%20Sidebar.js)**：**待办入口**。在侧边栏顶部注入快捷入口，一键跳转至 `TODO` 和 `Done` 页面。
-*   **[Heading-Enter-Normal.js](Heading-Enter-Normal.js)**：**标题回车变正文**。在 h1/h2/h3 标题块按 Enter 时，将新块改为普通正文块，而非继续为同级标题。
+* **字栈（Humanist Endgame）**  
+  页面标题 `--title-font`（Domaine Display / 柳公权楷书）、标题级 `--heading-font`（Canela / 古典明朝楷）、正文 `--body-font`（Tiempos Text / 屏显雅宋）、引用 `--quote-font`（Calligraph421 BT / 文悦古典明朝体）、标签 `--tag-font`、代码 `--code-font`（Operator Mono / 霞鹜文楷等）、UI `--ui-font`（Ideal Sans / 艺黑等）。
+
+* **字号与层次**  
+  页面标题 `--fs-page-title`（2.4rem）、H1/H2/H3（1.8 / 1.5 / 1.25rem）、正文 `--fs-body`（1rem）、引用 `--fs-quote`（1.05rem）、标签 `--fs-tag`（1.05rem）；展示态与编辑态共用同一变量，所见即所得。
+
+* **组件与交互**  
+  引用块左侧靛青/雪青竖条、hover 加深；沉浸式代码块（透明背景、无框）；行内/块级高亮、双链/外链色与主色/引用条区分；同步状态指示、搜索高亮、自动完成；笑脸复选框样式由 CSS 定义（见下）；看板、标签、References 无框沉浸等。
+
+* **结构概览**  
+  CSS 分为：变量（日/夜）→ 全局覆盖 → 基础布局 → 排版 → 代码块 → 嵌入与查询 → 左侧边栏 → 块引用与引用块 → 复选框（笑脸）→ 看板 → 标签与高亮 → 设置与插件 → 自动完成 → 夜间合并覆盖 → 主题切换按钮 → 间隙与重置 → 引用区沉浸。
+
+### 🔌 Roam.js — 脚本增强
+
+* **Theme Toggle（日夜切换）**  
+  在顶栏注入切换按钮，循环模式：**自动（跟随系统）→ 日间 → 夜间**。偏好写入 `localStorage`（`roam-theme-mode`），自动模式下监听 `prefers-color-scheme`。按钮图标：自动 `repeat`、日间 `flash`、夜间 `moon`；悬停显示当前模式与「点击切换」。
+
+* **Smile CheckBox（笑脸复选框）**  
+  在 `.check-container .checkmark` 内注入笑脸元素（`.smiley-face`），与 roam.css 中的笑脸样式配合；通过 MutationObserver 与点击事件在动态生成的块上补注，避免遗漏。标签样式仅由 roam.css 提供，本脚本不包含标签逻辑。
+
+---
 
 ## 🚀 安装与使用
 
-### 1. 安装 CSS 主题
-1.  在 Roam Research 中创建一个名为 `roam/css` 的页面。
-2.  创建一个代码块（输入 `/code` 并选择 `CSS`）。
-3.  将 [roam.css](roam.css) 的内容粘贴进去。
-4.  推荐搭配 **Roam Native Dark** 扩展使用以获得最佳夜间效果。
+### 1. 安装 CSS 主题（roam.css）
 
-### 2. 安装 JavaScript 插件
-1.  在 Roam Research 中创建一个名为 `roam/js` 的页面。
-2.  **信任该页面**：点击页面顶部的 "Yes, I know what I'm doing" 按钮（如果出现）。
-3.  为每个插件分别创建代码块（输入 `/code` 并选择 `JavaScript`）：
-    *   **悬浮侧边栏**：复制 [Sidebar-Hide.js](Sidebar-Hide.js) 内容并粘贴。
-    *   **TDD 入口**：复制 [TDD Sidebar.js](TDD%20Sidebar.js) 内容并粘贴。
-    *   **标题回车变正文**：复制 [Heading-Enter-Normal.js](Heading-Enter-Normal.js) 内容并粘贴。在 h1/h2/h3 标题块按 Enter 后，新块会变为普通正文块（Roam 默认会继续为同级标题）。
-4.  将代码块下方的语言下拉菜单设置为 `javascript`。
+1. 在 Roam Research 中创建页面 **roam/css**。
+2. 新建代码块，类型选 **CSS**。
+3. 将 [roam.css](roam.css) 全部内容粘贴进该代码块。
 
-## 📝 最近更新 (2026-02-02)
-*   **项目更名**：由 `Roam-CSS` 正式更名为 `roam`。
-*   **代码清理**：移除了冗余的选择器，统一了 CSS 变量命名。
-*   **插件优化**：优化了侧边栏悬浮触发的灵敏度。
+### 2. 安装 JavaScript（Roam.js）
+
+1. 在 Roam Research 中创建页面 **roam/js**。
+2. 若出现提示，点击 **“Yes, I know what I'm doing”** 信任该页面。
+3. 新建代码块，类型选 **JavaScript**，将 [JS/Roam.js](JS/Roam.js)（或仓库根目录下的 Roam.js）全部内容粘贴进去。
+4. 将代码块语言设置为 **javascript**。
+
+安装后即可使用顶栏主题切换与笑脸复选框；若使用系统深色模式，建议在 Roam 内选择「自动」以匹配 roam.css 夜间变量。
+
+---
+
+## 📁 仓库文件说明
+
+| 文件 | 说明 |
+|------|------|
+| [roam.css](roam.css) | 主题样式：CSS 变量（日/夜）、排版、代码块、引用块、侧栏、复选框、看板、标签、高亮、设置/插件区、主题切换按钮等。 |
+| [JS/Roam.js](JS/Roam.js) | 合并脚本：Theme Toggle（日/夜间模式切换）+ Smile CheckBox（笑脸复选框注入）。 |
+
+---
+
+## 📝 最近更新（2026-02-05）
+
+* **README**：根据当前 **roam.css** 与 **Roam.js** 重写，补充字栈、变量、结构与安装说明。
+* **roam.css**：引用块字号 `--fs-quote` 设为 1.05rem；日夜配色与 APCA 规范见文件内注释。
+
+---
 
 ## 🤝 致谢
-*   本套件由 **Antigravity (Gemini)** 辅助开发与优化。
+
+本套件由 **Antigravity (Gemini)** 参与开发与优化。

@@ -36,3 +36,4 @@ alwaysApply: false
 
 - **版式、结构、动效**交给 system.css 或 Roam 默认样式；roam.css 只做**配色与字体（family/size）**覆盖。
 - 先改展示模式，再同步编辑模式，保持所见即所得。
+- 字体与配色修改须同时遵循 **typography** 技能与 **roam-research-visual-system** 技能。

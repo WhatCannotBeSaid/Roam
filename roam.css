@@ -5,12 +5,13 @@
 :root,
 .roam-app {
   /* Typography - Humanist Endgame 字栈 (门面/骨架/血肉/呼吸/眉批/代码) */
-  --title-font: 'Arno Pro Display', 'Arno Pro', '文悦古典明朝体 简入繁出 (需授权)', serif;
-  --heading-font: 'Optima', 'Zapf Humanist', '方正清刻本悦宋简体', '方正颜真卿楷书 简', '方正颜真卿楷书', sans-serif;
-  --body-font: 'Palatino Linotype', 'Palatino', 'FZPingXianYaSong-R', '方正屏显雅宋_GBK', '方正屏显雅宋', serif;
-  --quote-font: 'Garamond Premier Pro', 'Garamond', '方正苏新诗柳楷', serif;
-  --tag-font: 'Cronos Pro', 'Cronos', 'FZSongKeBenXiuKai-R-GBK', '方正宋刻本秀楷简体', '方正宋刻本秀楷', sans-serif;
-  --code-font: 'Operator Mono', 'Operator Mono SSm', 'Sarasa Term SC', '更纱黑体 SC', monospace;
+  --title-font: 'Domaine Display', '方正柳公权楷书 简', serif;
+  --heading-font: 'Canela', 'Aa古典明朝楷 (非商业使用)', sans-serif;
+  --body-font: 'Tiempos Text', '方正屏显雅宋_GBK', serif;
+  --quote-font: 'Calligraph421 BT', '文悦古典明朝体 简入繁出 (需授权)', serif;
+  --tag-font: 'Cronos Pro', '方正优雅宋 简', sans-serif;
+  --code-font: 'Operator Mono', 'LXGW Wenkai Mono Screen', monospace;
+  --ui-font: 'Ideal Sans', '方正艺黑简体',  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --font-size: 1rem;
 
   /* Day Mode - 黑/灰系：页面标题/正文/引用/H1-H3（有层次）；彩色系：标签/双链/外链（色相环隔开） */
@@ -34,6 +35,11 @@
   --m-page-tag: #75878A;          /* 苍色 - 弱化标签区 */
   --m-tag: #CA6924;               /* 琥珀 - 标签（黄色系） */
   --m-tag-hover: #A8551E;         /* 琥珀加深 - 标签 hover */
+  /* 学术标签（Academic Tag）日间 */
+  --tag-text-color: #1a1a1a;
+  --tag-border-color: #333333;
+  --tag-hover-bg: rgba(0, 0, 0, 0.03);
+  --tag-font-weight: 600;
   /* Links 专用（不与 blockquote-bar / sidebar-star / tag / 高亮 重复） */
   --m-page-ref: #0D9488;            /* 青绿 - 双链（teal，与主色/引用条/侧栏星标区分） */
   --m-page-ref-hover: #0F766E;       /* 深青绿 - 双链 hover */
@@ -91,7 +97,8 @@
 
   /* Component Backgrounds (bc) */
   --code-bg: oklch(from var(--m-text) l c h / 0.04);
-  --inline-code-bg: oklch(from var(--m-text) l c h / 0.06);
+  --inline-code-bg: oklch(from var(--m-page-ref) l c h / 0.2);
+  --inline-code-color: var(--m-tag);
   --embed-bg: oklch(from var(--m-text) l c h / 0.03);
   --embed-hover-bg: oklch(from var(--m-text) l c h / 0.06);
   --reference-item-bg: oklch(from var(--m-primary) l c h / 0.06);
@@ -241,8 +248,8 @@
   --fs-h2: 1.5rem;
   --fs-h3: 1.25rem;
   --fs-body: 1rem;
-  --fs-quote: 1.125rem;
-  --fs-tag: 0.875rem;
+  --fs-quote: 1.05rem;
+  --fs-tag: 1.05rem;
   --font-size: var(--fs-body);
 
   color-scheme: light;
@@ -282,6 +289,11 @@ body.rm-dark-theme .roam-app .roam-app,
   --m-page-tag: #75878A;         /* 苍色 - 弱化标签区 */
   --m-tag: #E8A84B;              /* 琥珀亮 - 标签（黄色系） */
   --m-tag-hover: #F0C239;        /* 缃色 - 标签 hover */
+  /* 学术标签（Academic Tag）夜间 */
+  --tag-text-color: #d1d1d1;
+  --tag-border-color: #888888;
+  --tag-hover-bg: rgba(255, 255, 255, 0.05);
+  --tag-font-weight: 600;
   /* Links 专用（不与 blockquote-bar / sidebar-star / 高亮 重复） */
   --m-page-ref: #2DD4BF;           /* 青绿亮 - 双链（teal，与主色/侧栏星标/原蓝区分） */
   --m-page-ref-hover: #5EEAD4;    /* 青绿浅 - 双链 hover */
@@ -300,7 +312,8 @@ body.rm-dark-theme .roam-app .roam-app,
   --block-highlight-bg: oklch(from var(--m-primary) l c h / 0.20);
   --color-subtle-border: oklch(from var(--m-text) l c h / 0.08);
   --code-bg: oklch(from var(--m-text) l c h / 0.03);
-  --inline-code-bg: oklch(from var(--m-text) l c h / 0.06);
+  --inline-code-bg: oklch(from var(--m-page-ref) l c h / 0.22);
+  --inline-code-color: var(--m-tag);
   --embed-bg: oklch(from var(--m-text) l c h / 0.03);
   --embed-hover-bg: oklch(from var(--m-text) l c h / 0.06);
   --reference-item-bg: oklch(from var(--m-text) l c h / 0.04);
@@ -477,6 +490,37 @@ body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-3 > .r
 /* 已比对 system.css：无相同规则块（system 仅 .roam-body .roam-app h1 颜色、.rm-level* 字号），全部保留 */
 /* ========================================================= */
 
+/* 应用根字体：第七种 --ui-font 仅作 .roam-app 根；六种格式用下方规则，其余 UI 用 :not 排除正文区后单独设 */
+.roam-app {
+  font-family: var(--ui-font);
+}
+
+/* 非正文区 UI 使用 --ui-font（对齐 system.css 的 div/textarea 全局字体，仅设 font-family 保留 line-height 等） */
+.roam-app .roam-sidebar-container,
+.roam-app .roam-sidebar-container *,
+.roam-app .rm-topbar,
+.roam-app .rm-topbar *,
+.roam-app .bp3-menu,
+.roam-app .bp3-menu-item,
+.roam-app .bp3-popover-content,
+.roam-app .bp3-popover-content *,
+.roam-app .bp3-dialog,
+.roam-app .bp3-dialog *,
+.roam-app .bp3-button,
+.roam-app .bp3-input,
+.roam-app .bp3-input-group .bp3-input,
+.roam-app .rm-command-palette,
+.roam-app .rm-command-palette *,
+.roam-app .rm-find-or-create,
+.roam-app .rm-find-or-create * {
+  font-family: var(--ui-font);
+}
+
+.roam-app .bp3-text-overflow-ellipsis,
+body .bp3-text-overflow-ellipsis {
+  font-family: var(--ui-font) !important;
+}
+
 /* 标题字体：仅 h1–h6 与页面标题编辑区，不包含 .rm-level* 以免子块继承 */
 .roam-app :is(h1, h2, h3, h4, h5, h6) {
   color: var(--text-color);
@@ -485,8 +529,20 @@ body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-3 > .r
 
 /* .rm-title-editing-display textarea / 标题容器 / focus 等：仅版式，已移除 */
 
-/* 排除 .rm-topbar / .rm-topbar-zen，避免覆盖原生顶栏 padding */
-.roam-app div:not(.rm-topbar):not(.rm-topbar-zen),
+/* 排除 .rm-topbar / .rm-topbar-zen；仅正文区 div/textarea 用 body-font，其余继承 .roam-app 的 --ui-font */
+.roam-app .roam-article div,
+.roam-app .roam-block-container,
+.roam-app .rm-block,
+.roam-app .roam-article textarea,
+.roam-app .rm-block__input textarea {
+  color: var(--text-color);
+  font-family: var(--body-font);
+  font-size: var(--font-size);
+}
+.roam-app div:not(.rm-topbar):not(.rm-topbar-zen) {
+  color: var(--text-color);
+  font-size: var(--font-size);
+}
 .roam-app textarea {
   color: var(--text-color);
   font-family: var(--body-font);
@@ -631,8 +687,9 @@ body:not(.rm-dark-theme) .roam-app .rm-alias--external:hover {
 
 .roam-app .rm-inline-code,
 .roam-app code {
-  background: var(--inline-code-bg);
-  color: var(--color-secondary);
+  background: var(--inline-code-bg) !important;
+  color: var(--inline-code-color) !important;
+  border: 1px solid oklch(from var(--m-page-ref) l c h / 0.35) !important;
 }
 
 .roam-app .cm-comment,
@@ -650,6 +707,79 @@ body:not(.rm-dark-theme) .roam-app .rm-alias--external:hover {
 .roam-app :is(.rm-code-block .cm-line, .cm-content, code)::selection {
   background: transparent !important;
   color: inherit !important;
+}
+
+/* 夜间模式：代码块插入符可见（参考 system.css：.bp3-dark .cm-cursor 用 border-left 绘制） */
+body.rm-dark-theme .roam-app .rm-code-block .cm-editor,
+body.rm-dark-theme .roam-app .rm-code-block .cm-content {
+  caret-color: var(--text-color);
+}
+body.rm-dark-theme .roam-app .rm-code-block .cm-cursor {
+  border-left-color: var(--text-color) !important;
+}
+
+/* 夜间模式：代码块语法高亮，提升可读性 */
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-comment {
+  color: #9ca3af !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-atom,
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-number {
+  color: #c4b5fd !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-comment.cmt-attribute {
+  color: #86efac !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-comment.cmt-def {
+  color: #fcd34d !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-comment.cmt-tag {
+  color: #f9a8d4 !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-comment.cmt-type {
+  color: #67e8f9 !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block .cmt-labelName {
+  color: #a5b4fc !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block .cmt-className {
+  color: #22d3ee !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-propertyName,
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-attribute {
+  color: #86efac !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-keyword {
+  color: #f472b6 !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-builtin {
+  color: #67e8f9 !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-string,
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-string2 {
+  color: #fde047 !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-variableName {
+  color: #f8fafc !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-variable-2 {
+  color: #a5f3fc !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-variable-3,
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-typeName {
+  color: #67e8f9 !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-def {
+  color: #fdba74 !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-bracket {
+  color: #f8fafc !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-tag {
+  color: #f472b6 !important;
+}
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-header,
+body.rm-dark-theme .roam-app .rm-code-block span.cmt-link {
+  color: #c4b5fd !important;
 }
 
 /* ========================================================= */
@@ -705,10 +835,30 @@ body:not(.rm-dark-theme) .roam-app .rm-alias--external:hover {
   background-color: var(--bg-color) !important;
 }
 
+/* rm-db-title 区域版式照搬 system.css，配色与字体保留 roam 设置 */
+.roam-app .roam-sidebar-container .rm-db-title-container {
+  display: flex;
+  align-items: center;
+  align-content: space-between;
+  width: 100%;
+  max-width: 100%;
+}
+
+.roam-app .roam-sidebar-container .rm-db-title-container:hover {
+  cursor: pointer;
+}
+
 .roam-app .roam-sidebar-container .rm-db-title-container .rm-db-title {
+  padding: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
   color: var(--sidebar-title-color);
-  font-family: var(--heading-font);
-  font-size: 1.45rem;
+  font-family: 'Felix Titling', '方正清刻本悦宋 简繁', serif;
+  font-size: 1.75rem;
+  text-align: center;
 }
 
 body:not(.rm-dark-theme) .roam-app .roam-sidebar-container .rm-db-title-container .rm-db-title {
@@ -731,6 +881,9 @@ body:not(.rm-dark-theme) .roam-app .starred-pages-wrapper > .flex-h-box.title > 
 /* .roam-sidebar-container > *：仅 box-shadow/opacity，已移除 */
 
 .roam-app .roam-sidebar-content .top-row {
+  align-items: center;
+  padding: 8px 16px;
+  justify-content: space-between;
   background: transparent;
   color: var(--text-color);
 }
@@ -870,11 +1023,18 @@ body:not(.rm-dark-theme) .roam-app .roam-sidebar-content > div > div {
 }
 
 .roam-app .roam-sidebar-container .roam-sidebar-content .rm-db-title .expand-icon {
+  padding-left: 8px;
+  font-size: 12px;
   color: var(--light-text-color);
 }
 
 .roam-app .roam-sidebar-container .roam-sidebar-content .rm-db-title .icon {
-  border-color: var(--color-subtle-border);
+  background-size: cover;
+  margin-right: 8px;
+  border: 1px solid var(--color-subtle-border);
+  height: 18px;
+  width: 18px;
+  border-radius: 100px;
 }
 
 .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .rm-dnd-separator .rm-dnd-drop-bar {
@@ -967,9 +1127,10 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
 .roam-app #right-sidebar .rm-sidebar-outline .rm-title-display,
 .roam-app #right-sidebar .rm-sidebar-outline .rm-title-editing-display,
 .roam-app #right-sidebar .rm-sidebar-outline .rm-title-editing-display textarea {
-  color: var(--heading-h1-color);
-  font-family: var(--heading-font);
-  font-size: var(--fs-h1);
+  color: var(--title-display-color);
+  font-family: var(--title-font) !important;
+  font-size: var(--fs-page-title) !important;
+  line-height: var(--lh-page-title) !important;
 }
 
 .roam-app #right-sidebar .rm-sidebar-outline .roam-block-container,
@@ -1000,6 +1161,10 @@ body.rm-dark-theme .roam-app .rm-bullet.rm-bullet--closed .rm-bullet__inner {
 .roam-app .roam-block-container:not(:focus-within) .rm-bullet.rm-bullet--closed .rm-bullet__inner {
   border-color: transparent !important;
 }
+/* 有子块且收起时：bullet 描边（中性柔灰，随主题） */
+.roam-app .roam-block-container:not(:focus-within) .rm-bullet.rm-bullet--closed .rm-bullet__inner {
+  border-color: oklch(from var(--m-text) l c h / 0.18) !important;
+}
 /* 编辑态：bullet 红色（无泛光，无 border） */
 body:not(.rm-dark-theme) .roam-app .roam-block-container:focus-within .rm-bullet .rm-bullet__inner,
 body:not(.rm-dark-theme) .roam-app .roam-block-container:focus-within .rm-bullet.rm-bullet--closed .rm-bullet__inner {
@@ -1008,9 +1173,10 @@ body:not(.rm-dark-theme) .roam-app .roam-block-container:focus-within .rm-bullet
 }
 body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet .rm-bullet__inner,
 body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bullet--closed .rm-bullet__inner {
-  background-color: oklch(from var(--m-bullet-focus) l c h / 0.65) !important;
+  background-color:  var(--m-bullet-focus)  !important;
   border-color: transparent !important;
 }
+
 
 
 /* ========================================================= */
@@ -1297,61 +1463,28 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   text-shadow: 0 0 0.5px currentColor, 0 1px 2px rgba(0,0,0,0.08);
 }
 
-/* 「隐迹」The Hidden Path：中式极简标签，无背景无边框，底部下划线 + scaleX 以 GPU 加速；排除 #Streamer 等特殊标签 */
-body .roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]),
-body .roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]) {
-  position: relative;
-  display: inline-block;
-  color: inherit !important;
-  background: transparent !important;
-  padding: 1px 4px !important;
-  border: none !important;
+/* 学术标签（Academic Tag）：小型大写 + 底线下划线，排除 #Streamer 等特殊标签；字体保持 --tag-font */
+.roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]),
+.roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]) {
+  color: var(--tag-text-color) !important;
   font-family: var(--tag-font), var(--body-font) !important;
   font-size: var(--fs-tag) !important;
-  font-weight: 500;
+  font-weight: var(--tag-font-weight);
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
   line-height: var(--lh-tag) !important;
-  letter-spacing: 0.02em;
+  padding: 0 2px 1px 2px !important;
+  border-bottom: 1.5px solid var(--tag-border-color) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
-  transition: opacity 0.3s ease;
-}
-body .roam-app span.rm-page-ref--tag:not([data-tag="Streamer"])::before,
-body .roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"])::before {
-  content: "" !important;
-}
-body .roam-app span.rm-page-ref--tag:not([data-tag="Streamer"])::after,
-body .roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"])::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.15;
-  transform: scaleX(0.25);
-  transform-origin: left;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s;
-  will-change: transform;
-}
-body .roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]):hover,
-body .roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]):hover {
-  opacity: 0.85;
-}
-body .roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]):hover::after,
-body .roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]):hover::after {
-  transform: scaleX(1);
-  opacity: 0.5;
+  transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 }
 
-/* 墨迹脉冲点击反馈用（由 Tag-HideHash.js 创建） */
-.roam-app .tag-ink-pulse {
-  position: absolute;
-  background: currentColor;
-  border-radius: 50%;
-  transform: scale(0);
-  opacity: 0.2;
-  pointer-events: none;
-  z-index: 10;
+.roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]):hover,
+.roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]):hover {
+  background: var(--tag-hover-bg) !important;
+  border-bottom-color: var(--tag-text-color) !important;
 }
 
 /* ========================================================= */
@@ -1517,6 +1650,53 @@ body .roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]):hover::afte
 .rm-command-palette {
   background: var(--ui-surface-bg) !important;
   color: var(--ui-surface-text) !important;
+}
+
+/* bp3-popover 相关版式照搬 system.css，配色与字体保留 roam 设置 */
+.roam-app .rm-capture-suggest-popover {
+  max-width: 80vw;
+  width: 80vw;
+}
+.roam-app .rm-page-ref-popover__header {
+  padding: 6px 8px 6px;
+  text-align: center;
+}
+.roam-app .rm-page-ref-popover .rm-line {
+  margin-top: 0;
+}
+.roam-app .rm-block-text .bp3-popover-target {
+  display: inline;
+}
+.roam-app .rm-query-options-popover-content .bp3-control {
+  margin: 0;
+  padding: 5px 7px;
+  user-select: none;
+}
+.roam-app .rm-query-options-popover-content .bp3-menu-header {
+  margin-left: 0;
+}
+.roam-app .rm-query-options-popover-content .bp3-button-group {
+  width: 100%;
+  justify-content: center;
+}
+.roam-app .rm-query-options-content,
+.roam-app .rm-search-query-options-content {
+  padding: 8px 8px 0 8px;
+  overflow: hidden;
+}
+.roam-app .rm-extensions-settings .rm-extensions-installed__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.roam-app .rm-query-builder-popover .bp3-menu-header {
+  margin-left: 2px;
+}
+.roam-app .rm-tag-selector-popover {
+  width: 250px;
+}
+.roam-app .rm-pages-more-info-popover {
+  padding: 8px 8px;
 }
 
 .bp3-menu {
@@ -2466,154 +2646,78 @@ body .bp3-overlay .bp3-dialog.rm-modal-dialog--settings .rm-extension-settings-h
 /* .DayPicker-Day--outside：仅 opacity，已移除 */
 
 /* ========================================================= */
-/* 14. Autocomplete & Menus（结构同 system.css，仅保留配色与字体） */
-/* 已比对 system.css：版式同 system，本块仅保留配色/字体覆盖，全部保留 */
+/* 14. Autocomplete（照搬 system.css，仅将颜色换为 roam 变量） */
 /* ========================================================= */
 
-/* 选中行内灰字 → 主题色（对应 system 1395-1396） */
-.rm-autocomplete__results .dont-unfocus-block[style*="background-color: rgb(213, 218, 223);"]  div[style*="color: rgb(129, 145, 157)"] {
-  color: var(--autocomplete-row-hover-text) !important;
+.rm-autocomplete__wrapper {
+  flex: 1 1 100%;
 }
 
-.rm-autocomplete__results div[style*="color: rgb(129, 145, 157)"] {
-  color: var(--text-color) !important;
+.rm-autocomplete__results {
+  width: min(400px, 100vw);
+  z-index: 20;
+  background-color: var(--autocomplete-results-bg);
+  max-width: min(400px, 100vw);
+  max-height: 300px;
+  padding: 4px;
+  overflow: auto;
 }
 
+.rm-autocomplete-result {
+  word-break: break-word;
+}
+
+/* dont-unfocus-block：日夜间背景/文字色适配（覆盖默认白底） */
+.rm-autocomplete__results .dont-unfocus-block {
+  background-color: transparent;
+  color: var(--text-color);
+}
 .rm-autocomplete__results .dont-unfocus-block:hover {
   background-color: var(--autocomplete-row-hover-bg);
-  color: var(--autocomplete-row-hover-text) !important;
+  color: var(--autocomplete-row-hover-text);
 }
-
-.rm-autocomplete__results .dont-unfocus-block[style*="background-color: rgb(213, 218, 223);"],
-.rm-autocomplete__results .dont-unfocus-block[style*="background-color: rgb(213, 218, 223);"]:hover {
+/* 选中行（Roam 内联 rgb(213,218,223)）统一为主题色 */
+.rm-autocomplete__results .dont-unfocus-block[style*="background-color: rgb(213, 218, 223)"],
+.rm-autocomplete__results .dont-unfocus-block[style*="background-color: rgb(213, 218, 223)"]:hover {
   background-color: var(--autocomplete-row-hover-bg) !important;
   color: var(--autocomplete-row-hover-text) !important;
 }
 
-.rm-autocomplete__results .dont-unfocus-block {
-  color: var(--text-color) !important;
-  font-family: var(--body-font) !important;
-  font-size: inherit;
-}
-
-.rm-autocomplete__results .dont-unfocus-block:hover .bp3-icon {
-  color: var(--color-primary) !important;
-}
-
-.rm-autocomplete__results .dont-unfocus-block[style*="background-color: rgb(213, 218, 223);"] .bp3-icon,
-.rm-autocomplete__results .dont-unfocus-block[style*="background-color: rgb(213, 218, 223);"]:hover .bp3-icon {
-  color: var(--autocomplete-row-hover-text) !important;
-}
-
-.rm-autocomplete__results .dont-unfocus-block .bp3-icon {
-  color: var(--light-text-color) !important;
-}
-
-.rm-autocomplete__results .dont-unfocus-block:hover .rm-icon-key-prompt {
-  color: var(--autocomplete-row-hover-text) !important;
-}
-
-.rm-autocomplete__results .dont-unfocus-block[style*="background-color: rgb(213, 218, 223);"] .rm-icon-key-prompt {
-  color: var(--autocomplete-row-hover-text) !important;
-}
-
-.rm-autocomplete__results .dont-unfocus-block .rm-icon-key-prompt {
-  color: var(--light-text-color) !important;
-  font-size: inherit !important;
-}
-
-.rm-autocomplete__results .dont-unfocus-block[style*="background-color: rgb(213, 218, 223);"] .rm-autocomplete-result {
+/* rm-aliases 区域：Aliases 标题与按钮文字颜色与日夜间统一 */
+.rm-autocomplete__results .rm-aliases {
   background-color: transparent;
-  color: var(--autocomplete-row-hover-text) !important;
+  border-color: var(--color-subtle-border);
+  color: var(--text-color);
 }
-
-.rm-autocomplete__results div[style*="color: lightgray"] {
-  color: var(--light-text-color) !important;
+.rm-autocomplete__results .rm-aliases .sub-title {
+  color: var(--light-text-color);
 }
-
-.rm-autocomplete__results .dont-unfocus-block[style*="background-color: rgb(213, 218, 223);"] :is(div, span, a):not(.bp3-button-text) {
+.rm-autocomplete__results .rm-aliases .bp3-button,
+.rm-autocomplete__results .rm-aliases .bp3-button .bp3-button-text {
+  background-color: transparent;
+  color: var(--text-color);
+}
+.rm-autocomplete__results .rm-aliases .bp3-button:hover,
+.rm-autocomplete__results .rm-aliases .bp3-button:hover .bp3-button-text {
+  background-color: var(--autocomplete-row-hover-bg);
+  color: var(--autocomplete-row-hover-text);
+}
+.rm-autocomplete__results .rm-aliases .result-highlight {
+  background-color: var(--autocomplete-match-bg);
+  color: var(--color-primary);
+}
+.rm-autocomplete__results .rm-aliases .bp3-icon {
+  color: var(--light-text-color);
+}
+.rm-autocomplete__results .rm-aliases .bp3-button:hover .bp3-icon {
   color: var(--autocomplete-row-hover-text);
 }
 
-.rm-autocomplete__results :is(div, span, a) {
-  background-color: transparent;
+/* 夜间：照搬 system .bp3-dark .rm-autocomplete__results，颜色换为 roam 变量 */
+body.rm-dark-theme .rm-autocomplete__results {
+  background: var(--page-color);
   color: var(--text-color);
-  font-family: var(--body-font) !important;
-}
-
-.rm-autocomplete__results,
-.roam-app .rm-autocomplete__results.bp3-elevation-3 {
-  background-color: var(--autocomplete-results-bg) !important;
-  color: var(--text-color) !important;
-  font-family: var(--body-font) !important;
-  font-size: inherit;
-}
-
-/* Alias container：补全列表在左，Aliases 在右；版式见 system.css，此处仅配色/字体 */
-body .rm-autocomplete__results.alias-container.bp3-elevation-3,
-.roam-app .rm-autocomplete__results.alias-container.bp3-elevation-3 {
-  background-color: var(--autocomplete-results-bg) !important;
-  color: var(--text-color) !important;
-  font-family: var(--body-font) !important;
-}
-/* .rm-autocomplete__results.alias-container .dont-unfocus-block / .rm-aliases：仅 grid 等版式，已移除 */
-body .rm-autocomplete__results.alias-container .rm-aliases,
-.roam-app .rm-autocomplete__results.alias-container .rm-aliases {
-  background-color: transparent !important;
-  border-color: var(--color-subtle-border);
-  color: var(--text-color);
-  font-family: var(--body-font);
-  font-size: inherit;
-}
-.rm-autocomplete__results .rm-aliases {
-  background-color: transparent !important;
-  border-color: var(--color-subtle-border);
-  color: var(--text-color);
-  font-family: var(--body-font);
-  font-size: inherit;
-}
-
-.rm-autocomplete__results .rm-aliases .sub-title {
-  color: var(--light-text-color);
-  font-family: var(--body-font);
-  font-size: 0.75rem;
-}
-
-.rm-autocomplete__results .rm-aliases .dont-focus-block.alias .bp3-button,
-.rm-autocomplete__results .rm-aliases .bp3-button.rm-autocomplete-result {
-  background-color: transparent !important;
-  color: var(--text-color) !important;
-  font-family: var(--body-font) !important;
-  font-size: inherit;
-}
-
-.rm-autocomplete__results .rm-aliases .bp3-button:hover {
-  background-color: var(--autocomplete-row-hover-bg) !important;
-  color: var(--autocomplete-row-hover-text) !important;
-}
-
-.rm-autocomplete__results .rm-aliases .bp3-button .bp3-icon {
-  color: var(--light-text-color);
-}
-
-.rm-autocomplete__results .rm-aliases .bp3-button:hover .bp3-icon {
-  color: var(--autocomplete-row-hover-text) !important;
-}
-
-.rm-autocomplete__results .result-highlight {
-  background-color: var(--autocomplete-match-bg) !important;
-  color: var(--color-primary) !important;
-  font-family: var(--body-font) !important;
-}
-
-.rm-autocomplete__results .bp3-button {
-  color: var(--text-color) !important;
-  font-family: var(--body-font) !important;
-}
-
-.rm-autocomplete__results .bp3-button:hover {
-  background-color: var(--autocomplete-row-hover-bg) !important;
-  color: var(--autocomplete-row-hover-text) !important;
+  box-shadow: 0 0 0 1px oklch(from var(--m-ink) l c h / 0.13), 0 4px 8px oklch(from var(--m-ink) l c h / 0.65), 0 18px 46px 6px oklch(from var(--m-ink) l c h / 0.65);
 }
 
 /* ========================================================= */
@@ -2695,6 +2799,12 @@ body.rm-dark-theme .roam-app :is(.bp3-popover .bp3-popover-content, .bp3-popover
   color: var(--text-color) !important;
 }
 
+/* 夜间：popover 容器阴影照搬 system.css .bp3-dark .bp3-popover，配色用 roam 变量 */
+body.rm-dark-theme .roam-app .bp3-popover,
+body.rm-dark-theme .roam-app .bp3-popover2 {
+  box-shadow: 0 0 0 1px oklch(from var(--m-ink) l c h / 0.13), 0 2px 4px oklch(from var(--m-ink) l c h / 0.65), 0 8px 24px oklch(from var(--m-ink) l c h / 0.65);
+}
+
 body.rm-dark-theme .roam-app :is(.bp3-popover-content, .bp3-popover .bp3-popover-content) .bp3-menu {
   background: transparent !important;
   color: var(--text-color) !important;
@@ -2759,19 +2869,6 @@ body.rm-dark-theme .roam-app .flex-h-box button .bp3-icon-standard {
 
 body.rm-dark-theme .roam-app .bp3-popover-arrow-fill {
   fill: var(--page-color) !important;
-}
-
-/* 夜间：自动补全仅覆盖配色（结构同 system，变量已在 :root.rm-dark-theme 中切换） */
-body.rm-dark-theme .roam-app .rm-autocomplete__results {
-  background: var(--page-color) !important;
-  color: var(--text-color) !important;
-}
-body.rm-dark-theme .roam-app .rm-autocomplete__results .rm-aliases {
-  border-left-color: var(--color-subtle-border) !important;
-}
-body.rm-dark-theme .roam-app .rm-autocomplete__results .result-highlight {
-  background-color: var(--autocomplete-match-bg) !important;
-  color: var(--color-primary) !important;
 }
 
 body .roam-app .rm-roam-css--inactive {
@@ -3054,8 +3151,6 @@ body,
   outline: none !important;
   border: none !important;
 }
-
-/* .rm-autocomplete__results *:focus / *:focus-visible：仅 outline/box-shadow，已移除 */
 
 .roam-app .bp3-input,
 .roam-app .bp3-input-group .bp3-input,

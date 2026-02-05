@@ -1,13 +1,13 @@
 /**
- * Roam Research 日/夜间模式切换
- * 参考 https://github.com/8bitgentleman/roam-depo-dark-toggle
- * - 使用 .rm-dark-theme 类（body + html），与插件约定一致
- * - 使用 Blueprint 图标字体 bp3-icon-flash / bp3-icon-moon / bp3-icon-repeat，与顶栏原生一致
- * - 三档：自动(跟随系统) / 日间 / 夜间，偏好存 localStorage
+ * Roam Research 合并脚本：Theme-Toggle（日夜切换）+ Smile CheckBox（笑脸复选框）
+ * 标签样式仅由 roam.css 提供，此处不再包含标签相关 JS。
  */
 
+/* ============================================================ */
+/* 1. 日/夜间模式切换（Theme Toggle）                             */
+/* ============================================================ */
 (function () {
-  const STORAGE_KEY = "roam-theme-mode"; // "light" | "dark" | "auto"
+  const STORAGE_KEY = "roam-theme-mode";
   const THEME_CLASS = "rm-dark-theme";
   const CYCLE = ["auto", "light", "dark"];
 
@@ -60,7 +60,6 @@
     applyEffectiveTheme();
   }
 
-  /** Blueprint 图标名：light=flash, dark=moon, auto=repeat（与 roam-depo-dark-toggle 一致） */
   function getIconName(stored) {
     if (stored === "light") return "flash";
     if (stored === "dark") return "moon";
@@ -84,7 +83,6 @@
     btn.setAttribute("title", (titles[stored] || titles.auto) + " · 点击切换");
   }
 
-  /** 与 roam-depo-dark-toggle 相同的按钮结构：bp3-button bp3-minimal bp3-small + bp3-icon bp3-icon-{name} */
   function createIconButton(iconName) {
     var popoverButton = document.createElement("span");
     popoverButton.id = "roam-theme-toggle-btn";
@@ -150,4 +148,68 @@
   }
 
   init();
+})();
+
+/* ============================================================ */
+/* 2. 笑脸复选框（Smile CheckBox）                                */
+/* ============================================================ */
+(function () {
+  if (window.__roamSmileyCheckboxInited) return;
+  window.__roamSmileyCheckboxInited = true;
+
+  function injectSmileyFace() {
+    var checks = document.querySelectorAll(".check-container .checkmark");
+    checks.forEach(function (span) {
+      if (!span.querySelector(".smiley-face")) {
+        var face = document.createElement("i");
+        face.className = "smiley-face";
+        face.textContent = "";
+        span.appendChild(face);
+      }
+    });
+  }
+
+  injectSmileyFace();
+
+  var pending = false;
+  function scheduleInject() {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(function () {
+      pending = false;
+      injectSmileyFace();
+    });
+  }
+
+  var observer = new MutationObserver(function (mutations) {
+    var shouldCheck = mutations.some(function (mutation) {
+      if (!mutation.addedNodes || mutation.addedNodes.length === 0) return false;
+      return Array.from(mutation.addedNodes).some(function (node) {
+        if (node.nodeType !== 1) return false;
+        var el = node;
+        return (el.classList && el.classList.contains("roam-block-container")) ||
+          (el.classList && el.classList.contains("check-container")) ||
+          (el.classList && el.classList.contains("checkmark")) ||
+          (el.querySelector && el.querySelector(".roam-block-container")) ||
+          (el.querySelector && el.querySelector(".check-container")) ||
+          (el.querySelector && el.querySelector(".checkmark")) ||
+          (el.classList && el.classList.contains("rm-block__input")) ||
+          (el.querySelector && el.querySelector(".rm-block__input"));
+      });
+    });
+    if (!shouldCheck) return;
+    scheduleInject();
+  });
+
+  var root = document.querySelector(".roam-app") || document.body;
+  observer.observe(root, { childList: true, subtree: true });
+
+  root.addEventListener("click", function (e) {
+    if (e.target.closest(".check-container")) {
+      requestAnimationFrame(function () { injectSmileyFace(); });
+    }
+  }, true);
+
+  setTimeout(injectSmileyFace, 500);
+  setTimeout(injectSmileyFace, 1500);
 })();
