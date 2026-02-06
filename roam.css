@@ -1522,6 +1522,481 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
 }
 
 /* ========================================================= */
+/* Diagram — 完整迁移自 site.css，颜色已改为主题变量            */
+/* blueprint.css 仅 .bp3-icon-diagram-tree 图标，无布局/颜色   */
+/* ========================================================= */
+
+/* 根变量（覆盖 JS 内联） */
+.roam-app .rm-diagram {
+  --edge-stroke-color: var(--color-subtle-border) !important;
+  --global-edge-stroke-color: var(--color-subtle-border) !important;
+  --group-title-fill-color: oklch(from var(--m-text) l c h / 0.12) !important;
+  --diagram-background-color: var(--bg-color) !important;
+  --group-area-fill-color: var(--embed-bg) !important;
+  --block-fill-color: var(--page-color) !important;
+  --block-text-color: var(--text-color) !important;
+  --group-title-text-color: var(--title-display-color) !important;
+  --block-font-size: var(--fs-body) !important;
+  --group-title-font-size: var(--fs-h1) !important;
+  --block-unset-max-width: 200px !important;
+  --block-text-align: start !important;
+}
+
+.roam-app .rm-diagram-xparser {
+  height: 500px;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.roam-app .rm-diagram-full-screen {
+  height: 100%;
+  width: 100%;
+}
+
+.roam-app .rm-diagram {
+  background-color: var(--diagram-background-color);
+}
+
+.roam-app .rm-diagram .react-flow__node-toolbar {
+  box-shadow: 0 2px 10px 0 oklch(from var(--m-ink) l c h / 0.08);
+  padding: 2px;
+  background-color: var(--page-color);
+  display: flex;
+  align-items: center;
+}
+
+.roam-app .rm-diagram .rm-simple-color-picker {
+  padding: 6px;
+}
+
+.roam-app .rm-diagram .rm-simple-color-picker .rm-simple-color-picker-row {
+  display: flex;
+  gap: 1px;
+}
+
+.roam-app .rm-diagram .rm-simple-color-picker .rm-simple-color-picker-item.rm-active {
+  box-shadow: 0 0 0 2px var(--item-color);
+}
+
+.roam-app .rm-diagram .rm-simple-color-picker .rm-simple-color-picker-item {
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  margin: 2px;
+  background-color: var(--item-color);
+}
+
+.roam-app .rm-diagram .react-flow__pane {
+  cursor: pointer;
+}
+
+.roam-app .rm-diagram .rm-diagram-helper-panel {
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.roam-app .rm-diagram .rm-diagram-helper-panel .rm-diagram-properties-panel__content {
+  text-align: center;
+  color: oklch(from var(--m-text) l c h / 0.4);
+}
+
+.roam-app .rm-diagram .rm-diagram-helper-panel .rm-diagram-properties-panel__content--header {
+  font-weight: 600;
+  font-size: 1.2em;
+  margin-bottom: 8px;
+}
+
+.roam-app .rm-diagram .rm-diagram-helper-panel--inline {
+  top: 45%;
+}
+
+.roam-app .rm-diagram .rm-diagram-helper-panel--inline .rm-diagram-properties-panel__content {
+  font-size: 1em;
+}
+
+.roam-app .rm-diagram .rm-diagram-helper-panel--maximized {
+  top: 40%;
+}
+
+.roam-app .rm-diagram .rm-diagram-helper-panel--maximized .rm-diagram-properties-panel__content {
+  font-size: 1.2em;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel {
+  background-color: var(--page-color);
+  box-shadow: 0 0 2px 1px oklch(from var(--m-ink) l c h / 0.08);
+  width: 220px;
+  user-select: none;
+  max-height: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel--disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel.rm-open .rm-diagram-properties-panel__header .bp3-icon-chevron-right {
+  transform: rotate(90deg);
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel__header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel__header .bp3-icon-chevron-right {
+  transition: all 100ms ease-in;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel__content {
+  overflow-x: auto;
+  padding: 0 12px;
+  font-size: 12px;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel__content .bp3-button {
+  font-size: 12px;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel__content .bp3-divider {
+  margin: 6px 0;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel__section {
+  transition: all 50ms ease-in;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel__section-header {
+  font-weight: bold;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel__section-content > * {
+  margin: 6px 0;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel__color-picker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel__select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel__numeric-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel__numeric-input .rm-numeric-input {
+  max-width: 80px;
+  height: 21px;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel__numeric-input input[type="text"] {
+  height: 21px;
+  font-size: 0.9em;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel__default-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roam-app .rm-diagram .rm-diagram-properties-panel .codemirror-colorpicker .menu {
+  padding-top: 2px;
+}
+
+.roam-app .rm-diagram .react-flow__connection-line path {
+  stroke-width: 2;
+  stroke: var(--global-edge-stroke-color);
+}
+
+.roam-app .rm-diagram .react-flow__connection-line circle {
+  stroke-width: 2;
+  stroke: var(--global-edge-stroke-color);
+  fill: var(--page-color);
+}
+
+.roam-app .rm-diagram .react-flow__edge.selected .react-flow__edge-path,
+.roam-app .rm-diagram .react-flow__edge:focus .react-flow__edge-path,
+.roam-app .rm-diagram .react-flow__edge:focus-visible .react-flow__edge-path {
+  stroke: var(--edge-stroke-color);
+}
+
+.roam-app .rm-diagram .react-flow__edge.selected .react-flow__edge-interaction {
+  stroke: var(--edge-stroke-color);
+  stroke-opacity: 0.2;
+  stroke-linecap: round;
+}
+
+.roam-app .rm-diagram .react-flow__edge-path {
+  stroke: var(--edge-stroke-color);
+  stroke-width: 2;
+  fill: none;
+}
+
+.roam-app .rm-diagram .react-flow__node:hover .rm-diagram-node__resize-control {
+  display: unset;
+}
+
+.roam-app .rm-diagram .rm-diagram-node__resize-control {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  cursor: nwse-resize;
+  background-color: var(--page-color);
+  display: none;
+}
+
+.roam-app .rm-diagram .react-flow__nodesselection-rect {
+  background-color: oklch(from var(--m-primary) l c h / 0.1);
+}
+
+.roam-app .rm-diagram .react-flow__node-selection-rect {
+  width: var(--selection-rect-width);
+  height: var(--selection-rect-height);
+  background-color: oklch(from var(--m-primary) l c h / 0.1);
+  z-index: 1001;
+}
+
+.roam-app .rm-diagram .react-flow__node-group {
+  z-index: -1 !important;
+  padding: unset;
+  font-size: unset;
+  color: unset;
+  text-align: unset;
+  background-color: var(--group-area-fill-color);
+  min-width: 400px;
+  min-height: 200px;
+  width: 100px;
+  height: 50px;
+}
+
+.roam-app .rm-diagram .react-flow__node-group:focus {
+  box-shadow: unset;
+}
+
+.roam-app .rm-diagram .react-flow__node-group.selected:after {
+  box-shadow: 0 1px 10px var(--color-subtle-border);
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  inset: calc(-1 * (2px + 2px));
+}
+
+.roam-app .rm-diagram .react-flow__node-group .rm-node-group__title-outer-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.roam-app .rm-diagram .react-flow__node-group .rm-node-group__title-inner-wrapper {
+  position: absolute;
+  cursor: grab;
+  bottom: 5px;
+  min-width: 50px;
+  padding: 2px 6px;
+  background-color: var(--group-title-fill-color);
+  font-size: var(--group-title-font-size, 20px);
+  color: var(--group-title-text-color);
+}
+
+.roam-app .rm-diagram .react-flow__node-group .react-flow__handle.source {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: unset;
+  background: unset;
+}
+
+.roam-app .rm-diagram .react-flow__node-block {
+  cursor: grab;
+  font-size: var(--block-font-size);
+  text-align: var(--block-text-align);
+  color: var(--block-text-color);
+  background-color: var(--block-fill-color);
+  padding: 12px;
+  max-width: var(--block-unset-max-width);
+}
+
+.roam-app .rm-diagram .react-flow__node-block .react-flow__handle.source {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: unset;
+  background: unset;
+}
+
+.roam-app .rm-diagram .react-flow__node-block:hover {
+  box-shadow: 0 1px 10px var(--color-subtle-border);
+}
+
+.roam-app .rm-diagram .react-flow__node.react-flow__node-block {
+  --block-fill-color: var(--page-color) !important;
+}
+
+.roam-app .rm-diagram .rm-selected-duplicate-block::after {
+  content: " ";
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background: repeating-linear-gradient(-45deg, var(--color-subtle-border), var(--color-subtle-border) 10px, oklch(from var(--m-text) l c h / 0.2) 10px, oklch(from var(--m-text) l c h / 0.2) 20px);
+}
+
+.roam-app .rm-diagram .react-flow__node-block > .rm-parsed-block-string,
+.roam-app .rm-diagram .react-flow__node-block > .rm-diagram-outline-container {
+  pointer-events: none;
+}
+
+.roam-app .rm-diagram .selected.react-flow__node-block > .rm-parsed-block-string,
+.roam-app .rm-diagram .selected.react-flow__node-block > .rm-diagram-outline-container {
+  pointer-events: auto;
+}
+
+.roam-app .rm-diagram .rm-pdf,
+.roam-app .rm-diagram .rm-iframe-component {
+  position: absolute;
+  width: calc(100% - (2 * 12px));
+  height: calc(100% - (2 * 12px));
+}
+
+.roam-app .rm-diagram.rm-diagram--prevent-iframe-pointer .rm-pdf {
+  pointer-events: none;
+}
+
+.roam-app .rm-diagram.rm-diagram--prevent-iframe-pointer .rm-iframe-component {
+  pointer-events: none;
+}
+
+.roam-app .rm-diagram .rm-inline-img {
+  width: 100%;
+  height: 100%;
+}
+
+.roam-app .rm-diagram .selected .rm-parsed-block-string .rm-page-ref {
+  position: relative;
+}
+
+.roam-app .rm-diagram .selected .rm-parsed-block-string {
+  cursor: text;
+}
+
+.roam-app .rm-diagram .rm-parsed-block-string {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.roam-app .rm-diagram .rm-parsed-block-string .bp3-popover-target {
+  display: inline;
+}
+
+/* diagram 块内文案（含 (empty)）日间黑色、夜间白色，覆盖内联 color */
+.roam-app .rm-diagram .rm-parsed-block-string span {
+  color: var(--text-color) !important;
+}
+
+.roam-app .rm-diagram .rm-embed-container {
+  margin-right: unset;
+}
+
+.roam-app .rm-diagram .rm-block-separator {
+  flex: 0 0 0;
+  min-width: unset;
+}
+
+.roam-app .rm-diagram .rm-code-block {
+  margin-right: unset;
+}
+
+.roam-app .rm-diagram .rm-full-width {
+  margin-right: unset;
+}
+
+.roam-app .rm-diagram .rm-diagram-outline-container .rm-zoom.zoom-path-view {
+  margin: 0 0 4px 0;
+}
+
+.roam-app .rm-diagram .rm-diagram-outline-container .rm-zoom .rm-zoom-item .rm-zoom-item-content {
+  padding: 0 4px;
+}
+
+.roam-app .rm-diagram .rm-diagram-outline-container .rm-diagram-outline {
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.roam-app .rm-diagram .rm-diagram-outline-container .rm-diagram-outline > div {
+  margin-left: -8px;
+}
+
+.roam-app .rm-diagram-pane-context-menu {
+  background: var(--page-color);
+  box-shadow: 0 0 0 1px oklch(from var(--m-ink) l c h / 0.1), 0 2px 4px oklch(from var(--m-ink) l c h / 0.2), 0 8px 24px oklch(from var(--m-ink) l c h / 0.2);
+  position: absolute;
+  z-index: 10;
+}
+
+.roam-app .rm-diagram-minimap {
+  width: 100%;
+  height: 100%;
+}
+
+.roam-app .rm-diagram-minimap__node-block {
+  fill: var(--block-fill-color);
+  fill-opacity: 0.75;
+}
+
+.roam-app .rm-diagram-minimap__node-group {
+  fill: var(--group-area-fill-color);
+}
+
+.roam-app .rm-diagram-title-panel {
+  position: absolute;
+  z-index: 1;
+  background-color: var(--page-color);
+  box-shadow: 0 0 2px 1px oklch(from var(--m-ink) l c h / 0.08);
+  top: 8px;
+  left: 8px;
+  padding: 4px;
+  max-width: 90%;
+}
+
+.roam-app .rm-diagram-title {
+  padding: 0;
+  margin: 0 4px;
+  flex: 1 0 auto;
+  color: var(--text-color);
+}
+
+.roam-app .rm-diagram-title--empty {
+  color: var(--light-text-color);
+}
+
+.roam-app .rm-diagram-title::placeholder {
+  color: var(--light-text-color);
+}
+
+/* ========================================================= */
 /* 11. Tags & Labels                                         */
 /* ========================================================= */
 
