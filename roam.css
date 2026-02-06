@@ -446,6 +446,27 @@ body:not(.rm-dark-theme) .roam-app .bp3-button:not([class*="bp3-intent-"]):hover
   color: var(--text-color) !important;
 }
 
+/* 日间：弹层/对话框等上下文中的无 intent 按钮也匹配主题（兜底） */
+body:not(.rm-dark-theme) .bp3-overlay .bp3-button:not([class*="bp3-intent-"]),
+body:not(.rm-dark-theme) .bp3-popover .bp3-button:not([class*="bp3-intent-"]),
+body:not(.rm-dark-theme) .bp3-dialog .bp3-button:not([class*="bp3-intent-"]) {
+  background: var(--embed-bg) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+body:not(.rm-dark-theme) .bp3-overlay .bp3-button.bp3-minimal:not([class*="bp3-intent-"]),
+body:not(.rm-dark-theme) .bp3-popover .bp3-button.bp3-minimal:not([class*="bp3-intent-"]),
+body:not(.rm-dark-theme) .bp3-dialog .bp3-button.bp3-minimal:not([class*="bp3-intent-"]) {
+  background: transparent !important;
+}
+body:not(.rm-dark-theme) .bp3-overlay .bp3-button:not([class*="bp3-intent-"]):hover,
+body:not(.rm-dark-theme) .bp3-popover .bp3-button:not([class*="bp3-intent-"]):hover,
+body:not(.rm-dark-theme) .bp3-dialog .bp3-button:not([class*="bp3-intent-"]):hover {
+  background: var(--sidebar-hover-bg) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+
 body:not(.rm-dark-theme) .bp3-dark .bp3-menu-item:hover,
 body:not(.rm-dark-theme) .bp3-dark .bp3-button:hover,
 body:not(.rm-dark-theme) .bp3-dark .bp3-button:not([class*="bp3-intent-"]):hover {
@@ -509,6 +530,27 @@ body.rm-dark-theme .roam-app .bp3-button.bp3-minimal:not([class*="bp3-intent-"])
   background: transparent !important;
 }
 body.rm-dark-theme .roam-app .bp3-button:not([class*="bp3-intent-"]):hover {
+  background: var(--sidebar-hover-bg) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+
+/* 夜间：弹层/对话框等上下文中的无 intent 按钮也匹配主题（兜底） */
+body.rm-dark-theme .bp3-overlay .bp3-button:not([class*="bp3-intent-"]),
+body.rm-dark-theme .bp3-popover .bp3-button:not([class*="bp3-intent-"]),
+body.rm-dark-theme .bp3-dialog .bp3-button:not([class*="bp3-intent-"]) {
+  background: var(--embed-bg) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+body.rm-dark-theme .bp3-overlay .bp3-button.bp3-minimal:not([class*="bp3-intent-"]),
+body.rm-dark-theme .bp3-popover .bp3-button.bp3-minimal:not([class*="bp3-intent-"]),
+body.rm-dark-theme .bp3-dialog .bp3-button.bp3-minimal:not([class*="bp3-intent-"]) {
+  background: transparent !important;
+}
+body.rm-dark-theme .bp3-overlay .bp3-button:not([class*="bp3-intent-"]):hover,
+body.rm-dark-theme .bp3-popover .bp3-button:not([class*="bp3-intent-"]):hover,
+body.rm-dark-theme .bp3-dialog .bp3-button:not([class*="bp3-intent-"]):hover {
   background: var(--sidebar-hover-bg) !important;
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
@@ -1521,9 +1563,9 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   text-shadow: 0 0 0.5px currentColor, 0 1px 2px rgba(0,0,0,0.08);
 }
 
-/* 学术标签（Academic Tag）：小型大写 + 底线下划线，排除 #Streamer 等特殊标签；字体保持 --tag-font */
-.roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]),
-.roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]) {
+/* 学术标签（Academic Tag）：小型大写 + 底线下划线，排除 #Streamer 及 Theorem/Definition/Proof/Question/Counter（后者有专用配色） */
+.roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]):not([data-tag="Theorem"]):not([data-tag="Definition"]):not([data-tag="Proof"]):not([data-tag="Question"]):not([data-tag="Counter"]),
+.roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]):not([data-tag="Theorem"]):not([data-tag="Definition"]):not([data-tag="Proof"]):not([data-tag="Question"]):not([data-tag="Counter"]) {
   color: var(--tag-text-color) !important;
   font-family: var(--tag-font), var(--body-font) !important;
   font-size: var(--fs-tag) !important;
@@ -1539,10 +1581,192 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 }
 
-.roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]):hover,
-.roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]):hover {
+.roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]):not([data-tag="Theorem"]):not([data-tag="Definition"]):not([data-tag="Proof"]):not([data-tag="Question"]):not([data-tag="Counter"]):hover,
+.roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]):not([data-tag="Theorem"]):not([data-tag="Definition"]):not([data-tag="Proof"]):not([data-tag="Question"]):not([data-tag="Counter"]):hover {
   background: var(--tag-hover-bg) !important;
   border-bottom-color: var(--tag-text-color) !important;
+}
+
+/* 学术节点标签基础样式：与通用学术标签一致（下划线、padding、font-variant 等），仅配色由下方规则覆盖 */
+.roam-app span.rm-page-ref--tag[data-tag="Theorem"],
+.roam-app span.rm-page-ref[data-tag="Theorem"],
+.roam-app span.rm-page-ref--tag[data-tag="Definition"],
+.roam-app span.rm-page-ref[data-tag="Definition"],
+.roam-app span.rm-page-ref--tag[data-tag="Proof"],
+.roam-app span.rm-page-ref[data-tag="Proof"],
+.roam-app span.rm-page-ref--tag[data-tag="Question"],
+.roam-app span.rm-page-ref[data-tag="Question"],
+.roam-app span.rm-page-ref--tag[data-tag="Counter"],
+.roam-app span.rm-page-ref[data-tag="Counter"],
+.roam-app span[data-link-title="Theorem"],
+.roam-app span[data-link-title="Definition"],
+.roam-app span[data-link-title="Proof"],
+.roam-app span[data-link-title="Question"],
+.roam-app span[data-link-title="Counter"] {
+  font-family: var(--tag-font), var(--body-font) !important;
+  font-size: var(--fs-tag) !important;
+  font-weight: var(--tag-font-weight);
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  line-height: var(--lh-tag) !important;
+  padding: 0 2px 1px 2px !important;
+  border-bottom: 1.5px solid currentColor !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+}
+.roam-app span.rm-page-ref--tag[data-tag="Theorem"]:hover,
+.roam-app span.rm-page-ref[data-tag="Theorem"]:hover,
+.roam-app span[data-link-title="Theorem"]:hover,
+.roam-app span.rm-page-ref--tag[data-tag="Definition"]:hover,
+.roam-app span.rm-page-ref[data-tag="Definition"]:hover,
+.roam-app span[data-link-title="Definition"]:hover,
+.roam-app span.rm-page-ref--tag[data-tag="Proof"]:hover,
+.roam-app span.rm-page-ref[data-tag="Proof"]:hover,
+.roam-app span[data-link-title="Proof"]:hover,
+.roam-app span.rm-page-ref--tag[data-tag="Question"]:hover,
+.roam-app span.rm-page-ref[data-tag="Question"]:hover,
+.roam-app span[data-link-title="Question"]:hover,
+.roam-app span.rm-page-ref--tag[data-tag="Counter"]:hover,
+.roam-app span.rm-page-ref[data-tag="Counter"]:hover,
+.roam-app span[data-link-title="Counter"]:hover {
+  background: var(--tag-hover-bg) !important;
+  border-bottom-color: currentColor !important;
+}
+
+/* 学术节点标签配色：Theorem / Definition / Proof / Question / Counter，五色不重复 */
+.roam-app span.rm-page-ref--tag[data-tag="Theorem"],
+.roam-app span.rm-page-ref[data-tag="Theorem"],
+.roam-app span[data-link-title="Theorem"] {
+  color: #177CB0 !important;
+  background-color: oklch(from #177CB0 l c h / 0.15) !important;
+}
+.roam-app span.rm-page-ref--tag[data-tag="Definition"],
+.roam-app span.rm-page-ref[data-tag="Definition"],
+.roam-app span[data-link-title="Definition"] {
+  color: #21A675 !important;
+  background-color: oklch(from #21A675 l c h / 0.15) !important;
+}
+.roam-app span.rm-page-ref--tag[data-tag="Proof"],
+.roam-app span.rm-page-ref[data-tag="Proof"],
+.roam-app span[data-link-title="Proof"] {
+  color: #CA6924 !important;
+  background-color: oklch(from #CA6924 l c h / 0.15) !important;
+}
+.roam-app span.rm-page-ref--tag[data-tag="Question"],
+.roam-app span.rm-page-ref[data-tag="Question"],
+.roam-app span[data-link-title="Question"] {
+  color: #7C3AED !important;
+  background-color: oklch(from #7C3AED l c h / 0.15) !important;
+}
+.roam-app span.rm-page-ref--tag[data-tag="Counter"],
+.roam-app span.rm-page-ref[data-tag="Counter"],
+.roam-app span[data-link-title="Counter"] {
+  color: #D23B3B !important;
+  background-color: oklch(from #D23B3B l c h / 0.15) !important;
+}
+.roam-app .rm-menu-item:has(span[data-link-title="Theorem"]),
+.roam-app .rm-menu-item:has(span[data-tag="Theorem"]),
+.roam-app .bp3-menu-item:has(span[data-link-title="Theorem"]),
+.roam-app .bp3-menu-item:has(span[data-tag="Theorem"]) {
+  background-color: oklch(from #177CB0 l c h / 0.15) !important;
+  color: #177CB0 !important;
+}
+.roam-app .rm-menu-item:has(span[data-link-title="Definition"]),
+.roam-app .rm-menu-item:has(span[data-tag="Definition"]),
+.roam-app .bp3-menu-item:has(span[data-link-title="Definition"]),
+.roam-app .bp3-menu-item:has(span[data-tag="Definition"]) {
+  background-color: oklch(from #21A675 l c h / 0.15) !important;
+  color: #21A675 !important;
+}
+.roam-app .rm-menu-item:has(span[data-link-title="Proof"]),
+.roam-app .rm-menu-item:has(span[data-tag="Proof"]),
+.roam-app .bp3-menu-item:has(span[data-link-title="Proof"]),
+.roam-app .bp3-menu-item:has(span[data-tag="Proof"]) {
+  background-color: oklch(from #CA6924 l c h / 0.15) !important;
+  color: #CA6924 !important;
+}
+.roam-app .rm-menu-item:has(span[data-link-title="Question"]),
+.roam-app .rm-menu-item:has(span[data-tag="Question"]),
+.roam-app .bp3-menu-item:has(span[data-link-title="Question"]),
+.roam-app .bp3-menu-item:has(span[data-tag="Question"]) {
+  background-color: oklch(from #7C3AED l c h / 0.15) !important;
+  color: #7C3AED !important;
+}
+.roam-app .rm-menu-item:has(span[data-link-title="Counter"]),
+.roam-app .rm-menu-item:has(span[data-tag="Counter"]),
+.roam-app .bp3-menu-item:has(span[data-link-title="Counter"]),
+.roam-app .bp3-menu-item:has(span[data-tag="Counter"]) {
+  background-color: oklch(from #D23B3B l c h / 0.15) !important;
+  color: #D23B3B !important;
+}
+/* 学术节点标签夜间模式：使用较亮色保证深色背景可读 */
+body.rm-dark-theme .roam-app span[data-link-title="Theorem"],
+body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="Theorem"],
+body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="Theorem"],
+body.rm-dark-theme .roam-app span[data-link-title="Theorem"] {
+  color: #48C0A3 !important;
+  background-color: oklch(from #48C0A3 l c h / 0.18) !important;
+}
+body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="Definition"],
+body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="Definition"],
+body.rm-dark-theme .roam-app span[data-link-title="Definition"] {
+  color: #2ADD9C !important;
+  background-color: oklch(from #2ADD9C l c h / 0.18) !important;
+}
+body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="Proof"],
+body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="Proof"],
+body.rm-dark-theme .roam-app span[data-link-title="Proof"] {
+  color: #E8A84B !important;
+  background-color: oklch(from #E8A84B l c h / 0.18) !important;
+}
+body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="Question"],
+body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="Question"],
+body.rm-dark-theme .roam-app span[data-link-title="Question"] {
+  color: #A78BFA !important;
+  background-color: oklch(from #A78BFA l c h / 0.18) !important;
+}
+body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="Counter"],
+body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="Counter"],
+body.rm-dark-theme .roam-app span[data-link-title="Counter"] {
+  color: #E85A5A !important;
+  background-color: oklch(from #E85A5A l c h / 0.18) !important;
+}
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="Theorem"]),
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="Theorem"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="Theorem"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="Theorem"]) {
+  background-color: oklch(from #48C0A3 l c h / 0.18) !important;
+  color: #48C0A3 !important;
+}
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="Definition"]),
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="Definition"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="Definition"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="Definition"]) {
+  background-color: oklch(from #2ADD9C l c h / 0.18) !important;
+  color: #2ADD9C !important;
+}
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="Proof"]),
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="Proof"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="Proof"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="Proof"]) {
+  background-color: oklch(from #E8A84B l c h / 0.18) !important;
+  color: #E8A84B !important;
+}
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="Question"]),
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="Question"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="Question"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="Question"]) {
+  background-color: oklch(from #A78BFA l c h / 0.18) !important;
+  color: #A78BFA !important;
+}
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="Counter"]),
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="Counter"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="Counter"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="Counter"]) {
+  background-color: oklch(from #E85A5A l c h / 0.18) !important;
+  color: #E85A5A !important;
 }
 
 /* ========================================================= */
