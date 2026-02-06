@@ -12,7 +12,7 @@
   --quote-font: 'Calligraph421 BT', '文悦古典明朝体 简入繁出 (需授权)', serif;
   --tag-font: 'Cronos Pro', '方正优雅宋 简', sans-serif;
   --code-font: 'Operator Mono', 'LXGW Wenkai Mono Screen', monospace;
-  --ui-font: 'Ideal Sans', '方正艺黑简体',  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --ui-font: 'Ideal Sans', '方正艺黑简体', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --font-size: 1rem;
 
   /* Day Mode - 黑/灰系：页面标题/正文/引用/H1-H3（有层次）；彩色系：标签/双链/外链（色相环隔开） */
@@ -38,7 +38,7 @@
   --m-tag-hover: #A8551E;         /* 琥珀加深 - 标签 hover */
   /* 学术标签（Academic Tag）日间 */
   --tag-text-color: #1a1a1a;
-  --tag-border-color: #333333;
+  --tag-border-color: #333;
   --tag-hover-bg: rgba(0, 0, 0, 0.03);
   --tag-font-weight: 600;
   /* Links 专用（不与 blockquote-bar / sidebar-star / tag / 高亮 重复） */
@@ -292,7 +292,7 @@ body.rm-dark-theme .roam-app .roam-app,
   --m-tag-hover: #F0C239;        /* 缃色 - 标签 hover */
   /* 学术标签（Academic Tag）夜间 */
   --tag-text-color: #d1d1d1;
-  --tag-border-color: #888888;
+  --tag-border-color: #888;
   --tag-hover-bg: rgba(255, 255, 255, 0.05);
   --tag-font-weight: 600;
   /* Links 专用（不与 blockquote-bar / sidebar-star / 高亮 重复） */
@@ -929,7 +929,6 @@ body.rm-dark-theme .roam-app .rm-code-block span.cmt-link {
 /* ---------- 左侧边栏：roam 配色与字体 ---------- */
 .roam-app .roam-sidebar-container {
   background: var(--bg-color) !important;
-  background-color: var(--bg-color) !important;
 }
 
 /* rm-db-title 区域版式照搬 system.css，配色与字体保留 roam 设置 */
@@ -1270,7 +1269,7 @@ body:not(.rm-dark-theme) .roam-app .roam-block-container:focus-within .rm-bullet
 }
 body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet .rm-bullet__inner,
 body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bullet--closed .rm-bullet__inner {
-  background-color:  var(--m-bullet-focus)  !important;
+  background-color: var(--m-bullet-focus) !important;
   border-color: transparent !important;
 }
 
@@ -1291,9 +1290,6 @@ body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bu
 .roam-app #block-input-ghost span {
   color: var(--text-color) !important;
 }
-
-
-
 
 /* .rm-block-ref::before：仅版式，已移除 */
 
@@ -1319,8 +1315,7 @@ body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bu
 }
 
 .roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote) {
-  border-left-width: 3px !important;
-  border-left-color: var(--blockquote-bar-color) !important;
+  border-left: 3px solid var(--blockquote-bar-color) !important;
 }
 .roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote):hover {
   border-left-color: var(--blockquote-bar-hover-color) !important;
@@ -1339,8 +1334,8 @@ body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bu
 }
 
 .roam-app hr.rm-hr {
-  border-width: 1.5px 0 0 0;
-  border-color: var(--hr-color);
+  border: 0;
+  border-top: 1.5px solid var(--hr-color);
 }
 
 /* Strikethrough 删除线文字：降低灰度，更淡；横线加粗 */
@@ -1933,7 +1928,7 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
 }
 
 .roam-app .rm-diagram .rm-diagram-outline-container .rm-zoom.zoom-path-view {
-  margin: 0 0 4px 0;
+  margin: 0 0 4px;
 }
 
 .roam-app .rm-diagram .rm-diagram-outline-container .rm-zoom .rm-zoom-item .rm-zoom-item-content {
@@ -2446,7 +2441,7 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
   width: 80vw;
 }
 .roam-app .rm-page-ref-popover__header {
-  padding: 6px 8px 6px;
+  padding: 6px 8px;
   text-align: center;
 }
 .roam-app .rm-page-ref-popover .rm-line {
@@ -2469,7 +2464,7 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
 }
 .roam-app .rm-query-options-content,
 .roam-app .rm-search-query-options-content {
-  padding: 8px 8px 0 8px;
+  padding: 8px 8px 0;
   overflow: hidden;
 }
 .roam-app .rm-extensions-settings .rm-extensions-installed__header {
@@ -4078,9 +4073,6 @@ html::-webkit-scrollbar-thumb:hover {
   color: var(--text-color) !important;
 }
 
-
-
-
 .roam-app .rm-reference-wrapper .rm-mentions-search .bp3-input,
 .roam-app .rm-reference-wrapper .rm-mentions-search__input.bp3-input {
   background-color: var(--page-color) !important;
@@ -4170,9 +4162,7 @@ body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-ref-page-vi
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-title-arrow-wrapper,
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-unlink-aliases,
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-reference-item {
-  border: none !important;
-  border-top: none !important;
-  border-bottom: none !important;
+  border: 0 !important;
   background: transparent !important;
 }
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper::before,
