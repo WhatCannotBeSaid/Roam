@@ -18,7 +18,7 @@ description: Roam Research project-specific visual system. Extends typography sk
 
 ### 可修改
 
-布局、间距、字号与行高、组件结构、交互态、滚动条与选中、变量逻辑（非色值）、性能优化等；字体与配色在 typography 与本协议约束下可调整。
+布局、间距与行高、组件结构、交互态、滚动条与选中、变量逻辑（非色值）、性能优化等；字体与配色在 typography 与本协议约束下可调整。
 
 ### A. 样式约束
 
@@ -45,7 +45,7 @@ description: Roam Research project-specific visual system. Extends typography sk
 
 - **色值来源**：仅 https://colors.masantu.com/#/ ；变量 `--m-` 在 `:root` / `.rm-dark-theme` 下定义；作用域 `.roam-app`。
 - **滚动条与选中**：须使用 `--m-` 变量，不得硬编码。
-- **APCA 细则**：见 [reference.md](reference.md)。
+- **APCA 细则**：见 [typography/reference.md](../typography/reference.md)。
 
 ## 工作流检查清单
 
@@ -55,6 +55,6 @@ description: Roam Research project-specific visual system. Extends typography sk
 
 ## 参考与模板
 
-- APCA 细则：[reference.md](reference.md)
+- APCA 细则：[typography/reference.md](../typography/reference.md)
 - DOM：[index.html](index.html)
-- 样式架构：[system.css](system.css)、[things.css](things.css)
+- 样式架构：[blueprint.css](blueprint.css)、[site.css](site.css)

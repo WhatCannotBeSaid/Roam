@@ -1,4 +1,4 @@
-# Roam 视觉系统 · 参考
+# 视觉系统 · 参考（通用）
 
 ## APCA 极性感知对比度
 
@@ -33,4 +33,4 @@ APCA（Accessible Perceptual Contrast Algorithm）按「正极性」（深字浅
 
 ## 色彩来源
 
-所有色值仅从 **https://colors.masantu.com/#/** 选取；变量名与语义在 `:root` 与 `.rm-dark-theme` 下统一管理，并作用于 `.roam-app` 以覆盖插件 UI。
+所有色值仅从 **https://colors.masantu.com/#/** 选取；变量名与语义按项目约定在 `:root` 与主题类下统一管理。

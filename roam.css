@@ -466,6 +466,54 @@ body:not(.rm-dark-theme) .bp3-dark .bp3-input {
   background: var(--page-color) !important;
 }
 
+/* 夜间：.bp3-dark 弹层/菜单/对话框等与主题变量统一（覆盖 site.css 的 --dark-bg/#f5f8fa 等） */
+body.rm-dark-theme .bp3-dark,
+body.rm-dark-theme .bp3-dark .bp3-menu,
+body.rm-dark-theme .bp3-dark .bp3-popover-content,
+body.rm-dark-theme :is(.bp3-popover .bp3-popover-content, .bp3-popover2 .bp3-popover2-content),
+body.rm-dark-theme .bp3-dialog,
+body.rm-dark-theme .bp3-context-menu,
+body.rm-dark-theme .bp3-toast,
+body.rm-dark-theme .bp3-card {
+  background: var(--page-color) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+body.rm-dark-theme .bp3-dark .bp3-menu-item,
+body.rm-dark-theme .bp3-dark .bp3-button {
+  color: var(--text-color) !important;
+}
+body.rm-dark-theme .bp3-dark .bp3-button:not([class*="bp3-intent-"]) {
+  background: transparent !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+body.rm-dark-theme .bp3-dark .bp3-menu-item:hover,
+body.rm-dark-theme .bp3-dark .bp3-button:hover,
+body.rm-dark-theme .bp3-dark .bp3-button:not([class*="bp3-intent-"]):hover {
+  background: var(--sidebar-hover-bg) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+body.rm-dark-theme .bp3-dark .bp3-input {
+  background: var(--page-color) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+body.rm-dark-theme .roam-app .bp3-button:not([class*="bp3-intent-"]) {
+  background: var(--embed-bg) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+body.rm-dark-theme .roam-app .bp3-button.bp3-minimal:not([class*="bp3-intent-"]) {
+  background: transparent !important;
+}
+body.rm-dark-theme .roam-app .bp3-button:not([class*="bp3-intent-"]):hover {
+  background: var(--sidebar-hover-bg) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
+}
+
 /* ========================================================= */
 /* 3. Base Layout                                            */
 /* 已比对 system.css：版式见 system，此处仅保留配色/字体 */
@@ -1208,9 +1256,12 @@ body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bu
 /* .rm-block-ref::before：仅版式，已移除 */
 
 .roam-app .rm-block-ref {
-  border-color: #D8E1E8;
+  border-color: var(--m-tag);
   color: var(--text-color);
   font-size: var(--fs-body);
+}
+.roam-app .rm-block-ref:hover {
+  background-color: transparent;
 }
 
 .roam-app .block-ref-count-button {
@@ -2645,7 +2696,15 @@ body .bp3-overlay .bp3-dialog.rm-modal-dialog--settings .rm-extension-settings-h
 }
 
 .rm-autocomplete__results {
-  background-color: var(--autocomplete-results-bg);}
+  background-color: var(--autocomplete-results-bg);
+  color: var(--text-color);
+}
+/* "Search for a Page" 等提示行：覆盖 site.css .rm-new-item (#0D8050)，确保与背景对比日夜间皆可读 */
+.rm-autocomplete__results .rm-autocomplete-result,
+.rm-autocomplete__results .rm-autocomplete-result.rm-new-item,
+.rm-autocomplete__results .rm-autocomplete-result .rm-new-item {
+  color: var(--text-color) !important;
+}
 
 /* dont-unfocus-block：日夜间背景/文字色适配（覆盖默认白底） */
 .rm-autocomplete__results .dont-unfocus-block {
@@ -2698,6 +2757,20 @@ body.rm-dark-theme .rm-autocomplete__results {
   background: var(--page-color);
   color: var(--text-color);
   box-shadow: 0 0 0 1px oklch(from var(--m-ink) l c h / 0.13), 0 4px 8px oklch(from var(--m-ink) l c h / 0.65), 0 18px 46px 6px oklch(from var(--m-ink) l c h / 0.65);
+}
+body.rm-dark-theme .rm-autocomplete__results .rm-autocomplete-result,
+body.rm-dark-theme .rm-autocomplete__results .rm-autocomplete-result.rm-new-item,
+body.rm-dark-theme .rm-autocomplete__results .rm-autocomplete-result .rm-new-item {
+  color: var(--text-color) !important;
+}
+/* "Recent" 等分组标题：覆盖 inline rgb(206,217,224)，确保与背景对比日夜间皆可读 */
+.rm-autocomplete__results div[style*="color: rgb(206, 217, 224)"],
+.roam-app .bp3-overlay div[style*="color: rgb(206, 217, 224)"] {
+  color: var(--text-color) !important;
+}
+body.rm-dark-theme .rm-autocomplete__results div[style*="color: rgb(206, 217, 224)"],
+body.rm-dark-theme .roam-app .bp3-overlay div[style*="color: rgb(206, 217, 224)"] {
+  color: var(--text-color) !important;
 }
 
 /* ========================================================= */
@@ -2753,7 +2826,7 @@ body.rm-dark-theme .roam-app .roam-block-container.rm-heading-level-3 > .rm-bloc
 body.rm-dark-theme .roam-app .rm-code-warning,
 body.rm-dark-theme .roam-app .roam-block-container[data-page-links*="roam/js"] .rm-code-warning,
 body.rm-dark-theme .roam-app .bp3-card {
-  background-color: var(--code-warning-surface) !important;
+  background-color: var(--page-color) !important;
   color: var(--text-color) !important;
 }
 
@@ -3227,11 +3300,6 @@ html::-webkit-scrollbar-thumb:hover {
   background-clip: padding-box;
 }
 
-/* 仅左侧边栏：与 system 不同处（定位/尺寸见 system.css）；.roam-sidebar-container 的 left:0 见上方左侧边栏区块 */
-.roam-app .bp3-card {
-  position: absolute; top: 45px; left: -232px; width: 232px; bottom: 45px; z-index: 999; transition: all 200ms ease-in; border: none !important
-}
-
 /* 正文 + 引用区滚动条：隐藏，滚动仍可用（与主题一致时可改为 thin） */
 .roam-app :is(.rm-article-wrapper, .rm-article-wrapper .roam-article, .rm-article-wrapper .rm-reference-wrapper, .rm-article-wrapper .rm-reference-main__child-wrapper, .rm-article-wrapper .rm-mentions, .rm-article-wrapper .scroll) {
   scrollbar-width: none;
@@ -3309,6 +3377,47 @@ html::-webkit-scrollbar-thumb:hover {
 .roam-app .rm-reference-wrapper .bp3-button.bp3-minimal:hover .bp3-icon,
 .roam-app .rm-reference-wrapper .bp3-button.bp3-minimal:hover .bp3-icon-standard {
   color: var(--color-primary) !important;
+}
+
+/* rm-inline-references：块引用内联展开界面，配色统一主题变量 */
+.roam-app .rm-inline-references {
+  background-color: var(--embed-bg);
+  color: var(--text-color);
+}
+.roam-app .rm-inline-references .rm-zoom-path .rm-zoom-item,
+.roam-app .rm-inline-references .rm-zoom .rm-zoom-item {
+  color: var(--light-text-color);
+}
+.roam-app .rm-inline-references .rm-zoom-path .rm-zoom-item .rm-zoom-item-content.rm-zoom-collapsed-item {
+  background-color: oklch(from var(--m-primary) l c h / 0.15);
+  color: var(--text-color);
+}
+.roam-app .rm-inline-references .rm-zoom.zoom-path-view .rm-zoom-mask {
+  background-color: var(--page-color);
+}
+.roam-app .rm-inline-references .rm-filtered-out {
+  color: var(--light-text-color);
+}
+.roam-app .rm-inline-references .block-ref-count-button.rm-active {
+  background-color: var(--color-primary);
+  color: var(--on-accent);
+}
+.roam-app .rm-inline-references .rm-filter-popup-button .bp3-icon,
+.roam-app .rm-inline-references .rm-zoom-chevron {
+  color: var(--light-text-color);
+}
+.roam-app .rm-inline-references .squish,
+.roam-app .rm-inline-references div[style*="color: rgb(138, 155, 168)"] {
+  color: var(--light-text-color) !important;
+}
+.roam-app .rm-inline-references .squish svg {
+  fill: currentColor;
+}
+body.rm-dark-theme .roam-app .rm-inline-references .rm-zoom.zoom-path-view .rm-zoom-mask {
+  background-color: transparent;
+}
+.roam-app .rm-embed-container .rm-inline-references {
+  background-color: inherit;
 }
 
 /* 日间模式：正文区引用/提及面板内 .rm-reference-item 与夜间一致，悬浮无背景 */
