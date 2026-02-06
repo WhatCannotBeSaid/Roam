@@ -1563,9 +1563,9 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   text-shadow: 0 0 0.5px currentColor, 0 1px 2px rgba(0,0,0,0.08);
 }
 
-/* 学术标签（Academic Tag）：小型大写 + 底线下划线，排除 #Streamer 及 Theorem/Definition/Proof/Question/Counter（后者有专用配色） */
-.roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]):not([data-tag="Theorem"]):not([data-tag="Definition"]):not([data-tag="Proof"]):not([data-tag="Question"]):not([data-tag="Counter"]),
-.roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]):not([data-tag="Theorem"]):not([data-tag="Definition"]):not([data-tag="Proof"]):not([data-tag="Question"]):not([data-tag="Counter"]) {
+/* 学术标签（Academic Tag）：小型大写 + 底线下划线，排除 #Streamer 及 theorem/definition/proof/problem/counter/assumption（后者有专用配色） */
+.roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]):not([data-tag="theorem"]):not([data-tag="definition"]):not([data-tag="proof"]):not([data-tag="problem"]):not([data-tag="counter"]):not([data-tag="assumption"]),
+.roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]):not([data-tag="theorem"]):not([data-tag="definition"]):not([data-tag="proof"]):not([data-tag="problem"]):not([data-tag="counter"]):not([data-tag="assumption"]) {
   color: var(--tag-text-color) !important;
   font-family: var(--tag-font), var(--body-font) !important;
   font-size: var(--fs-tag) !important;
@@ -1581,28 +1581,31 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 }
 
-.roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]):not([data-tag="Theorem"]):not([data-tag="Definition"]):not([data-tag="Proof"]):not([data-tag="Question"]):not([data-tag="Counter"]):hover,
-.roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]):not([data-tag="Theorem"]):not([data-tag="Definition"]):not([data-tag="Proof"]):not([data-tag="Question"]):not([data-tag="Counter"]):hover {
+.roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]):not([data-tag="theorem"]):not([data-tag="definition"]):not([data-tag="proof"]):not([data-tag="problem"]):not([data-tag="counter"]):not([data-tag="assumption"]):hover,
+.roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]):not([data-tag="theorem"]):not([data-tag="definition"]):not([data-tag="proof"]):not([data-tag="problem"]):not([data-tag="counter"]):not([data-tag="assumption"]):hover {
   background: var(--tag-hover-bg) !important;
   border-bottom-color: var(--tag-text-color) !important;
 }
 
 /* 学术节点标签基础样式：与通用学术标签一致（下划线、padding、font-variant 等），仅配色由下方规则覆盖 */
-.roam-app span.rm-page-ref--tag[data-tag="Theorem"],
-.roam-app span.rm-page-ref[data-tag="Theorem"],
-.roam-app span.rm-page-ref--tag[data-tag="Definition"],
-.roam-app span.rm-page-ref[data-tag="Definition"],
-.roam-app span.rm-page-ref--tag[data-tag="Proof"],
-.roam-app span.rm-page-ref[data-tag="Proof"],
-.roam-app span.rm-page-ref--tag[data-tag="Question"],
-.roam-app span.rm-page-ref[data-tag="Question"],
-.roam-app span.rm-page-ref--tag[data-tag="Counter"],
-.roam-app span.rm-page-ref[data-tag="Counter"],
-.roam-app span[data-link-title="Theorem"],
-.roam-app span[data-link-title="Definition"],
-.roam-app span[data-link-title="Proof"],
-.roam-app span[data-link-title="Question"],
-.roam-app span[data-link-title="Counter"] {
+.roam-app span.rm-page-ref--tag[data-tag="theorem"],
+.roam-app span.rm-page-ref[data-tag="theorem"],
+.roam-app span.rm-page-ref--tag[data-tag="definition"],
+.roam-app span.rm-page-ref[data-tag="definition"],
+.roam-app span.rm-page-ref--tag[data-tag="proof"],
+.roam-app span.rm-page-ref[data-tag="proof"],
+.roam-app span.rm-page-ref--tag[data-tag="problem"],
+.roam-app span.rm-page-ref[data-tag="problem"],
+.roam-app span.rm-page-ref--tag[data-tag="counter"],
+.roam-app span.rm-page-ref[data-tag="counter"],
+.roam-app span.rm-page-ref--tag[data-tag="assumption"],
+.roam-app span.rm-page-ref[data-tag="assumption"],
+.roam-app span[data-link-title="theorem"],
+.roam-app span[data-link-title="definition"],
+.roam-app span[data-link-title="proof"],
+.roam-app span[data-link-title="problem"],
+.roam-app span[data-link-title="counter"],
+.roam-app span[data-link-title="assumption"] {
   font-family: var(--tag-font), var(--body-font) !important;
   font-size: var(--fs-tag) !important;
   font-weight: var(--tag-font-weight);
@@ -1616,157 +1619,186 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   text-decoration: none !important;
   transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 }
-.roam-app span.rm-page-ref--tag[data-tag="Theorem"]:hover,
-.roam-app span.rm-page-ref[data-tag="Theorem"]:hover,
-.roam-app span[data-link-title="Theorem"]:hover,
-.roam-app span.rm-page-ref--tag[data-tag="Definition"]:hover,
-.roam-app span.rm-page-ref[data-tag="Definition"]:hover,
-.roam-app span[data-link-title="Definition"]:hover,
-.roam-app span.rm-page-ref--tag[data-tag="Proof"]:hover,
-.roam-app span.rm-page-ref[data-tag="Proof"]:hover,
-.roam-app span[data-link-title="Proof"]:hover,
-.roam-app span.rm-page-ref--tag[data-tag="Question"]:hover,
-.roam-app span.rm-page-ref[data-tag="Question"]:hover,
-.roam-app span[data-link-title="Question"]:hover,
-.roam-app span.rm-page-ref--tag[data-tag="Counter"]:hover,
-.roam-app span.rm-page-ref[data-tag="Counter"]:hover,
-.roam-app span[data-link-title="Counter"]:hover {
+.roam-app span.rm-page-ref--tag[data-tag="theorem"]:hover,
+.roam-app span.rm-page-ref[data-tag="theorem"]:hover,
+.roam-app span[data-link-title="theorem"]:hover,
+.roam-app span.rm-page-ref--tag[data-tag="definition"]:hover,
+.roam-app span.rm-page-ref[data-tag="definition"]:hover,
+.roam-app span[data-link-title="definition"]:hover,
+.roam-app span.rm-page-ref--tag[data-tag="proof"]:hover,
+.roam-app span.rm-page-ref[data-tag="proof"]:hover,
+.roam-app span[data-link-title="proof"]:hover,
+.roam-app span.rm-page-ref--tag[data-tag="problem"]:hover,
+.roam-app span.rm-page-ref[data-tag="problem"]:hover,
+.roam-app span[data-link-title="problem"]:hover,
+.roam-app span.rm-page-ref--tag[data-tag="counter"]:hover,
+.roam-app span.rm-page-ref[data-tag="counter"]:hover,
+.roam-app span[data-link-title="counter"]:hover,
+.roam-app span.rm-page-ref--tag[data-tag="assumption"]:hover,
+.roam-app span.rm-page-ref[data-tag="assumption"]:hover,
+.roam-app span[data-link-title="assumption"]:hover {
   background: var(--tag-hover-bg) !important;
   border-bottom-color: currentColor !important;
 }
 
-/* 学术节点标签配色：Theorem / Definition / Proof / Question / Counter，五色不重复 */
-.roam-app span.rm-page-ref--tag[data-tag="Theorem"],
-.roam-app span.rm-page-ref[data-tag="Theorem"],
-.roam-app span[data-link-title="Theorem"] {
+/* 学术节点标签配色：theorem / definition / proof / problem / counter / assumption，六色不重复 */
+.roam-app span.rm-page-ref--tag[data-tag="theorem"],
+.roam-app span.rm-page-ref[data-tag="theorem"],
+.roam-app span[data-link-title="theorem"] {
   color: #177CB0 !important;
   background-color: oklch(from #177CB0 l c h / 0.15) !important;
 }
-.roam-app span.rm-page-ref--tag[data-tag="Definition"],
-.roam-app span.rm-page-ref[data-tag="Definition"],
-.roam-app span[data-link-title="Definition"] {
+.roam-app span.rm-page-ref--tag[data-tag="definition"],
+.roam-app span.rm-page-ref[data-tag="definition"],
+.roam-app span[data-link-title="definition"] {
   color: #21A675 !important;
   background-color: oklch(from #21A675 l c h / 0.15) !important;
 }
-.roam-app span.rm-page-ref--tag[data-tag="Proof"],
-.roam-app span.rm-page-ref[data-tag="Proof"],
-.roam-app span[data-link-title="Proof"] {
+.roam-app span.rm-page-ref--tag[data-tag="proof"],
+.roam-app span.rm-page-ref[data-tag="proof"],
+.roam-app span[data-link-title="proof"] {
   color: #CA6924 !important;
   background-color: oklch(from #CA6924 l c h / 0.15) !important;
 }
-.roam-app span.rm-page-ref--tag[data-tag="Question"],
-.roam-app span.rm-page-ref[data-tag="Question"],
-.roam-app span[data-link-title="Question"] {
+.roam-app span.rm-page-ref--tag[data-tag="problem"],
+.roam-app span.rm-page-ref[data-tag="problem"],
+.roam-app span[data-link-title="problem"] {
   color: #7C3AED !important;
   background-color: oklch(from #7C3AED l c h / 0.15) !important;
 }
-.roam-app span.rm-page-ref--tag[data-tag="Counter"],
-.roam-app span.rm-page-ref[data-tag="Counter"],
-.roam-app span[data-link-title="Counter"] {
+.roam-app span.rm-page-ref--tag[data-tag="counter"],
+.roam-app span.rm-page-ref[data-tag="counter"],
+.roam-app span[data-link-title="counter"] {
   color: #D23B3B !important;
   background-color: oklch(from #D23B3B l c h / 0.15) !important;
 }
-.roam-app .rm-menu-item:has(span[data-link-title="Theorem"]),
-.roam-app .rm-menu-item:has(span[data-tag="Theorem"]),
-.roam-app .bp3-menu-item:has(span[data-link-title="Theorem"]),
-.roam-app .bp3-menu-item:has(span[data-tag="Theorem"]) {
+.roam-app span.rm-page-ref--tag[data-tag="assumption"],
+.roam-app span.rm-page-ref[data-tag="assumption"],
+.roam-app span[data-link-title="assumption"] {
+  color: #0D9488 !important;
+  background-color: oklch(from #0D9488 l c h / 0.15) !important;
+}
+.roam-app .rm-menu-item:has(span[data-link-title="theorem"]),
+.roam-app .rm-menu-item:has(span[data-tag="theorem"]),
+.roam-app .bp3-menu-item:has(span[data-link-title="theorem"]),
+.roam-app .bp3-menu-item:has(span[data-tag="theorem"]) {
   background-color: oklch(from #177CB0 l c h / 0.15) !important;
   color: #177CB0 !important;
 }
-.roam-app .rm-menu-item:has(span[data-link-title="Definition"]),
-.roam-app .rm-menu-item:has(span[data-tag="Definition"]),
-.roam-app .bp3-menu-item:has(span[data-link-title="Definition"]),
-.roam-app .bp3-menu-item:has(span[data-tag="Definition"]) {
+.roam-app .rm-menu-item:has(span[data-link-title="definition"]),
+.roam-app .rm-menu-item:has(span[data-tag="definition"]),
+.roam-app .bp3-menu-item:has(span[data-link-title="definition"]),
+.roam-app .bp3-menu-item:has(span[data-tag="definition"]) {
   background-color: oklch(from #21A675 l c h / 0.15) !important;
   color: #21A675 !important;
 }
-.roam-app .rm-menu-item:has(span[data-link-title="Proof"]),
-.roam-app .rm-menu-item:has(span[data-tag="Proof"]),
-.roam-app .bp3-menu-item:has(span[data-link-title="Proof"]),
-.roam-app .bp3-menu-item:has(span[data-tag="Proof"]) {
+.roam-app .rm-menu-item:has(span[data-link-title="proof"]),
+.roam-app .rm-menu-item:has(span[data-tag="proof"]),
+.roam-app .bp3-menu-item:has(span[data-link-title="proof"]),
+.roam-app .bp3-menu-item:has(span[data-tag="proof"]) {
   background-color: oklch(from #CA6924 l c h / 0.15) !important;
   color: #CA6924 !important;
 }
-.roam-app .rm-menu-item:has(span[data-link-title="Question"]),
-.roam-app .rm-menu-item:has(span[data-tag="Question"]),
-.roam-app .bp3-menu-item:has(span[data-link-title="Question"]),
-.roam-app .bp3-menu-item:has(span[data-tag="Question"]) {
+.roam-app .rm-menu-item:has(span[data-link-title="problem"]),
+.roam-app .rm-menu-item:has(span[data-tag="problem"]),
+.roam-app .bp3-menu-item:has(span[data-link-title="problem"]),
+.roam-app .bp3-menu-item:has(span[data-tag="problem"]) {
   background-color: oklch(from #7C3AED l c h / 0.15) !important;
   color: #7C3AED !important;
 }
-.roam-app .rm-menu-item:has(span[data-link-title="Counter"]),
-.roam-app .rm-menu-item:has(span[data-tag="Counter"]),
-.roam-app .bp3-menu-item:has(span[data-link-title="Counter"]),
-.roam-app .bp3-menu-item:has(span[data-tag="Counter"]) {
+.roam-app .rm-menu-item:has(span[data-link-title="counter"]),
+.roam-app .rm-menu-item:has(span[data-tag="counter"]),
+.roam-app .bp3-menu-item:has(span[data-link-title="counter"]),
+.roam-app .bp3-menu-item:has(span[data-tag="counter"]) {
   background-color: oklch(from #D23B3B l c h / 0.15) !important;
   color: #D23B3B !important;
+}
+.roam-app .rm-menu-item:has(span[data-link-title="assumption"]),
+.roam-app .rm-menu-item:has(span[data-tag="assumption"]),
+.roam-app .bp3-menu-item:has(span[data-link-title="assumption"]),
+.roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
+  background-color: oklch(from #0D9488 l c h / 0.15) !important;
+  color: #0D9488 !important;
 }
 /* 学术节点标签夜间模式：使用较亮色保证深色背景可读 */
-body.rm-dark-theme .roam-app span[data-link-title="Theorem"],
-body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="Theorem"],
-body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="Theorem"],
-body.rm-dark-theme .roam-app span[data-link-title="Theorem"] {
+body.rm-dark-theme .roam-app span[data-link-title="theorem"],
+body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="theorem"],
+body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="theorem"],
+body.rm-dark-theme .roam-app span[data-link-title="theorem"] {
   color: #48C0A3 !important;
   background-color: oklch(from #48C0A3 l c h / 0.18) !important;
 }
-body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="Definition"],
-body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="Definition"],
-body.rm-dark-theme .roam-app span[data-link-title="Definition"] {
+body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="definition"],
+body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="definition"],
+body.rm-dark-theme .roam-app span[data-link-title="definition"] {
   color: #2ADD9C !important;
   background-color: oklch(from #2ADD9C l c h / 0.18) !important;
 }
-body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="Proof"],
-body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="Proof"],
-body.rm-dark-theme .roam-app span[data-link-title="Proof"] {
+body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="proof"],
+body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="proof"],
+body.rm-dark-theme .roam-app span[data-link-title="proof"] {
   color: #E8A84B !important;
   background-color: oklch(from #E8A84B l c h / 0.18) !important;
 }
-body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="Question"],
-body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="Question"],
-body.rm-dark-theme .roam-app span[data-link-title="Question"] {
+body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="problem"],
+body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="problem"],
+body.rm-dark-theme .roam-app span[data-link-title="problem"] {
   color: #A78BFA !important;
   background-color: oklch(from #A78BFA l c h / 0.18) !important;
 }
-body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="Counter"],
-body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="Counter"],
-body.rm-dark-theme .roam-app span[data-link-title="Counter"] {
+body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="counter"],
+body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="counter"],
+body.rm-dark-theme .roam-app span[data-link-title="counter"] {
   color: #E85A5A !important;
   background-color: oklch(from #E85A5A l c h / 0.18) !important;
 }
-body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="Theorem"]),
-body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="Theorem"]),
-body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="Theorem"]),
-body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="Theorem"]) {
+body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="assumption"],
+body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="assumption"],
+body.rm-dark-theme .roam-app span[data-link-title="assumption"] {
+  color: #2DD4BF !important;
+  background-color: oklch(from #2DD4BF l c h / 0.18) !important;
+}
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="theorem"]),
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="theorem"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="theorem"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="theorem"]) {
   background-color: oklch(from #48C0A3 l c h / 0.18) !important;
   color: #48C0A3 !important;
 }
-body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="Definition"]),
-body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="Definition"]),
-body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="Definition"]),
-body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="Definition"]) {
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="definition"]),
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="definition"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="definition"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="definition"]) {
   background-color: oklch(from #2ADD9C l c h / 0.18) !important;
   color: #2ADD9C !important;
 }
-body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="Proof"]),
-body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="Proof"]),
-body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="Proof"]),
-body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="Proof"]) {
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="proof"]),
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="proof"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="proof"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="proof"]) {
   background-color: oklch(from #E8A84B l c h / 0.18) !important;
   color: #E8A84B !important;
 }
-body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="Question"]),
-body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="Question"]),
-body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="Question"]),
-body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="Question"]) {
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="problem"]),
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="problem"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="problem"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="problem"]) {
   background-color: oklch(from #A78BFA l c h / 0.18) !important;
   color: #A78BFA !important;
 }
-body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="Counter"]),
-body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="Counter"]),
-body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="Counter"]),
-body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="Counter"]) {
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="counter"]),
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="counter"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="counter"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="counter"]) {
   background-color: oklch(from #E85A5A l c h / 0.18) !important;
   color: #E85A5A !important;
+}
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="assumption"]),
+body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="assumption"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="assumption"]),
+body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
+  background-color: oklch(from #2DD4BF l c h / 0.18) !important;
+  color: #2DD4BF !important;
 }
 
 /* ========================================================= */
