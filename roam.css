@@ -1,6 +1,7 @@
 /* ========================================================= */
 /* 1. CSS Variables (Light) - 格式/顺序对齐 lesswrong.css   */
 /* 已比对 system.css：无同名变量（system 仅 --primary-color/--s1/--dark-* 等），本块全部保留 */
+/* 去重说明：本文件已相对 blueprint.css / site.css 做布局属性去重，仅保留字体/颜色及独有声明。 */
 /* ========================================================= */
 :root,
 .roam-app {
@@ -1627,8 +1628,7 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
 }
 
 .rm-extensions-settings .rm-extensions-installed .rm-extension-installed__name {
-  font-size: 0.875rem;
-}
+  font-size: 0.875rem;}
 
 /* Hotkeys */
 .rm-hotkeys-action,
@@ -1708,12 +1708,10 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
 .bp3-menu {
   font-family: var(--body-font);
   background: transparent !important;
-  color: var(--text-color) !important;
-}
+  color: var(--text-color) !important;}
 
 .bp3-menu-item {
-  color: var(--text-color) !important;
-}
+  color: var(--text-color) !important;}
 
 /* .bp3-menu-item .bp3-fill：仅 flex 版式，已移除 */
 
@@ -2079,8 +2077,7 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
 
 .rm-settings .rm-settings-panel .rm-settings-panel__description {
   color: var(--light-text-color);
-  font-family: var(--body-font) !important;
-}
+  font-family: var(--body-font) !important;}
 
 .rm-settings,
 .rm-settings-panel__section,
@@ -2114,8 +2111,7 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
 
 .rm-extensions-marketplace .rm-extensions-marketplace-search__settings input {
   background-color: var(--page-color);
-  border-color: #394B59;
-}
+  border-color: #394B59;}
 
 /* 日间模式：扩展市场弹窗内全部改为深色字，避免白字白底 */
 html:not(.rm-dark-theme) .bp3-dialog.rm-extensions-marketplace-dialog,
@@ -2227,8 +2223,7 @@ html:not(.rm-dark-theme) .bp3-dialog.rm-extensions-marketplace-dialog hr {
 .rm-settings .rm-settings-panel .rm-select-wrapper {
   background-color: var(--embed-bg);
   border-color: #293742;
-  color: var(--text-color);
-}
+  color: var(--text-color);}
 
 .rm-settings .rm-settings-panel .rm-select-wrapper .bp3-button,
 .rm-settings .rm-settings-panel .rm-select-wrapper .bp3-popover-target .bp3-button {
@@ -2649,29 +2644,8 @@ body .bp3-overlay .bp3-dialog.rm-modal-dialog--settings .rm-extension-settings-h
   color: var(--datepicker-day-selected-text) !important;
 }
 
-/* .DayPicker-Day--outside：仅 opacity，已移除 */
-
-/* ========================================================= */
-/* 14. Autocomplete（照搬 system.css，仅将颜色换为 roam 变量） */
-/* ========================================================= */
-
-.rm-autocomplete__wrapper {
-  flex: 1 1 100%;
-}
-
 .rm-autocomplete__results {
-  width: min(400px, 100vw);
-  z-index: 20;
-  background-color: var(--autocomplete-results-bg);
-  max-width: min(400px, 100vw);
-  max-height: 300px;
-  padding: 4px;
-  overflow: auto;
-}
-
-.rm-autocomplete-result {
-  word-break: break-word;
-}
+  background-color: var(--autocomplete-results-bg);}
 
 /* dont-unfocus-block：日夜间背景/文字色适配（覆盖默认白底） */
 .rm-autocomplete__results .dont-unfocus-block {
@@ -3042,8 +3016,7 @@ body .roam-app .rm-command-palette .rm-menu-item.rm-menu-item--active {
 /* 命令面板选中项：与日夜间主题统一（覆盖默认/扩展可能的高优先级规则） */
 .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active {
   background-color: var(--menu-hover-bg) !important;
-  color: var(--menu-hover-text) !important;
-}
+  color: var(--menu-hover-text) !important;}
 .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__label,
 .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__shortcut {
   color: var(--menu-hover-text) !important;
