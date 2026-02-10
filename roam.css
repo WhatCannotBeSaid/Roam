@@ -16,92 +16,54 @@
   --font-size: 1rem;
 
   /* Day Mode - 黑/灰系：页面标题/正文/引用/H1-H3（有层次）；彩色系：标签/双链/外链（色相环隔开） */
-  --m-bg: #C7D1C6;
-  /* 苍艾 - 核心背景（固定） */
-  --m-surface: #C7D1C6;
-  /* 苍艾（固定） */
-  --m-text: #313233;
-  /* 墨色 - 正文 */
-  --m-ink: #2B2B2B;
-  /* 皂色 - 边框/阴影 */
-  --m-text-muted: #758A99;
-  /* 墨灰 */
-  --m-primary: #789262;
-  /* 竹青 - 主色 */
-  --m-secondary: #D3B17D;
-  /* 枯黄 - 辅助色 */
+  --m-bg: #C7D1C6;       /* 苍艾 - 核心背景（固定） */
+  --m-surface: #C7D1C6;  /* 苍艾（固定） */
+  --m-text: #313233;     /* 墨色 - 正文 */
+  --m-ink: #2B2B2B;      /* 皂色 - 边框/阴影 */
+  --m-text-muted: #758A99; /* 墨灰 */
+  --m-primary: #789262;   /* 竹青 - 主色 */
+  --m-secondary: #D3B17D; /* 枯黄 - 辅助色 */
   --m-sidebar-title: var(--m-primary);
   /* 黑色/灰色系（层次：由深到浅） */
-  --m-title-display: #161823;
-  /* 漆黑 - 页面标题 */
-  --m-heading-h1: #1C1C1C;
-  /* 乌色 - H1 */
-  --m-heading-h2: #424C50;
-  /* 鸦青 - H2 */
-  --m-heading-h3: #50616D;
-  /* 岩灰 - H3 */
-  --m-blockquote: #2B2B2B;
-  /* 皂色 - 引用块正文（高雅深色） */
-  --m-blockquote-bar: #177CB0;
-  /* 靛青 - 引用块竖条（高雅显眼） */
-  --m-blockquote-bar-hover: #125A82;
-  /* 靛青加深 - 引用块竖条 hover */
+  --m-title-display: #161823;     /* 漆黑 - 页面标题 */
+  --m-heading-h1: #1C1C1C;        /* 乌色 - H1 */
+  --m-heading-h2: #424C50;        /* 鸦青 - H2 */
+  --m-heading-h3: #50616D;        /* 岩灰 - H3 */
+  --m-blockquote: #2B2B2B;        /* 皂色 - 引用块正文（高雅深色） */
+  --m-blockquote-bar: #177CB0;    /* 靛青 - 引用块竖条（高雅显眼） */
+  --m-blockquote-bar-hover: #125A82; /* 靛青加深 - 引用块竖条 hover */
   /* 彩色系（黄 / 蓝 / 红紫，色相环不临近，标签避绿不撞背景） */
-  --m-page-tag: #75878A;
-  /* 苍色 - 弱化标签区 */
-  --m-tag: #CA6924;
-  /* 琥珀 - 标签（黄色系） */
-  --m-tag-hover: #A8551E;
-  /* 琥珀加深 - 标签 hover */
+  --m-page-tag: #75878A;          /* 苍色 - 弱化标签区 */
+  --m-tag: #CA6924;               /* 琥珀 - 标签（黄色系） */
+  --m-tag-hover: #A8551E;         /* 琥珀加深 - 标签 hover */
   /* 学术标签（Academic Tag）日间 */
   --tag-text-color: #1a1a1a;
   --tag-border-color: #333;
   --tag-hover-bg: rgba(0, 0, 0, 0.03);
   --tag-font-weight: 600;
   /* Links 专用（不与 blockquote-bar / sidebar-star / tag / 高亮 重复） */
-  --m-page-ref: #0D9488;
-  /* 青绿 - 双链（teal，与主色/引用条/侧栏星标区分） */
-  --m-page-ref-hover: #0F766E;
-  /* 深青绿 - 双链 hover */
-  --m-link: #7C3AED;
-  /* 紫 - 外链（violet，与绛紫/高亮系区分） */
-  --m-link-hover: #6D28D9;
-  /* 深紫 - 外链 hover */
+  --m-page-ref: #0D9488;            /* 青绿 - 双链（teal，与主色/引用条/侧栏星标区分） */
+  --m-page-ref-hover: #0F766E;       /* 深青绿 - 双链 hover */
+  --m-link: #7C3AED;                /* 紫 - 外链（violet，与绛紫/高亮系区分） */
+  --m-link-hover: #6D28D9;          /* 深紫 - 外链 hover */
   /* 其他 */
-  --m-reference-strong: #118b6e;
-  /* 青碧 - 引用区 strong */
-  --m-sidebar-star: #177CB0;
-  /* 靛青 */
-  --m-checkbox-checked: #21A675;
-  /* 松柏绿 */
-  --m-code-selection: #D6ECF0;
-  /* 月白 */
-  --m-on-accent: #F2ECDE;
-  /* 缟 */
-  --m-highlight-underline: #DB5A6B;
-  /* 海棠红 - 粉色系 */
-  --m-highlight-yellow: #F47983;
-  /* 桃红 - 粉色系 */
-  --m-highlight-green: #E4C4D8;
-  /* 藕荷 - 粉色系 */
-  --m-highlight-blue: #FFB3A7;
-  /* 粉红 - 粉色系 */
-  --m-highlight-red: #EF7A82;
-  /* 嫣红 - 粉色系 */
-  --m-bullet-focus: #DB5A6B;
-  /* 海棠红 - bullet 编辑态泛光（中国传统色） */
-  --m-highlight-purple: #D2A4C8;
-  /* 绛紫亮 - 粉色系 */
-  --m-highlight-orange: #DB5A6B;
-  /* 海棠红 - 粉色系 */
-  --m-sidebar-icon: #3D3B4F;
-  /* 玄色 */
-  --m-sidebar-title-day: #057748;
-  /* 松花绿 */
-  --m-sidebar-star-day: #065279;
-  /* 靛蓝 */
-  --m-warn: #D23B3B;
-  /* 丹 - 警示 */
+  --m-reference-strong: #118b6e;  /* 青碧 - 引用区 strong */
+  --m-sidebar-star: #177CB0;      /* 靛青 */
+  --m-checkbox-checked: #21A675;  /* 松柏绿 */
+  --m-code-selection: #D6ECF0;    /* 月白 */
+  --m-on-accent: #F2ECDE;         /* 缟 */
+  --m-highlight-underline: #DB5A6B; /* 海棠红 - 粉色系 */
+  --m-highlight-yellow: #F47983;    /* 桃红 - 粉色系 */
+  --m-highlight-green: #E4C4D8;     /* 藕荷 - 粉色系 */
+  --m-highlight-blue: #FFB3A7;      /* 粉红 - 粉色系 */
+  --m-highlight-red: #EF7A82;       /* 嫣红 - 粉色系 */
+  --m-bullet-focus: #DB5A6B;        /* 海棠红 - bullet 编辑态泛光（中国传统色） */
+  --m-highlight-purple: #D2A4C8;    /* 绛紫亮 - 粉色系 */
+  --m-highlight-orange: #DB5A6B;    /* 海棠红 - 粉色系 */
+  --m-sidebar-icon: #3D3B4F;        /* 玄色 */
+  --m-sidebar-title-day: #057748;   /* 松花绿 */
+  --m-sidebar-star-day: #065279;    /* 靛蓝 */
+  --m-warn: #D23B3B;                /* 丹 - 警示 */
   --m-popover: var(--m-surface);
 
   /* 映射到既有主题语义变量（bc/co 顺序） */
@@ -218,8 +180,7 @@
   --ink-solid: var(--m-ink);
 
   /* Smiley Toggle（未完成=红系与夜间一致，完成=绿） */
-  --m-checkbox-unchecked: #C83C23;
-  /* 绯红 - 未勾选/未完成，日夜统一 */
+  --m-checkbox-unchecked: #C83C23;  /* 绯红 - 未勾选/未完成，日夜统一 */
   --toggle-off-bg: var(--m-checkbox-unchecked);
   --toggle-off-shadow: 0 4px 10px oklch(from var(--m-checkbox-unchecked) l c h / 0.35);
   --toggle-on-bg: var(--checkbox-checked-color);
@@ -266,24 +227,18 @@
   --layout-padding-article-h: 40px;
   --layout-margin-block: 0.5rem;
   --fs-app-base: 16px;
-  --block-spacing: 0;
-  /* 正文块间距：0 为最紧，无空隙；可改为如 0.05em 保留极细缝 */
-  --block-row-min-height: 2.05em;
-  /* 正文块行统一最小高度 */
-  --ref-block-row-min-height: 1.25em;
-  /* 引用区块行更紧凑 */
-  --block-content-line-height: var(--lh-content);
-  /* 正文块展示态与编辑态统一行高 */
-  --block-line-min-height: calc(1em * var(--block-content-line-height));
-  /* 单行最小高度，与行高一致 */
+  --block-spacing: 0; /* 正文块间距：0 为最紧，无空隙；可改为如 0.05em 保留极细缝 */
+  --block-row-min-height: 2.05em; /* 正文块行统一最小高度 */
+  --ref-block-row-min-height: 1.25em; /* 引用区块行更紧凑 */
+  --block-content-line-height: var(--lh-content); /* 正文块展示态与编辑态统一行高 */
+  --block-line-min-height: calc(1em * var(--block-content-line-height)); /* 单行最小高度，与行高一致 */
   --lh-display: 1.3;
   --lh-page-title: 1.1;
   --lh-h1: 1.2;
   --lh-h2: 1.3;
   --lh-h3: 1.4;
   --lh-quote: 1.6;
-  --lh-content: 1.6;
-  /* 正文行高，与 --lh-body 一致 */
+  --lh-content: 1.6;   /* 正文行高，与 --lh-body 一致 */
   --lh-body: 1.6;
   --lh-tag: 1.4;
   --lh-code: 1.7;
@@ -307,80 +262,51 @@ body.rm-dark-theme,
 html.rm-dark-theme .roam-app,
 body.rm-dark-theme .roam-app .roam-app,
 .rm-dark-theme .roam-app {
-  --m-bg: #2B333E;
-  /* 玄青 - 主背景（固定） */
-  --m-surface: #2B333E;
-  /* 玄青（固定） */
-  --m-text: #E6EAE9;
-  /* 月影白 - 正文 */
-  --m-text-muted: #A1AFC9;
-  /* 蓝灰 */
-  --m-ink: #161823;
-  /* 漆黑 - 边框/阴影 */
-  --m-primary: #1685A9;
-  /* 石青 - 主色 */
-  --m-secondary: #C83C23;
-  /* 绯红 - 分裂补色 */
-  --m-sidebar-title: #48C0A3;
-  /* 青碧 */
+  --m-bg: #2B333E;         /* 玄青 - 主背景（固定） */
+  --m-surface: #2B333E;    /* 玄青（固定） */
+  --m-text: #E6EAE9;       /* 月影白 - 正文 */
+  --m-text-muted: #A1AFC9; /* 蓝灰 */
+  --m-ink: #161823;        /* 漆黑 - 边框/阴影 */
+  --m-primary: #1685A9;    /* 石青 - 主色 */
+  --m-secondary: #C83C23;  /* 绯红 - 分裂补色 */
+  --m-sidebar-title: #48C0A3;    /* 青碧 */
   --m-sidebar-star: #48C0A3;
-  --m-checkbox-checked: #2ADD9C;
-  /* 碧绿 */
-  --m-code-selection: #065279;
-  /* 靛蓝 */
-  --m-on-accent: #E9F1F6;
-  /* 霜色 - 非纯白 */
-  --m-sidebar-icon: #D6ECF0;
-  /* 月白 */
-  --m-popover: #3D3B4F;
-  /* 玄色 - 弹层 */
+  --m-checkbox-checked: #2ADD9C;  /* 碧绿 */
+  --m-code-selection: #065279;   /* 靛蓝 */
+  --m-on-accent: #E9F1F6;        /* 霜色 - 非纯白 */
+  --m-sidebar-icon: #D6ECF0;     /* 月白 */
+  --m-popover: #3D3B4F;          /* 玄色 - 弹层 */
   --m-reference-strong: var(--m-sidebar-star);
-  --m-warn: #E85A5A;
-  /* 丹亮 - 警示（夜间可读） */
+  --m-warn: #E85A5A;             /* 丹亮 - 警示（夜间可读） */
   /* 灰/白系（层次：由亮到柔，对应日间由深到浅） */
-  --m-title-display: #F2ECDE;
-  /* 缟 - 页面标题（最亮，非纯白） */
-  --m-heading-h1: #F2ECDE;
-  /* 缟 - H1 */
-  --m-heading-h2: #E6EAE9;
-  /* 月影白 - H2 */
-  --m-heading-h3: #C8CED8;
-  /* 灰蓝 - H3 */
-  --m-blockquote: #E9F1F6;
-  /* 霜色 - 引用块正文（高雅浅色） */
-  --m-blockquote-bar: #B0A4E3;
-  /* 雪青 - 引用块竖条（高雅显眼） */
-  --m-blockquote-bar-hover: #CCA4E3;
-  /* 丁香 - 引用块竖条 hover */
+  --m-title-display: #F2ECDE;    /* 缟 - 页面标题（最亮，非纯白） */
+  --m-heading-h1: #F2ECDE;       /* 缟 - H1 */
+  --m-heading-h2: #E6EAE9;       /* 月影白 - H2 */
+  --m-heading-h3: #C8CED8;       /* 灰蓝 - H3 */
+  --m-blockquote: #E9F1F6;       /* 霜色 - 引用块正文（高雅浅色） */
+  --m-blockquote-bar: #B0A4E3;   /* 雪青 - 引用块竖条（高雅显眼） */
+  --m-blockquote-bar-hover: #CCA4E3; /* 丁香 - 引用块竖条 hover */
   /* 彩色系（黄·蓝·红紫，与日间 标签/双链/外链 色相一一对应） */
-  --m-page-tag: #75878A;
-  /* 苍色 - 弱化标签区 */
-  --m-tag: #E8A84B;
-  /* 琥珀亮 - 标签（黄色系） */
-  --m-tag-hover: #F0C239;
-  /* 缃色 - 标签 hover */
+  --m-page-tag: #75878A;         /* 苍色 - 弱化标签区 */
+  --m-tag: #E8A84B;              /* 琥珀亮 - 标签（黄色系） */
+  --m-tag-hover: #F0C239;        /* 缃色 - 标签 hover */
   /* 学术标签（Academic Tag）夜间 */
   --tag-text-color: #d1d1d1;
   --tag-border-color: #888;
   --tag-hover-bg: rgba(255, 255, 255, 0.05);
   --tag-font-weight: 600;
   /* Links 专用（不与 blockquote-bar / sidebar-star / 高亮 重复） */
-  --m-page-ref: #2DD4BF;
-  /* 青绿亮 - 双链（teal，与主色/侧栏星标/原蓝区分） */
-  --m-page-ref-hover: #5EEAD4;
-  /* 青绿浅 - 双链 hover */
-  --m-link: #A78BFA;
-  /* 紫亮 - 外链（violet，与引用条雪青/高亮区分） */
-  --m-link-hover: #C4B5FD;
-  /* 薰衣草 - 外链 hover */
+  --m-page-ref: #2DD4BF;           /* 青绿亮 - 双链（teal，与主色/侧栏星标/原蓝区分） */
+  --m-page-ref-hover: #5EEAD4;    /* 青绿浅 - 双链 hover */
+  --m-link: #A78BFA;              /* 紫亮 - 外链（violet，与引用条雪青/高亮区分） */
+  --m-link-hover: #C4B5FD;        /* 薰衣草 - 外链 hover */
   /* 行内高亮（粉色系，亮色 + 适度透明保证浅字可读） */
   --m-highlight-underline: oklch(from #F47983 l c h / 0.55);
   --m-highlight-yellow: oklch(from #F47983 l c h / 0.52);
   --m-highlight-green: oklch(from #E4C4D8 l c h / 0.50);
   --m-highlight-blue: oklch(from #FFB3A7 l c h / 0.48);
   --m-highlight-red: oklch(from #EF7A82 l c h / 0.55);
-  --m-bullet-focus: #F05654;
-  /* 银红 - bullet 编辑态泛光（有光泽浅红，适配深底） */
+  --m-bullet-focus: #F05654;        /* 银红 - bullet 编辑态泛光（有光泽浅红，适配深底） */
   --m-highlight-purple: oklch(from #D2A4C8 l c h / 0.52);
   --m-highlight-orange: oklch(from #F47983 l c h / 0.52);
 
@@ -511,11 +437,9 @@ body:not(.rm-dark-theme) .roam-app .bp3-button:not([class*="bp3-intent-"]) {
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
 }
-
 body:not(.rm-dark-theme) .roam-app .bp3-button.bp3-minimal:not([class*="bp3-intent-"]) {
   background: transparent !important;
 }
-
 body:not(.rm-dark-theme) .roam-app .bp3-button:not([class*="bp3-intent-"]):hover {
   background: var(--sidebar-hover-bg) !important;
   border-color: var(--color-subtle-border) !important;
@@ -530,13 +454,11 @@ body:not(.rm-dark-theme) .bp3-dialog .bp3-button:not([class*="bp3-intent-"]) {
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
 }
-
 body:not(.rm-dark-theme) .bp3-overlay .bp3-button.bp3-minimal:not([class*="bp3-intent-"]),
 body:not(.rm-dark-theme) .bp3-popover .bp3-button.bp3-minimal:not([class*="bp3-intent-"]),
 body:not(.rm-dark-theme) .bp3-dialog .bp3-button.bp3-minimal:not([class*="bp3-intent-"]) {
   background: transparent !important;
 }
-
 body:not(.rm-dark-theme) .bp3-overlay .bp3-button:not([class*="bp3-intent-"]):hover,
 body:not(.rm-dark-theme) .bp3-popover .bp3-button:not([class*="bp3-intent-"]):hover,
 body:not(.rm-dark-theme) .bp3-dialog .bp3-button:not([class*="bp3-intent-"]):hover {
@@ -578,18 +500,15 @@ body.rm-dark-theme .bp3-card {
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
 }
-
 body.rm-dark-theme .bp3-dark .bp3-menu-item,
 body.rm-dark-theme .bp3-dark .bp3-button {
   color: var(--text-color) !important;
 }
-
 body.rm-dark-theme .bp3-dark .bp3-button:not([class*="bp3-intent-"]) {
   background: transparent !important;
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
 }
-
 body.rm-dark-theme .bp3-dark .bp3-menu-item:hover,
 body.rm-dark-theme .bp3-dark .bp3-button:hover,
 body.rm-dark-theme .bp3-dark .bp3-button:not([class*="bp3-intent-"]):hover {
@@ -597,23 +516,19 @@ body.rm-dark-theme .bp3-dark .bp3-button:not([class*="bp3-intent-"]):hover {
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
 }
-
 body.rm-dark-theme .bp3-dark .bp3-input {
   background: var(--page-color) !important;
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
 }
-
 body.rm-dark-theme .roam-app .bp3-button:not([class*="bp3-intent-"]) {
   background: var(--embed-bg) !important;
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
 }
-
 body.rm-dark-theme .roam-app .bp3-button.bp3-minimal:not([class*="bp3-intent-"]) {
   background: transparent !important;
 }
-
 body.rm-dark-theme .roam-app .bp3-button:not([class*="bp3-intent-"]):hover {
   background: var(--sidebar-hover-bg) !important;
   border-color: var(--color-subtle-border) !important;
@@ -628,13 +543,11 @@ body.rm-dark-theme .bp3-dialog .bp3-button:not([class*="bp3-intent-"]) {
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
 }
-
 body.rm-dark-theme .bp3-overlay .bp3-button.bp3-minimal:not([class*="bp3-intent-"]),
 body.rm-dark-theme .bp3-popover .bp3-button.bp3-minimal:not([class*="bp3-intent-"]),
 body.rm-dark-theme .bp3-dialog .bp3-button.bp3-minimal:not([class*="bp3-intent-"]) {
   background: transparent !important;
 }
-
 body.rm-dark-theme .bp3-overlay .bp3-button:not([class*="bp3-intent-"]):hover,
 body.rm-dark-theme .bp3-popover .bp3-button:not([class*="bp3-intent-"]):hover,
 body.rm-dark-theme .bp3-dialog .bp3-button:not([class*="bp3-intent-"]):hover {
@@ -648,22 +561,22 @@ body.rm-dark-theme .bp3-dialog .bp3-button:not([class*="bp3-intent-"]):hover {
 /* 已比对 system.css：版式见 system，此处仅保留配色/字体 */
 /* ========================================================= */
 
-.roam-app .roam-article>div {
+.roam-app .roam-article > div {
   background: var(--page-color);
   font-size: var(--fs-app-base);
 }
 
 /* 仅标题块自身内容区透明，不作用到其子块（避免回车后新块被当成标题样式）；[style*="background"] 需 !important 覆盖内联 */
-body:not(.rm-dark-theme) .roam-app .roam-block-container:is(.rm-level1, .rm-level2, .rm-level3, .rm-heading-level-1, .rm-heading-level-2, .rm-heading-level-3)>.rm-block-main,
-body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-level1>.rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
-body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-1>.rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
-body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-level2>.rm-block-main :is(.rm-block-main, .rm-block__input, .rm-block-text),
-body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-2>.rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
-body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-level3>.rm-block-main :is(.rm-block-main, .rm-block__input, .rm-block-text),
-body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-3>.rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
-body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-1>.rm-block-main [style*="background"],
-body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-2>.rm-block-main [style*="background"],
-body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-3>.rm-block-main [style*="background"] {
+body:not(.rm-dark-theme) .roam-app .roam-block-container:is(.rm-level1, .rm-level2, .rm-level3, .rm-heading-level-1, .rm-heading-level-2, .rm-heading-level-3) > .rm-block-main,
+body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-level1 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-1 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-level2 > .rm-block-main :is(.rm-block-main, .rm-block__input, .rm-block-text),
+body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-2 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-level3 > .rm-block-main :is(.rm-block-main, .rm-block__input, .rm-block-text),
+body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-3 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-1 > .rm-block-main [style*="background"],
+body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-2 > .rm-block-main [style*="background"],
+body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-3 > .rm-block-main [style*="background"] {
   background: transparent !important;
 }
 
@@ -723,12 +636,10 @@ body .bp3-text-overflow-ellipsis {
   font-family: var(--body-font);
   font-size: var(--font-size);
 }
-
 .roam-app div:not(.rm-topbar):not(.rm-topbar-zen) {
   color: var(--text-color);
   font-size: var(--font-size);
 }
-
 .roam-app textarea {
   color: var(--text-color);
   font-family: var(--body-font);
@@ -747,9 +658,9 @@ body .bp3-text-overflow-ellipsis {
 }
 
 /* 正文块编辑态 textarea 与展示态字号统一 */
-.roam-app .roam-article .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main>.rm-block__input textarea,
+.roam-app .roam-article .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main > .rm-block__input textarea,
 .roam-app .roam-article .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main .rm-autocomplete__wrapper textarea,
-.rm-ref-page-view .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main>.rm-block__input textarea,
+.rm-ref-page-view .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main > .rm-block__input textarea,
 .rm-ref-page-view .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main .rm-autocomplete__wrapper textarea {
   font-size: var(--fs-body) !important;
 }
@@ -767,7 +678,6 @@ body .bp3-text-overflow-ellipsis {
   font-family: var(--title-font);
   font-size: var(--fs-page-title);
 }
-
 /* .rm-title-display-container:has(.rm-title-editing-display)：仅 margin，已移除 */
 
 /* 编辑模式标题与展示模式保持一致（字号、行高统一） */
@@ -901,7 +811,6 @@ body.rm-dark-theme .roam-app .rm-code-block .cm-editor,
 body.rm-dark-theme .roam-app .rm-code-block .cm-content {
   caret-color: var(--text-color);
 }
-
 body.rm-dark-theme .roam-app .rm-code-block .cm-cursor {
   border-left-color: var(--text-color) !important;
 }
@@ -910,79 +819,61 @@ body.rm-dark-theme .roam-app .rm-code-block .cm-cursor {
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-comment {
   color: #9ca3af !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-atom,
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-number {
   color: #c4b5fd !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-comment.cmt-attribute {
   color: #86efac !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-comment.cmt-def {
   color: #fcd34d !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-comment.cmt-tag {
   color: #f9a8d4 !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-comment.cmt-type {
   color: #67e8f9 !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block .cmt-labelName {
   color: #a5b4fc !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block .cmt-className {
   color: #22d3ee !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-propertyName,
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-attribute {
   color: #86efac !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-keyword {
   color: #f472b6 !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-builtin {
   color: #67e8f9 !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-string,
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-string2 {
   color: #fde047 !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-variableName {
   color: #f8fafc !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-variable-2 {
   color: #a5f3fc !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-variable-3,
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-typeName {
   color: #67e8f9 !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-def {
   color: #fdba74 !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-bracket {
   color: #f8fafc !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-tag {
   color: #f472b6 !important;
 }
-
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-header,
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-link {
   color: #c4b5fd !important;
@@ -1072,12 +963,12 @@ body:not(.rm-dark-theme) .roam-app .roam-sidebar-container .rm-db-title-containe
 
 /* .flex-v-box.starred-pages-wrapper / .roam-sidebar-container .starred-pages-wrapper：仅版式，无配色/字体，已移除 */
 
-.roam-app .starred-pages-wrapper>.flex-h-box.title>span {
+.roam-app .starred-pages-wrapper > .flex-h-box.title > span {
   color: var(--sidebar-star-color);
   font-size: 1.05rem;
 }
 
-body:not(.rm-dark-theme) .roam-app .starred-pages-wrapper>.flex-h-box.title>span {
+body:not(.rm-dark-theme) .roam-app .starred-pages-wrapper > .flex-h-box.title > span {
   color: var(--sidebar-star-color-day) !important;
 }
 
@@ -1119,7 +1010,7 @@ body:not(.rm-dark-theme) .roam-app .starred-pages-wrapper>.flex-h-box.title>span
   color: var(--text-color);
 }
 
-.roam-app .roam-sidebar-content>div>div {
+.roam-app .roam-sidebar-content > div > div {
   color: var(--text-color);
   font-size: 1.05rem;
 }
@@ -1138,7 +1029,7 @@ body:not(.rm-dark-theme) .roam-app .roam-sidebar-content .starred-pages .page:ho
   color: var(--sidebar-text-day) !important;
 }
 
-body:not(.rm-dark-theme) .roam-app .roam-sidebar-content>div>div {
+body:not(.rm-dark-theme) .roam-app .roam-sidebar-content > div > div {
   color: var(--sidebar-text-day) !important;
 }
 
@@ -1264,8 +1155,8 @@ body:not(.rm-dark-theme) .roam-app .roam-sidebar-content>div>div {
 
 /* .roam-sidebar-container img[astrolabe]：仅 filter/opacity，已移除 */
 
-.roam-app .roam-sidebar-container img[style*="astrolabe"]~span,
-.roam-app .roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"]~span {
+.roam-app .roam-sidebar-container img[style*="astrolabe"] ~ span,
+.roam-app .roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"] ~ span {
   color: var(--color-primary) !important;
 }
 
@@ -1356,31 +1247,26 @@ body:not(.rm-dark-theme) .roam-app .rm-bullet.rm-bullet--closed .rm-bullet__inne
   background-color: #50616D !important;
   border-color: oklch(from #3D3B4F l c h / 0.5) !important;
 }
-
 body.rm-dark-theme .roam-app .rm-bullet .rm-bullet__inner,
 body.rm-dark-theme .roam-app .rm-bullet.rm-bullet--closed .rm-bullet__inner {
   background-color: #E9F1F6 !important;
   border-color: oklch(from var(--m-text-muted) l c h / 0.5) !important;
 }
-
 /* 展示模式：bullet 不显示 border H*/
 .roam-app .roam-block-container:not(:focus-within) .rm-bullet .rm-bullet__inner,
 .roam-app .roam-block-container:not(:focus-within) .rm-bullet.rm-bullet--closed .rm-bullet__inner {
   border-color: transparent !important;
 }
-
 /* 有子块且收起时：bullet 描边（中性柔灰，随主题） */
 .roam-app .roam-block-container:not(:focus-within) .rm-bullet.rm-bullet--closed .rm-bullet__inner {
   border-color: oklch(from var(--m-text) l c h / 0.18) !important;
 }
-
 /* 编辑态：bullet 红色（无泛光，无 border） */
 body:not(.rm-dark-theme) .roam-app .roam-block-container:focus-within .rm-bullet .rm-bullet__inner,
 body:not(.rm-dark-theme) .roam-app .roam-block-container:focus-within .rm-bullet.rm-bullet--closed .rm-bullet__inner {
   background-color: oklch(from var(--m-bullet-focus) l c h / 0.68) !important;
   border-color: transparent !important;
 }
-
 body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet .rm-bullet__inner,
 body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bullet--closed .rm-bullet__inner {
   background-color: var(--m-bullet-focus) !important;
@@ -1397,7 +1283,7 @@ body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bu
   background: var(--bg-color);
 }
 
-.roam-app #block-input>span>div {
+.roam-app #block-input > span > div {
   background: var(--bg-color);
 }
 
@@ -1412,7 +1298,6 @@ body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bu
   color: var(--text-color);
   font-size: var(--fs-body);
 }
-
 .roam-app .rm-block-ref:hover {
   background-color: transparent;
 }
@@ -1432,15 +1317,12 @@ body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bu
 .roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote) {
   border-left: 3px solid var(--blockquote-bar-color) !important;
 }
-
 .roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote):hover {
   border-left-color: var(--blockquote-bar-hover-color) !important;
 }
-
 .roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote)::before {
   background: var(--blockquote-bar-color);
 }
-
 .roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote):hover::before {
   background: var(--blockquote-bar-hover-color);
 }
@@ -1458,7 +1340,7 @@ body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bu
 
 /* Strikethrough 删除线文字：降低灰度，更淡；横线加粗 */
 .roam-app .rm-Falsified,
-.roam-app .rm-falsified>.rm-block-main,
+.roam-app .rm-falsified > .rm-block-main,
 .roam-app .rm-falsified.rm-block-ref,
 .roam-app .rm-strikethrough,
 .roam-app s,
@@ -1468,9 +1350,8 @@ body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bu
   color: oklch(from var(--m-text) l c h / 0.45) !important;
   text-decoration-thickness: 1.5px !important;
 }
-
 body.rm-dark-theme .roam-app .rm-Falsified,
-body.rm-dark-theme .roam-app .rm-falsified>.rm-block-main,
+body.rm-dark-theme .roam-app .rm-falsified > .rm-block-main,
 body.rm-dark-theme .roam-app .rm-falsified.rm-block-ref,
 body.rm-dark-theme .roam-app .rm-strikethrough,
 body.rm-dark-theme .roam-app s,
@@ -1481,8 +1362,8 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
   text-decoration-thickness: 2px !important;
 }
 
-.roam-app div>.bp3-icon-caret-down+strong,
-.roam-app div>.bp3-icon-caret-right+strong {
+.roam-app div > .bp3-icon-caret-down + strong,
+.roam-app div > .bp3-icon-caret-right + strong {
   color: var(--tree-node-color) !important;
 }
 
@@ -1491,7 +1372,6 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
   opacity: 0 !important;
   pointer-events: auto;
 }
-
 .roam-app .rm-resize-handle:hover {
   opacity: 0 !important;
   background-color: transparent !important;
@@ -1531,7 +1411,7 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
   transition: 0.5s;
 }
 
-.roam-app .check-container input:checked~.checkmark {
+.roam-app .check-container input:checked ~ .checkmark {
   background: var(--toggle-on-bg);
   box-shadow: var(--toggle-on-shadow);
   transform: rotate(180deg);
@@ -1550,12 +1430,12 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
   transition-delay: 0.2s;
 }
 
-.roam-app .check-container input:checked~.checkmark .smiley-face {
+.roam-app .check-container input:checked ~ .checkmark .smiley-face {
   left: 2px;
   transform: rotate(180deg);
 }
 
-.roam-app .checkmark> :not(.smiley-face) {
+.roam-app .checkmark > :not(.smiley-face) {
   display: none !important;
 }
 
@@ -1579,7 +1459,7 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
   transition: 0.5s;
 }
 
-.roam-app .check-container input:checked~.checkmark .smiley-face::before {
+.roam-app .check-container input:checked ~ .checkmark .smiley-face::before {
   background: var(--toggle-eye-on);
   box-shadow: 6px 0 var(--toggle-eye-on);
 }
@@ -1599,13 +1479,13 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
   transition: 0.5s;
 }
 
-.roam-app .check-container input:checked~.checkmark .smiley-face::after {
+.roam-app .check-container input:checked ~ .checkmark .smiley-face::after {
   background: var(--toggle-eye-on);
   /* 笑脸：下缘圆角，弧线向上 */
   border-radius: 0 0 3px 3px;
 }
 
-.roam-app .check-container input:focus~.checkmark {
+.roam-app .check-container input:focus ~ .checkmark {
   box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--toggle-eye-on);
 }
 
@@ -1794,7 +1674,7 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
   font-weight: bold;
 }
 
-.roam-app .rm-diagram .rm-diagram-properties-panel__section-content>* {
+.roam-app .rm-diagram .rm-diagram-properties-panel__section-content > * {
   margin: 6px 0;
 }
 
@@ -1978,13 +1858,13 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
   background: repeating-linear-gradient(-45deg, var(--color-subtle-border), var(--color-subtle-border) 10px, oklch(from var(--m-text) l c h / 0.2) 10px, oklch(from var(--m-text) l c h / 0.2) 20px);
 }
 
-.roam-app .rm-diagram .react-flow__node-block>.rm-parsed-block-string,
-.roam-app .rm-diagram .react-flow__node-block>.rm-diagram-outline-container {
+.roam-app .rm-diagram .react-flow__node-block > .rm-parsed-block-string,
+.roam-app .rm-diagram .react-flow__node-block > .rm-diagram-outline-container {
   pointer-events: none;
 }
 
-.roam-app .rm-diagram .selected.react-flow__node-block>.rm-parsed-block-string,
-.roam-app .rm-diagram .selected.react-flow__node-block>.rm-diagram-outline-container {
+.roam-app .rm-diagram .selected.react-flow__node-block > .rm-parsed-block-string,
+.roam-app .rm-diagram .selected.react-flow__node-block > .rm-diagram-outline-container {
   pointer-events: auto;
 }
 
@@ -2060,7 +1940,7 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
   overflow: hidden;
 }
 
-.roam-app .rm-diagram .rm-diagram-outline-container .rm-diagram-outline>div {
+.roam-app .rm-diagram .rm-diagram-outline-container .rm-diagram-outline > div {
   margin-left: -8px;
 }
 
@@ -2150,7 +2030,7 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   border-bottom: none !important;
   font-weight: 800 !important;
   letter-spacing: 0.03em;
-  text-shadow: 0 0 0.5px currentColor, 0 1px 2px rgba(0, 0, 0, 0.08);
+  text-shadow: 0 0 0.5px currentColor, 0 1px 2px rgba(0,0,0,0.08);
 }
 
 /* 学术标签（Academic Tag）：小型大写 + 底线下划线，排除 #Streamer 及 theorem/definition/proof/problem/counter/assumption（后者有专用配色） */
@@ -2209,7 +2089,6 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   text-decoration: none !important;
   transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 }
-
 .roam-app span.rm-page-ref--tag[data-tag="theorem"]:hover,
 .roam-app span.rm-page-ref[data-tag="theorem"]:hover,
 .roam-app span[data-link-title="theorem"]:hover,
@@ -2239,42 +2118,36 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   color: #177CB0 !important;
   background-color: oklch(from #177CB0 l c h / 0.15) !important;
 }
-
 .roam-app span.rm-page-ref--tag[data-tag="definition"],
 .roam-app span.rm-page-ref[data-tag="definition"],
 .roam-app span[data-link-title="definition"] {
   color: #21A675 !important;
   background-color: oklch(from #21A675 l c h / 0.15) !important;
 }
-
 .roam-app span.rm-page-ref--tag[data-tag="proof"],
 .roam-app span.rm-page-ref[data-tag="proof"],
 .roam-app span[data-link-title="proof"] {
   color: #CA6924 !important;
   background-color: oklch(from #CA6924 l c h / 0.15) !important;
 }
-
 .roam-app span.rm-page-ref--tag[data-tag="problem"],
 .roam-app span.rm-page-ref[data-tag="problem"],
 .roam-app span[data-link-title="problem"] {
   color: #7C3AED !important;
   background-color: oklch(from #7C3AED l c h / 0.15) !important;
 }
-
 .roam-app span.rm-page-ref--tag[data-tag="counter"],
 .roam-app span.rm-page-ref[data-tag="counter"],
 .roam-app span[data-link-title="counter"] {
   color: #D23B3B !important;
   background-color: oklch(from #D23B3B l c h / 0.15) !important;
 }
-
 .roam-app span.rm-page-ref--tag[data-tag="assumption"],
 .roam-app span.rm-page-ref[data-tag="assumption"],
 .roam-app span[data-link-title="assumption"] {
   color: #0D9488 !important;
   background-color: oklch(from #0D9488 l c h / 0.15) !important;
 }
-
 .roam-app .rm-menu-item:has(span[data-link-title="theorem"]),
 .roam-app .rm-menu-item:has(span[data-tag="theorem"]),
 .roam-app .bp3-menu-item:has(span[data-link-title="theorem"]),
@@ -2282,7 +2155,6 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   background-color: oklch(from #177CB0 l c h / 0.15) !important;
   color: #177CB0 !important;
 }
-
 .roam-app .rm-menu-item:has(span[data-link-title="definition"]),
 .roam-app .rm-menu-item:has(span[data-tag="definition"]),
 .roam-app .bp3-menu-item:has(span[data-link-title="definition"]),
@@ -2290,7 +2162,6 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   background-color: oklch(from #21A675 l c h / 0.15) !important;
   color: #21A675 !important;
 }
-
 .roam-app .rm-menu-item:has(span[data-link-title="proof"]),
 .roam-app .rm-menu-item:has(span[data-tag="proof"]),
 .roam-app .bp3-menu-item:has(span[data-link-title="proof"]),
@@ -2298,7 +2169,6 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   background-color: oklch(from #CA6924 l c h / 0.15) !important;
   color: #CA6924 !important;
 }
-
 .roam-app .rm-menu-item:has(span[data-link-title="problem"]),
 .roam-app .rm-menu-item:has(span[data-tag="problem"]),
 .roam-app .bp3-menu-item:has(span[data-link-title="problem"]),
@@ -2306,7 +2176,6 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   background-color: oklch(from #7C3AED l c h / 0.15) !important;
   color: #7C3AED !important;
 }
-
 .roam-app .rm-menu-item:has(span[data-link-title="counter"]),
 .roam-app .rm-menu-item:has(span[data-tag="counter"]),
 .roam-app .bp3-menu-item:has(span[data-link-title="counter"]),
@@ -2314,7 +2183,6 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   background-color: oklch(from #D23B3B l c h / 0.15) !important;
   color: #D23B3B !important;
 }
-
 .roam-app .rm-menu-item:has(span[data-link-title="assumption"]),
 .roam-app .rm-menu-item:has(span[data-tag="assumption"]),
 .roam-app .bp3-menu-item:has(span[data-link-title="assumption"]),
@@ -2322,7 +2190,6 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
   background-color: oklch(from #0D9488 l c h / 0.15) !important;
   color: #0D9488 !important;
 }
-
 /* 学术节点标签夜间模式：使用较亮色保证深色背景可读 */
 body.rm-dark-theme .roam-app span[data-link-title="theorem"],
 body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="theorem"],
@@ -2331,42 +2198,36 @@ body.rm-dark-theme .roam-app span[data-link-title="theorem"] {
   color: #48C0A3 !important;
   background-color: oklch(from #48C0A3 l c h / 0.18) !important;
 }
-
 body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="definition"],
 body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="definition"],
 body.rm-dark-theme .roam-app span[data-link-title="definition"] {
   color: #2ADD9C !important;
   background-color: oklch(from #2ADD9C l c h / 0.18) !important;
 }
-
 body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="proof"],
 body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="proof"],
 body.rm-dark-theme .roam-app span[data-link-title="proof"] {
   color: #E8A84B !important;
   background-color: oklch(from #E8A84B l c h / 0.18) !important;
 }
-
 body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="problem"],
 body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="problem"],
 body.rm-dark-theme .roam-app span[data-link-title="problem"] {
   color: #A78BFA !important;
   background-color: oklch(from #A78BFA l c h / 0.18) !important;
 }
-
 body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="counter"],
 body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="counter"],
 body.rm-dark-theme .roam-app span[data-link-title="counter"] {
   color: #E85A5A !important;
   background-color: oklch(from #E85A5A l c h / 0.18) !important;
 }
-
 body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="assumption"],
 body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="assumption"],
 body.rm-dark-theme .roam-app span[data-link-title="assumption"] {
   color: #2DD4BF !important;
   background-color: oklch(from #2DD4BF l c h / 0.18) !important;
 }
-
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="theorem"]),
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="theorem"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="theorem"]),
@@ -2374,7 +2235,6 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="theorem"]) {
   background-color: oklch(from #48C0A3 l c h / 0.18) !important;
   color: #48C0A3 !important;
 }
-
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="definition"]),
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="definition"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="definition"]),
@@ -2382,7 +2242,6 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="definition"]) {
   background-color: oklch(from #2ADD9C l c h / 0.18) !important;
   color: #2ADD9C !important;
 }
-
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="proof"]),
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="proof"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="proof"]),
@@ -2390,7 +2249,6 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="proof"]) {
   background-color: oklch(from #E8A84B l c h / 0.18) !important;
   color: #E8A84B !important;
 }
-
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="problem"]),
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="problem"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="problem"]),
@@ -2398,7 +2256,6 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="problem"]) {
   background-color: oklch(from #A78BFA l c h / 0.18) !important;
   color: #A78BFA !important;
 }
-
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="counter"]),
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="counter"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="counter"]),
@@ -2406,7 +2263,6 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="counter"]) {
   background-color: oklch(from #E85A5A l c h / 0.18) !important;
   color: #E85A5A !important;
 }
-
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="assumption"]),
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="assumption"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="assumption"]),
@@ -2452,7 +2308,7 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
   background-color: var(--find-input-bg) !important;
   color: var(--text-color) !important;
   font-family: var(--body-font);
-}
+  }
 
 .rm-find-or-create-wrapper .bp3-icon-search {
   color: var(--light-text-color) !important;
@@ -2523,7 +2379,7 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
 }
 
 .rm-sync-tooltip__text,
-.rm-sync-tooltip__content>div>div {
+.rm-sync-tooltip__content > div > div {
   color: var(--text-color) !important;
   font-family: var(--body-font) !important;
   font-size: 0.95rem !important;
@@ -2549,8 +2405,7 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
 }
 
 .rm-extensions-settings .rm-extensions-installed .rm-extension-installed__name {
-  font-size: 0.875rem;
-}
+  font-size: 0.875rem;}
 
 /* Hotkeys */
 .rm-hotkeys-action,
@@ -2585,55 +2440,44 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
   max-width: 80vw;
   width: 80vw;
 }
-
 .roam-app .rm-page-ref-popover__header {
   padding: 6px 8px;
   text-align: center;
 }
-
 .roam-app .rm-page-ref-popover .rm-line {
   margin-top: 0;
 }
-
 .roam-app .rm-block-text .bp3-popover-target {
   display: inline;
 }
-
 .roam-app .rm-query-options-popover-content .bp3-control {
   margin: 0;
   padding: 5px 7px;
   user-select: none;
 }
-
 .roam-app .rm-query-options-popover-content .bp3-menu-header {
   margin-left: 0;
 }
-
 .roam-app .rm-query-options-popover-content .bp3-button-group {
   width: 100%;
   justify-content: center;
 }
-
 .roam-app .rm-query-options-content,
 .roam-app .rm-search-query-options-content {
   padding: 8px 8px 0;
   overflow: hidden;
 }
-
 .roam-app .rm-extensions-settings .rm-extensions-installed__header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-
 .roam-app .rm-query-builder-popover .bp3-menu-header {
   margin-left: 2px;
 }
-
 .roam-app .rm-tag-selector-popover {
   width: 250px;
 }
-
 .roam-app .rm-pages-more-info-popover {
   padding: 8px 8px;
 }
@@ -2641,12 +2485,10 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
 .bp3-menu {
   font-family: var(--body-font);
   background: transparent !important;
-  color: var(--text-color) !important;
-}
+  color: var(--text-color) !important;}
 
 .bp3-menu-item {
-  color: var(--text-color) !important;
-}
+  color: var(--text-color) !important;}
 
 /* .bp3-menu-item .bp3-fill：仅 flex 版式，已移除 */
 
@@ -2927,7 +2769,7 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
 }
 
 .bp3-menu.str-aicommands-menu .aicommands-topbar,
-.bp3-menu.str-aicommands-menu .aicommands-topbar>div:first-child {
+.bp3-menu.str-aicommands-menu .aicommands-topbar > div:first-child {
   color: var(--title-display-color);
   font-family: var(--heading-font);
 }
@@ -2972,7 +2814,7 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
   background-color: var(--embed-bg);
 }
 
-.bp3-menu.str-aicommands-menu .bp3-control input:checked~.bp3-control-indicator {
+.bp3-menu.str-aicommands-menu .bp3-control input:checked ~ .bp3-control-indicator {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
 }
@@ -3012,8 +2854,7 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
 
 .rm-settings .rm-settings-panel .rm-settings-panel__description {
   color: var(--light-text-color);
-  font-family: var(--body-font) !important;
-}
+  font-family: var(--body-font) !important;}
 
 .rm-settings,
 .rm-settings-panel__section,
@@ -3047,8 +2888,7 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
 
 .rm-extensions-marketplace .rm-extensions-marketplace-search__settings input {
   background-color: var(--page-color);
-  border-color: #394B59;
-}
+  border-color: #394B59;}
 
 /* 日间模式：扩展市场弹窗内全部改为深色字，避免白字白底 */
 html:not(.rm-dark-theme) .bp3-dialog.rm-extensions-marketplace-dialog,
@@ -3085,7 +2925,7 @@ html:not(.rm-dark-theme) .bp3-dialog.rm-extensions-marketplace-dialog .rm-extens
   color: var(--light-text-color) !important;
 }
 
-html:not(.rm-dark-theme) .bp3-dialog.rm-extensions-marketplace-dialog .rm-extensions-marketplace-search__settings>div {
+html:not(.rm-dark-theme) .bp3-dialog.rm-extensions-marketplace-dialog .rm-extensions-marketplace-search__settings > div {
   color: var(--light-text-color) !important;
 }
 
@@ -3160,8 +3000,7 @@ html:not(.rm-dark-theme) .bp3-dialog.rm-extensions-marketplace-dialog hr {
 .rm-settings .rm-settings-panel .rm-select-wrapper {
   background-color: var(--embed-bg);
   border-color: #293742;
-  color: var(--text-color);
-}
+  color: var(--text-color);}
 
 .rm-settings .rm-settings-panel .rm-select-wrapper .bp3-button,
 .rm-settings .rm-settings-panel .rm-select-wrapper .bp3-popover-target .bp3-button {
@@ -3404,7 +3243,7 @@ body:not(.rm-dark-theme) .rm-settings--desktop .rm-settings__tab:not(.rm-setting
   border: 1px solid var(--color-subtle-border) !important;
 }
 
-.rm-settings-panel .bp3-control input:checked~.bp3-control-indicator {
+.rm-settings-panel .bp3-control input:checked ~ .bp3-control-indicator {
   background-color: var(--checkbox-checked-color) !important;
   border-color: var(--checkbox-checked-color) !important;
 }
@@ -3417,7 +3256,7 @@ body:not(.rm-dark-theme) .rm-settings--desktop .rm-settings__tab:not(.rm-setting
   background-color: var(--text-color) !important;
 }
 
-.rm-settings-panel .bp3-radio input:checked~.bp3-control-indicator::before {
+.rm-settings-panel .bp3-radio input:checked ~ .bp3-control-indicator::before {
   background-color: var(--page-color) !important;
 }
 
@@ -3530,8 +3369,7 @@ body .bp3-overlay .bp3-dialog.rm-modal-dialog--settings .rm-extension-settings-h
 .DayPicker-Caption {
   background-color: transparent !important;
   border-bottom: 1px solid var(--color-subtle-border);
-  margin-bottom: 0.5rem;
-  /* 8px，符合 4/8 倍数 */
+  margin-bottom: 0.5rem; /* 8px，符合 4/8 倍数 */
   padding-bottom: 0.5rem;
 }
 
@@ -3587,7 +3425,6 @@ body .bp3-overlay .bp3-dialog.rm-modal-dialog--settings .rm-extension-settings-h
   background-color: var(--autocomplete-results-bg);
   color: var(--text-color);
 }
-
 /* "Search for a Page" 等提示行：覆盖 site.css .rm-new-item (#0D8050)，确保与背景对比日夜间皆可读 */
 .rm-autocomplete__results .rm-autocomplete-result,
 .rm-autocomplete__results .rm-autocomplete-result.rm-new-item,
@@ -3600,12 +3437,10 @@ body .bp3-overlay .bp3-dialog.rm-modal-dialog--settings .rm-extension-settings-h
   background-color: transparent;
   color: var(--text-color);
 }
-
 .rm-autocomplete__results .dont-unfocus-block:hover {
   background-color: var(--autocomplete-row-hover-bg);
   color: var(--autocomplete-row-hover-text);
 }
-
 /* 选中行（Roam 内联 rgb(213,218,223)）统一为主题色 */
 .rm-autocomplete__results .dont-unfocus-block[style*="background-color: rgb(213, 218, 223)"],
 .rm-autocomplete__results .dont-unfocus-block[style*="background-color: rgb(213, 218, 223)"]:hover {
@@ -3619,32 +3454,26 @@ body .bp3-overlay .bp3-dialog.rm-modal-dialog--settings .rm-extension-settings-h
   border-color: var(--color-subtle-border);
   color: var(--text-color);
 }
-
 .rm-autocomplete__results .rm-aliases .sub-title {
   color: var(--light-text-color);
 }
-
 .rm-autocomplete__results .rm-aliases .bp3-button,
 .rm-autocomplete__results .rm-aliases .bp3-button .bp3-button-text {
   background-color: transparent;
   color: var(--text-color);
 }
-
 .rm-autocomplete__results .rm-aliases .bp3-button:hover,
 .rm-autocomplete__results .rm-aliases .bp3-button:hover .bp3-button-text {
   background-color: var(--autocomplete-row-hover-bg);
   color: var(--autocomplete-row-hover-text);
 }
-
 .rm-autocomplete__results .rm-aliases .result-highlight {
   background-color: var(--autocomplete-match-bg);
   color: var(--color-primary);
 }
-
 .rm-autocomplete__results .rm-aliases .bp3-icon {
   color: var(--light-text-color);
 }
-
 .rm-autocomplete__results .rm-aliases .bp3-button:hover .bp3-icon {
   color: var(--autocomplete-row-hover-text);
 }
@@ -3655,19 +3484,16 @@ body.rm-dark-theme .rm-autocomplete__results {
   color: var(--text-color);
   box-shadow: 0 0 0 1px oklch(from var(--m-ink) l c h / 0.13), 0 4px 8px oklch(from var(--m-ink) l c h / 0.65), 0 18px 46px 6px oklch(from var(--m-ink) l c h / 0.65);
 }
-
 body.rm-dark-theme .rm-autocomplete__results .rm-autocomplete-result,
 body.rm-dark-theme .rm-autocomplete__results .rm-autocomplete-result.rm-new-item,
 body.rm-dark-theme .rm-autocomplete__results .rm-autocomplete-result .rm-new-item {
   color: var(--text-color) !important;
 }
-
 /* "Recent" 等分组标题：覆盖 inline rgb(206,217,224)，确保与背景对比日夜间皆可读 */
 .rm-autocomplete__results div[style*="color: rgb(206, 217, 224)"],
 .roam-app .bp3-overlay div[style*="color: rgb(206, 217, 224)"] {
   color: var(--text-color) !important;
 }
-
 body.rm-dark-theme .rm-autocomplete__results div[style*="color: rgb(206, 217, 224)"],
 body.rm-dark-theme .roam-app .bp3-overlay div[style*="color: rgb(206, 217, 224)"] {
   color: var(--text-color) !important;
@@ -3710,16 +3536,16 @@ body.rm-dark-theme .roam-app a.rm-alias--block:hover {
 }
 
 /* 仅标题块自身内容区，不作用到子块（与日间一致） */
-body.rm-dark-theme .roam-app .roam-block-container:is(.rm-level1, .rm-level2, .rm-level3, .rm-heading-level-1, .rm-heading-level-2, .rm-heading-level-3)>.rm-block-main,
-body.rm-dark-theme .roam-app .roam-block-container.rm-level1>.rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
-body.rm-dark-theme .roam-app .roam-block-container.rm-heading-level-1>.rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
-body.rm-dark-theme .roam-app .roam-block-container.rm-level2>.rm-block-main :is(.rm-block-main, .rm-block__input, .rm-block-text),
-body.rm-dark-theme .roam-app .roam-block-container.rm-heading-level-2>.rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
-body.rm-dark-theme .roam-app .roam-block-container.rm-level3>.rm-block-main :is(.rm-block-main, .rm-block__input, .rm-block-text),
-body.rm-dark-theme .roam-app .roam-block-container.rm-heading-level-3>.rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
-body.rm-dark-theme .roam-app .roam-block-container.rm-heading-level-1>.rm-block-main [style*="background"],
-body.rm-dark-theme .roam-app .roam-block-container.rm-heading-level-2>.rm-block-main [style*="background"],
-body.rm-dark-theme .roam-app .roam-block-container.rm-heading-level-3>.rm-block-main [style*="background"] {
+body.rm-dark-theme .roam-app .roam-block-container:is(.rm-level1, .rm-level2, .rm-level3, .rm-heading-level-1, .rm-heading-level-2, .rm-heading-level-3) > .rm-block-main,
+body.rm-dark-theme .roam-app .roam-block-container.rm-level1 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body.rm-dark-theme .roam-app .roam-block-container.rm-heading-level-1 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body.rm-dark-theme .roam-app .roam-block-container.rm-level2 > .rm-block-main :is(.rm-block-main, .rm-block__input, .rm-block-text),
+body.rm-dark-theme .roam-app .roam-block-container.rm-heading-level-2 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body.rm-dark-theme .roam-app .roam-block-container.rm-level3 > .rm-block-main :is(.rm-block-main, .rm-block__input, .rm-block-text),
+body.rm-dark-theme .roam-app .roam-block-container.rm-heading-level-3 > .rm-block-main :is(.rm-block-main, .rm-block__self, .rm-block__input, .rm-block-text),
+body.rm-dark-theme .roam-app .roam-block-container.rm-heading-level-1 > .rm-block-main [style*="background"],
+body.rm-dark-theme .roam-app .roam-block-container.rm-heading-level-2 > .rm-block-main [style*="background"],
+body.rm-dark-theme .roam-app .roam-block-container.rm-heading-level-3 > .rm-block-main [style*="background"] {
   background: transparent !important;
 }
 
@@ -3799,11 +3625,9 @@ body.rm-dark-theme .roam-app .bp3-button:not([class*="bp3-intent-"]) {
   color: var(--text-color) !important;
   border-color: var(--color-subtle-border) !important;
 }
-
 body.rm-dark-theme .roam-app .bp3-button.bp3-minimal:not([class*="bp3-intent-"]) {
   background: transparent !important;
 }
-
 body.rm-dark-theme .roam-app .bp3-button:not([class*="bp3-intent-"]):hover {
   background: var(--sidebar-hover-bg) !important;
   color: var(--text-color) !important;
@@ -3815,11 +3639,9 @@ body.rm-dark-theme .roam-app .flex-h-box button {
   background-color: var(--embed-bg) !important;
   border-color: var(--color-subtle-border) !important;
 }
-
 body.rm-dark-theme .roam-app .flex-h-box button:hover {
   background-color: var(--reference-item-hover-bg) !important;
 }
-
 body.rm-dark-theme .roam-app .flex-h-box button .bp3-icon-standard {
   color: var(--light-text-color) !important;
 }
@@ -3993,9 +3815,7 @@ body .roam-app .rm-command-palette .rm-menu-item.rm-menu-item--active {
 /* 命令面板选中项：与日夜间主题统一（覆盖默认/扩展可能的高优先级规则） */
 .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active {
   background-color: var(--menu-hover-bg) !important;
-  color: var(--menu-hover-text) !important;
-}
-
+  color: var(--menu-hover-text) !important;}
 .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__label,
 .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__shortcut {
   color: var(--menu-hover-text) !important;
@@ -4018,13 +3838,11 @@ html body .roam-app .rm-command-palette .rm-command-palette__shortcut {
   background-color: transparent !important;
   color: var(--text-color) !important;
 }
-
 .roam-app .rm-command-palette .rm-menu-item:hover .rm-command-palette__shortcut,
 .roam-app .rm-command-palette .rm-menu-item.rm-menu-item--active .rm-command-palette__shortcut {
   background-color: transparent !important;
   color: var(--menu-hover-text) !important;
 }
-
 .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__shortcut {
   background-color: transparent !important;
   color: var(--menu-hover-text) !important;
@@ -4036,27 +3854,22 @@ html body .roam-app .rm-command-palette .rm-command-palette__shortcut {
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
 }
-
 .roam-app .rm-command-palette .rm-command-palette__footer-title {
   color: var(--text-color) !important;
 }
-
 .roam-app .rm-command-palette .bcp-sort-controls .bcp-sort-label {
   color: var(--light-text-color) !important;
 }
-
 .roam-app .rm-command-palette .bcp-sort-button {
   background-color: transparent !important;
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
 }
-
 .roam-app .rm-command-palette .bcp-sort-button:hover {
   background-color: var(--menu-hover-bg) !important;
   color: var(--menu-hover-text) !important;
   border-color: var(--color-subtle-border) !important;
 }
-
 .roam-app .rm-command-palette .bcp-sort-button[aria-pressed="true"],
 .roam-app .rm-command-palette .bcp-sort-button[data-active="1"] {
   background-color: var(--menu-hover-bg) !important;
@@ -4217,7 +4030,6 @@ html::-webkit-scrollbar-thumb:hover {
 .roam-app :is(.rm-article-wrapper, .rm-article-wrapper .roam-article, .rm-article-wrapper .rm-reference-wrapper, .rm-article-wrapper .rm-reference-main__child-wrapper, .rm-article-wrapper .rm-mentions, .rm-article-wrapper .scroll) {
   scrollbar-width: none;
 }
-
 .roam-app :is(.rm-article-wrapper, .rm-article-wrapper .roam-article, .rm-article-wrapper .rm-reference-wrapper, .rm-article-wrapper .rm-reference-main__child-wrapper, .rm-article-wrapper .rm-mentions, .rm-article-wrapper .scroll)::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -4237,7 +4049,7 @@ html::-webkit-scrollbar-thumb:hover {
 
 /* 标题行（Linked/Unlinked References）：分割线始终 1px，仅用变量控制颜色，避免日夜切换位移 */
 
-.roam-app .rm-reference-wrapper .rm-reference-container>.flex-h-box strong,
+.roam-app .rm-reference-wrapper .rm-reference-container > .flex-h-box strong,
 .roam-app .rm-reference-wrapper .rm-unlinked-reference-container strong,
 .roam-app .rm-reference-wrapper .rm-unlink-aliases strong {
   color: var(--reference-strong-color) !important;
@@ -4276,7 +4088,6 @@ html::-webkit-scrollbar-thumb:hover {
 .roam-app .rm-reference-wrapper .bp3-button.bp3-minimal {
   background: transparent !important;
 }
-
 .roam-app .rm-reference-wrapper .bp3-button.bp3-minimal:hover {
   background: var(--reference-icon-hover-bg) !important;
 }
@@ -4296,48 +4107,38 @@ html::-webkit-scrollbar-thumb:hover {
   background-color: var(--embed-bg);
   color: var(--text-color);
 }
-
 .roam-app .rm-inline-references .rm-zoom-path .rm-zoom-item,
 .roam-app .rm-inline-references .rm-zoom .rm-zoom-item {
   color: var(--light-text-color);
 }
-
 .roam-app .rm-inline-references .rm-zoom-path .rm-zoom-item .rm-zoom-item-content.rm-zoom-collapsed-item {
   background-color: oklch(from var(--m-primary) l c h / 0.15);
   color: var(--text-color);
 }
-
 .roam-app .rm-inline-references .rm-zoom.zoom-path-view .rm-zoom-mask {
   background-color: var(--page-color);
 }
-
 .roam-app .rm-inline-references .rm-filtered-out {
   color: var(--light-text-color);
 }
-
 .roam-app .rm-inline-references .block-ref-count-button.rm-active {
   background-color: var(--color-primary);
   color: var(--on-accent);
 }
-
 .roam-app .rm-inline-references .rm-filter-popup-button .bp3-icon,
 .roam-app .rm-inline-references .rm-zoom-chevron {
   color: var(--light-text-color);
 }
-
 .roam-app .rm-inline-references .squish,
 .roam-app .rm-inline-references div[style*="color: rgb(138, 155, 168)"] {
   color: var(--light-text-color) !important;
 }
-
 .roam-app .rm-inline-references .squish svg {
   fill: currentColor;
 }
-
 body.rm-dark-theme .roam-app .rm-inline-references .rm-zoom.zoom-path-view .rm-zoom-mask {
   background-color: transparent;
 }
-
 .roam-app .rm-embed-container .rm-inline-references {
   background-color: inherit;
 }
@@ -4353,9 +4154,9 @@ body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper,
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-reference-main,
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-reference-main__child-wrapper,
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-reference-container,
-body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-reference-container>.flex-h-box,
+body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-reference-container > .flex-h-box,
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-unlinked-reference-container,
-body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-unlinked-reference-container>.flex-h-box,
+body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-unlinked-reference-container > .flex-h-box,
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-mentions,
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-ref-page-view,
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-title-arrow-wrapper,
@@ -4364,7 +4165,6 @@ body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-reference-i
   border: 0 !important;
   background: transparent !important;
 }
-
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper::before,
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper::after,
 body.rm-dark-theme .roam-app .roam-article .rm-reference-main::before,
@@ -4373,7 +4173,6 @@ body.rm-dark-theme .roam-app .roam-article .rm-reference-main::after {
   content: none !important;
   border: none !important;
 }
-
 body.rm-dark-theme .roam-app .roam-article .rm-reference-main[style*="padding-top"] {
   padding-top: 0 !important;
 }
@@ -4387,7 +4186,6 @@ html body .rm-command-palette .rm-command-palette__shortcut {
   background-color: transparent !important;
   color: var(--text-color) !important;
 }
-
 html body .roam-app .rm-command-palette .rm-menu-item:hover .rm-command-palette__shortcut,
 html body .roam-app .rm-command-palette .rm-menu-item.rm-menu-item--active .rm-command-palette__shortcut,
 html body .rm-command-palette .rm-menu-item:hover .rm-command-palette__shortcut,
@@ -4395,38 +4193,32 @@ html body .rm-command-palette .rm-menu-item.rm-menu-item--active .rm-command-pal
   background-color: transparent !important;
   color: var(--menu-hover-text) !important;
 }
-
 html body .roam-app .rm-command-palette .rm-command-palette__footer,
 html body .rm-command-palette .rm-command-palette__footer {
   background-color: var(--page-color) !important;
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
 }
-
 html body .roam-app .rm-command-palette .rm-command-palette__footer-title,
 html body .rm-command-palette .rm-command-palette__footer-title {
   color: var(--text-color) !important;
 }
-
 html body .roam-app .rm-command-palette .bcp-sort-label,
 html body .rm-command-palette .bcp-sort-label {
   color: var(--light-text-color) !important;
 }
-
 html body .roam-app .rm-command-palette .bcp-sort-button,
 html body .rm-command-palette .bcp-sort-button {
   background-color: transparent !important;
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
 }
-
 html body .roam-app .rm-command-palette .bcp-sort-button:hover,
 html body .rm-command-palette .bcp-sort-button:hover {
   background-color: var(--menu-hover-bg) !important;
   color: var(--menu-hover-text) !important;
   border-color: var(--color-subtle-border) !important;
 }
-
 html body .roam-app .rm-command-palette .bcp-sort-button[aria-pressed="true"],
 html body .roam-app .rm-command-palette .bcp-sort-button[data-active="1"],
 html body .rm-command-palette .bcp-sort-button[aria-pressed="true"],
@@ -4435,23 +4227,38 @@ html body .rm-command-palette .bcp-sort-button[data-active="1"] {
   color: var(--menu-hover-text) !important;
   border-color: var(--color-primary) !important;
 }
-
 html body .roam-app .rm-command-palette .rm-menu-item.rm-menu-item--active,
 html body .rm-command-palette .rm-menu-item.rm-menu-item--active {
   background-color: var(--menu-hover-bg) !important;
   color: var(--menu-hover-text) !important;
 }
-
 html body .roam-app .rm-command-palette .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active,
 html body .rm-command-palette .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active {
   background-color: var(--menu-hover-bg) !important;
   color: var(--menu-hover-text) !important;
 }
-
 html body .roam-app .rm-command-palette .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__label,
 html body .roam-app .rm-command-palette .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__shortcut,
 html body .rm-command-palette .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__label,
 html body .rm-command-palette .rm-command-palette__scroll-container .rm-command-palette__menu .rm-menu-item--active .rm-command-palette__shortcut {
   background-color: transparent !important;
   color: var(--menu-hover-text) !important;
+}
+
+/* PDF 工具栏内 div：黑色 + body 字体（展示/编辑一致） */
+.roam-app .rm-pdf-toolbar div:not(.rm-topbar):not(.rm-topbar-zen) {
+  color: black;
+  font-family: var(--body-font);
+}
+
+/* PDF 文档内搜索框（rm-pdf-find）：黑色 + body 字体 */
+.roam-app .rm-pdf-find,
+.roam-app .rm-pdf-find input,
+.roam-app .rm-pdf-find .rm-result-count,
+.roam-app .rm-pdf-find .bp3-button {
+  color: black;
+  font-family: var(--body-font);
+}
+.roam-app .rm-pdf-find input::placeholder {
+  color: rgba(0, 0, 0, 0.6);
 }
