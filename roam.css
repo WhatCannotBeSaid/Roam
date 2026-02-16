@@ -475,16 +475,20 @@ body:not(.rm-dark-theme) .bp3-dark .bp3-button:not([class*="bp3-intent-"]):hover
   color: var(--text-color) !important;
 }
 
+/* 日间：所有 .bp3-input 与页面背景同色 */
+body:not(.rm-dark-theme) .bp3-input,
 body:not(.rm-dark-theme) .bp3-dark .bp3-input {
   background: var(--page-color) !important;
   border-color: var(--color-subtle-border) !important;
   color: var(--text-color) !important;
 }
 
-/* 夜间：.bp3-dark 容器内输入框与页面背景统一 */
+/* 夜间：所有 .bp3-input 与页面背景同色（与日间对等） */
 .rm-dark-theme .bp3-input,
 .rm-dark-theme .bp3-dark .bp3-input {
   background: var(--page-color) !important;
+  border-color: var(--color-subtle-border) !important;
+  color: var(--text-color) !important;
 }
 
 /* 夜间：.bp3-dark 弹层/菜单/对话框等与主题变量统一（覆盖 site.css 的 --dark-bg/#f5f8fa 等） */
