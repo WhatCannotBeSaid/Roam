@@ -1,3 +1,8 @@
+  /*!
+   * Roam Research Scripts: Theme-Toggle & Smile CheckBox
+   * Copyright (c) 2026 Axiom
+   * Licensed under the MIT License
+   */
   /**
    * Roam Research 合并脚本：Theme-Toggle（日夜切换）+ Smile CheckBox（笑脸复选框）
    * 标签样式仅由 roam.css 提供，此处不再包含标签相关 JS。
