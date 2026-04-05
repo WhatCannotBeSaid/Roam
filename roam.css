@@ -21,8 +21,8 @@
 :root,
 .roam-app {
     /* Typography - Humanist Endgame 字栈 (门面/骨架/血肉/呼吸/眉批/代码) */
-    --title-font: 'Domaine Display', 'Playfair Display', '方正柳公权楷书 简', '方正柳公权楷书', 'Kaiti SC', 'STKaiti', '华文楷体', 'KaiTi', '楷体', serif;
-    --heading-font: 'Tiempos Headline', 'Georgia', 'Aa古典明朝楷 (非商业使用)', 'Aa古典明朝楷', 'Songti SC', 'STSong', '华文宋体', 'Noto Serif SC', serif;
+    --title-font: 'Domaine Display', 'Playfair Display', '方正清刻本悦宋 简繁', 'Aa古典明朝楷 (非商业使用)', '方正柳公权楷书', 'Kaiti SC', 'STKaiti', '华文楷体', 'KaiTi', '楷体', serif;
+    --heading-font: 'Tiempos Headline', 'Georgia', 'Aa古典明朝楷 (非商业使用)', '方正清刻本悦宋 简繁', 'Aa古典明朝楷', 'Songti SC', 'STSong', '华文宋体', 'Noto Serif SC', serif;
     --body-font: 'Tiempos Text', 'Palatino Linotype', '方正屏显雅宋_GBK', '方正屏显雅宋', 'Songti SC', 'STSong', '华文宋体', 'Noto Serif SC', serif;
     --quote-font: 'Calligraph421 Adjusted', 'Calligraph421 BT', '文悦古典明朝体 简入繁出 (需授权)', '文悦古典明朝体', 'Kaiti SC', 'STKaiti', '华文楷体', 'KaiTi', '楷体', serif;
     --tag-font: 'Cronos Pro', '方正悠黑简体', '方正悠黑', 'PingFang SC', 'Microsoft YaHei', sans-serif;
@@ -279,11 +279,11 @@
     --layout-padding-xl: 24px;
     --layout-padding-article-v: 24px;
     --layout-padding-article-h: 40px;
-    --layout-margin-block: 0.5rem;
+    --layout-margin-block: 0.3rem;
     --fs-app-base: 16px;
     --block-spacing: 0;
     /* 正文块间距：0 为最紧，无空隙；可改为如 0.05em 保留极细缝 */
-    --block-row-min-height: 2.05em;
+    --block-row-min-height: 1.82em;
     /* 正文块行统一最小高度 */
     --ref-block-row-min-height: 1.25em;
     /* 引用区块行更紧凑 */
@@ -295,19 +295,19 @@
     --lh-page-title: 1.1;
     --lh-h1: 1.2;
     --lh-h2: 1.3;
-    --lh-h3: 1.4;
-    --lh-quote: 1.6;
-    --lh-content: 1.6;
+    --lh-h3: 1.3;
+    --lh-quote: 1.5;
+    --lh-content: 1.5;
     /* 正文行高，与 --lh-body 一致 */
-    --lh-body: 1.6;
+    --lh-body: 1.5;
     --lh-tag: 1.4;
     --lh-code: 1.7;
     --lh-title: 1.2;
-    --fs-page-title: 2.4rem;
+    --fs-page-title: 2.1rem;
     --title-block-line-height: calc(var(--fs-page-title) * var(--lh-page-title));
-    --fs-h1: 1.8rem;
-    --fs-h2: 1.52rem;
-    --fs-h3: 1.35rem;
+    --fs-h1: 1.65rem;
+    --fs-h2: 1.45rem;
+    --fs-h3: 1.25rem;
     --fs-body: 1rem;
     --fs-quote: 1.05rem;
     --fs-tag: 1.05rem;
@@ -741,6 +741,7 @@ body .bp3-text-overflow-ellipsis {
     color: var(--text-color);
     font-family: var(--body-font);
     font-size: var(--font-size);
+    line-height: var(--lh-content);
 }
 
 .roam-app div:not(.rm-topbar):not(.rm-topbar-zen) {
@@ -763,6 +764,7 @@ body .bp3-text-overflow-ellipsis {
     color: var(--text-color);
     font-family: var(--body-font);
     font-size: var(--fs-body);
+    line-height: var(--lh-content);
 }
 
 /* 正文块编辑态 textarea 与展示态字号统一 */
@@ -785,6 +787,7 @@ body .bp3-text-overflow-ellipsis {
     color: var(--title-display-color);
     font-family: var(--title-font);
     font-size: var(--fs-page-title);
+    line-height: var(--lh-page-title);
 }
 
 /* .rm-title-display-container:has(.rm-title-editing-display)：仅 margin，已移除 */
@@ -795,6 +798,7 @@ body .bp3-text-overflow-ellipsis {
     color: var(--title-display-color);
     font-family: var(--title-font);
     font-size: var(--fs-page-title);
+    line-height: var(--lh-page-title);
 }
 
 .roam-app :is(.roam-article .rm-title-display em, .roam-article .rm-title-display i, .rm-title-display em, .rm-title-display i) {
@@ -806,9 +810,15 @@ body .bp3-text-overflow-ellipsis {
     color: var(--heading-h1-color);
     font-family: var(--heading-font);
     font-size: var(--fs-h1);
+    line-height: var(--lh-h1);
 }
 
 /* .roam-block-container 间距 / rm-level1 边框等：仅版式，已移除 */
+
+.roam-app .roam-article .roam-block-container {
+    min-height: var(--block-row-min-height);
+    margin-bottom: var(--layout-margin-block);
+}
 
 .roam-app .roam-article .roam-block-container.rm-level1 {
     font-size: var(--fs-h1);
@@ -820,6 +830,7 @@ body .bp3-text-overflow-ellipsis {
     color: var(--heading-h2-color) !important;
     font-family: var(--heading-font) !important;
     font-size: var(--fs-h2) !important;
+    line-height: var(--lh-h2);
 }
 
 .roam-app .roam-article .roam-block-container.rm-level2 {
@@ -830,6 +841,7 @@ body .bp3-text-overflow-ellipsis {
     color: var(--heading-h3-color);
     font-family: var(--heading-font);
     font-size: var(--fs-h3);
+    line-height: var(--lh-h3);
 }
 
 .roam-app .roam-article .roam-block-container.rm-level3 {
@@ -1313,7 +1325,7 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
 }
 
 /* 侧边栏顶部图形名称居中 */
-.roam-app .roam-sidebar-content .top-row > .flex-h-box {
+.roam-app .roam-sidebar-content .top-row>.flex-h-box {
     flex: 1 !important;
     justify-content: center !important;
 }
@@ -1326,9 +1338,11 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
 
 /* 图形切换下拉框居中 */
 .bp3-transition-container:has(.rm-graph-dropdown) {
-    left: 50% !important; /* 水平居中 */
+    left: 50% !important;
+    /* 水平居中 */
     transform: translateX(-50%) !important;
-    margin-top: 45px !important; /* 进一步向下移动，确保完全露出 Axiom */
+    margin-top: 45px !important;
+    /* 进一步向下移动，确保完全露出 Axiom */
 }
 
 .roam-app .bp3-menu.rm-graph-dropdown {
@@ -1407,6 +1421,40 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
 /* 隐藏 multibar（块操作条） */
 .roam-app .rm-multibar {
     display: none !important;
+}
+
+/* --- 块控件垂直对齐优化 --- */
+
+/* 确保控件容器在多行文本时对齐首行 */
+.rm-block-main>.rm-block__controls {
+    align-self: flex-start !important;
+}
+
+/* H1 标题圆点对齐 */
+.rm-heading-level-1>.rm-block-main>.rm-block__controls {
+    margin-top: -6px !important;
+}
+
+/* H2 标题圆点对齐 */
+.rm-heading-level-2>.rm-block-main>.rm-block__controls {
+    margin-top: -2px !important;
+}
+
+/* H3 标题圆点对齐 (微调至 -3px) */
+.rm-heading-level-3>.rm-block-main>.rm-block__controls {
+    margin-top: 0.2px !important;
+}
+
+/* Quote (引用) 块圆点对齐 (使用 :has 查找内部 blockquote) */
+/* 引用块因为 blockquote 标签自带 top padding/margin，圆点需要下移 */
+.rm-block-main:has(blockquote)>.rm-block__controls {
+    margin-top: 17px !important;
+}
+
+/* 普通正文块圆点微调 */
+/* 排除标题和引用块，避免冲突 */
+.roam-block-container:not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3):not(:has(blockquote))>.rm-block-main>.rm-block__controls {
+    margin-top: -1px !important;
 }
 
 /* Bullet 圆点：日间 #3D3B4F，夜间浅色系（淡色，不抢眼） */
