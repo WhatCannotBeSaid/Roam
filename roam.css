@@ -1281,11 +1281,18 @@ body:not(.rm-dark-theme) .roam-app .roam-sidebar-content>div>div {
     background-color: var(--menu-hover-bg);
 }
 
-/* .roam-sidebar-container img[astrolabe]：仅 filter/opacity，已移除 */
+/* 日间模式下 logo 颜色改为黑色 */
+body:not(.rm-dark-theme) .roam-sidebar-container img[src*="astrolabe"] {
+    filter: brightness(0) !important;
+}
 
-.roam-app .roam-sidebar-container img[style*="astrolabe"]~span,
-.roam-app .roam-sidebar-container img[data-wheelzoom-original-src*="astrolabe"]~span {
-    color: var(--color-primary) !important;
+body:not(.rm-dark-theme) .roam-sidebar-container img[src*="astrolabe"]~span {
+    color: #000000 !important;
+}
+
+/* 夜间模式保持白色 */
+body.rm-dark-theme .roam-sidebar-container img[src*="astrolabe"]~span {
+    color: #FFFFFF !important;
 }
 
 .roam-app #roam-sidebar-logo:hover {
@@ -1303,6 +1310,39 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
 .roam-app .roam-sidebar-content .log-button,
 .roam-app .roam-sidebar-content .top-row {
     color: var(--text-color) !important;
+}
+
+/* 侧边栏顶部图形名称居中 */
+.roam-app .roam-sidebar-content .top-row > .flex-h-box {
+    flex: 1 !important;
+    justify-content: center !important;
+}
+
+.roam-app .roam-sidebar-content .top-row .rm-db-title-container {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+/* 图形切换下拉框居中 */
+.bp3-transition-container:has(.rm-graph-dropdown) {
+    left: 50% !important; /* 水平居中 */
+    transform: translateX(-50%) !important;
+    margin-top: 45px !important; /* 进一步向下移动，确保完全露出 Axiom */
+}
+
+.roam-app .bp3-menu.rm-graph-dropdown {
+    min-width: 200px !important;
+    text-align: center;
+}
+
+/* 下拉框内的各行文字也居中（可选） */
+.roam-app .bp3-menu.rm-graph-dropdown .bp3-menu-item {
+    justify-content: center;
+}
+
+.roam-app .roam-sidebar-content .starred-pages .page {
+    padding-left: 24px !important;
 }
 
 /* ========================================================= */
