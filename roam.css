@@ -3,15 +3,25 @@
 /* 已比对 system.css：无同名变量（system 仅 --primary-color/--s1/--dark-* 等），本块全部保留 */
 /* 去重说明：本文件已相对 blueprint.css / site.css 做布局属性去重，仅保留字体/颜色及独有声明。 */
 /* ========================================================= */
+
+/* 引用字体尺寸校正：仅放大英文 Calligraph421 BT，不影响中文 */
+@font-face {
+    font-family: 'Calligraph421 Adjusted';
+    src: local('Calligraph421 BT Roman'), local('Calligraph421 BT');
+    font-weight: normal;
+    font-style: normal;
+    size-adjust: 120%;
+}
+
 :root,
 .roam-app {
     /* Typography - Humanist Endgame 字栈 (门面/骨架/血肉/呼吸/眉批/代码) */
-    --title-font: 'Domaine Display', '方正柳公权楷书 简', serif;
-    --heading-font: 'Canela', 'Aa古典明朝楷 (非商业使用)', sans-serif;
-    --body-font: 'Tiempos Text', '方正屏显雅宋_GBK', serif;
-    --quote-font: 'Calligraph421 BT', '文悦古典明朝体 简入繁出 (需授权)', serif;
-    --tag-font: 'Cronos Pro', '方正优雅宋 简', sans-serif;
-    --code-font: 'Operator Mono', 'LXGW Wenkai Mono Screen', monospace;
+    --title-font: 'Domaine Display', 'Playfair Display', '方正柳公权楷书 简', serif;
+    --heading-font: 'Tiempos Headline', 'Georgia', 'Aa古典明朝楷 (非商业使用)', serif;
+    --body-font: 'Tiempos Text', 'Palatino Linotype', '方正屏显雅宋_GBK', serif;
+    --quote-font: 'Calligraph421 Adjusted', 'Calligraph421 BT', '文悦古典明朝体 简入繁出 (需授权)', serif;
+    --tag-font: 'Cronos Pro', '方正悠黑简体', sans-serif;
+    --code-font: 'Operator Mono', 'Cascadia Code', 'LXGW Wenkai Mono Screen', monospace;
     --ui-font: 'Ideal Sans', '方正艺黑简体', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     --font-size: 1rem;
 
@@ -32,14 +42,14 @@
     /* 枯黄 - 辅助色 */
     --m-sidebar-title: var(--m-primary);
     /* 黑色/灰色系（层次：由深到浅） */
-    --m-title-display: #161823;
-    /* 漆黑 - 页面标题 */
-    --m-heading-h1: #1C1C1C;
-    /* 乌色 - H1 */
-    --m-heading-h2: #424C50;
-    /* 鸦青 - H2 */
-    --m-heading-h3: #50616D;
-    /* 岩灰 - H3 */
+    --m-title-display: #7B2D3E;
+    /* 绛红 - 页面标题（红紫系，与蓝H1/绿H2/褐H3色相分离） */
+    --m-heading-h1: #2A4B7C;
+    /* 绀蓝 - H1（深蓝，醒目权威） */
+    --m-heading-h2: #2B5B4F;
+    /* 苍翠 - H2（深绿青，呼应竹青主色） */
+    --m-heading-h3: #6E5B40;
+    /* 赭色 - H3（暖褐，冷暖对比） */
     --m-blockquote: #2B2B2B;
     /* 皂色 - 引用块正文（高雅深色） */
     --m-blockquote-bar: #177CB0;
@@ -291,8 +301,8 @@
     --fs-page-title: 2.4rem;
     --title-block-line-height: calc(var(--fs-page-title) * var(--lh-page-title));
     --fs-h1: 1.8rem;
-    --fs-h2: 1.5rem;
-    --fs-h3: 1.25rem;
+    --fs-h2: 1.52rem;
+    --fs-h3: 1.35rem;
     --fs-body: 1rem;
     --fs-quote: 1.05rem;
     --fs-tag: 1.05rem;
@@ -338,14 +348,14 @@ body.rm-dark-theme .roam-app .roam-app,
     --m-warn: #E85A5A;
     /* 丹亮 - 警示（夜间可读） */
     /* 灰/白系（层次：由亮到柔，对应日间由深到浅） */
-    --m-title-display: #F2ECDE;
-    /* 缟 - 页面标题（最亮，非纯白） */
-    --m-heading-h1: #F2ECDE;
-    /* 缟 - H1 */
-    --m-heading-h2: #E6EAE9;
-    /* 月影白 - H2 */
-    --m-heading-h3: #C8CED8;
-    /* 灰蓝 - H3 */
+    --m-title-display: #E8B0C8;
+    /* 藕荷 - 页面标题（淡玫瑰系，与蓝H1/绿H2/金H3色相分离） */
+    --m-heading-h1: #70B8DB;
+    /* 天蓝 - H1（明亮，醒目） */
+    --m-heading-h2: #7CC0A0;
+    /* 碧色 - H2（玉绿，呼应石青主色） */
+    --m-heading-h3: #D4A870;
+    /* 杏黄 - H3（暖琥珀，冷暖对比） */
     --m-blockquote: #E9F1F6;
     /* 霜色 - 引用块正文（高雅浅色） */
     --m-blockquote-bar: #B0A4E3;
@@ -763,7 +773,7 @@ body .bp3-text-overflow-ellipsis {
 .roam-app strong,
 .roam-app b {
     color: var(--strong-color);
-    font-family: 'Palatino Linotype', 'Palatino', 'FZPingXianYaSong-B', '方正屏显雅宋', serif;
+    font-family: var(--body-font);
 }
 
 .roam-app :is(.rm-title-display-container .rm-title-display, .roam-article .rm-title-display, h1.rm-title-display, .rm-title-display) {
@@ -4480,9 +4490,9 @@ html body .rm-command-palette .rm-command-palette__scroll-container .rm-command-
 }
 
 /* #sup 脚注上标：去除 ^^…^^ 高亮背景，保持干净的上标样式 */
-.rm-page-ref[data-tag="sup"] ~ .rm-highlight,
-span[data-tag="sup"] ~ .rm-highlight,
-.roam-app .rm-page-ref[data-tag="sup"] ~ .rm-highlight {
+.rm-page-ref[data-tag="sup"]~.rm-highlight,
+span[data-tag="sup"]~.rm-highlight,
+.roam-app .rm-page-ref[data-tag="sup"]~.rm-highlight {
     background-color: transparent !important;
     background: none !important;
 }
