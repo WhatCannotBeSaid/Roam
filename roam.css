@@ -25,7 +25,7 @@
     --heading-font: 'Tiempos Headline', 'Georgia', 'Aa古典明朝楷 (非商业使用)', '方正清刻本悦宋 简繁', 'Aa古典明朝楷', 'Songti SC', 'STSong', '华文宋体', 'Noto Serif SC', serif;
     --body-font: 'Tiempos Text', 'Palatino Linotype', '方正屏显雅宋_GBK', '方正屏显雅宋', 'Songti SC', 'STSong', '华文宋体', 'Noto Serif SC', serif;
     --quote-font: 'Calligraph421 Adjusted', 'Calligraph421 BT', '文悦古典明朝体 简入繁出 (需授权)', '文悦古典明朝体', 'Kaiti SC', 'STKaiti', '华文楷体', 'KaiTi', '楷体', serif;
-    --tag-font: 'Cronos Pro', '方正悠黑简体', '方正悠黑', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --tag-font: 'Cronos Pro', "文悦莺黑 简繁 (需授权)", "文悦莺黑简繁（需授权）", "文悦莺黑 简繁（需授权）", "文悦莺黑简繁", "文悦莺黑", '方正悠黑', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     --code-font: 'Operator Mono', 'Cascadia Code', 'LXGW Wenkai Mono Screen', 'LXGW Wenkai Mono', monospace;
     --ui-font: 'Ideal Sans', '方正艺黑简体', '方正艺黑', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     --font-size: 1rem;
