@@ -1,58 +1,72 @@
 # Roam Research 深度优化套件 (roam)
 
-这是一个针对 Roam Research 设计的极致审美与高度实用并存的深度优化方案，包含精心设计的 **CSS 视觉主题** 与 **JavaScript 交互增强插件**，旨在提供沉浸、护眼、高度结构化的笔记与管理体验。
+这是一个面向 Roam Research 的主题与交互增强组合，当前由两部分组成：
+
+- `roam.css`：完整视觉系统（配色、字体、组件主题覆盖、日夜模式一致性）
+- `Roam.js`：三态主题切换与 Excalidraw 主题同步逻辑
+
+目标是提供统一、沉浸、可读性高且可长期维护的使用体验。
 
 ## ✨ 主要特性
 
-### 🎨 视觉系统与高级排版 (roam.css)
+### 🎨 视觉系统 (roam.css)
 
-*   **Humanist Endgame 终极字栈**：
-    *   全方位打磨了阅读界面的字体层级结构，采用具有人文属性的商业精品字体：
-        *   **标题 (Title)**：`Domaine Display`, `方正柳公权楷书`
-        *   **层级 (Heading)**：`Tiempos Headline`, `Aa古典明朝楷`
-        *   **正文 (Body)**：`Tiempos Text`, `方正屏显雅宋`
-        *   **引用 (Quote)**：`Calligraph421 BT`, `文悦古典明朝体`
-        *   **代码 (Code)**：`Operator Mono`, `LXGW Wenkai Mono`
-    *   配备了完善的 macOS / Windows 跨平台系统「安全降级（Fallback）」策略（如 `Songti SC`, `KaiTi` 等），保证不同设备下的泛用性与渲染安全。
-*   **中国传统配色与日夜双模系统**：
-    *   **日间模式**：以「苍艾」色 (`#C7D1C6`) 作为全局背景，搭配「绛红」、「靛蓝」等高级色彩组合，沉静不伤眼。
-    *   **夜间模式**：以「玄青」色 (`#2B333E`) 作为全局背景，搭配「藕荷」、「雪青」等低饱和浅色系，提升深夜书写的视觉对比度且不失高雅。
-*   **布局与 UI 细节深度优化**：
-    *   彻底修复了原生 Roam 存在的默认行高不齐、中英文混排拥挤等痛点；统一了文本块在展示态与编辑态间的字号/行高跳转。
-    *   重新设计各类高亮（Highlight）语法颜色映射系统，基于中国传统色提取，建立美观的视觉语义。
+- **语义化主题变量**：使用 `--m-*` 及映射变量统一管理日间/夜间配色与组件色彩。
+- **分角色字体体系**：为 `title / heading / body / quote / tag / code / ui` 分别配置字栈与回退链。
+- **模块化样式结构**：按章节组织（Variables、Typography、Code Blocks、Tags、Settings、Dark Mode、References 等），便于维护与扩展。
+- **全局组件一致性覆盖**：对 Blueprint UI、命令面板、设置页、引用区、弹层等统一主题语义，减少原生内联样式带来的视觉割裂。
+- **日夜统一体验**：夜间模式采用与日间对应的语义变量与交互色，尽量保持信息层级一致。
 
-### 🔌 动态交互增强插件 (Roam.js)
+`roam.css` 当前章节：
 
-通过底层的逻辑注入，以极低的性能开销补全并强化核心使用场景：
+1. CSS Variables (Light)  
+2. Global Overrides  
+3. Base Layout  
+4. Typography  
+5. Code Blocks  
+6. Embed & Query  
+7. 左侧边栏  
+8. Block References & Blockquote  
+10. Kanban  
+11. Tags & Labels  
+12. Highlights  
+13. Settings & Plugins  
+15. Dark Mode  
+17. Gap-Filling & Global Resets  
+18. References - Borderless Immersion
 
-*   **☀️/🌙 智能无缝日夜切换 (Theme Toggle)**：
-    *   自动于顶部 Topbar 右侧注入“主题状态切换按钮”（月亮/闪电图标）。
-    *   原生支持在「自动（实时感知系统及浏览器 `prefers-color-scheme` 模式）」、「日间模式」、「夜间模式」三种状态间免刷新热切换，并将其记忆保存在 LocalStorage 供下次打开自动调取。
-*   **🙂 互动式氛围复选框 (Smile CheckBox)**：
-    *   基于 `MutationObserver` 的高能底层监控，自动并无感地为笔记区新生成的原版 CheckBox 注入额外的 `<i class="smiley-face">` 特效骨架结构。
-    *   配合 `roam.css` 对不同完成状态的特定渲染，让你在每次完成任务、勾选事项的瞬间体验到极具形式感与轻盈的动效微交互。
+> 注：章节编号保留历史演进痕迹（如 9/14/16 预留），不影响功能。
+
+### 🔌 交互增强 (Roam.js)
+
+- **三态主题切换**：`auto -> light -> dark` 循环切换，状态持久化在 `localStorage`（键：`roam-theme-mode`）。
+- **系统主题联动**：`auto` 模式下监听 `prefers-color-scheme` 变化并实时切换。
+- **Topbar 按钮注入**：自动在顶栏插入切换按钮，图标随模式更新（`repeat / flash / moon`）。
+- **Excalidraw 主题同步**：同步 `.excalidraw` 根节点 `theme--dark / theme--light`，并处理：
+  - Roam 主题 class 变化
+  - Excalidraw 节点新增
+  - 全屏切换
 
 ## 🚀 安装与部署
 
-本套件现已高度提纯，摒弃了过往碎片的安装形式，仅需两步即可搞定全量机能：
+### 1) 部署 CSS
 
-### 1. 部署 CSS 主题体系
-1.  在 Roam Research 中创建一个名为 `roam/css` 的页面。
-2.  创建一个代码块（输入 `/code` 并选择语言为 `CSS`）。
-3.  将本仓库内 [roam.css](roam.css) 的所有代码内容完整粘贴至其中。
+1. 在 Roam 中创建页面 `roam/css`。
+2. 新建代码块（`/code`，语言选 `CSS`）。
+3. 粘贴 [roam.css](roam.css) 全部内容。
 
-### 2. 部署 JavaScript 扩展基建
-1.  在 Roam Research 中创建一个名为 `roam/js` 的页面。
-2.  **（关键步骤）授予权限**：首次在 Roam 内执行脚本会触发顶部的红底或黄底警示，点击 *"Yes, I know what I'm doing"* 按钮信任脚本执行。
-3.  在新生成的区域内创建一个代码块（输入 `/code` 并选择语言为 `JavaScript`）。
-4.  将本仓库内 [Roam.js](Roam.js) 里面的完整代码复制并粘贴至其中，并刷新页面。
+### 2) 部署 JavaScript
 
-## 📝 历史脉络与版本
-*   **全面重构升阶版**：项目告别了早期零散的按模块划分脚本理念（移除了如 `Sidebar-Hide`, `Heading-Enter-Normal` 等小附件），重塑合拼为双核驱动的标准化组件 `roam.css` + `Roam.js`。
-*   **完善系统安全降级与适配性**：在文字栈中加入了坚固且顺滑的回退字体（Fallback Fonts）链，保证任意系统皆可兼容无碍。
+1. 在 Roam 中创建页面 `roam/js`。
+2. 首次执行脚本时，在 Roam 提示中点击 *"Yes, I know what I'm doing"* 授权。
+3. 新建代码块（`/code`，语言选 `JavaScript`）。
+4. 粘贴 [Roam.js](Roam.js) 全部内容并刷新页面。
 
-## 🤝 致谢
-*   本套件的开发、重构和体系化管理由 **Antigravity (Gemini)** 全程深度辅助构建。
+## 📝 维护说明
 
-## 📄 开源协议 (License)
-本项目采用 [MIT License](LICENSE) 开源协议。您可以自由地使用、修改和分发本项目的代码，只需保留相关的版权声明。
+- 主题相关逻辑优先集中在 `roam.css` 变量层，减少散点硬编码。
+- `Roam.js` 当前只负责主题切换与 Excalidraw 同步，不再包含早期的其它独立小功能。
+
+## 📄 开源协议
+
+本项目采用 [MIT License](LICENSE)。
