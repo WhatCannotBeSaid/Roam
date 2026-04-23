@@ -25,74 +25,74 @@
     --heading-font: 'Tiempos Headline', 'Georgia', 'Aa古典明朝楷 (非商业使用)', '方正清刻本悦宋 简繁', 'Aa古典明朝楷', 'Songti SC', 'STSong', '华文宋体', 'Noto Serif SC', serif;
     --body-font: 'Tiempos Text', 'Palatino Linotype', '方正屏显雅宋_GBK', '方正屏显雅宋', 'Songti SC', 'STSong', '华文宋体', 'Noto Serif SC', serif;
     --quote-font: 'Calligraph421 Adjusted', 'Calligraph421 BT', '文悦古典明朝体 简入繁出 (需授权)', '文悦古典明朝体', 'Kaiti SC', 'STKaiti', '华文楷体', 'KaiTi', '楷体', serif;
-    --tag-font: 'Cronos Pro', "文悦莺黑 简繁 (需授权)", "文悦莺黑简繁（需授权）", "文悦莺黑 简繁（需授权）", "文悦莺黑简繁", "文悦莺黑", '方正悠黑', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --tag-font: 'Cronos Pro', '方正悠黑简体', '方正悠黑', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     --code-font: 'Operator Mono', 'Cascadia Code', 'LXGW Wenkai Mono Screen', 'LXGW Wenkai Mono', monospace;
     --ui-font: 'Ideal Sans', '方正艺黑简体', '方正艺黑', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     --font-size: 1rem;
 
-    /* Day Mode - 黑/灰系：页面标题/正文/引用/H1-H3（有层次）；彩色系：标签/双链/外链（色相环隔开） */
-    --m-bg: #C7D1C6;
-    /* 苍艾 - 核心背景（固定） */
-    --m-surface: #C7D1C6;
-    /* 苍艾（固定） */
-    --m-text: #313233;
-    /* 墨色 - 正文 */
-    --m-ink: #2B2B2B;
-    /* 皂色 - 边框/阴影 */
-    --m-text-muted: #758A99;
-    /* 墨灰 */
-    --m-primary: #789262;
-    /* 竹青 - 主色 */
-    --m-secondary: #D3B17D;
-    /* 枯黄 - 辅助色 */
+    /* Day Mode - 偏白暖底（比象牙更白、仍带极淡黄）；层次用色相区分 */
+    --m-bg: #FAF6ED;
+    /* 米白 - 主背景 */
+    --m-surface: #FAF6ED;
+    /* 与 bg 同系 */
+    --m-text: #383632;
+    /* 暖墨 - 正文（略软于纯冷灰，仍保可读） */
+    --m-ink: #2F2D29;
+    /* 暖皂 - 重显、阴影基准 */
+    --m-text-muted: #736E66;
+    /* 暖石 - 次文（不刺眼） */
+    --m-primary: #5D6D7E;
+    /* 烟青 - 主色（低饱和蓝灰，UI/树线/卷条不抢眼） */
+    --m-secondary: #C4A16A;
+    /* 卡其琥珀 - 在暖白底上略收亮 */
     --m-sidebar-title: var(--m-primary);
     /* 黑色/灰色系（层次：由深到浅） */
-    --m-title-display: #7B2D3E;
-    /* 绛红 - 页面标题（红紫系，与蓝H1/绿H2/褐H3色相分离） */
-    --m-heading-h1: #2A4B7C;
-    /* 绀蓝 - H1（深蓝，醒目权威） */
-    --m-heading-h2: #2B5B4F;
-    /* 苍翠 - H2（深绿青，呼应竹青主色） */
-    --m-heading-h3: #6E5B40;
-    /* 赭色 - H3（暖褐，冷暖对比） */
-    --m-blockquote: #2B2B2B;
-    /* 皂色 - 引用块正文（高雅深色） */
-    --m-blockquote-bar: #177CB0;
-    /* 靛青 - 引用块竖条（高雅显眼） */
-    --m-blockquote-bar-hover: #125A82;
-    /* 靛青加深 - 引用块竖条 hover */
-    /* 彩色系（黄 / 蓝 / 红紫，色相环不临近，标签避绿不撞背景） */
-    --m-page-tag: #75878A;
-    /* 苍色 - 弱化标签区 */
-    --m-tag: #CA6924;
-    /* 琥珀 - 标签（黄色系） */
-    --m-tag-hover: #A8551E;
-    /* 琥珀加深 - 标签 hover */
+    --m-title-display: #6A3A48;
+    /* 沉绛 - 页题（压一档饱和度） */
+    --m-heading-h1: #3A5A7E;
+    /* 雾绀 - H1（不抢正文） */
+    --m-heading-h2: #3A4D62;
+    /* 沉藏 - H2（与 H1 同冷系、更灰） */
+    --m-heading-h3: #66523C;
+    /* 赭褐 - H3（暖褐层次） */
+    --m-blockquote: #3A3834;
+    /* 暖深灰 - 引用与正文同调 */
+    --m-blockquote-bar: #5A7A95;
+    /* 雾靛 - 侧条略柔 */
+    --m-blockquote-bar-hover: #4A6A86;
+    /* 雾靛 hover */
+    /* 彩色系（黄 / 蓝 / 红紫，降饱和、长读友好） */
+    --m-page-tag: #7A756D;
+    /* 暖灰标签区 */
+    --m-tag: #A85F28;
+    /* 深琥珀 - 略压亮 */
+    --m-tag-hover: #8B4D1A;
+    /* 琥珀加深 */
     /* 学术标签（Academic Tag）日间 */
-    --tag-text-color: #1a1a1a;
-    --tag-border-color: #333;
-    --tag-hover-bg: rgba(0, 0, 0, 0.03);
+    --tag-text-color: #2a2620;
+    --tag-border-color: #4a4440;
+    --tag-hover-bg: rgba(0, 0, 0, 0.04);
     --tag-font-weight: 600;
-    /* Links 专用（不与 blockquote-bar / sidebar-star / tag / 高亮 重复） */
-    --m-page-ref: #0D9488;
-    /* 青绿 - 双链（teal，与主色/引用条/侧栏星标区分） */
-    --m-page-ref-hover: #0F766E;
-    /* 深青绿 - 双链 hover */
-    --m-link: #7C3AED;
-    /* 紫 - 外链（violet，与绛紫/高亮系区分） */
-    --m-link-hover: #6D28D9;
-    /* 深紫 - 外链 hover */
+    /* Links 专用 */
+    --m-page-ref: #2F5F8F;
+    /* 绀色双链 - 去荧光感 */
+    --m-page-ref-hover: #264A6F;
+    /* 双链 hover */
+    --m-link: #5C4A9A;
+    /* 雾紫 - 外链 */
+    --m-link-hover: #4A3A7A;
+    /* 外链 hover */
     /* 其他 */
-    --m-reference-strong: #118b6e;
-    /* 青碧 - 引用区 strong */
-    --m-sidebar-star: #177CB0;
-    /* 靛青 */
-    --m-checkbox-checked: #21A675;
-    /* 松柏绿 */
-    --m-code-selection: #D6ECF0;
-    /* 月白 */
-    --m-on-accent: #F2ECDE;
-    /* 缟 */
+    --m-reference-strong: #2E3F50;
+    /* 沉玄 - 引用 strong */
+    --m-sidebar-star: #4A6B88;
+    /* 雾靛 - 与侧栏星、引用条一系、更柔 */
+    --m-checkbox-checked: #2F5F8F;
+    /* 与双链同系、低刺激 */
+    --m-code-selection: #E6DFD2;
+    /* 浅暖灰 - 在米白底上仍能区分选区 */
+    --m-on-accent: #FFFFFF;
+    /* 于主色按钮/控件上的高对比字 */
     --m-highlight-underline: #DB5A6B;
     /* 海棠红 - 粉色系 */
     --m-highlight-yellow: #F47983;
@@ -109,12 +109,12 @@
     /* 绛紫亮 - 粉色系 */
     --m-highlight-orange: #DB5A6B;
     /* 海棠红 - 粉色系 */
-    --m-sidebar-icon: #3D3B4F;
-    /* 玄色 */
-    --m-sidebar-title-day: #057748;
-    /* 松花绿 */
-    --m-sidebar-star-day: #065279;
-    /* 靛蓝 */
+    --m-sidebar-icon: #4A464F;
+    /* 软玄 - 边栏图标不跳 */
+    --m-sidebar-title-day: #3A4D62;
+    /* 与 H2 同系、长读不抢眼 */
+    --m-sidebar-star-day: #3D5A75;
+    /* 雾靛 - 比纯蓝低压 */
     --m-warn: #D23B3B;
     /* 丹 - 警示 */
     --m-popover: var(--m-surface);
@@ -141,7 +141,7 @@
     --heading-h3-color: var(--m-heading-h3);
     --blockquote-text: var(--m-blockquote);
     --reference-strong-color: var(--m-reference-strong);
-    --block-highlight-bg: oklch(from var(--m-primary) l c h / 0.18);
+    --block-highlight-bg: oklch(from var(--m-primary) l c h / 0.14);
     --sidebar-title-color: var(--m-sidebar-title);
     --sidebar-star-color: var(--m-sidebar-star);
     --reference-title-color: var(--m-primary);
@@ -161,11 +161,11 @@
     --kanban-card-bg: oklch(from var(--m-primary) l c h / 0.05);
     --kanban-card-hover-bg: oklch(from var(--m-primary) l c h / 0.10);
 
-    /* Shadows / Focus / Selection / Scrollbar (sd) */
-    --shadow-soft: 0 6px 18px oklch(from var(--m-ink) l c h / 0.12);
-    --shadow-floating: 0 10px 30px oklch(from var(--m-ink) l c h / 0.16);
-    --focus-ring: 0 0 0 3px oklch(from var(--m-primary) l c h / 0.28);
-    --selection-bg: oklch(from var(--m-primary) l c h / 0.58);
+    /* Shadows / Focus / Selection / Scrollbar (sd) — 长读：略压浮层与选区对比 */
+    --shadow-soft: 0 6px 18px oklch(from var(--m-ink) l c h / 0.09);
+    --shadow-floating: 0 10px 30px oklch(from var(--m-ink) l c h / 0.12);
+    --focus-ring: 0 0 0 3px oklch(from var(--m-primary) l c h / 0.24);
+    --selection-bg: oklch(from var(--m-primary) l c h / 0.48);
     --selection-text: var(--m-ink);
     --scrollbar-track: oklch(from var(--m-text) l c h / 0.06);
     --scrollbar-thumb: oklch(from var(--m-primary) l c h / 0.35);
@@ -229,10 +229,10 @@
     /* Sidebar (co / sd) */
     --sidebar-text-day: var(--heading-h2-color);
     --sidebar-hover-bg: var(--hover-primary-soft);
-    --title-text-shadow: 0 1px 2px oklch(from var(--m-ink) l c h / 0.05);
+    --title-text-shadow: 0 1px 2px oklch(from var(--m-ink) l c h / 0.04);
     --ink-solid: var(--m-ink);
 
-    /* Smiley Toggle（未完成=红系与夜间一致，完成=绿） */
+    /* Smiley Toggle（未完成=红；完成=与双链同系绀色） */
     --m-checkbox-unchecked: #C83C23;
     /* 绯红 - 未勾选/未完成，日夜统一 */
     --toggle-off-bg: var(--m-checkbox-unchecked);
@@ -316,90 +316,90 @@
     color-scheme: light;
 }
 
-/* Night Mode - 与日间同标准：黑/灰系（标题·正文·引用·H1-H3 有层次），彩色系（标签·双链·外链 色相环隔开），APCA 负极性 Lc 60–80，禁纯白 */
+/* Night Mode - 中性冷灰深底（不偏黄褐）；低饱和、柔对比；蓝灰主/雾蓝双链/雾紫外链；负极 Lc 60–80、正文非 #FFF */
 html.rm-dark-theme,
 body.rm-dark-theme,
 html.rm-dark-theme .roam-app,
 body.rm-dark-theme .roam-app .roam-app,
 .rm-dark-theme .roam-app {
-    --m-bg: #2B333E;
-    /* 玄青 - 主背景（固定） */
-    --m-surface: #2B333E;
-    /* 玄青（固定） */
-    --m-text: #E6EAE9;
-    /* 月影白 - 正文 */
-    --m-text-muted: #A1AFC9;
-    /* 蓝灰 */
-    --m-ink: #161823;
-    /* 漆黑 - 边框/阴影 */
-    --m-primary: #1685A9;
-    /* 石青 - 主色 */
-    --m-secondary: #C83C23;
-    /* 绯红 - 分裂补色 */
-    --m-sidebar-title: #48C0A3;
-    /* 青碧 */
-    --m-sidebar-star: #48C0A3;
-    --m-checkbox-checked: #2ADD9C;
-    /* 碧绿 */
-    --m-code-selection: #065279;
-    /* 靛蓝 */
-    --m-on-accent: #E9F1F6;
-    /* 霜色 - 非纯白 */
-    --m-sidebar-icon: #D6ECF0;
-    /* 月白 */
-    --m-popover: #3D3B4F;
-    /* 玄色 - 弹层 */
+    --m-bg: #1E2026;
+    /* 玄铁灰 - 主背景（微蓝灰、不泛黄） */
+    --m-surface: #1E2026;
+    /* 与 bg 同系 */
+    --m-text: #D4D6DB;
+    /* 月灰白 - 正文（中性、不粉不黄） */
+    --m-text-muted: #8A9099;
+    /* 冷石 - 次文 */
+    --m-ink: #08090C;
+    /* 墨黑 - 阴影/重边 */
+    --m-primary: #5E7285;
+    /* 夜烟青 - 主色（与日间 5D6D7E 同系、略提明度可辨） */
+    --m-secondary: #9C7652;
+    /* 深枯琥珀 - 辅助/分裂色（不刺眼） */
+    --m-sidebar-title: #6E8A9C;
+    /* 雾靛 - 与日间侧栏同逻辑 */
+    --m-sidebar-star: #6E8A9C;
+    --m-checkbox-checked: #5A8DB8;
+    /* 雾绀 - 与双链同系、非荧光绿 */
+    --m-code-selection: #2A2F38;
+    /* 沉青灰 - 代码/选区底 */
+    --m-on-accent: #F3F4F6;
+    /* 缟 - 于主色/按钮上（非 #FFF、在 #5E7285 上满足约 4.5:1 易读） */
+    --m-sidebar-icon: #9DA3AD;
+    /* 冷月灰 - 边栏 icon */
+    --m-popover: #2A2D34;
+    /* 略抬起的冷深灰 - 弹层 */
     --m-reference-strong: var(--m-sidebar-star);
-    --m-warn: #E85A5A;
-    /* 丹亮 - 警示（夜间可读） */
-    /* 灰/白系（层次：由亮到柔，对应日间由深到浅） */
-    --m-title-display: #E8B0C8;
-    /* 藕荷 - 页面标题（淡玫瑰系，与蓝H1/绿H2/金H3色相分离） */
-    --m-heading-h1: #70B8DB;
-    /* 天蓝 - H1（明亮，醒目） */
-    --m-heading-h2: #7CC0A0;
-    /* 碧色 - H2（玉绿，呼应石青主色） */
-    --m-heading-h3: #D4A870;
-    /* 杏黄 - H3（暖琥珀，冷暖对比） */
-    --m-blockquote: #E9F1F6;
-    /* 霜色 - 引用块正文（高雅浅色） */
-    --m-blockquote-bar: #B0A4E3;
-    /* 雪青 - 引用块竖条（高雅显眼） */
-    --m-blockquote-bar-hover: #CCA4E3;
-    /* 丁香 - 引用块竖条 hover */
-    /* 彩色系（黄·蓝·红紫，与日间 标签/双链/外链 色相一一对应） */
-    --m-page-tag: #75878A;
-    /* 苍色 - 弱化标签区 */
-    --m-tag: #E8A84B;
-    /* 琥珀亮 - 标签（黄色系） */
-    --m-tag-hover: #F0C239;
-    /* 缃色 - 标签 hover */
+    --m-warn: #C96C6C;
+    /* 沉丹 - 警示不炸眼 */
+    /* 标题/灰白系 - 与日间对称、略降亮与饱和 */
+    --m-title-display: #C8A0B0;
+    /* 雾藕 - 页题 */
+    --m-heading-h1: #7FA0B8;
+    /* 雾绀 - H1 与日间雾绀一系 */
+    --m-heading-h2: #7D8FA0;
+    /* 夜灰蓝 - H2 与 H1 同绀、非碧色 */
+    --m-heading-h3: #948C7E;
+    /* 沉灰褐 - H3 少金少黄、与冷底协调 */
+    --m-blockquote: #D6D8DE;
+    /* 冷霜 - 引用内文 */
+    --m-blockquote-bar: #7A86A0;
+    /* 沉雪青 - 条略柔 */
+    --m-blockquote-bar-hover: #8B96AE;
+    /* 雪青 hover */
+    /* 彩色系 - 与日间角色对应、夜间整体柔一档 */
+    --m-page-tag: #6F7680;
+    /* 冷灰 - 弱化标签 */
+    --m-tag: #C9954A;
+    /* 深琥珀 - 略收亮 */
+    --m-tag-hover: #D4A85C;
+    /* 缃 - hover */
     /* 学术标签（Academic Tag）夜间 */
-    --tag-text-color: #d1d1d1;
-    --tag-border-color: #888;
-    --tag-hover-bg: rgba(255, 255, 255, 0.05);
+    --tag-text-color: #c4c8d0;
+    --tag-border-color: #5a5e68;
+    --tag-hover-bg: rgba(255, 255, 255, 0.06);
     --tag-font-weight: 600;
-    /* Links 专用（不与 blockquote-bar / sidebar-star / 高亮 重复） */
-    --m-page-ref: #2DD4BF;
-    /* 青绿亮 - 双链（teal，与主色/侧栏星标/原蓝区分） */
-    --m-page-ref-hover: #5EEAD4;
-    /* 青绿浅 - 双链 hover */
-    --m-link: #A78BFA;
-    /* 紫亮 - 外链（violet，与引用条雪青/高亮区分） */
-    --m-link-hover: #C4B5FD;
-    /* 薰衣草 - 外链 hover */
+    /* Links 专用 - 与日间同角色，雾面不爆 */
+    --m-page-ref: #6DA0C4;
+    /* 雾蓝 - 双链（与日间 2F5F8F 一系、夜间提亮） */
+    --m-page-ref-hover: #88B2D0;
+    /* 雾蓝 hover */
+    --m-link: #9A8FC4;
+    /* 雾紫 - 外链 */
+    --m-link-hover: #AFA5D4;
+    /* 雾紫 hover */
     /* 行内高亮（粉色系，亮色 + 适度透明保证浅字可读） */
     --m-highlight-underline: oklch(from #F47983 l c h / 0.55);
     --m-highlight-yellow: oklch(from #F47983 l c h / 0.52);
     --m-highlight-green: oklch(from #E4C4D8 l c h / 0.50);
     --m-highlight-blue: oklch(from #FFB3A7 l c h / 0.48);
     --m-highlight-red: oklch(from #EF7A82 l c h / 0.55);
-    --m-bullet-focus: #F05654;
-    /* 银红 - bullet 编辑态泛光（有光泽浅红，适配深底） */
-    --m-highlight-purple: oklch(from #D2A4C8 l c h / 0.52);
-    --m-highlight-orange: oklch(from #F47983 l c h / 0.52);
+    --m-bullet-focus: #C96C6C;
+    /* 沉红 - bullet 编辑态（压亮） */
+    --m-highlight-purple: oklch(from #D2A4C8 l c h / 0.47);
+    --m-highlight-orange: oklch(from #F47983 l c h / 0.47);
 
-    --block-highlight-bg: oklch(from var(--m-primary) l c h / 0.20);
+    --block-highlight-bg: oklch(from var(--m-primary) l c h / 0.16);
     --color-subtle-border: oklch(from var(--m-text) l c h / 0.08);
     --code-bg: oklch(from var(--m-text) l c h / 0.03);
     --inline-code-bg: oklch(from var(--m-page-ref) l c h / 0.22);
@@ -411,15 +411,15 @@ body.rm-dark-theme .roam-app .roam-app,
     --kanban-column-bg: oklch(from var(--m-text) l c h / 0.02);
     --kanban-card-bg: oklch(from var(--m-text) l c h / 0.04);
     --kanban-card-hover-bg: oklch(from var(--m-text) l c h / 0.07);
-    --popover-shadow: 0 4px 24px oklch(from var(--m-ink) l c h / 0.35);
-    --shadow-soft: 0 8px 24px oklch(from var(--m-ink) l c h / 0.32);
-    --shadow-floating: 0 10px 30px oklch(from var(--m-ink) l c h / 0.38);
-    --focus-ring: 0 0 0 3px oklch(from var(--m-primary) l c h / 0.35);
-    --selection-bg: oklch(from var(--m-primary) l c h / 0.58);
+    --popover-shadow: 0 4px 24px oklch(from var(--m-ink) l c h / 0.28);
+    --shadow-soft: 0 8px 24px oklch(from var(--m-ink) l c h / 0.24);
+    --shadow-floating: 0 10px 30px oklch(from var(--m-ink) l c h / 0.30);
+    --focus-ring: 0 0 0 3px oklch(from var(--m-primary) l c h / 0.28);
+    --selection-bg: oklch(from var(--m-primary) l c h / 0.48);
     --selection-text: var(--m-on-accent);
     --scrollbar-track: oklch(from var(--m-text) l c h / 0.05);
-    --scrollbar-thumb: oklch(from var(--m-primary) l c h / 0.40);
-    --scrollbar-thumb-hover: oklch(from var(--m-primary) l c h / 0.55);
+    --scrollbar-thumb: oklch(from var(--m-primary) l c h / 0.36);
+    --scrollbar-thumb-hover: oklch(from var(--m-primary) l c h / 0.50);
     --menu-hover-bg: var(--hover-primary-strong);
     --menu-divider-color: var(--color-subtle-border);
     --menu-hover-text: var(--on-accent);
@@ -2350,8 +2350,8 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
 .roam-app span.rm-page-ref--tag[data-tag="definition"],
 .roam-app span.rm-page-ref[data-tag="definition"],
 .roam-app span[data-link-title="definition"] {
-    color: #21A675 !important;
-    background-color: oklch(from #21A675 l c h / 0.15) !important;
+    color: #4F46E5 !important;
+    background-color: oklch(from #4F46E5 l c h / 0.15) !important;
 }
 
 .roam-app span.rm-page-ref--tag[data-tag="proof"],
@@ -2378,8 +2378,8 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
 .roam-app span.rm-page-ref--tag[data-tag="assumption"],
 .roam-app span.rm-page-ref[data-tag="assumption"],
 .roam-app span[data-link-title="assumption"] {
-    color: #0D9488 !important;
-    background-color: oklch(from #0D9488 l c h / 0.15) !important;
+    color: #0369A1 !important;
+    background-color: oklch(from #0369A1 l c h / 0.15) !important;
 }
 
 .roam-app .rm-menu-item:has(span[data-link-title="theorem"]),
@@ -2394,8 +2394,8 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
 .roam-app .rm-menu-item:has(span[data-tag="definition"]),
 .roam-app .bp3-menu-item:has(span[data-link-title="definition"]),
 .roam-app .bp3-menu-item:has(span[data-tag="definition"]) {
-    background-color: oklch(from #21A675 l c h / 0.15) !important;
-    color: #21A675 !important;
+    background-color: oklch(from #4F46E5 l c h / 0.15) !important;
+    color: #4F46E5 !important;
 }
 
 .roam-app .rm-menu-item:has(span[data-link-title="proof"]),
@@ -2426,100 +2426,100 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
 .roam-app .rm-menu-item:has(span[data-tag="assumption"]),
 .roam-app .bp3-menu-item:has(span[data-link-title="assumption"]),
 .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
-    background-color: oklch(from #0D9488 l c h / 0.15) !important;
-    color: #0D9488 !important;
+    background-color: oklch(from #0369A1 l c h / 0.15) !important;
+    color: #0369A1 !important;
 }
 
-/* 学术节点标签夜间模式：使用较亮色保证深色背景可读 */
+/* 学术节点标签夜间：低饱和、与全夜主题一系、仍六色可辨 */
 body.rm-dark-theme .roam-app span[data-link-title="theorem"],
 body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="theorem"],
 body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="theorem"],
 body.rm-dark-theme .roam-app span[data-link-title="theorem"] {
-    color: #48C0A3 !important;
-    background-color: oklch(from #48C0A3 l c h / 0.18) !important;
+    color: #6E9FBE !important;
+    background-color: oklch(from #6E9FBE l c h / 0.18) !important;
 }
 
 body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="definition"],
 body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="definition"],
 body.rm-dark-theme .roam-app span[data-link-title="definition"] {
-    color: #2ADD9C !important;
-    background-color: oklch(from #2ADD9C l c h / 0.18) !important;
+    color: #7E82B8 !important;
+    background-color: oklch(from #7E82B8 l c h / 0.18) !important;
 }
 
 body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="proof"],
 body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="proof"],
 body.rm-dark-theme .roam-app span[data-link-title="proof"] {
-    color: #E8A84B !important;
-    background-color: oklch(from #E8A84B l c h / 0.18) !important;
+    color: #C9954A !important;
+    background-color: oklch(from #C9954A l c h / 0.18) !important;
 }
 
 body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="problem"],
 body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="problem"],
 body.rm-dark-theme .roam-app span[data-link-title="problem"] {
-    color: #A78BFA !important;
-    background-color: oklch(from #A78BFA l c h / 0.18) !important;
+    color: #9A90C8 !important;
+    background-color: oklch(from #9A90C8 l c h / 0.18) !important;
 }
 
 body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="counter"],
 body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="counter"],
 body.rm-dark-theme .roam-app span[data-link-title="counter"] {
-    color: #E85A5A !important;
-    background-color: oklch(from #E85A5A l c h / 0.18) !important;
+    color: #B87878 !important;
+    background-color: oklch(from #B87878 l c h / 0.18) !important;
 }
 
 body.rm-dark-theme .roam-app span.rm-page-ref--tag[data-tag="assumption"],
 body.rm-dark-theme .roam-app span.rm-page-ref[data-tag="assumption"],
 body.rm-dark-theme .roam-app span[data-link-title="assumption"] {
-    color: #2DD4BF !important;
-    background-color: oklch(from #2DD4BF l c h / 0.18) !important;
+    color: #5E9AAD !important;
+    background-color: oklch(from #5E9AAD l c h / 0.18) !important;
 }
 
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="theorem"]),
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="theorem"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="theorem"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="theorem"]) {
-    background-color: oklch(from #48C0A3 l c h / 0.18) !important;
-    color: #48C0A3 !important;
+    background-color: oklch(from #6E9FBE l c h / 0.18) !important;
+    color: #6E9FBE !important;
 }
 
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="definition"]),
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="definition"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="definition"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="definition"]) {
-    background-color: oklch(from #2ADD9C l c h / 0.18) !important;
-    color: #2ADD9C !important;
+    background-color: oklch(from #7E82B8 l c h / 0.18) !important;
+    color: #7E82B8 !important;
 }
 
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="proof"]),
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="proof"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="proof"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="proof"]) {
-    background-color: oklch(from #E8A84B l c h / 0.18) !important;
-    color: #E8A84B !important;
+    background-color: oklch(from #C9954A l c h / 0.18) !important;
+    color: #C9954A !important;
 }
 
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="problem"]),
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="problem"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="problem"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="problem"]) {
-    background-color: oklch(from #A78BFA l c h / 0.18) !important;
-    color: #A78BFA !important;
+    background-color: oklch(from #9A90C8 l c h / 0.18) !important;
+    color: #9A90C8 !important;
 }
 
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="counter"]),
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="counter"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="counter"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="counter"]) {
-    background-color: oklch(from #E85A5A l c h / 0.18) !important;
-    color: #E85A5A !important;
+    background-color: oklch(from #B87878 l c h / 0.18) !important;
+    color: #B87878 !important;
 }
 
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-link-title="assumption"]),
 body.rm-dark-theme .roam-app .rm-menu-item:has(span[data-tag="assumption"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-link-title="assumption"]),
 body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
-    background-color: oklch(from #2DD4BF l c h / 0.18) !important;
-    color: #2DD4BF !important;
+    background-color: oklch(from #5E9AAD l c h / 0.18) !important;
+    color: #5E9AAD !important;
 }
 
 /* ========================================================= */
@@ -4310,13 +4310,13 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar-thumb {
-    background: var(--scrollbar-thumb, oklch(from var(--m-primary, #789262) l c h / 0.35));
+    background: var(--scrollbar-thumb, oklch(from var(--m-primary, #5D6D7E) l c h / 0.32));
     background-clip: padding-box;
     border: 2px solid transparent;
 }
 
 html::-webkit-scrollbar-thumb:hover {
-    background: var(--scrollbar-thumb-hover, oklch(from var(--m-primary, #789262) l c h / 0.52));
+    background: var(--scrollbar-thumb-hover, oklch(from var(--m-primary, #5D6D7E) l c h / 0.48));
     background-clip: padding-box;
 }
 
