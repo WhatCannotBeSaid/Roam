@@ -11,8 +11,8 @@
 
 /* 引用字体尺寸校正：仅放大英文 Calligraph421 BT，不影响中文 */
 @font-face {
-    font-family: 'Calligraph421 Adjusted';
-    src: local('Calligraph421 BT Roman'), local('Calligraph421 BT');
+    font-family: "Calligraph421 Adjusted";
+    src: local("Calligraph421 BT Roman"), local("Calligraph421 BT");
     font-weight: normal;
     font-style: normal;
     size-adjust: 115%;
@@ -21,25 +21,24 @@
 :root,
 .roam-app {
     /* Typography - Humanist Endgame 字栈 (门面/骨架/血肉/呼吸/眉批/代码) */
-    --title-font: 'Domaine Display', 'Playfair Display', '方正清刻本悦宋 简繁', 'Aa古典明朝楷 (非商业使用)', '方正柳公权楷书', 'Kaiti SC', 'STKaiti', '华文楷体', 'KaiTi', '楷体', serif;
-    --heading-font: 'Tiempos Headline', 'Georgia', 'Aa古典明朝楷 (非商业使用)', '方正清刻本悦宋 简繁', 'Aa古典明朝楷', 'Songti SC', 'STSong', '华文宋体', 'Noto Serif SC', serif;
-    --body-font: 'Tiempos Text', 'Palatino Linotype', '方正屏显雅宋_GBK', '方正屏显雅宋', 'Songti SC', 'STSong', '华文宋体', 'Noto Serif SC', serif;
-    --quote-font: 'Calligraph421 Adjusted', 'Calligraph421 BT', '文悦古典明朝体 简入繁出 (需授权)', '文悦古典明朝体', 'Kaiti SC', 'STKaiti', '华文楷体', 'KaiTi', '楷体', serif;
-    --tag-font: 'Cronos Pro', "文悦莺黑 简繁 (需授权)", "文悦莺黑简繁（需授权）", "文悦莺黑 简繁（需授权）", "文悦莺黑简繁", "文悦莺黑", '方正悠黑', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    --code-font: 'Operator Mono', 'Cascadia Code', 'LXGW Wenkai Mono Screen', 'LXGW Wenkai Mono', monospace;
-    --ui-font: 'Ideal Sans', '方正艺黑简体', '方正艺黑', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    --font-size: 1rem;
+    --title-font: "Domaine Display", "Playfair Display", "方正清刻本悦宋 简繁", "Aa古典明朝楷 (非商业使用)", "方正柳公权楷书", "Kaiti SC", "STKaiti", "华文楷体", "KaiTi", "楷体", serif;
+    --heading-font: "Tiempos Headline", "Georgia", "Aa古典明朝楷 (非商业使用)", "方正清刻本悦宋 简繁", "Aa古典明朝楷", "Songti SC", "STSong", "华文宋体", "Noto Serif SC", serif;
+    --body-font: "Tiempos Text", "Palatino Linotype", "方正屏显雅宋_GBK", "方正屏显雅宋", "Songti SC", "STSong", "华文宋体", "Noto Serif SC", serif;
+    --quote-font: "Calligraph421 Adjusted", "Calligraph421 BT", "文悦古典明朝体 简入繁出 (需授权)", "文悦古典明朝体", "Kaiti SC", "STKaiti", "华文楷体", "KaiTi", "楷体", serif;
+    --tag-font: "Cronos Pro", "文悦莺黑 简繁 (需授权)", "文悦莺黑简繁（需授权）", "文悦莺黑 简繁（需授权）", "文悦莺黑简繁", "文悦莺黑", "方正悠黑", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --code-font: "Operator Mono", "Cascadia Code", "LXGW Wenkai Mono Screen", "LXGW Wenkai Mono", monospace;
+    --ui-font: "Ideal Sans", "方正艺黑简体", "方正艺黑", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
 
     /* Day Mode - 黑/灰系：页面标题/正文/引用/H1-H3（有层次）；彩色系：标签/双链/外链（色相环隔开） */
-    --m-bg: #C7D1C6;
+    --m-bg: #F3F9F1;
     /* 苍艾 - 核心背景（固定） */
-    --m-surface: #C7D1C6;
+    --m-surface: #F3F9F1;
     /* 苍艾（固定） */
-    --m-text: #313233;
+    --m-text: #161B22;
     /* 墨色 - 正文 */
     --m-ink: #2B2B2B;
     /* 皂色 - 边框/阴影 */
-    --m-text-muted: #758A99;
+    --m-text-muted: #4F5B66;
     /* 墨灰 */
     --m-primary: #789262;
     /* 竹青 - 主色 */
@@ -74,13 +73,13 @@
     --tag-hover-bg: rgba(0, 0, 0, 0.03);
     --tag-font-weight: 600;
     /* Links 专用（不与 blockquote-bar / sidebar-star / tag / 高亮 重复） */
-    --m-page-ref: #0D9488;
+    --m-page-ref: #0A7F75;
     /* 青绿 - 双链（teal，与主色/引用条/侧栏星标区分） */
-    --m-page-ref-hover: #0F766E;
+    --m-page-ref-hover: #08675F;
     /* 深青绿 - 双链 hover */
-    --m-link: #7C3AED;
+    --m-link: #6A35D9;
     /* 紫 - 外链（violet，与绛紫/高亮系区分） */
-    --m-link-hover: #6D28D9;
+    --m-link-hover: #5729B9;
     /* 深紫 - 外链 hover */
     /* 其他 */
     --m-reference-strong: #118b6e;
@@ -103,8 +102,6 @@
     /* 粉红 - 粉色系 */
     --m-highlight-red: #EF7A82;
     /* 嫣红 - 粉色系 */
-    --m-bullet-focus: #DB5A6B;
-    /* 海棠红 - bullet 编辑态泛光（中国传统色） */
     --m-highlight-purple: #D2A4C8;
     /* 绛紫亮 - 粉色系 */
     --m-highlight-orange: #DB5A6B;
@@ -134,7 +131,7 @@
     --hover-secondary: oklch(from var(--m-secondary) l c h / 1);
     --color-primary-light: var(--hover-primary);
     --color-primary-highlight: var(--hover-primary-soft);
-    --color-subtle-border: oklch(from var(--m-text) l c h / 0.10);
+    --color-subtle-border: oklch(from var(--m-text) l c h / 0.16);
     --title-display-color: var(--m-title-display);
     --heading-h1-color: var(--m-heading-h1);
     --heading-h2-color: var(--m-heading-h2);
@@ -235,13 +232,6 @@
     /* Smiley Toggle（未完成=红系与夜间一致，完成=绿） */
     --m-checkbox-unchecked: #C83C23;
     /* 绯红 - 未勾选/未完成，日夜统一 */
-    --toggle-off-bg: var(--m-checkbox-unchecked);
-    --toggle-off-shadow: 0 4px 10px oklch(from var(--m-checkbox-unchecked) l c h / 0.35);
-    --toggle-on-bg: var(--checkbox-checked-color);
-    --toggle-on-shadow: 0 -4px 10px oklch(from var(--m-checkbox-checked) l c h / 0.35);
-    --toggle-face-bg: var(--on-accent);
-    --toggle-eye-off: var(--m-checkbox-unchecked);
-    --toggle-eye-on: var(--checkbox-checked-color);
     --settings-accent-bg: var(--color-primary);
 
     /* Highlights - 中国传统色 (co) */
@@ -312,8 +302,6 @@
     --fs-quote: 1.05rem;
     --fs-tag: 1.05rem;
     --font-size: var(--fs-body);
-
-    color-scheme: light;
 }
 
 /* Night Mode - 与日间同标准：黑/灰系（标题·正文·引用·H1-H3 有层次），彩色系（标签·双链·外链 色相环隔开），APCA 负极性 Lc 60–80，禁纯白 */
@@ -394,8 +382,6 @@ body.rm-dark-theme .roam-app .roam-app,
     --m-highlight-green: oklch(from #E4C4D8 l c h / 0.50);
     --m-highlight-blue: oklch(from #FFB3A7 l c h / 0.48);
     --m-highlight-red: oklch(from #EF7A82 l c h / 0.55);
-    --m-bullet-focus: #F05654;
-    /* 银红 - bullet 编辑态泛光（有光泽浅红，适配深底） */
     --m-highlight-purple: oklch(from #D2A4C8 l c h / 0.52);
     --m-highlight-orange: oklch(from #F47983 l c h / 0.52);
 
@@ -461,12 +447,8 @@ body.rm-dark-theme .roam-app .roam-app,
     --code-warning-btn-hover-bg: oklch(from var(--m-primary) l c h / 0.28);
     --danger-bg: oklch(from var(--m-highlight-red) l c h / 0.40);
     --danger-border: oklch(from var(--m-text) l c h / 0.10);
-    --toggle-off-shadow: 0 4px 10px oklch(from var(--m-secondary) l c h / 0.25);
-    --toggle-on-shadow: 0 -4px 10px oklch(from var(--m-checkbox-checked) l c h / 0.30);
     --ink-solid: var(--m-ink);
     --hr-color: var(--m-tag);
-
-    color-scheme: dark;
 }
 
 /* Visual system checklist:
@@ -686,8 +668,6 @@ body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-3>.rm-
     background: transparent !important;
 }
 
-/* .roam-body-main / .roam-main / :has(.rm-title-editing-display) 等：仅版式，已移除 */
-
 /* ========================================================= */
 /* 4. Typography                                             */
 /* 已比对 system.css：无相同规则块（system 仅 .roam-body .roam-app h1 颜色、.rm-level* 字号），全部保留 */
@@ -730,8 +710,6 @@ body .bp3-text-overflow-ellipsis {
     font-family: var(--heading-font);
 }
 
-/* .rm-title-editing-display textarea / 标题容器 / focus 等：仅版式，已移除 */
-
 /* 排除 .rm-topbar / .rm-topbar-zen；仅正文区 div/textarea 用 body-font，其余继承 .roam-app 的 --ui-font */
 .roam-app .roam-article div,
 .roam-app .roam-block-container,
@@ -741,7 +719,6 @@ body .bp3-text-overflow-ellipsis {
     color: var(--text-color);
     font-family: var(--body-font);
     font-size: var(--font-size);
-    line-height: var(--lh-content);
 }
 
 .roam-app div:not(.rm-topbar):not(.rm-topbar-zen) {
@@ -764,12 +741,13 @@ body .bp3-text-overflow-ellipsis {
     color: var(--text-color);
     font-family: var(--body-font);
     font-size: var(--fs-body);
-    line-height: var(--lh-content);
 }
 
-/* 正文块编辑态 textarea 与展示态字号统一 */
+/* 普通正文块：展示态 .rm-block__input--view 与编辑态 textarea 统一字号/行高 */
+.roam-app .roam-article .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main>.rm-block__input.rm-block__input--view,
 .roam-app .roam-article .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main>.rm-block__input textarea,
 .roam-app .roam-article .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main .rm-autocomplete__wrapper textarea,
+.rm-ref-page-view .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main>.rm-block__input.rm-block__input--view,
 .rm-ref-page-view .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main>.rm-block__input textarea,
 .rm-ref-page-view .roam-block-container:not(.rm-level1):not(.rm-level2):not(.rm-level3):not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3) .rm-block-main .rm-autocomplete__wrapper textarea {
     font-size: var(--fs-body) !important;
@@ -787,10 +765,7 @@ body .bp3-text-overflow-ellipsis {
     color: var(--title-display-color);
     font-family: var(--title-font);
     font-size: var(--fs-page-title);
-    line-height: var(--lh-page-title);
 }
-
-/* .rm-title-display-container:has(.rm-title-editing-display)：仅 margin，已移除 */
 
 /* 编辑模式标题与展示模式保持一致（字号、行高统一） */
 .roam-app :is(.rm-title-display-container .rm-title-editing-display, .roam-article .rm-title-editing-display, .rm-title-editing-display),
@@ -798,11 +773,10 @@ body .bp3-text-overflow-ellipsis {
     color: var(--title-display-color);
     font-family: var(--title-font);
     font-size: var(--fs-page-title);
-    line-height: var(--lh-page-title);
 }
 
 .roam-app :is(.roam-article .rm-title-display em, .roam-article .rm-title-display i, .rm-title-display em, .rm-title-display i) {
-    font-family: 'Arno Pro Display', 'Arno Pro', serif;
+    font-family: "Arno Pro Display", "Arno Pro", serif;
 }
 
 /* 仅标题块自身内容区，不作用到 .rm-block-children 内子块（回车后新块保持正文） */
@@ -810,14 +784,6 @@ body .bp3-text-overflow-ellipsis {
     color: var(--heading-h1-color);
     font-family: var(--heading-font);
     font-size: var(--fs-h1);
-    line-height: var(--lh-h1);
-}
-
-/* .roam-block-container 间距 / rm-level1 边框等：仅版式，已移除 */
-
-.roam-app .roam-article .roam-block-container {
-    min-height: var(--block-row-min-height);
-    margin-bottom: var(--layout-margin-block);
 }
 
 .roam-app .roam-article .roam-block-container.rm-level1 {
@@ -830,7 +796,6 @@ body .bp3-text-overflow-ellipsis {
     color: var(--heading-h2-color) !important;
     font-family: var(--heading-font) !important;
     font-size: var(--fs-h2) !important;
-    line-height: var(--lh-h2);
 }
 
 .roam-app .roam-article .roam-block-container.rm-level2 {
@@ -841,14 +806,11 @@ body .bp3-text-overflow-ellipsis {
     color: var(--heading-h3-color);
     font-family: var(--heading-font);
     font-size: var(--fs-h3);
-    line-height: var(--lh-h3);
 }
 
 .roam-app .roam-article .roam-block-container.rm-level3 {
     font-size: var(--fs-h3);
 }
-
-/* .rm-heading-level-1/2/3 margin-bottom：仅版式，已移除 */
 
 .roam-app a {
     color: var(--color-secondary);
@@ -863,8 +825,6 @@ body:not(.rm-dark-theme) .roam-app a:not(.rm-alias--page):not(.rm-alias--block):
 body:not(.rm-dark-theme) .roam-app .rm-alias--external:hover {
     color: var(--m-link-hover, var(--m-link)) !important;
 }
-
-/* .rm-alias--external font-weight / .rm-inline-code line-height 等：仅版式/非 font-size，已移除 */
 
 /* ========================================================= */
 /* 5. Code Blocks                                            */
@@ -907,13 +867,12 @@ body:not(.rm-dark-theme) .roam-app .rm-alias--external:hover {
 .roam-app code {
     background: var(--inline-code-bg) !important;
     color: var(--inline-code-color) !important;
-    border: 1px solid oklch(from var(--m-page-ref) l c h / 0.35) !important;
 }
 
 .roam-app .cm-comment,
 .roam-app .cm-variable-2,
 .roam-app .cm-attribute {
-    font-family: 'Operator Mono', monospace;
+    font-family: "Operator Mono", monospace;
 }
 
 /* 代码块选区：背景用主题变量（system.css 有 .cm-selectionBackground / .cmt-line::selection，此处统一透明 + 变量） */
@@ -925,16 +884,6 @@ body:not(.rm-dark-theme) .roam-app .rm-alias--external:hover {
 .roam-app :is(.rm-code-block .cm-line, .cm-content, code)::selection {
     background: transparent !important;
     color: inherit !important;
-}
-
-/* 夜间模式：代码块插入符可见（参考 system.css：.bp3-dark .cm-cursor 用 border-left 绘制） */
-body.rm-dark-theme .roam-app .rm-code-block .cm-editor,
-body.rm-dark-theme .roam-app .rm-code-block .cm-content {
-    caret-color: var(--text-color);
-}
-
-body.rm-dark-theme .roam-app .rm-code-block .cm-cursor {
-    border-left-color: var(--text-color) !important;
 }
 
 /* 夜间模式：代码块语法高亮，提升可读性 */
@@ -1032,8 +981,6 @@ body.rm-dark-theme .roam-app .rm-code-block span.cmt-link {
     background: var(--embed-hover-bg);
 }
 
-/* .rm-query 版式：已移除 */
-
 .roam-app .rm-query .rm-query-title {
     background-color: transparent;
     border-color: var(--color-subtle-border);
@@ -1064,7 +1011,6 @@ body.rm-dark-theme .roam-app .rm-code-block span.cmt-link {
 /* ========================================================= */
 
 /* ---------- 左侧边栏：版式见 system.css，此处仅保留与 system 不同项 ---------- */
-/* .roam-sidebar-container left：仅版式，已移除 */
 
 /* ---------- 左侧边栏：roam 配色与字体 ---------- */
 .roam-app .roam-sidebar-container {
@@ -1072,36 +1018,16 @@ body.rm-dark-theme .roam-app .rm-code-block span.cmt-link {
 }
 
 /* rm-db-title 区域版式照搬 system.css，配色与字体保留 roam 设置 */
-.roam-app .roam-sidebar-container .rm-db-title-container {
-    display: flex;
-    align-items: center;
-    align-content: space-between;
-    width: 100%;
-    max-width: 100%;
-}
-
-.roam-app .roam-sidebar-container .rm-db-title-container:hover {
-    cursor: pointer;
-}
 
 .roam-app .roam-sidebar-container .rm-db-title-container .rm-db-title {
-    padding: 4px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: flex;
-    align-items: center;
-    font-weight: 600;
     color: var(--sidebar-title-color);
-    font-family: 'Felix Titling', '方正清刻本悦宋 简繁', serif;
+    font-family: "Felix Titling", "方正清刻本悦宋 简繁", serif;
     font-size: 1.75rem;
-    text-align: center;
 }
 
 body:not(.rm-dark-theme) .roam-app .roam-sidebar-container .rm-db-title-container .rm-db-title {
     color: var(--sidebar-title-color-day);
 }
-
-/* .flex-v-box.starred-pages-wrapper / .roam-sidebar-container .starred-pages-wrapper：仅版式，无配色/字体，已移除 */
 
 .roam-app .starred-pages-wrapper>.flex-h-box.title>span {
     color: var(--sidebar-star-color);
@@ -1112,14 +1038,7 @@ body:not(.rm-dark-theme) .roam-app .starred-pages-wrapper>.flex-h-box.title>span
     color: var(--sidebar-star-color-day) !important;
 }
 
-/* .roam-sidebar-content .starred-pages > a：仅版式，无配色/字体，已移除 */
-
-/* .roam-sidebar-container > *：仅 box-shadow/opacity，已移除 */
-
 .roam-app .roam-sidebar-content .top-row {
-    align-items: center;
-    padding: 8px 16px;
-    justify-content: space-between;
     background: transparent;
     color: var(--text-color);
 }
@@ -1259,18 +1178,8 @@ body:not(.rm-dark-theme) .roam-app .roam-sidebar-content>div>div {
 }
 
 .roam-app .roam-sidebar-container .roam-sidebar-content .rm-db-title .expand-icon {
-    padding-left: 8px;
     font-size: 12px;
     color: var(--light-text-color);
-}
-
-.roam-app .roam-sidebar-container .roam-sidebar-content .rm-db-title .icon {
-    background-size: cover;
-    margin-right: 8px;
-    border: 1px solid var(--color-subtle-border);
-    height: 18px;
-    width: 18px;
-    border-radius: 100px;
 }
 
 .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .rm-dnd-separator .rm-dnd-drop-bar {
@@ -1294,9 +1203,6 @@ body:not(.rm-dark-theme) .roam-app .roam-sidebar-content>div>div {
 }
 
 /* 日间模式下 logo 颜色改为黑色 */
-body:not(.rm-dark-theme) .roam-sidebar-container img[src*="astrolabe"] {
-    filter: brightness(0) !important;
-}
 
 body:not(.rm-dark-theme) .roam-sidebar-container img[src*="astrolabe"]~span {
     color: #000000 !important;
@@ -1322,41 +1228,6 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
 .roam-app .roam-sidebar-content .log-button,
 .roam-app .roam-sidebar-content .top-row {
     color: var(--text-color) !important;
-}
-
-/* 侧边栏顶部图形名称居中 */
-.roam-app .roam-sidebar-content .top-row>.flex-h-box {
-    flex: 1 !important;
-    justify-content: center !important;
-}
-
-.roam-app .roam-sidebar-content .top-row .rm-db-title-container {
-    width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
-}
-
-/* 图形切换下拉框居中 */
-.bp3-transition-container:has(.rm-graph-dropdown) {
-    left: 50% !important;
-    /* 水平居中 */
-    transform: translateX(-50%) !important;
-    margin-top: 45px !important;
-    /* 进一步向下移动，确保完全露出 Axiom */
-}
-
-.roam-app .bp3-menu.rm-graph-dropdown {
-    min-width: 200px !important;
-    text-align: center;
-}
-
-/* 下拉框内的各行文字也居中（可选） */
-.roam-app .bp3-menu.rm-graph-dropdown .bp3-menu-item {
-    justify-content: center;
-}
-
-.roam-app .roam-sidebar-content .starred-pages .page {
-    padding-left: 24px !important;
 }
 
 /* ========================================================= */
@@ -1408,7 +1279,6 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
     color: var(--title-display-color);
     font-family: var(--title-font) !important;
     font-size: var(--fs-page-title) !important;
-    line-height: var(--lh-page-title) !important;
 }
 
 .roam-app #right-sidebar .rm-sidebar-outline .roam-block-container,
@@ -1418,43 +1288,24 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
     font-family: var(--body-font);
 }
 
-/* 隐藏 multibar（块操作条） */
-.roam-app .rm-multibar {
-    display: none !important;
+/* 日间模式：multibar 边框与夜间使用同一透明度逻辑（同变量） */
+body:not(.rm-dark-theme) .rm-multibar,
+body:not(.rm-dark-theme) .rm-multibar .bp3-popover-content,
+body:not(.rm-dark-theme) .rm-multibar .bp3-button,
+body:not(.rm-dark-theme) .roam-app .rm-multibar,
+body:not(.rm-dark-theme) .roam-app .rm-multibar .bp3-popover-content,
+body:not(.rm-dark-theme) .roam-app .rm-multibar .bp3-button {
+    border-color: oklch(from #000 l c h / 0.55) !important;
 }
 
-/* --- 块控件垂直对齐优化 --- */
-
-/* 确保控件容器在多行文本时对齐首行 */
-.rm-block-main>.rm-block__controls {
-    align-self: flex-start !important;
-}
-
-/* H1 标题圆点对齐 */
-.rm-heading-level-1>.rm-block-main>.rm-block__controls {
-    margin-top: -6px !important;
-}
-
-/* H2 标题圆点对齐 */
-.rm-heading-level-2>.rm-block-main>.rm-block__controls {
-    margin-top: -2px !important;
-}
-
-/* H3 标题圆点对齐 (微调至 -3px) */
-.rm-heading-level-3>.rm-block-main>.rm-block__controls {
-    margin-top: 0.2px !important;
-}
-
-/* Quote (引用) 块圆点对齐 (使用 :has 查找内部 blockquote) */
-/* 引用块因为 blockquote 标签自带 top padding/margin，圆点需要下移 */
-.rm-block-main:has(blockquote)>.rm-block__controls {
-    margin-top: 17px !important;
-}
-
-/* 普通正文块圆点微调 */
-/* 排除标题和引用块，避免冲突 */
-.roam-block-container:not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3):not(:has(blockquote))>.rm-block-main>.rm-block__controls {
-    margin-top: -1px !important;
+/* view/edit 两态统一：从根上把 .rm-block__input 展示层与 textarea 编辑层的行盒锁为同一规格
+   目的：bullet 与首行基线的相对位置在编辑/未编辑间保持一致，且与行距/间距无关
+   作用域：非标题 / 非引用块（标题与引用另有专属规则） */
+.roam-app .roam-block-container:not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3):not(:has(blockquote))>.rm-block-main>.rm-block__input,
+.roam-app .roam-block-container:not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3):not(:has(blockquote))>.rm-block-main>.rm-block__input.rm-block__input--view,
+.roam-app .roam-block-container:not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3):not(:has(blockquote))>.rm-block-main>.rm-block__input>textarea,
+.roam-app .roam-block-container:not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3):not(:has(blockquote))>.rm-block-main>.rm-block__input .rm-autocomplete__wrapper>textarea {
+    font-size: var(--fs-body) !important;
 }
 
 /* Bullet 圆点：日间 #3D3B4F，夜间浅色系（淡色，不抢眼） */
@@ -1481,20 +1332,11 @@ body.rm-dark-theme .roam-app .rm-bullet.rm-bullet--closed .rm-bullet__inner {
     border-color: oklch(from var(--m-text) l c h / 0.18) !important;
 }
 
-/* 编辑态：bullet 红色（无泛光，无 border） */
-body:not(.rm-dark-theme) .roam-app .roam-block-container:focus-within .rm-bullet .rm-bullet__inner,
-body:not(.rm-dark-theme) .roam-app .roam-block-container:focus-within .rm-bullet.rm-bullet--closed .rm-bullet__inner {
-    background-color: oklch(from var(--m-bullet-focus) l c h / 0.68) !important;
+/* 编辑态：bullet 颜色回退为 Roam 默认（仅保留无 border，日夜统一） */
+.roam-app .roam-block-container:focus-within .rm-bullet .rm-bullet__inner,
+.roam-app .roam-block-container:focus-within .rm-bullet.rm-bullet--closed .rm-bullet__inner {
     border-color: transparent !important;
 }
-
-body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet .rm-bullet__inner,
-body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bullet--closed .rm-bullet__inner {
-    background-color: var(--m-bullet-focus) !important;
-    border-color: transparent !important;
-}
-
-
 
 /* ========================================================= */
 /* 8. Block References & Blockquote                          */
@@ -1511,8 +1353,6 @@ body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bu
 .roam-app #block-input-ghost span {
     color: var(--text-color) !important;
 }
-
-/* .rm-block-ref::before：仅版式，已移除 */
 
 .roam-app .rm-block-ref {
     border-color: var(--m-tag);
@@ -1536,14 +1376,6 @@ body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bu
     font-size: var(--fs-quote) !important;
 }
 
-.roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote) {
-    border-left: 3px solid var(--blockquote-bar-color) !important;
-}
-
-.roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote):hover {
-    border-left-color: var(--blockquote-bar-hover-color) !important;
-}
-
 .roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote)::before {
     background: var(--blockquote-bar-color);
 }
@@ -1552,15 +1384,8 @@ body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bu
     background: var(--blockquote-bar-hover-color);
 }
 
-/* .roam-article .rm-bq margin：仅版式，已移除 */
-
 .roam-app :is(.rm-bq, blockquote) :is(em, i) {
-    font-family: 'Garamond Premier Pro', 'Garamond', serif !important;
-}
-
-.roam-app hr.rm-hr {
-    border: 0;
-    border-top: 1.5px solid var(--hr-color);
+    font-family: "Garamond Premier Pro", "Garamond", serif !important;
 }
 
 /* Strikethrough 删除线文字：降低灰度，更淡；横线加粗 */
@@ -1573,7 +1398,6 @@ body.rm-dark-theme .roam-app .roam-block-container:focus-within .rm-bullet.rm-bu
 .roam-app [style*="text-decoration: line-through"],
 .roam-app [style*="text-decoration:line-through"] {
     color: oklch(from var(--m-text) l c h / 0.45) !important;
-    text-decoration-thickness: 1.5px !important;
 }
 
 body.rm-dark-theme .roam-app .rm-Falsified,
@@ -1585,7 +1409,6 @@ body.rm-dark-theme .roam-app del,
 body.rm-dark-theme .roam-app [style*="text-decoration: line-through"],
 body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
     color: oklch(from var(--m-text) l c h / 0.48) !important;
-    text-decoration-thickness: 2px !important;
 }
 
 .roam-app div>.bp3-icon-caret-down+strong,
@@ -1593,127 +1416,8 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
     color: var(--tree-node-color) !important;
 }
 
-/* 侧栏拖拽条：视觉隐藏，保留拖拽调整宽度功能 */
-.roam-app .rm-resize-handle {
-    opacity: 0 !important;
-    pointer-events: auto;
-}
-
 .roam-app .rm-resize-handle:hover {
-    opacity: 0 !important;
     background-color: transparent !important;
-}
-
-/* ========================================================= */
-/* 9. Checkboxes (Smiley Toggle Design)                      */
-/* ========================================================= */
-
-.roam-app .check-container {
-    position: relative;
-    display: inline-block;
-    width: 36px;
-    height: 18px;
-    margin: -5.5px 2px 0 4px;
-    vertical-align: middle;
-    cursor: pointer;
-}
-
-.roam-app .check-container input {
-    position: absolute;
-    width: 0;
-    height: 0;
-    opacity: 0;
-}
-
-.roam-app .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 18px;
-    background: var(--toggle-off-bg);
-    border: none !important;
-    border-radius: 10px;
-    box-shadow: var(--toggle-off-shadow);
-    transition: 0.5s;
-}
-
-.roam-app .check-container input:checked~.checkmark {
-    background: var(--toggle-on-bg);
-    box-shadow: var(--toggle-on-shadow);
-    transform: rotate(180deg);
-}
-
-.roam-app .smiley-face {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    display: block;
-    width: 14px;
-    height: 14px;
-    background: var(--toggle-face-bg);
-    border-radius: 50%;
-    transition: 0.5s;
-    transition-delay: 0.2s;
-}
-
-.roam-app .check-container input:checked~.checkmark .smiley-face {
-    left: 2px;
-    transform: rotate(180deg);
-}
-
-.roam-app .checkmark> :not(.smiley-face) {
-    display: none !important;
-}
-
-/* 隐藏 system.css 用 ::after 画的默认对勾，只保留笑脸 */
-.roam-app .check-container .checkmark::after {
-    content: none !important;
-    display: none !important;
-    border: none !important;
-}
-
-.roam-app .smiley-face::before {
-    content: '';
-    position: absolute;
-    top: 4px;
-    left: 3px;
-    width: 2.5px;
-    height: 2.5px;
-    background: var(--toggle-eye-off);
-    border-radius: 50%;
-    box-shadow: 6px 0 var(--toggle-eye-off);
-    transition: 0.5s;
-}
-
-.roam-app .check-container input:checked~.checkmark .smiley-face::before {
-    background: var(--toggle-eye-on);
-    box-shadow: 6px 0 var(--toggle-eye-on);
-}
-
-/* 嘴：未勾选 = 哭脸（下弯弧），勾选 = 笑脸（上弯弧） */
-.roam-app .smiley-face::after {
-    content: '';
-    position: absolute;
-    bottom: 2.5px;
-    left: 50%;
-    width: 6px;
-    height: 3px;
-    background: var(--toggle-eye-off);
-    transform: translateX(-50%);
-    /* 哭脸：上缘圆角，弧线向下 */
-    border-radius: 3px 3px 0 0;
-    transition: 0.5s;
-}
-
-.roam-app .check-container input:checked~.checkmark .smiley-face::after {
-    background: var(--toggle-eye-on);
-    /* 笑脸：下缘圆角，弧线向上 */
-    border-radius: 0 0 3px 3px;
-}
-
-.roam-app .check-container input:focus~.checkmark {
-    box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--toggle-eye-on);
 }
 
 /* ========================================================= */
@@ -1750,30 +1454,18 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
 
 /* 根变量（覆盖 JS 内联） */
 .roam-app .rm-diagram {
-    --edge-stroke-color: var(--color-subtle-border) !important;
-    --global-edge-stroke-color: var(--color-subtle-border) !important;
-    --group-title-fill-color: oklch(from var(--m-text) l c h / 0.12) !important;
+    --edge-stroke-color: oklch(from var(--m-text) l c h / 0.28) !important;
+    --global-edge-stroke-color: oklch(from var(--m-text) l c h / 0.24) !important;
+    --group-title-fill-color: oklch(from var(--m-text) l c h / 0.18) !important;
     --diagram-background-color: var(--bg-color) !important;
-    --group-area-fill-color: var(--embed-bg) !important;
+    --group-area-fill-color: oklch(from var(--m-text) l c h / 0.08) !important;
     --block-fill-color: var(--page-color) !important;
     --block-text-color: var(--text-color) !important;
-    --group-title-text-color: var(--title-display-color) !important;
+    --group-title-text-color: var(--text-color) !important;
     --block-font-size: var(--fs-body) !important;
     --group-title-font-size: var(--fs-h1) !important;
     --block-unset-max-width: 200px !important;
     --block-text-align: start !important;
-}
-
-.roam-app .rm-diagram-xparser {
-    height: 500px;
-    width: 100%;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.roam-app .rm-diagram-full-screen {
-    height: 100%;
-    width: 100%;
 }
 
 .roam-app .rm-diagram {
@@ -1781,65 +1473,23 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
 }
 
 .roam-app .rm-diagram .react-flow__node-toolbar {
-    box-shadow: 0 2px 10px 0 oklch(from var(--m-ink) l c h / 0.08);
-    padding: 2px;
     background-color: var(--page-color);
-    display: flex;
-    align-items: center;
-}
-
-.roam-app .rm-diagram .rm-simple-color-picker {
-    padding: 6px;
-}
-
-.roam-app .rm-diagram .rm-simple-color-picker .rm-simple-color-picker-row {
-    display: flex;
-    gap: 1px;
-}
-
-.roam-app .rm-diagram .rm-simple-color-picker .rm-simple-color-picker-item.rm-active {
-    box-shadow: 0 0 0 2px var(--item-color);
 }
 
 .roam-app .rm-diagram .rm-simple-color-picker .rm-simple-color-picker-item {
-    cursor: pointer;
-    width: 22px;
-    height: 22px;
-    margin: 2px;
     background-color: var(--item-color);
 }
 
-.roam-app .rm-diagram .react-flow__pane {
-    cursor: pointer;
-}
-
-.roam-app .rm-diagram .rm-diagram-helper-panel {
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%, -50%);
-}
-
 .roam-app .rm-diagram .rm-diagram-helper-panel .rm-diagram-properties-panel__content {
-    text-align: center;
-    color: oklch(from var(--m-text) l c h / 0.4);
+    color: oklch(from var(--m-text) l c h / 0.56);
 }
 
 .roam-app .rm-diagram .rm-diagram-helper-panel .rm-diagram-properties-panel__content--header {
-    font-weight: 600;
     font-size: 1.2em;
-    margin-bottom: 8px;
-}
-
-.roam-app .rm-diagram .rm-diagram-helper-panel--inline {
-    top: 45%;
 }
 
 .roam-app .rm-diagram .rm-diagram-helper-panel--inline .rm-diagram-properties-panel__content {
     font-size: 1em;
-}
-
-.roam-app .rm-diagram .rm-diagram-helper-panel--maximized {
-    top: 40%;
 }
 
 .roam-app .rm-diagram .rm-diagram-helper-panel--maximized .rm-diagram-properties-panel__content {
@@ -1848,40 +1498,9 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
 
 .roam-app .rm-diagram .rm-diagram-properties-panel {
     background-color: var(--page-color);
-    box-shadow: 0 0 2px 1px oklch(from var(--m-ink) l c h / 0.08);
-    width: 220px;
-    user-select: none;
-    max-height: calc(100% - 30px);
-    display: flex;
-    flex-direction: column;
-}
-
-.roam-app .rm-diagram .rm-diagram-properties-panel--disabled {
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-.roam-app .rm-diagram .rm-diagram-properties-panel.rm-open .rm-diagram-properties-panel__header .bp3-icon-chevron-right {
-    transform: rotate(90deg);
-}
-
-.roam-app .rm-diagram .rm-diagram-properties-panel__header {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.roam-app .rm-diagram .rm-diagram-properties-panel__header .bp3-icon-chevron-right {
-    transition: all 100ms ease-in;
 }
 
 .roam-app .rm-diagram .rm-diagram-properties-panel__content {
-    overflow-x: auto;
-    padding: 0 12px;
     font-size: 12px;
 }
 
@@ -1889,67 +1508,15 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
     font-size: 12px;
 }
 
-.roam-app .rm-diagram .rm-diagram-properties-panel__content .bp3-divider {
-    margin: 6px 0;
-}
-
-.roam-app .rm-diagram .rm-diagram-properties-panel__section {
-    transition: all 50ms ease-in;
-}
-
-.roam-app .rm-diagram .rm-diagram-properties-panel__section-header {
-    font-weight: bold;
-}
-
-.roam-app .rm-diagram .rm-diagram-properties-panel__section-content>* {
-    margin: 6px 0;
-}
-
-.roam-app .rm-diagram .rm-diagram-properties-panel__color-picker {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.roam-app .rm-diagram .rm-diagram-properties-panel__select {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.roam-app .rm-diagram .rm-diagram-properties-panel__numeric-input {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.roam-app .rm-diagram .rm-diagram-properties-panel__numeric-input .rm-numeric-input {
-    max-width: 80px;
-    height: 21px;
-}
-
 .roam-app .rm-diagram .rm-diagram-properties-panel__numeric-input input[type="text"] {
-    height: 21px;
     font-size: 0.9em;
 }
 
-.roam-app .rm-diagram .rm-diagram-properties-panel__default-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.roam-app .rm-diagram .rm-diagram-properties-panel .codemirror-colorpicker .menu {
-    padding-top: 2px;
-}
-
 .roam-app .rm-diagram .react-flow__connection-line path {
-    stroke-width: 2;
     stroke: var(--global-edge-stroke-color);
 }
 
 .roam-app .rm-diagram .react-flow__connection-line circle {
-    stroke-width: 2;
     stroke: var(--global-edge-stroke-color);
     fill: var(--page-color);
 }
@@ -1962,115 +1529,49 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
 
 .roam-app .rm-diagram .react-flow__edge.selected .react-flow__edge-interaction {
     stroke: var(--edge-stroke-color);
-    stroke-opacity: 0.2;
-    stroke-linecap: round;
 }
 
 .roam-app .rm-diagram .react-flow__edge-path {
     stroke: var(--edge-stroke-color);
-    stroke-width: 2;
     fill: none;
 }
 
-.roam-app .rm-diagram .react-flow__node:hover .rm-diagram-node__resize-control {
-    display: unset;
-}
-
 .roam-app .rm-diagram .rm-diagram-node__resize-control {
-    width: 12px;
-    height: 12px;
-    position: absolute;
-    bottom: -4px;
-    right: -4px;
-    cursor: nwse-resize;
     background-color: var(--page-color);
-    display: none;
 }
 
 .roam-app .rm-diagram .react-flow__nodesselection-rect {
-    background-color: oklch(from var(--m-primary) l c h / 0.1);
+    background-color: oklch(from var(--m-primary) l c h / 0.16);
 }
 
 .roam-app .rm-diagram .react-flow__node-selection-rect {
-    width: var(--selection-rect-width);
-    height: var(--selection-rect-height);
-    background-color: oklch(from var(--m-primary) l c h / 0.1);
-    z-index: 1001;
+    background-color: oklch(from var(--m-primary) l c h / 0.16);
 }
 
 .roam-app .rm-diagram .react-flow__node-group {
-    z-index: -1 !important;
-    padding: unset;
     font-size: unset;
     color: unset;
-    text-align: unset;
     background-color: var(--group-area-fill-color);
-    min-width: 400px;
-    min-height: 200px;
-    width: 100px;
-    height: 50px;
-}
-
-.roam-app .rm-diagram .react-flow__node-group:focus {
-    box-shadow: unset;
-}
-
-.roam-app .rm-diagram .react-flow__node-group.selected:after {
-    box-shadow: 0 1px 10px var(--color-subtle-border);
-    content: " ";
-    position: absolute;
-    z-index: -1;
-    inset: calc(-1 * (2px + 2px));
-}
-
-.roam-app .rm-diagram .react-flow__node-group .rm-node-group__title-outer-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
 }
 
 .roam-app .rm-diagram .react-flow__node-group .rm-node-group__title-inner-wrapper {
-    position: absolute;
-    cursor: grab;
-    bottom: 5px;
-    min-width: 50px;
-    padding: 2px 6px;
     background-color: var(--group-title-fill-color);
     font-size: var(--group-title-font-size, 20px);
     color: var(--group-title-text-color);
 }
 
 .roam-app .rm-diagram .react-flow__node-group .react-flow__handle.source {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    transform: unset;
     background: unset;
 }
 
 .roam-app .rm-diagram .react-flow__node-block {
-    cursor: grab;
     font-size: var(--block-font-size);
-    text-align: var(--block-text-align);
     color: var(--block-text-color);
     background-color: var(--block-fill-color);
-    padding: 12px;
-    max-width: var(--block-unset-max-width);
 }
 
 .roam-app .rm-diagram .react-flow__node-block .react-flow__handle.source {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    transform: unset;
     background: unset;
-}
-
-.roam-app .rm-diagram .react-flow__node-block:hover {
-    box-shadow: 0 1px 10px var(--color-subtle-border);
 }
 
 .roam-app .rm-diagram .react-flow__node.react-flow__node-block {
@@ -2078,58 +1579,7 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
 }
 
 .roam-app .rm-diagram .rm-selected-duplicate-block::after {
-    content: " ";
-    position: absolute;
-    inset: 0;
-    opacity: 0.5;
-    background: repeating-linear-gradient(-45deg, var(--color-subtle-border), var(--color-subtle-border) 10px, oklch(from var(--m-text) l c h / 0.2) 10px, oklch(from var(--m-text) l c h / 0.2) 20px);
-}
-
-.roam-app .rm-diagram .react-flow__node-block>.rm-parsed-block-string,
-.roam-app .rm-diagram .react-flow__node-block>.rm-diagram-outline-container {
-    pointer-events: none;
-}
-
-.roam-app .rm-diagram .selected.react-flow__node-block>.rm-parsed-block-string,
-.roam-app .rm-diagram .selected.react-flow__node-block>.rm-diagram-outline-container {
-    pointer-events: auto;
-}
-
-.roam-app .rm-diagram .rm-pdf,
-.roam-app .rm-diagram .rm-iframe-component {
-    position: absolute;
-    width: calc(100% - (2 * 12px));
-    height: calc(100% - (2 * 12px));
-}
-
-.roam-app .rm-diagram.rm-diagram--prevent-iframe-pointer .rm-pdf {
-    pointer-events: none;
-}
-
-.roam-app .rm-diagram.rm-diagram--prevent-iframe-pointer .rm-iframe-component {
-    pointer-events: none;
-}
-
-.roam-app .rm-diagram .rm-inline-img {
-    width: 100%;
-    height: 100%;
-}
-
-.roam-app .rm-diagram .selected .rm-parsed-block-string .rm-page-ref {
-    position: relative;
-}
-
-.roam-app .rm-diagram .selected .rm-parsed-block-string {
-    cursor: text;
-}
-
-.roam-app .rm-diagram .rm-parsed-block-string {
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-}
-
-.roam-app .rm-diagram .rm-parsed-block-string .bp3-popover-target {
-    display: inline;
+    background: repeating-linear-gradient(-45deg, oklch(from var(--m-text) l c h / 0.28), oklch(from var(--m-text) l c h / 0.28) 10px, oklch(from var(--m-primary) l c h / 0.18) 10px, oklch(from var(--m-primary) l c h / 0.18) 20px);
 }
 
 /* diagram 块内文案（含 (empty)）日间黑色、夜间白色，覆盖内联 color */
@@ -2137,76 +1587,44 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
     color: var(--text-color) !important;
 }
 
-.roam-app .rm-diagram .rm-embed-container {
-    margin-right: unset;
-}
-
-.roam-app .rm-diagram .rm-block-separator {
-    flex: 0 0 0;
-    min-width: unset;
-}
-
-.roam-app .rm-diagram .rm-code-block {
-    margin-right: unset;
-}
-
-.roam-app .rm-diagram .rm-full-width {
-    margin-right: unset;
-}
-
-.roam-app .rm-diagram .rm-diagram-outline-container .rm-zoom.zoom-path-view {
-    margin: 0 0 4px;
-}
-
-.roam-app .rm-diagram .rm-diagram-outline-container .rm-zoom .rm-zoom-item .rm-zoom-item-content {
-    padding: 0 4px;
-}
-
-.roam-app .rm-diagram .rm-diagram-outline-container .rm-diagram-outline {
-    cursor: pointer;
-    overflow: hidden;
-}
-
-.roam-app .rm-diagram .rm-diagram-outline-container .rm-diagram-outline>div {
-    margin-left: -8px;
-}
-
 .roam-app .rm-diagram-pane-context-menu {
     background: var(--page-color);
-    box-shadow: 0 0 0 1px oklch(from var(--m-ink) l c h / 0.1), 0 2px 4px oklch(from var(--m-ink) l c h / 0.2), 0 8px 24px oklch(from var(--m-ink) l c h / 0.2);
-    position: absolute;
-    z-index: 10;
-}
-
-.roam-app .rm-diagram-minimap {
-    width: 100%;
-    height: 100%;
 }
 
 .roam-app .rm-diagram-minimap__node-block {
     fill: var(--block-fill-color);
-    fill-opacity: 0.75;
 }
 
 .roam-app .rm-diagram-minimap__node-group {
     fill: var(--group-area-fill-color);
 }
 
+/* 夜间：Diagram minimap 降低高亮填充，避免浅蓝块过曝 */
+body.rm-dark-theme .roam-app .rm-diagram-minimap__node-block {
+    fill: oklch(from var(--m-text) l c h / 0.22);
+    stroke: oklch(from var(--m-text-muted) l c h / 0.35);
+}
+
+body.rm-dark-theme .roam-app .rm-diagram-minimap__node-group {
+    fill: oklch(from var(--m-text) l c h / 0.14);
+    stroke: oklch(from var(--m-text-muted) l c h / 0.28);
+}
+
+/* 夜间：React Flow minimap 面板本体配色（.react-flow__minimap / rf__minimap） */
+body.rm-dark-theme .roam-app .rm-diagram .react-flow__minimap {
+    background-color: oklch(from var(--m-ink) l c h / 0.42) !important;
+    border-color: oklch(from var(--m-text-muted) l c h / 0.32) !important;
+}
+
+body.rm-dark-theme .roam-app .rm-diagram .react-flow__minimap svg {
+    background-color: transparent !important;
+}
+
 .roam-app .rm-diagram-title-panel {
-    position: absolute;
-    z-index: 1;
     background-color: var(--page-color);
-    box-shadow: 0 0 2px 1px oklch(from var(--m-ink) l c h / 0.08);
-    top: 8px;
-    left: 8px;
-    padding: 4px;
-    max-width: 90%;
 }
 
 .roam-app .rm-diagram-title {
-    padding: 0;
-    margin: 0 4px;
-    flex: 1 0 auto;
     color: var(--text-color);
 }
 
@@ -2222,42 +1640,20 @@ body.rm-dark-theme .roam-app [style*="text-decoration:line-through"] {
 /* 11. Tags & Labels                                         */
 /* ========================================================= */
 
-.roam-app .rm-page-ref-brackets {
-    display: none;
-}
-
-.roam-app span.rm-page-ref {
-    border-radius: 2px;
-    padding: 0 1px;
-}
-
 .roam-app .rm-page-ref--link {
     color: var(--color-primary);
-    font-weight: 600;
-    letter-spacing: 0;
-    text-shadow: none;
-    transition: color 0.2s ease, background 0.2s ease, text-decoration 0.2s ease, filter 0.2s ease, letter-spacing 0.2s ease, text-shadow 0.2s ease;
 }
 
 body:not(.rm-dark-theme) .roam-app .rm-page-ref--link,
 body:not(.rm-dark-theme) .roam-app a.rm-alias--page,
 body:not(.rm-dark-theme) .roam-app a.rm-alias--block {
     color: var(--m-page-ref) !important;
-    text-decoration: none !important;
-    border-bottom: none !important;
-    letter-spacing: 0;
-    text-shadow: none;
 }
 
 body:not(.rm-dark-theme) .roam-app .rm-page-ref--link:hover,
 body:not(.rm-dark-theme) .roam-app a.rm-alias--page:hover,
 body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
     color: var(--m-page-ref-hover) !important;
-    text-decoration: none !important;
-    border-bottom: none !important;
-    font-weight: 800 !important;
-    letter-spacing: 0.03em;
-    text-shadow: 0 0 0.5px currentColor, 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 /* 学术标签（Academic Tag）：小型大写 + 底线下划线，排除 #Streamer 及 theorem/definition/proof/problem/counter/assumption（后者有专用配色） */
@@ -2266,22 +1662,12 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
     color: var(--tag-text-color) !important;
     font-family: var(--tag-font), var(--body-font) !important;
     font-size: var(--fs-tag) !important;
-    font-weight: var(--tag-font-weight);
-    font-variant: small-caps;
-    letter-spacing: 0.05em;
-    line-height: var(--lh-tag) !important;
-    padding: 0 2px 1px 2px !important;
-    border-bottom: 1.5px solid var(--tag-border-color) !important;
-    border-radius: 0 !important;
     background: transparent !important;
-    text-decoration: none !important;
-    transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 }
 
 .roam-app span.rm-page-ref--tag:not([data-tag="Streamer"]):not([data-tag="theorem"]):not([data-tag="definition"]):not([data-tag="proof"]):not([data-tag="problem"]):not([data-tag="counter"]):not([data-tag="assumption"]):hover,
 .roam-app span.rm-page-ref[data-tag]:not([data-tag="Streamer"]):not([data-tag="theorem"]):not([data-tag="definition"]):not([data-tag="proof"]):not([data-tag="problem"]):not([data-tag="counter"]):not([data-tag="assumption"]):hover {
     background: var(--tag-hover-bg) !important;
-    border-bottom-color: var(--tag-text-color) !important;
 }
 
 /* 学术节点标签基础样式：与通用学术标签一致（下划线、padding、font-variant 等），仅配色由下方规则覆盖 */
@@ -2305,16 +1691,7 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
 .roam-app span[data-link-title="assumption"] {
     font-family: var(--tag-font), var(--body-font) !important;
     font-size: var(--fs-tag) !important;
-    font-weight: var(--tag-font-weight);
-    font-variant: small-caps;
-    letter-spacing: 0.05em;
-    line-height: var(--lh-tag) !important;
-    padding: 0 2px 1px 2px !important;
-    border-bottom: 1.5px solid currentColor !important;
-    border-radius: 0 !important;
     background: transparent !important;
-    text-decoration: none !important;
-    transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 }
 
 .roam-app span.rm-page-ref--tag[data-tag="theorem"]:hover,
@@ -2336,7 +1713,6 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
 .roam-app span.rm-page-ref[data-tag="assumption"]:hover,
 .roam-app span[data-link-title="assumption"]:hover {
     background: var(--tag-hover-bg) !important;
-    border-bottom-color: currentColor !important;
 }
 
 /* 学术节点标签配色：theorem / definition / proof / problem / counter / assumption，六色不重复 */
@@ -2537,7 +1913,6 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
     background: var(--block-highlight-bg);
 }
 
-
 /* ========================================================= */
 /* 13. Settings & Plugins                                    */
 /* 已比对 system.css：顶栏版式已删仅保留配色/字体；Speech to Roam 隐藏、find-or-create 等为 roam 独有 */
@@ -2646,10 +2021,6 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
     font-family: var(--code-font) !important;
 }
 
-.rm-sync-tooltip__content .bp3-divider {
-    border-bottom-color: var(--color-subtle-border) !important;
-}
-
 /* Tooltip */
 .bp3-tooltip .bp3-popover-content div {
     color: var(--tooltip-text);
@@ -2688,62 +2059,6 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
 }
 
 /* bp3-popover 相关版式照搬 system.css，配色与字体保留 roam 设置 */
-.roam-app .rm-capture-suggest-popover {
-    max-width: 80vw;
-    width: 80vw;
-}
-
-.roam-app .rm-page-ref-popover__header {
-    padding: 6px 8px;
-    text-align: center;
-}
-
-.roam-app .rm-page-ref-popover .rm-line {
-    margin-top: 0;
-}
-
-.roam-app .rm-block-text .bp3-popover-target {
-    display: inline;
-}
-
-.roam-app .rm-query-options-popover-content .bp3-control {
-    margin: 0;
-    padding: 5px 7px;
-    user-select: none;
-}
-
-.roam-app .rm-query-options-popover-content .bp3-menu-header {
-    margin-left: 0;
-}
-
-.roam-app .rm-query-options-popover-content .bp3-button-group {
-    width: 100%;
-    justify-content: center;
-}
-
-.roam-app .rm-query-options-content,
-.roam-app .rm-search-query-options-content {
-    padding: 8px 8px 0;
-    overflow: hidden;
-}
-
-.roam-app .rm-extensions-settings .rm-extensions-installed__header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.roam-app .rm-query-builder-popover .bp3-menu-header {
-    margin-left: 2px;
-}
-
-.roam-app .rm-tag-selector-popover {
-    width: 250px;
-}
-
-.roam-app .rm-pages-more-info-popover {
-    padding: 8px 8px;
-}
 
 .bp3-menu {
     font-family: var(--body-font);
@@ -2754,10 +2069,6 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
 .bp3-menu-item {
     color: var(--text-color) !important;
 }
-
-/* .bp3-menu-item .bp3-fill：仅 flex 版式，已移除 */
-
-/* .bp3-menu-item .bp3-menu-item-label：仅 display，已移除 */
 
 .bp3-menu-item:hover,
 .bp3-menu-item.bp3-active {
@@ -2773,8 +2084,6 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
 .bp3-menu-item.bp3-active .bp3-icon {
     color: var(--menu-hover-text) !important;
 }
-
-/* .bp3-menu li:has(a.rm-install-menu-item) / a.bp3-menu-item.rm-install-menu-item：仅版式，已移除 */
 
 /* 页面标题 ⋮ 菜单：隐藏链接下划线高亮 */
 .bp3-popover-arrow-fill {
@@ -3416,7 +2725,6 @@ body:not(.rm-dark-theme) .rm-settings--desktop .rm-settings__tab:not(.rm-setting
 .rm-settings-panel__panel-config .rm-settings-panel__section input[type="password"] {
     background-color: var(--embed-bg) !important;
     color: var(--text-color) !important;
-    border: 1px solid var(--color-subtle-border) !important;
 }
 
 .rm-settings-panel__panel-config input::placeholder {
@@ -3459,8 +2767,6 @@ body:not(.rm-dark-theme) .rm-settings--desktop .rm-settings__tab:not(.rm-setting
 .rm-settings-panel__section .rm-settings-panel__description {
     color: var(--light-text-color) !important;
 }
-
-/* .rm-settings-panel .bp3-input-group 等：仅版式，已移除 */
 
 /* 输入框、下拉、按钮（面板内统一） */
 .rm-settings-panel .bp3-input,
@@ -3508,7 +2814,6 @@ body:not(.rm-dark-theme) .rm-settings--desktop .rm-settings__tab:not(.rm-setting
 /* Switch / Radio 控件：与主题一致 */
 .rm-settings-panel .bp3-control-indicator {
     background-color: var(--embed-bg) !important;
-    border: 1px solid var(--color-subtle-border) !important;
 }
 
 .rm-settings-panel .bp3-control input:checked~.bp3-control-indicator {
@@ -3537,7 +2842,6 @@ body:not(.rm-dark-theme) .rm-settings--desktop .rm-settings__tab:not(.rm-setting
 .rm-hotkeys-hotkey__part.bp3-tag {
     background: var(--embed-bg) !important;
     color: var(--text-color) !important;
-    border: 1px solid var(--color-subtle-border) !important;
 }
 
 /* Depot readme 正文：可读性 */
@@ -3617,7 +2921,6 @@ body .bp3-overlay .bp3-dialog.rm-modal-dialog--settings .rm-extension-settings-h
 .bp3-dialog:has(.rm-settings-tabs) .bp3-dialog-header {
     background: transparent !important;
     color: var(--text-color) !important;
-    border-bottom: 1px solid var(--color-subtle-border) !important;
 }
 
 .bp3-dialog:has(.rm-settings-tabs) .bp3-dialog-close-button {
@@ -3631,19 +2934,10 @@ body .bp3-overlay .bp3-dialog.rm-modal-dialog--settings .rm-extension-settings-h
 
 .bp3-datepicker {
     background-color: var(--page-color) !important;
-    padding: 10px !important;
 }
 
 .DayPicker-Caption {
     background-color: transparent !important;
-    border-bottom: 1px solid var(--color-subtle-border);
-    margin-bottom: 0.5rem;
-    /* 8px，符合 4/8 倍数 */
-    padding-bottom: 0.5rem;
-}
-
-.DayPicker-Caption .bp3-divider {
-    display: none !important;
 }
 
 .bp3-datepicker-caption select {
@@ -3663,7 +2957,6 @@ body .bp3-overlay .bp3-dialog.rm-modal-dialog--settings .rm-extension-settings-h
 .DayPicker-Weekday {
     color: var(--light-text-color) !important;
     font-size: 0.85rem;
-    text-transform: uppercase;
 }
 
 .DayPicker-Day {
@@ -3760,7 +3053,6 @@ body .bp3-overlay .bp3-dialog.rm-modal-dialog--settings .rm-extension-settings-h
 body.rm-dark-theme .rm-autocomplete__results {
     background: var(--page-color);
     color: var(--text-color);
-    box-shadow: 0 0 0 1px oklch(from var(--m-ink) l c h / 0.13), 0 4px 8px oklch(from var(--m-ink) l c h / 0.65), 0 18px 46px 6px oklch(from var(--m-ink) l c h / 0.65);
 }
 
 body.rm-dark-theme .rm-autocomplete__results .rm-autocomplete-result,
@@ -3799,21 +3091,12 @@ body.rm-dark-theme .roam-app .rm-page-ref--link,
 body.rm-dark-theme .roam-app a.rm-alias--page,
 body.rm-dark-theme .roam-app a.rm-alias--block {
     color: var(--m-page-ref) !important;
-    text-decoration: none !important;
-    border-bottom: none !important;
-    letter-spacing: 0;
-    text-shadow: none;
 }
 
 body.rm-dark-theme .roam-app .rm-page-ref--link:hover,
 body.rm-dark-theme .roam-app a.rm-alias--page:hover,
 body.rm-dark-theme .roam-app a.rm-alias--block:hover {
     color: var(--m-page-ref-hover) !important;
-    text-decoration: none !important;
-    border-bottom: none !important;
-    font-weight: 800 !important;
-    letter-spacing: 0.03em;
-    text-shadow: 0 0 6px oklch(from var(--m-page-ref) l c h / 0.5), 0 0 12px oklch(from var(--m-page-ref) l c h / 0.25);
 }
 
 /* 仅标题块自身内容区，不作用到子块（与日间一致） */
@@ -3857,12 +3140,6 @@ body.rm-dark-theme .roam-app .rm-code-warning .bp3-button:hover {
 body.rm-dark-theme .roam-app :is(.bp3-popover .bp3-popover-content, .bp3-popover2 .bp3-popover2-content) {
     background: var(--page-color) !important;
     color: var(--text-color) !important;
-}
-
-/* 夜间：popover 容器阴影照搬 system.css .bp3-dark .bp3-popover，配色用 roam 变量 */
-body.rm-dark-theme .roam-app .bp3-popover,
-body.rm-dark-theme .roam-app .bp3-popover2 {
-    box-shadow: 0 0 0 1px oklch(from var(--m-ink) l c h / 0.13), 0 2px 4px oklch(from var(--m-ink) l c h / 0.65), 0 8px 24px oklch(from var(--m-ink) l c h / 0.65);
 }
 
 body.rm-dark-theme .roam-app :is(.bp3-popover-content, .bp3-popover .bp3-popover-content) .bp3-menu {
@@ -3937,8 +3214,6 @@ body.rm-dark-theme .roam-app .bp3-popover-arrow-fill {
 
 body .roam-app .rm-roam-css--inactive {
     background-color: var(--danger-bg) !important;
-    border: 1px solid var(--danger-border) !important;
-    backdrop-filter: blur(5px);
 }
 
 body.rm-dark-theme .roam-app .rm-settings--desktop .rm-settings__tab:not(.rm-settings__panel-wrapper)[aria-selected="true"] {
@@ -4058,7 +3333,6 @@ body.rm-dark-theme .roam-app .bp3-dialog:has(.rm-settings-tabs) {
 body.rm-dark-theme .roam-app .bp3-dialog:has(.rm-settings-tabs) .bp3-dialog-header {
     background: transparent !important;
     color: var(--text-color) !important;
-    border-bottom-color: var(--color-subtle-border) !important;
 }
 
 body.rm-dark-theme .roam-app .bp3-dialog:has(.rm-settings-tabs) .bp3-dialog-close-button {
@@ -4171,17 +3445,10 @@ html body .roam-app .rm-command-palette .rm-command-palette__shortcut {
     border-color: var(--color-primary) !important;
 }
 
-/* body .bp3-datepicker：仅 box-shadow，已移除 */
-
 body .roam-app .DayPicker-Day:hover {
     background-color: var(--datepicker-day-hover-bg) !important;
     color: var(--datepicker-day-hover-text) !important;
 }
-
-/* ========================================================= */
-/* 16. Theme Toggle Button                                    */
-/* 已比对 system.css：无（主题切换为 roam 独有）              */
-/* ========================================================= */
 
 /* ========================================================= */
 /* 17. Gap-Filling & Global Resets                            */
@@ -4208,14 +3475,6 @@ body,
     color: inherit !important;
 }
 
-/* 页面标题：强制可选中（避免被 noselect 等阻断） */
-.roam-body .roam-app .roam-article :is(.rm-title-display-container, .rm-title-display, h1.rm-title-display) {
-    -webkit-user-select: text !important;
-    -moz-user-select: text !important;
-    -ms-user-select: text !important;
-    user-select: text !important;
-}
-
 /* 输入框 + 页面标题：选中高亮（--selection-bg / --selection-text）；标题用层级限定避免 .container * 卡顿 */
 .roam-app :is(input, textarea, .rm-block__input, .bp3-input)::selection,
 .roam-body .roam-app .roam-article :is(.rm-title-display-container, .rm-title-display-container > *, .rm-title-display-container > * *, .rm-title-display, h1.rm-title-display, .rm-title-display *, h1.rm-title-display *)::selection {
@@ -4227,55 +3486,6 @@ body,
 .roam-body .roam-app .roam-article :is(.rm-title-display-container, .rm-title-display-container > *, .rm-title-display-container > * *, .rm-title-display, h1.rm-title-display, .rm-title-display *, h1.rm-title-display *)::-moz-selection {
     background: var(--selection-bg) !important;
     color: var(--selection-text) !important;
-}
-
-.roam-app *:focus-visible {
-    outline: none;
-}
-
-/* 内容块 focus 无外框，无边界（正文 + 侧栏大纲 + 引用等全场景）；页面标题 focus 与 unfocus 视觉一致（无焦点环） */
-.roam-app .roam-article .roam-block-container:focus-within,
-.roam-app .roam-article .roam-block-container.rm-block--focused,
-.roam-app .roam-article .roam-block-container.rm-focused,
-.roam-app .roam-article .roam-block-container .rm-block__input:focus,
-.roam-app .roam-article .roam-block-container .rm-block__input:focus-visible,
-.roam-app .roam-article .roam-block-container .rm-block-main:focus,
-.roam-app .roam-article .roam-block-container .rm-block-main:focus-visible,
-.roam-app .roam-article .rm-block__input:focus,
-.roam-app .roam-article .rm-block__input:focus-visible,
-/* 侧栏大纲 / Zoom / 引用项内的块编辑态同样无外框 */
-.roam-app .rm-sidebar-outline .roam-block-container:focus-within,
-.roam-app .rm-sidebar-outline .roam-block-container.rm-block--focused,
-.roam-app .rm-sidebar-outline .roam-block-container.rm-focused,
-.roam-app .rm-sidebar-outline .roam-block-container .rm-block__input:focus,
-.roam-app .rm-sidebar-outline .roam-block-container .rm-block__input:focus-visible,
-.roam-app .rm-zoom .roam-block-container:focus-within,
-.roam-app .rm-zoom .roam-block-container.rm-block--focused,
-.roam-app .rm-zoom .roam-block-container.rm-focused,
-.roam-app .rm-zoom .roam-block-container .rm-block__input:focus,
-.roam-app .rm-zoom .roam-block-container .rm-block__input:focus-visible,
-.roam-app .rm-reference-item .roam-block-container:focus-within,
-.roam-app .rm-reference-item .roam-block-container.rm-block--focused,
-.roam-app .rm-reference-item .roam-block-container.rm-focused,
-.roam-app .rm-reference-item .roam-block-container .rm-block__input:focus,
-.roam-app .rm-reference-item .roam-block-container .rm-block__input:focus-visible,
-/* 任意位置的块容器编辑态兜底 */
-.roam-app .roam-block-container:focus-within,
-.roam-app .roam-block-container.rm-block--focused,
-.roam-app .roam-block-container.rm-focused,
-.roam-app .roam-block-container .rm-block__input:focus,
-.roam-app .roam-block-container .rm-block__input:focus-visible,
-.roam-app .roam-block-container .rm-block-main:focus,
-.roam-app .roam-block-container .rm-block-main:focus-visible,
-.roam-app .rm-title-display:focus,
-.roam-app .rm-title-display:focus-visible,
-.roam-app .rm-title-display-container .rm-title-display:focus,
-.roam-app .rm-title-display-container .rm-title-display:focus-visible,
-.roam-app .rm-title-editing-display:focus-within,
-.roam-app .rm-title-editing-display textarea:focus,
-.roam-app .rm-title-editing-display textarea:focus-visible {
-    outline: none !important;
-    border: none !important;
 }
 
 .roam-app .bp3-input,
@@ -4298,51 +3508,21 @@ body,
     border-color: var(--color-primary) !important;
 }
 
-
-
-html::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-}
-
 html::-webkit-scrollbar-track {
     background: var(--scrollbar-track, oklch(from var(--m-text, #313233) l c h / 0.06));
 }
 
 html::-webkit-scrollbar-thumb {
     background: var(--scrollbar-thumb, oklch(from var(--m-primary, #789262) l c h / 0.35));
-    background-clip: padding-box;
-    border: 2px solid transparent;
 }
 
 html::-webkit-scrollbar-thumb:hover {
     background: var(--scrollbar-thumb-hover, oklch(from var(--m-primary, #789262) l c h / 0.52));
-    background-clip: padding-box;
 }
-
-/* 正文 + 引用区滚动条：隐藏，滚动仍可用（与主题一致时可改为 thin） */
-.roam-app :is(.rm-article-wrapper, .rm-article-wrapper .roam-article, .rm-article-wrapper .rm-reference-wrapper, .rm-article-wrapper .rm-reference-main__child-wrapper, .rm-article-wrapper .rm-mentions, .rm-article-wrapper .scroll) {
-    scrollbar-width: none;
-}
-
-.roam-app :is(.rm-article-wrapper, .rm-article-wrapper .roam-article, .rm-article-wrapper .rm-reference-wrapper, .rm-article-wrapper .rm-reference-main__child-wrapper, .rm-article-wrapper .rm-mentions, .rm-article-wrapper .scroll)::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-}
-
-/* .roam-app .roam-article > div：仅 box-shadow，已移除 */
-
-/* body:not(.rm-dark-theme) .roam-app .roam-article > div：仅 box-shadow，已移除 */
-
-/* 夜间：正文与引用区交界处无阴影/横线，保持无边界 */
-/* 夜间：正文与引用区 border-bottom 已由 system 控制，此处仅保留配色时留空 */
 
 /* ========================================================= */
 /* 18. References - Borderless Immersion                     */
 /* ========================================================= */
-
-
-/* 标题行（Linked/Unlinked References）：分割线始终 1px，仅用变量控制颜色，避免日夜切换位移 */
 
 .roam-app .rm-reference-wrapper .rm-reference-container>.flex-h-box strong,
 .roam-app .rm-reference-wrapper .rm-unlinked-reference-container strong,
@@ -4359,7 +3539,6 @@ html::-webkit-scrollbar-thumb:hover {
 .rm-ref-page-view,
 .rm-reference-wrapper .rm-title-arrow-wrapper {
     background: transparent !important;
-    border: none !important;
 }
 
 .rm-reference-wrapper .rm-ref-page-view-title .rm-page__title,
@@ -4468,21 +3647,7 @@ body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-ref-page-vi
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-title-arrow-wrapper,
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-unlink-aliases,
 body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-reference-item {
-    border: 0 !important;
     background: transparent !important;
-}
-
-body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper::before,
-body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper::after,
-body.rm-dark-theme .roam-app .roam-article .rm-reference-main::before,
-body.rm-dark-theme .roam-app .roam-article .rm-reference-main::after {
-    display: none !important;
-    content: none !important;
-    border: none !important;
-}
-
-body.rm-dark-theme .roam-app .roam-article .rm-reference-main[style*="padding-top"] {
-    padding-top: 0 !important;
 }
 
 /* ========================================================= */
@@ -4588,4 +3753,82 @@ span[data-tag="sup"]~.rm-highlight,
 .roam-app .rm-page-ref[data-tag="sup"]~.rm-highlight {
     background-color: transparent !important;
     background: none !important;
+}
+
+/* 夜间：修复 rm-table 默认白底 */
+body.rm-dark-theme .roam-app .rm-table table {
+    background-color: var(--page-color) !important;
+}
+
+/* 夜间：修复 ProseMirror 编辑器白底 */
+body.rm-dark-theme .roam-app .ProseMirror.rm-pm-editor {
+    background-color: var(--page-color) !important;
+}
+
+/* Excalidraw fullscreen panel: dark mode color fixes */
+body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left,
+body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .panelColumn {
+    background-color: #2f3744 !important;
+    border-color: #4b5566 !important;
+    color: #e6eae9 !important;
+}
+
+body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left :is(h3, legend, .control-label, .zero-label, .value-bubble) {
+    color: #e6eae9 !important;
+}
+
+body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left :is(fieldset, .App-toolbar__divider) {
+    border-color: #596273 !important;
+}
+
+body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .buttonList :is(label, button, .ToolIcon, .zIndexButton) {
+    background-color: #3a4352 !important;
+    border-color: #596273 !important;
+    color: #dce2e8 !important;
+}
+
+body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .buttonList :is(label.active, button.active) {
+    background-color: #54509a !important;
+    border-color: #7e8cd7 !important;
+    color: #f1f4f8 !important;
+}
+
+body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .color-picker__button-outline {
+    border-color: #8b93a6 !important;
+}
+
+body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .color-picker__button {
+    background-color: var(--swatch-color) !important;
+}
+
+body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .color-picker__button .color-picker__button-outline {
+    background-color: var(--swatch-color) !important;
+}
+
+body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .color-picker__button.is-transparent,
+body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .color-picker__button.is-transparent .color-picker__button-outline {
+    background-color: transparent !important;
+}
+
+body.rm-dark-theme .excalidraw.theme--dark .Island.dropdown-menu-container .color-picker__button {
+    background-color: var(--swatch-color) !important;
+}
+
+body.rm-dark-theme .excalidraw.theme--dark .Island.dropdown-menu-container .color-picker__button .color-picker__button-outline {
+    background-color: var(--swatch-color) !important;
+}
+
+body.rm-dark-theme .excalidraw.theme--dark .Island.dropdown-menu-container .color-picker__button.is-transparent,
+body.rm-dark-theme .excalidraw.theme--dark .Island.dropdown-menu-container .color-picker__button.is-transparent .color-picker__button-outline {
+    background-color: transparent !important;
+}
+
+body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .range-input {
+    background-color: #7d78cc !important;
+}
+
+body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .range-input::-webkit-slider-thumb,
+body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .range-input::-moz-range-thumb {
+    background-color: #a6acb7 !important;
+    border-color: #a6acb7 !important;
 }
