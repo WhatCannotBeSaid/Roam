@@ -2256,6 +2256,34 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
     color: var(--light-text-color);
 }
 
+/* Live AI：夜间助手气泡 — 避免 oklch(from var(--m-text)…) 低透明叠在深色上发灰；用弹层实色衬底 */
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-assistant-message,
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-message.assistant .full-results-chat-text {
+    background-color: var(--popover-bg) !important;
+    color: var(--text-color) !important;
+}
+
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-assistant-message :is(p, li, span, div, strong, em, h1, h2, h3, h4, h5, h6, ol, ul, blockquote),
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-message.assistant .full-results-chat-text :is(p, li, span, div, strong, em, h1, h2, h3, h4, h5, h6, ol, ul, blockquote) {
+    color: inherit !important;
+}
+
+/* Live AI：用户消息气泡（日/夜），主色浅衬底 + 正文色 */
+.bp3-dialog.full-results-modal .full-results-chat-message.user .full-results-chat-text {
+    background-color: var(--hover-primary) !important;
+    color: var(--text-color);
+}
+
+/* 夜间用户气泡：实心主色 + 缟色字（与发送键同级，避免半透明主色在玄青底发污） */
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-message.user .full-results-chat-text {
+    background-color: var(--color-primary) !important;
+    color: var(--on-accent) !important;
+}
+
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-message.user .full-results-chat-text :is(p, li, span, div, strong, em, ol, ul) {
+    color: inherit !important;
+}
+
 .bp3-dialog.full-results-modal .full-results-chat-suggestions button {
     color: var(--text-color);
     background-color: var(--embed-bg);
@@ -2332,6 +2360,270 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
 .bp3-dialog.full-results-modal .bp3-intent-success .bp3-icon,
 .bp3-dialog.full-results-modal .full-results-chat-help-avatar .bp3-icon {
     color: inherit;
+}
+
+/*
+ * Live AI 侧栏 overlay + 工具时间线 + 代码块等（roam-css-properties：仅 color / background / border-color / font-family|size）
+ * 版式（间距、flex、宽度、圆角等）由 Roam / Blueprint 负责，此处不覆盖。
+ */
+.full-results-overlay:not(.side-panel-mode) {
+    background-color: oklch(from var(--m-ink) l c h / 0.16);
+}
+
+.rm-dark-theme .full-results-overlay:not(.side-panel-mode) {
+    background-color: oklch(from var(--m-ink) l c h / 0.45);
+}
+
+.full-results-overlay .resize-handle-bar {
+    background-color: var(--color-subtle-border);
+}
+
+.full-results-overlay .side-panel-resize-handle:hover .resize-handle-bar {
+    background-color: var(--color-primary);
+}
+
+.bp3-dialog.full-results-modal .full-results-chat-tool-history {
+    background-color: var(--embed-bg);
+    border-color: var(--color-subtle-border);
+    color: var(--text-color);
+}
+
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-tool-history {
+    background-color: var(--popover-bg) !important;
+    border-color: var(--color-subtle-border) !important;
+    color: var(--text-color) !important;
+}
+
+/* usage-item：日夜都显式透明 + !important，压过插件默认浅色底；边框沿用细分隔 */
+.bp3-dialog.full-results-modal .full-results-chat-tool-usage-item {
+    background-color: transparent !important;
+    border-color: var(--color-subtle-border) !important;
+    color: var(--text-color);
+}
+
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-tool-usage-item :is(p, li, span, div, strong, em, ol, ul) {
+    color: inherit !important;
+}
+
+.bp3-dialog.full-results-modal .full-results-chat-intermediate-message,
+.bp3-dialog.full-results-modal .full-results-chat-tool-details,
+.bp3-dialog.full-results-modal .full-results-chat-tool-response {
+    color: var(--text-color);
+    font-family: var(--body-font);
+}
+
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-intermediate-message,
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-tool-details,
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-tool-response {
+    background-color: transparent !important;
+    color: var(--text-color) !important;
+}
+
+.bp3-dialog.full-results-modal .full-results-chat-tool-name {
+    color: var(--color-primary);
+    font-family: var(--body-font);
+}
+
+.bp3-dialog.full-results-modal .full-results-chat-tool-name .bp3-icon {
+    color: inherit;
+}
+
+.bp3-dialog.full-results-modal .full-results-chat-message-footer,
+.bp3-dialog.full-results-modal .full-results-chat-timestamp,
+.bp3-dialog.full-results-modal .full-results-chat-tokens {
+    color: var(--light-text-color);
+    font-family: var(--body-font);
+}
+
+.bp3-dialog.full-results-modal .full-results-chat-text.streaming {
+    background-color: var(--embed-bg);
+    border-color: var(--color-subtle-border);
+}
+
+.bp3-dialog.full-results-modal .chat-code-block-wrapper {
+    background-color: var(--code-bg);
+    border-color: var(--color-subtle-border);
+}
+
+/* pre 常有默认白底（Blueprint），须与 --code-bg 一致；内层 code 透明以免叠两层 */
+.bp3-dialog.full-results-modal .chat-code-block-wrapper pre {
+    background-color: var(--code-bg) !important;
+    color: var(--text-color);
+    font-family: var(--code-font);
+    font-size: 0.875rem;
+}
+
+.bp3-dialog.full-results-modal .chat-code-block-wrapper pre code {
+    background-color: transparent !important;
+    color: var(--text-color);
+    font-family: var(--code-font);
+}
+
+.bp3-dialog.full-results-modal .chat-code-block-wrapper code {
+    color: var(--text-color);
+    font-family: var(--code-font);
+}
+
+.bp3-dialog.full-results-modal .chat-code-copy-button {
+    color: var(--text-color);
+    background-color: var(--embed-bg);
+    border-color: var(--color-subtle-border);
+    font-family: var(--body-font);
+}
+
+.bp3-dialog.full-results-modal .chat-code-copy-button:hover {
+    color: var(--menu-hover-text);
+    background-color: var(--menu-hover-bg);
+    border-color: var(--color-subtle-border);
+}
+
+.bp3-dialog.full-results-modal .full-results-chat-text code:not(.language-markdown) {
+    background-color: var(--inline-code-bg);
+    color: var(--inline-code-color);
+    font-family: var(--code-font);
+}
+
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-message.user .full-results-chat-text code:not(.language-markdown) {
+    background-color: oklch(from var(--on-accent) l c h / 0.16);
+    color: var(--on-accent);
+    font-family: var(--code-font);
+}
+
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-message.user .full-results-chat-text a.rm-page-ref {
+    color: var(--on-accent);
+}
+
+.bp3-dialog.full-results-modal a.roam-block-ref-chat {
+    color: var(--m-page-ref);
+}
+
+.bp3-dialog.full-results-modal .full-results-chat-send.full-results-chat-stop {
+    color: var(--on-accent);
+    background-color: var(--m-warn);
+}
+
+.bp3-dialog.full-results-modal .full-results-chat-send.full-results-chat-stop:hover {
+    color: var(--on-accent);
+    background-color: oklch(from var(--m-warn) l c h / 0.9);
+}
+
+/* Header：token 计数文字 */
+.bp3-dialog.full-results-modal .full-results-chat-context-tokens,
+.bp3-dialog.full-results-modal .full-results-chat-total-tokens {
+    color: var(--light-text-color);
+    font-family: var(--body-font);
+}
+
+/* chat-help：What's New / About 建议按钮（disabled 态也要可读） */
+.bp3-dialog.full-results-modal .full-results-chat-suggestions button.whats-new-unseen {
+    color: var(--color-primary);
+    background-color: var(--hover-primary-soft);
+    border-color: var(--color-primary);
+}
+
+.bp3-dialog.full-results-modal .full-results-chat-suggestions button.whats-new-unseen .bp3-icon {
+    color: inherit;
+}
+
+.bp3-dialog.full-results-modal .whats-new-badge {
+    background-color: var(--m-warn);
+    color: var(--on-accent);
+}
+
+/* 工具确认弹层：整体卡片 + 标题 + diff 表格 + 警告条 + 反馈输入 */
+.bp3-dialog.full-results-modal .full-results-chat-tool-confirmation {
+    background-color: var(--popover-bg);
+    border-color: var(--color-subtle-border);
+    color: var(--text-color);
+    font-family: var(--body-font);
+}
+
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-tool-confirmation {
+    background-color: var(--popover-bg) !important;
+    border-color: var(--color-subtle-border) !important;
+    color: var(--text-color) !important;
+}
+
+.bp3-dialog.full-results-modal .tool-confirmation-header {
+    color: var(--heading-h2-color);
+    font-family: var(--body-font);
+}
+
+.bp3-dialog.full-results-modal .tool-confirmation-header .bp3-icon.bp3-intent-warning {
+    color: var(--m-warn);
+}
+
+.bp3-dialog.full-results-modal .tool-confirmation-preview {
+    background-color: var(--embed-bg);
+    border-color: var(--color-subtle-border);
+    color: var(--text-color);
+}
+
+.rm-dark-theme .bp3-dialog.full-results-modal .tool-confirmation-preview {
+    background-color: var(--embed-bg) !important;
+    border-color: var(--color-subtle-border) !important;
+    color: var(--text-color) !important;
+}
+
+.bp3-dialog.full-results-modal .tool-confirmation-diff-item {
+    background-color: transparent !important;
+    border-color: var(--color-subtle-border);
+    color: var(--text-color);
+}
+
+.bp3-dialog.full-results-modal .tool-confirmation-diff-block-header {
+    color: var(--text-color);
+    font-family: var(--body-font);
+}
+
+.bp3-dialog.full-results-modal .tool-confirmation-diff-context,
+.bp3-dialog.full-results-modal .tool-confirmation-diff-location,
+.bp3-dialog.full-results-modal .tool-confirmation-diff-label {
+    color: var(--light-text-color);
+    font-family: var(--body-font);
+}
+
+.bp3-dialog.full-results-modal .tool-confirmation-diff-old {
+    background-color: oklch(from var(--m-highlight-red) l c h / 0.18);
+    color: var(--text-color);
+    font-family: var(--code-font);
+}
+
+.bp3-dialog.full-results-modal .tool-confirmation-diff-arrow {
+    color: var(--light-text-color);
+}
+
+.bp3-dialog.full-results-modal .tool-confirmation-diff-new {
+    background-color: oklch(from var(--m-checkbox-checked) l c h / 0.18);
+    color: var(--text-color);
+    font-family: var(--code-font);
+}
+
+.bp3-dialog.full-results-modal .tool-confirmation-non-atomic-warning {
+    background-color: oklch(from var(--m-warn) l c h / 0.10);
+    border-color: oklch(from var(--m-warn) l c h / 0.30);
+    color: var(--m-warn);
+    font-family: var(--body-font);
+}
+
+.bp3-dialog.full-results-modal .tool-confirmation-non-atomic-warning .bp3-icon {
+    color: inherit;
+}
+
+.bp3-dialog.full-results-modal .tool-confirmation-input {
+    background-color: var(--page-color);
+    border-color: var(--color-subtle-border);
+    color: var(--text-color);
+    font-family: var(--body-font);
+}
+
+.bp3-dialog.full-results-modal .tool-confirmation-input::placeholder {
+    color: var(--light-text-color);
+}
+
+/* brackets 在夜间用户气泡里也应为缟色（原规则只覆盖 rm-page-ref） */
+.rm-dark-theme .bp3-dialog.full-results-modal .full-results-chat-message.user .rm-page-ref__brackets {
+    color: var(--on-accent);
 }
 
 /* Live AI 命令菜单 (str-aicommands-menu)：不透明背景与可读文字 */
@@ -2766,6 +3058,17 @@ body:not(.rm-dark-theme) .rm-settings--desktop .rm-settings__tab:not(.rm-setting
 .rm-settings-panel__description,
 .rm-settings-panel__section .rm-settings-panel__description {
     color: var(--light-text-color) !important;
+}
+
+/* Workbench settings table（日间）：修正 th/td 被继承成白字的问题 */
+body:not(.rm-dark-theme) .rm-settings-panel table.workbench-settings th {
+    color: var(--heading-h2-color) !important;
+    background-color: transparent !important;
+}
+
+body:not(.rm-dark-theme) .rm-settings-panel table.workbench-settings td {
+    color: var(--text-color) !important;
+    background-color: transparent !important;
 }
 
 /* 输入框、下拉、按钮（面板内统一） */
