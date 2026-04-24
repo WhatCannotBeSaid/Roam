@@ -4048,3 +4048,62 @@ body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .range-input::
     background-color: #a6acb7 !important;
     border-color: #a6acb7 !important;
 }
+
+/* ========================================================= */
+/* 29. Mind Map (RoamJS Mindmap + markmap)                   */
+/* 抽屉/容器随主题；节点文字与链接、行内代码覆盖 markmap 硬编码 */
+/* 保留 markmap 枝干调色板（path/rect/circle 的 stroke/fill） */
+/* ========================================================= */
+
+/* 底部抽屉与标题（适配 bp3-drawer + roamjs-mindmap） */
+.bp3-drawer.bp3-position-bottom:has(#roamjs-mindmap-container),
+.bp3-drawer.bp3-position-bottom:has(#roamjs-mindmap-container) .bp3-drawer-header {
+    background: var(--page-color) !important;
+    border-color: var(--color-subtle-border) !important;
+    color: var(--text-color) !important;
+}
+
+.bp3-drawer:has(#roamjs-mindmap-container) .bp3-heading {
+    color: var(--text-color) !important;
+    font-family: var(--heading-font) !important;
+}
+
+/* 思维导图容器与 SVG 背景 */
+#roamjs-mindmap-container,
+#roamjs-markmap {
+    background: var(--page-color) !important;
+}
+
+/* 节点文字：markmap foreignObject 内置 font: 300 16px/20px sans-serif，仅改字体族与颜色 */
+#roamjs-markmap .roamjs-mindmap-node,
+#roamjs-markmap foreignObject > div {
+    color: var(--text-color) !important;
+    font-family: var(--ui-font) !important;
+}
+
+/* 节点内行内代码：覆盖 markmap 内联硬编码 color:#555 / background-color:#f0f0f0 */
+#roamjs-markmap foreignObject code {
+    color: var(--inline-code-color) !important;
+    background-color: var(--inline-code-bg) !important;
+    font-family: var(--code-font) !important;
+}
+
+/* 节点内链接：覆盖 markmap 内联硬编码 #0097e6 / #00a8ff */
+#roamjs-markmap foreignObject a {
+    color: var(--m-link) !important;
+}
+
+#roamjs-markmap foreignObject a:hover {
+    color: var(--m-link-hover) !important;
+}
+
+/* 节点内 KaTeX 公式跟随主题文字色 */
+#roamjs-markmap foreignObject .katex,
+#roamjs-markmap foreignObject .katex-display {
+    color: var(--text-color) !important;
+}
+
+/* 节点展开/收起圆点：仅让内填随主题（stroke 保留 markmap 枝干色） */
+#roamjs-markmap g > circle {
+    fill: var(--page-color) !important;
+}
