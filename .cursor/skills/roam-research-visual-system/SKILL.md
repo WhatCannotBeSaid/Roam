@@ -11,14 +11,17 @@ description: Roam Research project-specific visual system. Extends typography sk
 
 ## 核心协议（Roam 专有）
 
-### 锁定项
+### 锁定项（铁律）
 
-- **配色**：色值仅限 https://colors.masantu.com/#/ ；不得替换或重定义既有配色变量/值。
-- **字体**：修改须遵循 **typography** 技能；roam.css 仅允许 color + font-family + font-size（见 roam-css-properties 规则）。
+- **配色值锁定**：已定义的配色变量（`--m-*`、`--text-color`、`--bg` 等）与选择器上的色值**不得修改、替换或重定义**；新增样式**只能引用**既有变量。色值来源仅限 https://colors.masantu.com/#/ 。
+- **字体值锁定**：已定义的字体栈变量（`--body-font`、`--heading-font`、`--code-font`、`--ui-font` 等）与选择器上的 `font-family` **不得修改、替换或重定义**；新增样式**只能引用**既有变量；字号（`--fs-*`）同理。
+- **属性范围锁定**：roam.css 仅允许 color 类 + `font-family` + `font-size`（详见 roam-css-properties 规则）。
+- **唯一解锁方式**：用户**明确要求**修改字体 / 配色时才可动；任何重构、清理、优化、新增 DOM 适配都必须保持字体与配色的最终计算值不变。
 
 ### 可修改
 
-布局、间距与行高、组件结构、交互态、滚动条与选中、变量逻辑（非色值）、性能优化等；字体与配色在 typography 与本协议约束下可调整。
+- 在**不改动既有字体/配色值**的前提下：新增选择器引用既有变量、补齐未主题化的 DOM、合并重复规则、清理注释与空白、调整变量逻辑（非色值/非字体值）、性能优化等。
+- 版式、结构、间距、行高、动效**不在 roam.css 作用域内**，交由 blueprint.css / site.css / Roam 默认控制。
 
 ### A. 样式约束
 
@@ -49,9 +52,14 @@ description: Roam Research project-specific visual system. Extends typography sk
 
 ## 工作流检查清单
 
-编辑前：色值来自 colors.masantu.com；选择器匹配 [index.html](index.html)；遵循 typography 技能与 roam-css-properties 规则。
+**编辑前**：
+- 用户是否**明确要求**修改字体或配色？若否，字体与配色值（变量与具体值）**一律不动**，只能新增引用既有变量的规则。
+- 选择器匹配 [index.html](index.html)；遵循 typography 技能与 roam-css-properties 规则。
+- 色值来自 colors.masantu.com（仅在用户要求新增配色时适用）。
 
-编辑后：日夜切换无闪烁/位移；无意外覆盖 font-family 与配色；无 MutationObserver 导致的打字延迟；保持无边界、沉浸式。
+**编辑后**：
+- **diff 中没有任何字体栈 / 色值的替换或重写**（仅允许新增引用、删除整条失效规则、或注释/空白清理）。
+- 日夜切换无闪烁 / 位移；无 MutationObserver 导致的打字延迟；保持无边界、沉浸式。
 
 ## 参考与模板
 
