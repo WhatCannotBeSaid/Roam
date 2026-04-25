@@ -3,7 +3,7 @@
 这是一个面向 Roam Research 的主题与交互增强组合，当前由两部分组成：
 
 - `roam.css`：完整视觉系统（配色、字体、组件主题覆盖、日夜模式一致性）
-- `Roam.js`：三态主题切换与 Excalidraw 主题同步逻辑
+- `Roam.js`：系统日夜自动同步（无顶栏按钮）、Excalidraw 主题同步、`￥￥ → $$$$` 数学输入快捷键
 
 目标是提供统一、沉浸、可读性高且可长期维护的使用体验。
 
@@ -39,13 +39,18 @@
 
 ### 🔌 交互增强 (Roam.js)
 
-- **三态主题切换**：`auto -> light -> dark` 循环切换，状态持久化在 `localStorage`（键：`roam-theme-mode`）。
-- **系统主题联动**：`auto` 模式下监听 `prefers-color-scheme` 变化并实时切换。
-- **Topbar 按钮注入**：自动在顶栏插入切换按钮，图标随模式更新（`repeat / flash / moon`）。
+- **系统日夜同步**：始终根据 `prefers-color-scheme` 为 `body` / `documentElement` 切换 `rm-dark-theme`，不注入顶栏按钮；若页面中仍有旧版 `#roam-theme-toggle-btn`，启动时会移除。
+- **系统主题监听**：`matchMedia("(prefers-color-scheme: dark)")` 的 `change`（及旧版 `addListener`）触发时重新应用主题。
 - **Excalidraw 主题同步**：同步 `.excalidraw` 根节点 `theme--dark / theme--light`，并处理：
   - Roam 主题 class 变化
   - Excalidraw 节点新增
   - 全屏切换
+- **数学输入快捷键**：
+  - `￥￥` → `$$$$`：在 block 中输入两个全角 `￥￥` 时，自动替换为 `$$$$` 并把光标停在中间（两对 `$$` 之间），可直接键入公式；单个 `￥` 保持原样。
+  - **回车跳出 `$$...$$`**：当光标位于一对未闭合的 `$$...$$` 内部时，按回车不再换行/新建块，而是把光标挪到闭合 `$$` 之后，便于直接续写正文。
+  - 仅作用于 Roam block 文本域（`#block-input-*` / `.rm-block__input`）
+  - 通过 `execCommand("insertText")` 走浏览器原生输入通路，等价于 Roam 自带 `【【 → [[]]` 的实现，自动同步 React `value tracker` 与 undo 历史
+  - 同时监听 `input` / `compositionend` / `keydown`，覆盖英文键盘与中文 IME 两条输入通路
 
 ## 🚀 安装与部署
 
@@ -65,7 +70,7 @@
 ## 📝 维护说明
 
 - 主题相关逻辑优先集中在 `roam.css` 变量层，减少散点硬编码。
-- `Roam.js` 当前只负责主题切换与 Excalidraw 同步，不再包含早期的其它独立小功能。
+- `Roam.js` 当前包含系统主题同步、Excalidraw 同步与数学输入快捷键三块独立逻辑，每块以独立 IIFE 组织，便于单独维护与裁剪。
 
 ## 📄 开源协议
 

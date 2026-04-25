@@ -1,38 +1,18 @@
     /*!
-    * Roam Research Scripts: Theme-Toggle & Smile CheckBox
+    * Roam Research Scripts: System Theme Sync & Math Input Shortcut
     * Copyright (c) 2026 Axiom
     * Licensed under the MIT License
     */
     /**
-     Theme-Toggle（日夜切换）
+     系统日夜同步（无顶栏按钮，始终跟随 prefers-color-scheme）
     */
 
     (function () {
-      const STORAGE_KEY = "roam-theme-mode";
       const THEME_CLASS = "rm-dark-theme";
-      const CYCLE = ["auto", "light", "dark"];
       var lastThemeIsDark = null;
       var excalidrawRootObservers = [];
 
-      function getStored() {
-        try {
-          var m = localStorage.getItem(STORAGE_KEY);
-          return CYCLE.indexOf(m) >= 0 ? m : "auto";
-        } catch (_) {
-          return "auto";
-        }
-      }
-
-      function setStored(mode) {
-        try {
-          localStorage.setItem(STORAGE_KEY, mode);
-        } catch (_) {}
-      }
-
-      function getEffectiveDark() {
-        var stored = getStored();
-        if (stored === "dark") return true;
-        if (stored === "light") return false;
+      function getSystemDark() {
         try {
           return window.matchMedia("(prefers-color-scheme: dark)").matches;
         } catch (_) {
@@ -63,82 +43,24 @@
       }
 
       function applyEffectiveTheme() {
-        var dark = getEffectiveDark();
-        setThemeClass(dark);
-        updateButtonIcon();
+        setThemeClass(getSystemDark());
       }
 
-      function cycleMode() {
-        var stored = getStored();
-        var next = CYCLE[(CYCLE.indexOf(stored) + 1) % CYCLE.length];
-        setStored(next);
-        applyEffectiveTheme();
-      }
-
-      function getIconName(stored) {
-        if (stored === "light") return "flash";
-        if (stored === "dark") return "moon";
-        return "repeat";
-      }
-
-      function updateButtonIcon() {
+      function removeLegacyThemeButton() {
         var btn = document.getElementById("roam-theme-toggle-btn");
-        if (!btn) return;
-        var stored = getStored();
-        var dark = getEffectiveDark();
-        var iconSpan = btn.querySelector(".bp3-icon");
-        if (iconSpan) {
-          iconSpan.className = "bp3-icon bp3-icon-" + getIconName(stored);
-        }
-        var titles = {
-          auto: "跟随系统 (当前" + (dark ? "夜间" : "日间") + ")",
-          light: "日间模式",
-          dark: "夜间模式"
-        };
-        btn.setAttribute("title", (titles[stored] || titles.auto) + " · 点击切换");
-      }
-
-      function createIconButton(iconName) {
-        var popoverButton = document.createElement("span");
-        popoverButton.id = "roam-theme-toggle-btn";
-        popoverButton.className = "bp3-button bp3-minimal bp3-small";
-        popoverButton.tabIndex = 0;
-        popoverButton.setAttribute("aria-label", "切换主题 (自动/日间/夜间)");
-
-        var popoverIcon = document.createElement("span");
-        popoverIcon.className = "bp3-icon bp3-icon-" + iconName;
-        popoverButton.appendChild(popoverIcon);
-
-        return popoverButton;
-      }
-
-      function createToggle() {
-        if (document.getElementById("roam-theme-toggle-btn")) return false;
-
-        var roamTopbar = document.getElementsByClassName("rm-topbar");
-        if (!roamTopbar || !roamTopbar[0]) return false;
-
-        var lastChild = roamTopbar[0].lastElementChild;
-        var mainButton = createIconButton(getIconName(getStored()));
-        mainButton.addEventListener("click", cycleMode);
-
-        if (lastChild) {
-          lastChild.insertAdjacentElement("afterend", mainButton);
-        } else {
-          roamTopbar[0].appendChild(mainButton);
-        }
-
-        updateButtonIcon();
-        return true;
+        if (btn) btn.remove();
       }
 
       function setupSystemListener() {
         try {
           var mq = window.matchMedia("(prefers-color-scheme: dark)");
+          var onChange = function () {
+            applyEffectiveTheme();
+          };
           if (mq.addEventListener) {
-            mq.addEventListener("change", function () {
-              if (getStored() === "auto") applyEffectiveTheme();
-            });
+            mq.addEventListener("change", onChange);
+          } else if (mq.addListener) {
+            mq.addListener(onChange);
           }
         } catch (_) {}
       }
@@ -215,25 +137,145 @@
         observeExcalidrawRoots();
       }
 
-      function tryCreateToggle() {
-        setThemeClass(getEffectiveDark());
+      function initSystemTheme() {
+        removeLegacyThemeButton();
+        applyEffectiveTheme();
         setupSystemListener();
         setupExcalidrawThemeSync();
-        if (createToggle()) return;
-        var attempts = 0;
-        var interval = setInterval(function () {
-          attempts++;
-          if (createToggle() || attempts >= 50) clearInterval(interval);
-        }, 200);
       }
 
       function init() {
         if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", tryCreateToggle);
+          document.addEventListener("DOMContentLoaded", initSystemTheme);
         } else {
-          tryCreateToggle();
+          initSystemTheme();
         }
       }
 
       init();
+    })();
+
+    /**
+     Math Input Shortcuts:
+       1. `￥￥` → `$$$$`，光标停在两对 $$ 之间（参考 Roam 自带 `【【 → [[]]` 的思路：
+          选中触发字符 + execCommand("insertText")，走浏览器原生输入通路）。
+       2. 在 `$$...$$` 内按回车 → 不换行/不新建块，而是把光标挪到闭合 $$ 之后。
+     仅在 Roam block textarea 中触发；输入单个 `￥` 时保持不变。
+     额外监听 `compositionend`，覆盖中文输入法下 isComposing 的场景。
+    */
+    (function () {
+      var TRIGGER = "￥￥";
+      var REPLACEMENT = "$$$$";
+      var DELIMITER = "$$";
+      var CURSOR_MIDDLE_OFFSET = 2;
+      var GUARD = false;
+
+      function isRoamBlockTextarea(el) {
+        if (!(el instanceof HTMLTextAreaElement)) return false;
+        if (el.id && el.id.indexOf("block-input-") === 0) return true;
+        return !!(el.closest && el.closest(".rm-block__input"));
+      }
+
+      function placeCursor(ta, pos) {
+        try {
+          ta.setSelectionRange(pos, pos);
+        } catch (_) {}
+      }
+
+      function countOccurrences(text, needle) {
+        var count = 0;
+        var idx = 0;
+        while ((idx = text.indexOf(needle, idx)) !== -1) {
+          count++;
+          idx += needle.length;
+        }
+        return count;
+      }
+
+      function attemptReplace(ta) {
+        if (GUARD) return;
+        if (!ta || !isRoamBlockTextarea(ta)) return;
+
+        var cursor = ta.selectionStart;
+        if (cursor == null || cursor < TRIGGER.length) return;
+
+        var before = ta.value.slice(0, cursor);
+        if (!before.endsWith(TRIGGER)) return;
+
+        var triggerStart = cursor - TRIGGER.length;
+        var middlePos = triggerStart + CURSOR_MIDDLE_OFFSET;
+
+        GUARD = true;
+        try {
+          ta.setSelectionRange(triggerStart, cursor);
+          var ok = false;
+          try {
+            ok = document.execCommand("insertText", false, REPLACEMENT);
+          } catch (_) {}
+
+          if (!ok) {
+            var setter = Object.getOwnPropertyDescriptor(
+              window.HTMLTextAreaElement.prototype,
+              "value"
+            ).set;
+            var after = ta.value.slice(cursor);
+            var stripped = ta.value.slice(0, triggerStart);
+            setter.call(ta, stripped + REPLACEMENT + after);
+            ta.dispatchEvent(new Event("input", { bubbles: true }));
+          }
+        } finally {
+          GUARD = false;
+        }
+
+        placeCursor(ta, middlePos);
+        requestAnimationFrame(function () {
+          placeCursor(ta, middlePos);
+        });
+      }
+
+      function handleInput(e) {
+        if (e.isComposing) return;
+        attemptReplace(e.target);
+      }
+
+      function handleCompositionEnd(e) {
+        var ta = e.target;
+        setTimeout(function () {
+          attemptReplace(ta);
+        }, 0);
+      }
+
+      function handleKeydown(e) {
+        if (e.key !== "Enter") return;
+        if (e.shiftKey || e.ctrlKey || e.metaKey || e.altKey) return;
+        if (e.isComposing) return;
+
+        var ta = e.target;
+        if (!isRoamBlockTextarea(ta)) return;
+
+        var cursor = ta.selectionStart;
+        if (cursor == null || cursor !== ta.selectionEnd) return;
+
+        var before = ta.value.slice(0, cursor);
+        var after = ta.value.slice(cursor);
+
+        // 光标前 $$ 出现次数为奇数 → 处于一对未闭合的 $$...$$ 内部
+        if (countOccurrences(before, DELIMITER) % 2 !== 1) return;
+
+        var closeIdx = after.indexOf(DELIMITER);
+        if (closeIdx === -1) return;
+
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        var targetPos = cursor + closeIdx + DELIMITER.length;
+        placeCursor(ta, targetPos);
+        requestAnimationFrame(function () {
+          placeCursor(ta, targetPos);
+        });
+      }
+
+      document.addEventListener("input", handleInput, true);
+      document.addEventListener("compositionend", handleCompositionEnd, true);
+      document.addEventListener("keydown", handleKeydown, true);
     })();
