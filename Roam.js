@@ -279,3 +279,95 @@
       document.addEventListener("compositionend", handleCompositionEnd, true);
       document.addEventListener("keydown", handleKeydown, true);
     })();
+
+    /**
+     Tag Display Tweak（隐藏标签前缀 #，仅影响展示，不改动原始内容）
+    */
+    (function () {
+      var STYLE_ID = "roam-hide-tag-hash-style";
+      var css = [
+        // Roam 某些版本把 # 放在子元素里
+        ".roam-app span.rm-page-ref--tag .rm-page-ref__brackets,",
+        ".roam-app span.rm-page-ref[data-tag] .rm-page-ref__brackets{display:none!important;}",
+        // Roam 某些版本把 # 放在伪元素里
+        ".roam-app span.rm-page-ref--tag::before,",
+        ".roam-app span.rm-page-ref[data-tag]::before{content:''!important;display:none!important;}",
+        // 兜底：若前缀是独立节点
+        ".roam-app span.rm-page-ref--tag .rm-page-ref__prefix,",
+        ".roam-app span.rm-page-ref[data-tag] .rm-page-ref__prefix{display:none!important;}"
+      ].join("");
+
+      function injectStyle() {
+        if (document.getElementById(STYLE_ID)) return;
+        var style = document.createElement("style");
+        style.id = STYLE_ID;
+        style.textContent = css;
+        document.head.appendChild(style);
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", injectStyle);
+      } else {
+        injectStyle();
+      }
+    })();
+
+    /**
+     Tag Hash Fallback（运行时移除标签显示文本前缀 #）
+     仅改展示，不改 data-tag 与引用关系。
+    */
+    (function () {
+      var MARK = "data-hide-tag-hash-applied";
+
+      function processTagNode(tagEl) {
+        if (!tagEl || tagEl.nodeType !== 1) return;
+        if (tagEl.getAttribute(MARK) === "1") return;
+
+        var walker = document.createTreeWalker(tagEl, NodeFilter.SHOW_TEXT, null);
+        var textNode = walker.nextNode();
+        while (textNode) {
+          var txt = textNode.nodeValue || "";
+          var idx = txt.indexOf("#");
+          if (idx !== -1) {
+            var left = txt.slice(0, idx);
+            // 只处理前缀 #（允许前面是空白）
+            if (left.trim() === "") {
+              textNode.nodeValue = left + txt.slice(idx + 1);
+              tagEl.setAttribute(MARK, "1");
+              return;
+            }
+          }
+          textNode = walker.nextNode();
+        }
+      }
+
+      function processAll(root) {
+        var scope = root && root.querySelectorAll ? root : document;
+        var tags = scope.querySelectorAll(
+          ".roam-app span.rm-page-ref--tag, .roam-app span.rm-page-ref[data-tag]"
+        );
+        for (var i = 0; i < tags.length; i++) processTagNode(tags[i]);
+      }
+
+      function startObserver() {
+        processAll(document);
+        var observer = new MutationObserver(function (mutations) {
+          for (var i = 0; i < mutations.length; i++) {
+            var m = mutations[i];
+            if (m.type === "childList") {
+              for (var j = 0; j < m.addedNodes.length; j++) {
+                var n = m.addedNodes[j];
+                if (n && n.nodeType === 1) processAll(n);
+              }
+            }
+          }
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", startObserver);
+      } else {
+        startObserver();
+      }
+    })();

@@ -96,19 +96,19 @@
     /* 月白 */
     --m-on-accent: #F2ECDE;
     /* 缟 */
-    --m-highlight-underline: #DB5A6B;
+    --m-highlight-underline: #E88894;
     /* 海棠红 - 粉色系 */
-    --m-highlight-yellow: #F47983;
+    --m-highlight-yellow: #F7A1AA;
     /* 桃红 - 粉色系 */
-    --m-highlight-green: #E4C4D8;
+    --m-highlight-green: #EED8E5;
     /* 藕荷 - 粉色系 */
-    --m-highlight-blue: #FFB3A7;
+    --m-highlight-blue: #FFCABE;
     /* 粉红 - 粉色系 */
-    --m-highlight-red: #EF7A82;
+    --m-highlight-red: #F39BA2;
     /* 嫣红 - 粉色系 */
-    --m-highlight-purple: #D2A4C8;
+    --m-highlight-purple: #DEBDE0;
     /* 绛紫亮 - 粉色系 */
-    --m-highlight-orange: #DB5A6B;
+    --m-highlight-orange: #E88894;
     /* 海棠红 - 粉色系 */
     --m-sidebar-icon: #3D3B4F;
     /* 玄色 */
@@ -381,13 +381,13 @@ body.rm-dark-theme .roam-app .roam-app,
     --m-link-hover: #C4B5FD;
     /* 薰衣草 - 外链 hover */
     /* 行内高亮（粉色系，亮色 + 适度透明保证浅字可读） */
-    --m-highlight-underline: oklch(from #F47983 l c h / 0.55);
-    --m-highlight-yellow: oklch(from #F47983 l c h / 0.52);
-    --m-highlight-green: oklch(from #E4C4D8 l c h / 0.50);
-    --m-highlight-blue: oklch(from #FFB3A7 l c h / 0.48);
-    --m-highlight-red: oklch(from #EF7A82 l c h / 0.55);
-    --m-highlight-purple: oklch(from #D2A4C8 l c h / 0.52);
-    --m-highlight-orange: oklch(from #F47983 l c h / 0.52);
+    --m-highlight-underline: oklch(from #F7A1AA l c h / 0.42);
+    --m-highlight-yellow: oklch(from #F7A1AA l c h / 0.40);
+    --m-highlight-green: oklch(from #EED8E5 l c h / 0.38);
+    --m-highlight-blue: oklch(from #FFCABE l c h / 0.36);
+    --m-highlight-red: oklch(from #F39BA2 l c h / 0.42);
+    --m-highlight-purple: oklch(from #DEBDE0 l c h / 0.40);
+    --m-highlight-orange: oklch(from #F7A1AA l c h / 0.40);
 
     --block-highlight-bg: oklch(from var(--m-primary) l c h / 0.20);
     --color-subtle-border: oklch(from var(--m-text) l c h / 0.08);
