@@ -318,9 +318,9 @@ body.rm-dark-theme .roam-app .roam-app,
     /* 玄青 - 主背景（固定） */
     --m-surface: #2B333E;
     /* 玄青（固定） */
-    --m-text: #E6EAE9;
+    --m-text: #F1F5F7;
     /* 月影白 - 正文 */
-    --m-text-muted: #A1AFC9;
+    --m-text-muted: #B7C6D8;
     /* 蓝灰 */
     --m-ink: #161823;
     /* 漆黑 - 边框/阴影 */
@@ -388,6 +388,11 @@ body.rm-dark-theme .roam-app .roam-app,
     --m-highlight-red: oklch(from #F39BA2 l c h / 0.42);
     --m-highlight-purple: oklch(from #DEBDE0 l c h / 0.40);
     --m-highlight-orange: oklch(from #F7A1AA l c h / 0.40);
+
+    /* 夜间显式重定义文字颜色变量，防止继承失败导致黑色文字 */
+    --text-color: var(--m-text);
+    --light-text-color: var(--m-text-muted);
+    --page-color: var(--m-surface);
 
     --block-highlight-bg: oklch(from var(--m-primary) l c h / 0.20);
     --color-subtle-border: oklch(from var(--m-text) l c h / 0.08);
@@ -646,6 +651,52 @@ body.rm-dark-theme .bp3-dialog .bp3-button:not([class*="bp3-intent-"]):hover {
     background: var(--sidebar-hover-bg) !important;
     border-color: var(--color-subtle-border) !important;
     color: var(--text-color) !important;
+}
+
+/* 夜间模式：补强深色界面中的默认黑灰文本，保证主体文字和控件文字可读 */
+body.rm-dark-theme .roam-app .roam-article,
+body.rm-dark-theme .roam-app .roam-article *,
+body.rm-dark-theme .roam-app .roam-sidebar-container,
+body.rm-dark-theme .roam-app .roam-sidebar-container *,
+body.rm-dark-theme .roam-app .bp3-menu-item,
+body.rm-dark-theme .roam-app .bp3-popover-content,
+body.rm-dark-theme .roam-app .bp3-dialog,
+body.rm-dark-theme .roam-app .bp3-context-menu,
+body.rm-dark-theme .roam-app .bp3-toast,
+body.rm-dark-theme .roam-app .bp3-card,
+body.rm-dark-theme .roam-app .bp3-input,
+body.rm-dark-theme .roam-app .bp3-text-area {
+    color: var(--text-color) !important;
+}
+
+body.rm-dark-theme .roam-app .bp3-running-text table th,
+body.rm-dark-theme .bp3-running-text table th,
+body.rm-dark-theme .roam-app table.bp3-html-table th,
+body.rm-dark-theme table.bp3-html-table th,
+body.rm-dark-theme .roam-app .bp3-running-text table td,
+body.rm-dark-theme .bp3-running-text table td,
+body.rm-dark-theme .roam-app table.bp3-html-table td,
+body.rm-dark-theme table.bp3-html-table td {
+    color: var(--text-color) !important;
+    background: var(--page-color) !important;
+}
+
+body.rm-dark-theme .roam-app .roam-article ::placeholder,
+body.rm-dark-theme .roam-app .bp3-input::placeholder,
+body.rm-dark-theme .roam-app .bp3-text-area::placeholder {
+    color: var(--light-text-color) !important;
+}
+
+body.rm-dark-theme .roam-app .rm-page-ref--link,
+body.rm-dark-theme .roam-app a.rm-alias--page,
+body.rm-dark-theme .roam-app a.rm-alias--block {
+    color: var(--m-page-ref) !important;
+}
+
+body.rm-dark-theme .roam-app .rm-page-ref--link:hover,
+body.rm-dark-theme .roam-app a.rm-alias--page:hover,
+body.rm-dark-theme .roam-app a.rm-alias--block:hover {
+    color: var(--m-page-ref-hover) !important;
 }
 
 /* ========================================================= */
@@ -3535,6 +3586,48 @@ body.rm-dark-theme .roam-app .bp3-tab.rm-settings__tab[aria-selected="true"] {
     color: var(--text-color) !important;
 }
 
+body.rm-dark-theme .roam-app .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab {
+    color: var(--text-color) !important;
+    background: transparent !important;
+}
+
+body.rm-dark-theme .roam-app .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab:hover {
+    background: var(--sidebar-hover-bg) !important;
+    color: var(--text-color) !important;
+}
+
+/* 夜间：文本版式补强，覆盖插件设置页中黑灰字体 */
+body.rm-dark-theme .roam-app .bp3-dialog .bp3-tab-copy,
+body.rm-dark-theme .roam-app .bp3-dialog .bp3-tab-copy.text-lg,
+body.rm-dark-theme .bp3-dialog .bp3-tab-copy,
+body.rm-dark-theme .bp3-dialog .bp3-tab-copy.text-lg,
+body.rm-dark-theme .roam-app .bp3-dialog .bp3-tab-copy.text-neutral-dark,
+body.rm-dark-theme .bp3-dialog .bp3-tab-copy.text-neutral-dark,
+body.rm-dark-theme .roam-app .bp3-tab-copy,
+body.rm-dark-theme .bp3-tab-copy,
+body.rm-dark-theme .roam-app .bp3-tab-list .bp3-tab-copy,
+body.rm-dark-theme .bp3-tab-list .bp3-tab-copy,
+body.rm-dark-theme .roam-app .bp3-tab-list .bp3-tab-copy.text-neutral-dark,
+body.rm-dark-theme .bp3-tab-list .bp3-tab-copy.text-neutral-dark,
+body.rm-dark-theme .roam-app .bp3-dialog .bp3-tab,
+body.rm-dark-theme .roam-app .bp3-dialog .bp3-tab-panel,
+body.rm-dark-theme .roam-app .bp3-dialog .bp3-dialog-body,
+body.rm-dark-theme .roam-app .bp3-dialog .bp3-label,
+body.rm-dark-theme .roam-app .bp3-dialog .bp3-control,
+body.rm-dark-theme .roam-app .bp3-dialog .bp3-input,
+body.rm-dark-theme .bp3-dialog .bp3-input,
+body.rm-dark-theme .roam-app .bp3-dialog .bp3-input::placeholder,
+body.rm-dark-theme .bp3-dialog .bp3-input::placeholder,
+body.rm-dark-theme .roam-app .bp3-dialog .bp3-menu-item,
+body.rm-dark-theme .bp3-dialog .bp3-menu-item {
+    color: var(--text-color) !important;
+}
+
+body.rm-dark-theme .roam-app .bp3-dialog .bp3-input::placeholder,
+body.rm-dark-theme .bp3-dialog .bp3-input::placeholder {
+    color: var(--light-text-color) !important;
+}
+
 /* 夜间：右侧内容区与 Roam Depot 扩展列表 */
 body.rm-dark-theme .roam-app .rm-settings-panel__contents .rm-extensions-settings {
     background: var(--page-color) !important;
@@ -4100,6 +4193,22 @@ body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .range-input::
 /* 节点内 KaTeX 公式跟随主题文字色 */
 #roamjs-markmap foreignObject .katex,
 #roamjs-markmap foreignObject .katex-display {
+    color: var(--text-color) !important;
+}
+
+/* 夜间模式终极覆盖：纵向 Tab 文字色 */
+body.rm-dark-theme .roam-app .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab,
+body.rm-dark-theme .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab,
+body.rm-dark-theme .roam-app .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab-copy,
+body.rm-dark-theme .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab-copy,
+body.rm-dark-theme .roam-app .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab-copy.text-neutral-dark,
+body.rm-dark-theme .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab-copy.text-neutral-dark {
+    color: var(--text-color) !important;
+}
+
+body.rm-dark-theme .roam-app .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab:hover,
+body.rm-dark-theme .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab:hover {
+    background: var(--sidebar-hover-bg) !important;
     color: var(--text-color) !important;
 }
 
