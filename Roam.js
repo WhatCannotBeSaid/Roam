@@ -138,7 +138,7 @@
       }
 
       function initSystemTheme() {
-        removeLegacyThemeButton();
+        // removeLegacyThemeButton();  // 恢复日夜间模式切换按钮
         applyEffectiveTheme();
         setupSystemListener();
         setupExcalidrawThemeSync();

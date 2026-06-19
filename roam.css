@@ -930,16 +930,7 @@ body:not(.rm-dark-theme) .roam-app .rm-alias--external:hover {
     font-family: var(--code-font);
 }
 
-/* 代码块选区：背景用主题变量（system.css 有 .cm-selectionBackground / .cmt-line::selection，此处统一透明 + 变量） */
-.roam-app .cm-selectionBackground,
-.roam-app .cm-focused .cm-selectionBackground {
-    background-color: var(--block-highlight-bg) !important;
-}
 
-.roam-app :is(.rm-code-block .cm-line, .cm-content, code)::selection {
-    background: transparent !important;
-    color: inherit !important;
-}
 
 /* 夜间模式：代码块语法高亮，提升可读性 */
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-comment {
@@ -3771,31 +3762,7 @@ body,
     color: var(--text-color, var(--m-text, #313233));
 }
 
-/* --- Selection（对齐 system.css：正文/链接透明；输入与标题区显式高亮，变量见 :root / .rm-dark-theme）--- */
-.roam-app ::selection,
-.roam-app :is(.roam-article, .roam-block-container) ::selection,
-.roam-app .rm-page-ref::selection,
-.roam-app .rm-page-ref *::selection,
-.roam-app :is(.rm-page-ref--link, span.rm-page-ref.rm-page-ref--tag, span.rm-page-ref[data-tag])::selection,
-.roam-app a::selection,
-.roam-app a *::selection,
-.roam-app :is(.rm-alias--page, .rm-alias--block, .rm-alias--external)::selection {
-    background: transparent !important;
-    color: inherit !important;
-}
 
-/* 输入框 + 页面标题：选中高亮（--selection-bg / --selection-text）；标题用层级限定避免 .container * 卡顿 */
-.roam-app :is(input, textarea, .rm-block__input, .bp3-input)::selection,
-.roam-body .roam-app .roam-article :is(.rm-title-display-container, .rm-title-display-container > *, .rm-title-display-container > * *, .rm-title-display, h1.rm-title-display, .rm-title-display *, h1.rm-title-display *)::selection {
-    background: var(--selection-bg) !important;
-    color: var(--selection-text) !important;
-}
-
-.roam-app :is(input, textarea, .rm-block__input, .bp3-input)::-moz-selection,
-.roam-body .roam-app .roam-article :is(.rm-title-display-container, .rm-title-display-container > *, .rm-title-display-container > * *, .rm-title-display, h1.rm-title-display, .rm-title-display *, h1.rm-title-display *)::-moz-selection {
-    background: var(--selection-bg) !important;
-    color: var(--selection-text) !important;
-}
 
 .roam-app .bp3-input,
 .roam-app .bp3-input-group .bp3-input,
@@ -4055,6 +4022,7 @@ html body .rm-command-palette .rm-command-palette__scroll-container .rm-command-
 .roam-app .rm-pdf-find input::placeholder {
     color: rgba(0, 0, 0, 0.6);
 }
+
 
 /* #sup 脚注上标：去除 ^^…^^ 高亮背景，保持干净的上标样式 */
 .rm-page-ref[data-tag="sup"]~.rm-highlight,
