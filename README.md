@@ -3,7 +3,7 @@
 这是一个面向 Roam Research 的主题与交互增强组合，当前由两部分组成：
 
 - `roam.css`：完整视觉系统（配色、字体、组件主题覆盖、日夜模式一致性）
-- `Roam.js`：系统日夜自动同步（无顶栏按钮）、Excalidraw 主题同步、`￥￥ → $$$$` 数学输入快捷键
+- `Roam.js`：三档主题（自动 / 日间 / 夜间）与顶栏切换按钮、Excalidraw 主题同步、`￥￥ → $$$$` 数学输入快捷键
 
 目标是提供统一、沉浸、可读性高且可长期维护的使用体验。
 
@@ -19,28 +19,34 @@
 
 `roam.css` 当前章节：
 
-1. CSS Variables (Light)  
+1. CSS Variables（日间 :root + 夜间 .rm-dark-theme）  
 2. Global Overrides  
 3. Base Layout  
 4. Typography  
 5. Code Blocks  
 6. Embed & Query  
-7. 左侧边栏  
+7. 左侧边栏（含右侧边栏、bullet）  
 8. Block References & Blockquote  
-10. Kanban  
+9. Kanban  
+10. Diagram  
 11. Tags & Labels  
 12. Highlights  
 13. Settings & Plugins  
-15. Dark Mode  
-17. Gap-Filling & Global Resets  
-18. References - Borderless Immersion
+14. Dark Mode  
+15. Gap-Filling & Global Resets  
+16. References - Borderless Immersion  
+17. Command Palette  
+18. PDF 与杂项修复  
+19. Excalidraw  
+20. Mind Map
 
-> 注：章节编号保留历史演进痕迹（如 9/14/16 预留），不影响功能。
+> 注：章节编号已按实际顺序重排为连续的 1–20（2026-09 全量优化），不再有预留号。
 
 ### 🔌 交互增强 (Roam.js)
 
-- **系统日夜同步**：始终根据 `prefers-color-scheme` 为 `body` / `documentElement` 切换 `rm-dark-theme`，不注入顶栏按钮，也不再移除旧版 `#roam-theme-toggle-btn`（若旧按钮仍存在会保留原样）。
-- **系统主题监听**：`matchMedia("(prefers-color-scheme: dark)")` 的 `change`（及旧版 `addListener`）触发时重新应用主题。
+- **主题三档 + 顶栏切换按钮**：在顶栏最右侧注入 `#roam-theme-toggle-btn`（Blueprint 原生按钮样式，随主题着色），点击循环「自动 → 日间 → 夜间」；图标 `repeat / flash / moon`，`title` 提示当前档位（如「跟随系统 (当前夜间) · 点击切换」）。偏好存 `localStorage["roam-theme-mode"]`，**手动档优先于系统**。
+- **系统主题监听（仅 auto 档）**：`matchMedia("(prefers-color-scheme: dark)")` 的 `change`（及旧版 `addListener`）触发时，仅当档位为 `auto` 才重新应用主题；手动档保持用户选择。
+- **顶栏重渲染兜底**：起步阶段最多重试 50×200ms 建按钮；此后每 2s 仅做一次 `id` 查询补建（无 DOM 遍历，不影响输入延迟）。
 - **Excalidraw 主题同步**：同步 `.excalidraw` 根节点 `theme--dark / theme--light`，并处理：
   - Roam 主题 class 变化
   - Excalidraw 节点新增
@@ -70,7 +76,7 @@
 ## 📝 维护说明
 
 - 主题相关逻辑优先集中在 `roam.css` 变量层，减少散点硬编码。
-- `Roam.js` 当前包含系统主题同步、Excalidraw 同步与数学输入快捷键三块独立逻辑，每块以独立 IIFE 组织，便于单独维护与裁剪。
+- `Roam.js` 当前包含主题三档与顶栏切换按钮、系统主题监听、Excalidraw 同步、数学输入快捷键与标签 `#` 前缀隐藏等独立逻辑块，均以 IIFE 组织，便于单独维护与裁剪。
 
 ## 📄 开源协议
 

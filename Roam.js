@@ -1,10 +1,12 @@
 /*!
-* Roam Research Scripts: System Theme Sync & Math Input Shortcut
+* Roam Research Scripts: Theme Toggle (Auto / Light / Dark) & Math Input Shortcut
 * Copyright (c) 2026 Axiom
 * Licensed under the MIT License
 */
 /**
- 系统日夜同步（无顶栏按钮，始终跟随 prefers-color-scheme）
+ 主题：三档「自动（跟随 prefers-color-scheme）/ 日间 / 夜间」+ 顶栏右侧切换按钮
+ - 偏好存 localStorage（键沿用旧版 "roam-theme-mode"），手动选择优先于系统
+ - 同步 body / documentElement 的 rm-dark-theme，并同步 Excalidraw 的 theme--dark / theme--light
 */
 
 (function () {
@@ -42,15 +44,117 @@
     }
   }
 
+  /**
+   主题偏好（三档：auto 跟随系统 / light 日间 / dark 夜间）
+   手动选择优先；只有 auto 档才随系统变化；键沿用旧版 "roam-theme-mode"
+  */
+  var THEME_STORAGE_KEY = "roam-theme-mode";
+  var THEME_CYCLE = ["auto", "light", "dark"];
+
+  function getStoredThemeMode() {
+    try {
+      var m = localStorage.getItem(THEME_STORAGE_KEY);
+      return THEME_CYCLE.indexOf(m) >= 0 ? m : "auto";
+    } catch (_) {
+      return "auto";
+    }
+  }
+
+  function setStoredThemeMode(mode) {
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, mode);
+    } catch (_) {}
+  }
+
+  /** 最终是否夜间：手动档优先，auto 档看系统 */
+  function getEffectiveDark() {
+    var mode = getStoredThemeMode();
+    if (mode === "dark") return true;
+    if (mode === "light") return false;
+    return getSystemDark();
+  }
+
+  /** 图标沿用旧版 Theme-Toggle：自动=repeat / 日间=flash / 夜间=moon */
+  function themeIconName(mode) {
+    if (mode === "light") return "flash";
+    if (mode === "dark") return "moon";
+    return "repeat";
+  }
+
+  function updateThemeButtonIcon() {
+    var btn = document.getElementById("roam-theme-toggle-btn");
+    if (!btn) return;
+    var mode = getStoredThemeMode();
+    var icon = btn.querySelector(".bp3-icon");
+    if (icon) icon.className = "bp3-icon bp3-icon-" + themeIconName(mode);
+    var titles = {
+      auto: "跟随系统 (当前" + (getSystemDark() ? "夜间" : "日间") + ")",
+      light: "日间模式",
+      dark: "夜间模式"
+    };
+    btn.setAttribute("title", (titles[mode] || titles.auto) + " · 点击切换");
+  }
+
+  /** 按钮结构与旧版 Theme-Toggle.js 一致：插在 .rm-topbar 最后一个元素之后 */
+  function createThemeButton() {
+    if (document.getElementById("roam-theme-toggle-btn")) return true;
+    var topbars = document.getElementsByClassName("rm-topbar");
+    if (!topbars || !topbars[0]) return false;
+
+    var btn = document.createElement("span");
+    btn.id = "roam-theme-toggle-btn";
+    btn.className = "bp3-button bp3-minimal bp3-small";
+    btn.tabIndex = 0;
+    btn.setAttribute("aria-label", "切换主题 (自动/日间/夜间)");
+
+    var icon = document.createElement("span");
+    icon.className = "bp3-icon bp3-icon-" + themeIconName(getStoredThemeMode());
+    btn.appendChild(icon);
+
+    btn.addEventListener("click", function () {
+      var mode = getStoredThemeMode();
+      setStoredThemeMode(THEME_CYCLE[(THEME_CYCLE.indexOf(mode) + 1) % THEME_CYCLE.length]);
+      applyEffectiveTheme();
+    });
+
+    var lastChild = topbars[0].lastElementChild;
+    if (lastChild) {
+      lastChild.insertAdjacentElement("afterend", btn);
+    } else {
+      topbars[0].appendChild(btn);
+    }
+    updateThemeButtonIcon();
+    return true;
+  }
+
+  /** 顶栏可能晚于脚本渲染：起步重试（最多 50×200ms，与旧版一致） */
+  function ensureThemeButton() {
+    if (createThemeButton()) return;
+    var attempts = 0;
+    var retry = setInterval(function () {
+      attempts++;
+      if (createThemeButton() || attempts >= 50) clearInterval(retry);
+    }, 200);
+  }
+
+  /** 顶栏被 Roam 重渲染后补回按钮：每 2s 仅一次 id 查询，无 DOM 遍历，不影响输入 */
+  function watchThemeButton() {
+    setInterval(function () {
+      if (!document.getElementById("roam-theme-toggle-btn")) createThemeButton();
+    }, 2000);
+  }
+
   function applyEffectiveTheme() {
-    setThemeClass(getSystemDark());
+    setThemeClass(getEffectiveDark());
+    updateThemeButtonIcon();
   }
 
   function setupSystemListener() {
     try {
       var mq = window.matchMedia("(prefers-color-scheme: dark)");
       var onChange = function () {
-        applyEffectiveTheme();
+        // 仅 auto 档跟随系统；手动档保持用户选择
+        if (getStoredThemeMode() === "auto") applyEffectiveTheme();
       };
       if (mq.addEventListener) {
         mq.addEventListener("change", onChange);
@@ -136,6 +240,8 @@
     applyEffectiveTheme();
     setupSystemListener();
     setupExcalidrawThemeSync();
+    ensureThemeButton();
+    watchThemeButton();
   }
 
   function init() {
