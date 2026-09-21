@@ -4,7 +4,7 @@
  * Licensed under the MIT License
  */
 /* ========================================================= */
-/* 1. CSS Variables (Light) - 格式/顺序对齐 lesswrong.css   */
+/* 1. CSS Variables（日间 :root + 夜间 .rm-dark-theme；格式/顺序对齐 lesswrong.css）        */
 /* 已比对 system.css：无同名变量（system 仅 --primary-color/--s1/--dark-* 等），本块全部保留 */
 /* 去重说明：本文件已相对 blueprint.css / site.css 做布局属性去重，仅保留字体/颜色及独有声明。 */
 /* ========================================================= */
@@ -309,10 +309,10 @@
 }
 
 /* Night Mode - 与日间同标准：黑/灰系（标题·正文·引用·H1-H3 有层次），彩色系（标签·双链·外链 色相环隔开），APCA 负极性 Lc 60–80，禁纯白 */
+/* 选择器精简（2026-09）：Roam.js 给 <html> 与 <body> 同时加 .rm-dark-theme，.rm-dark-theme .roam-app
+   已覆盖两种挂法；Roam 无嵌套 .roam-app，原 body.rm-dark-theme .roam-app .roam-app 永不匹配，已删 */
 html.rm-dark-theme,
 body.rm-dark-theme,
-html.rm-dark-theme .roam-app,
-body.rm-dark-theme .roam-app .roam-app,
 .rm-dark-theme .roam-app {
     --m-bg: #2B333E;
     /* 玄青 - 主背景（固定） */
@@ -360,8 +360,7 @@ body.rm-dark-theme .roam-app .roam-app,
     --m-blockquote-bar-hover: #CCA4E3;
     /* 丁香 - 引用块竖条 hover */
     /* 彩色系（黄·蓝·红紫，与日间 标签/双链/外链 色相一一对应） */
-    --m-page-tag: #75878A;
-    /* 苍色 - 弱化标签区 */
+    /* --m-page-tag 日夜同值 #75878A（苍色），由日间块单一定义，夜间副本已删（见块末去重登记） */
     --m-tag: #E8A84B;
     /* 琥珀亮 - 标签（黄色系） */
     --m-tag-hover: #F0C239;
@@ -370,7 +369,7 @@ body.rm-dark-theme .roam-app .roam-app,
     --tag-text-color: #d1d1d1;
     --tag-border-color: #888;
     --tag-hover-bg: rgba(255, 255, 255, 0.05);
-    --tag-font-weight: 600;
+    /* --tag-font-weight 日夜同值 600，由日间块单一定义，夜间副本已删（见块末去重登记） */
     /* Links 专用（不与 blockquote-bar / sidebar-star / 高亮 重复） */
     --m-page-ref: #2DD4BF;
     /* 青绿亮 - 双链（teal，与主色/侧栏星标/原蓝区分） */
@@ -389,7 +388,8 @@ body.rm-dark-theme .roam-app .roam-app,
     --m-highlight-purple: oklch(from #DEBDE0 l c h / 0.40);
     --m-highlight-orange: oklch(from #F7A1AA l c h / 0.40);
 
-    /* 夜间显式重定义文字颜色变量，防止继承失败导致黑色文字 */
+    /* 防御性显式重定义（刻意保留，勿当重复删）：下列 9 条表达式虽与日间逐字相同，
+       但历史上真实发生过「夜间继承失败→正文黑字/标题回落白色」的 bug（commit 1721fa5），保留作保险 */
     --text-color: var(--m-text);
     --light-text-color: var(--m-text-muted);
     --page-color: var(--m-surface);
@@ -405,9 +405,6 @@ body.rm-dark-theme .roam-app .roam-app,
     --color-subtle-border: oklch(from var(--m-text) l c h / 0.08);
     --code-bg: oklch(from var(--m-text) l c h / 0.03);
     --inline-code-bg: oklch(from var(--m-page-ref) l c h / 0.22);
-    --inline-code-color: var(--m-tag);
-    --embed-bg: oklch(from var(--m-text) l c h / 0.03);
-    --embed-hover-bg: oklch(from var(--m-text) l c h / 0.06);
     --reference-item-bg: oklch(from var(--m-text) l c h / 0.04);
     --reference-item-hover-bg: oklch(from var(--m-text) l c h / 0.08);
     --kanban-column-bg: oklch(from var(--m-text) l c h / 0.02);
@@ -417,7 +414,6 @@ body.rm-dark-theme .roam-app .roam-app,
     --shadow-soft: 0 8px 24px oklch(from var(--m-ink) l c h / 0.32);
     --shadow-floating: 0 10px 30px oklch(from var(--m-ink) l c h / 0.38);
     --focus-ring: 0 0 0 3px oklch(from var(--m-primary) l c h / 0.35);
-    --selection-bg: oklch(from var(--m-primary) l c h / 0.58);
     --selection-text: var(--m-on-accent);
     --scrollbar-track: oklch(from var(--m-text) l c h / 0.05);
     --scrollbar-thumb: oklch(from var(--m-primary) l c h / 0.40);
@@ -426,7 +422,6 @@ body.rm-dark-theme .roam-app .roam-app,
     --menu-divider-color: var(--color-subtle-border);
     --menu-hover-text: var(--on-accent);
     --sidebar-hover-bg: oklch(from var(--m-primary) l c h / 0.22);
-    --btn-disabled-text: oklch(from var(--m-text) l c h / 0.55);
     --datepicker-day-hover-bg: oklch(from var(--m-text) l c h / 0.10);
     --datepicker-day-hover-text: var(--on-accent);
     --find-input-bg: oklch(from var(--m-text) l c h / 0.05);
@@ -434,38 +429,49 @@ body.rm-dark-theme .roam-app .roam-app,
     --find-input-focus-shadow: 0 0 0 2px oklch(from var(--m-primary) l c h / 0.30);
     --autocomplete-row-hover-bg: oklch(from var(--m-primary) l c h / 0.15);
     --autocomplete-row-hover-text: var(--text-color);
-    --autocomplete-results-bg: var(--page-color);
-    --sync-warn-border: var(--m-warn);
-    --sync-warn-shadow: 0 0 12px oklch(from var(--m-warn) l c h / 0.25);
-    --sync-warn-focus-shadow: 0 0 0 2px oklch(from var(--m-warn) l c h / 0.20), 0 4px 16px oklch(from var(--m-warn) l c h / 0.10);
     --search-hit-bg: oklch(from var(--m-highlight-yellow) l c h / 0.25);
     --autocomplete-match-bg: oklch(from var(--m-highlight-yellow) l c h / 0.20);
     --confirmation-btn-hover-bg: var(--reference-item-hover-bg);
-    --reference-divider-color: transparent;
     --reference-icon-hover-bg: oklch(from var(--m-primary) l c h / 0.18);
-    --blockquote-bar: var(--m-blockquote-bar);
-    --blockquote-text-color: var(--blockquote-text);
-    --blockquote-bar-color: var(--m-blockquote-bar);
-    --blockquote-bar-hover-color: var(--m-blockquote-bar-hover);
-    --highlight-underline: var(--m-highlight-underline);
-    --highlight-underline-fade: oklch(from var(--m-highlight-underline) l c h / 0);
-    --highlight-text: inherit;
-    --highlight-yellow: var(--m-highlight-yellow);
-    --highlight-green: var(--m-highlight-green);
-    --highlight-blue: var(--m-highlight-blue);
-    --highlight-red: var(--m-highlight-red);
-    --highlight-purple: var(--m-highlight-purple);
-    --highlight-orange: var(--m-highlight-orange);
-    --code-warning-surface: var(--popover-bg);
     --code-warning-code-bg: oklch(from var(--m-ink) l c h / 0.55);
     --code-warning-text: var(--on-accent);
     --code-warning-btn-bg: oklch(from var(--m-primary) l c h / 0.20);
     --code-warning-btn-hover-bg: oklch(from var(--m-primary) l c h / 0.28);
     --danger-bg: oklch(from var(--m-highlight-red) l c h / 0.40);
     --danger-border: oklch(from var(--m-text) l c h / 0.10);
-    --ink-solid: var(--m-ink);
-    --hr-color: var(--m-tag);
+
+    /* 去重登记（2026-09 全量优化）：以下 28 个变量日间块已有逐字相同的定义，夜间副本已删。
+       原理：CSS 变量表达式在使用处按当时的 --m-* 值解析，本块已把 --m-* 换成暗色，
+       同一表达式自动得出暗色结果，夜间重复定义纯属冗余。清单：--m-page-tag, --tag-font-weight,
+       --inline-code-color, --embed-bg, --embed-hover-bg, --selection-bg, --btn-disabled-text,
+       --autocomplete-results-bg, --sync-warn-border, --sync-warn-shadow, --sync-warn-focus-shadow,
+       --reference-divider-color, --blockquote-bar, --blockquote-text-color, --blockquote-bar-color,
+       --blockquote-bar-hover-color, --highlight-underline, --highlight-underline-fade, --highlight-text,
+       --highlight-yellow, --highlight-green, --highlight-blue, --highlight-red, --highlight-purple,
+       --highlight-orange, --code-warning-surface, --ink-solid, --hr-color */
 }
+
+/* ------------------------------------------------------------------
+ * 未使用变量登记（疑似死代码，待验证 —— 本文件内无 var() 引用，一律保留，不删）
+ * 这些变量可能被 blueprint.css / site.css / system.css 引用（版式、行高、阴影、圆角归它们管），
+ * 确认无引用前请勿删除：
+ * ① 排版/布局度量（31 个）：--transition-normal, --transition-fast, --border-radius-sm, --border-radius-md,
+ *    --border-radius-pill, --ui-surface-radius, --spacing-xs, --spacing-sm, --spacing-md, --spacing-xl,
+ *    --layout-padding-sm, --layout-padding-md, --layout-padding-lg, --layout-padding-xl,
+ *    --layout-padding-article-v, --layout-padding-article-h, --layout-margin-block, --block-spacing,
+ *    --block-row-min-height, --ref-block-row-min-height, --block-line-min-height, --lh-display, --lh-body,
+ *    --lh-h1, --lh-h2, --lh-h3, --lh-quote, --lh-tag, --lh-code, --lh-title, --title-block-line-height
+ *    （另：Diagram 区的 --block-text-align / --block-unset-max-width 由 Roam Diagram JS 读取，见第 10 章）
+ * ② 色/装饰（30 个）：--code-selection-color, --color-primary-highlight, --danger-border,
+ *    --datepicker-day-selected-bg, --find-input-focus-shadow, --focus-ring, --highlight-yellow,
+ *    --highlight-green, --highlight-blue, --highlight-orange, --highlight-purple, --hover-secondary,
+ *    --hr-color, --ink-solid, --m-checkbox-unchecked, --m-tag-hover, --page-tag-color, --popover-border,
+ *    --reference-divider-color, --selection-bg, --selection-text, --settings-accent-bg,
+ *    --sidebar-icon-hover-filter, --tag-border-color, --tag-font-weight, --tag-text-color,
+ *    --title-text-shadow, --ui-surface-shadow, --blockquote-bar, --code-warning-surface
+ * ③ Sync 指示器（6 个）：--sync-synced-border, --sync-synced-border-color, --sync-synced-focus-shadow,
+ *    --sync-warn-border, --sync-warn-shadow, --sync-warn-focus-shadow
+ * ------------------------------------------------------------------ */
 
 /* Visual system checklist:
  * 色值来自 colors.masantu.com / 0xu.cn 中国传统色；
@@ -477,6 +483,8 @@ body.rm-dark-theme .roam-app .roam-app,
 /* ========================================================= */
 /* 2. Global Overrides (Fix Inline Styles)                   */
 /* 已比对 system.css：无相同选择器（本块为 roam 主题覆盖内联/Blueprint），全部保留 */
+/* 本章 !important 根因（按组）：① 压 Roam 内联 style（含 [style*=""] 命中的元素）；
+/* ② 对抗 Blueprint .bp3-dark 主题类自带样式；③ 弹层/对话框挂在 body 下、脱离 .roam-app 上下文，需权重兜底 */
 /* ========================================================= */
 
 body .rm-menu-item[style*="background-color"],
@@ -499,6 +507,7 @@ body:not(.rm-dark-theme) .roam-app {
     background: var(--bg-color) !important;
 }
 
+/* .bp3-dark 是 Blueprint 暗色主题类：部分弹层日间也会挂它，以下规则防其暗色样式在日间残留 */
 body:not(.rm-dark-theme) .bp3-dark,
 body:not(.rm-dark-theme) .bp3-dark .bp3-menu,
 body:not(.rm-dark-theme) .bp3-dark .bp3-popover-content {
@@ -621,21 +630,8 @@ body.rm-dark-theme .bp3-dark .bp3-input {
     color: var(--text-color) !important;
 }
 
-body.rm-dark-theme .roam-app .bp3-button:not([class*="bp3-intent-"]) {
-    background: var(--embed-bg) !important;
-    border-color: var(--color-subtle-border) !important;
-    color: var(--text-color) !important;
-}
-
-body.rm-dark-theme .roam-app .bp3-button.bp3-minimal:not([class*="bp3-intent-"]) {
-    background: transparent !important;
-}
-
-body.rm-dark-theme .roam-app .bp3-button:not([class*="bp3-intent-"]):hover {
-    background: var(--sidebar-hover-bg) !important;
-    border-color: var(--color-subtle-border) !important;
-    color: var(--text-color) !important;
-}
+/* 已删 3 条夜间按钮规则（base/minimal/hover）：与 Dark Mode (Merged Overrides) 章的同名规则
+   选择器相同、声明集合逐字相同（仅书写顺序不同），唯一出处归该章（2026-09 去重） */
 
 /* 夜间：弹层/对话框等上下文中的无 intent 按钮也匹配主题（兜底） */
 body.rm-dark-theme .bp3-overlay .bp3-button:not([class*="bp3-intent-"]),
@@ -676,6 +672,7 @@ body.rm-dark-theme .roam-app .bp3-text-area {
     color: var(--text-color) !important;
 }
 
+/* 夜间表格：Blueprint html-table 默认浅底深字，深色模式下须强制反转 */
 body.rm-dark-theme .roam-app .bp3-running-text table th,
 body.rm-dark-theme .bp3-running-text table th,
 body.rm-dark-theme .roam-app table.bp3-html-table th,
@@ -688,29 +685,22 @@ body.rm-dark-theme table.bp3-html-table td {
     background: var(--page-color) !important;
 }
 
+/* 夜间占位符（placeholder）统一浅灰 */
 body.rm-dark-theme .roam-app .roam-article ::placeholder,
 body.rm-dark-theme .roam-app .bp3-input::placeholder,
 body.rm-dark-theme .roam-app .bp3-text-area::placeholder {
     color: var(--light-text-color) !important;
 }
 
-body.rm-dark-theme .roam-app .rm-page-ref--link,
-body.rm-dark-theme .roam-app a.rm-alias--page,
-body.rm-dark-theme .roam-app a.rm-alias--block {
-    color: var(--m-page-ref) !important;
-}
-
-body.rm-dark-theme .roam-app .rm-page-ref--link:hover,
-body.rm-dark-theme .roam-app a.rm-alias--page:hover,
-body.rm-dark-theme .roam-app a.rm-alias--block:hover {
-    color: var(--m-page-ref-hover) !important;
-}
+/* 已删 2 条夜间双链规则（base/hover）：与 Dark Mode (Merged Overrides) 章的同名规则逐字重复，
+   唯一出处归该章（2026-09 去重） */
 
 /* ========================================================= */
 /* 3. Base Layout                                            */
 /* 已比对 system.css：版式见 system，此处仅保留配色/字体 */
 /* ========================================================= */
 
+/* 正文区容器：底色 + 应用基础字号（--fs-app-base: 16px；正文块字号另由 --fs-body 规则控制） */
 .roam-app .roam-article>div {
     background: var(--page-color);
     font-size: var(--fs-app-base);
@@ -874,10 +864,11 @@ body .bp3-text-overflow-ellipsis {
     font-size: var(--fs-h3);
 }
 
-.roam-app a {
-    color: var(--color-secondary);
-}
+/* 已删死规则 .roam-app a { color: var(--color-secondary) }：任何链接都有更高权重规则接管——
+   非 alias 链接受下条日间规则与 Dark Mode 章夜间规则接管，双链/外链 alias 受 Tags 章与 Dark Mode 章
+   !important 规则接管，本行从未生效（2026-09 层叠分析证实） */
 
+/* 日间：外链/外部 alias 用语义紫 --m-link（日间唯一出处；夜间出处见 Dark Mode 章） */
 body:not(.rm-dark-theme) .roam-app a:not(.rm-alias--page):not(.rm-alias--block),
 body:not(.rm-dark-theme) .roam-app .rm-alias--external {
     color: var(--m-link);
@@ -888,16 +879,8 @@ body:not(.rm-dark-theme) .roam-app .rm-alias--external:hover {
     color: var(--m-link-hover, var(--m-link)) !important;
 }
 
-/* 夜间：外链/外部 alias 复用语义紫 --m-link（与上方日间分支对称），避免回落为 --color-secondary 或正文近白色 */
-body.rm-dark-theme .roam-app a:not(.rm-alias--page):not(.rm-alias--block),
-body.rm-dark-theme .roam-app .rm-alias--external {
-    color: var(--m-link);
-}
-
-body.rm-dark-theme .roam-app a:not(.rm-alias--page):not(.rm-alias--block):hover,
-body.rm-dark-theme .roam-app .rm-alias--external:hover {
-    color: var(--m-link-hover, var(--m-link)) !important;
-}
+/* 已删 2 条夜间外链规则（base/hover）：Dark Mode 章已有同名规则且带 !important
+   （此处 base 无 !important 本就被压制、hover 逐字重复），唯一出处归该章（2026-09 去重） */
 
 /* ========================================================= */
 /* 5. Code Blocks                                            */
