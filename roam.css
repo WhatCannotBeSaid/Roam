@@ -925,6 +925,8 @@ body:not(.rm-dark-theme) .roam-app .rm-alias--external:hover {
     color: var(--inline-code-color) !important;
 }
 
+/* 疑似死代码，待验证：.cm-comment/.cm-variable-2/.cm-attribute 是 CodeMirror 5 时代的 token 类名，
+   现代 Roam 代码块用 CodeMirror 6（.cm-editor + .cmt-* 高亮类）。确认无 CM5 遗留视图前保留 */
 .roam-app .cm-comment,
 .roam-app .cm-variable-2,
 .roam-app .cm-attribute {
@@ -941,6 +943,8 @@ body.rm-dark-theme .roam-app .rm-code-block span.cmt-number {
     color: #c4b5fd !important;
 }
 
+/* 疑似死代码，待验证：以下 4 条为「同一元素同时挂 cmt-comment 与另一语言类」的复合选择器；
+   CM6 classHighlighter 通常一个 token 只挂一个类，需在真实代码块中确认（一律保留） */
 body.rm-dark-theme .roam-app .rm-code-block span.cmt-comment.cmt-attribute {
     color: #86efac !important;
 }
@@ -1055,9 +1059,7 @@ body.rm-dark-theme .roam-app .rm-code-block span.cmt-link {
 /* 已比对 system.css：与 system 相同版式已删，仅保留 left:0 / bp3-overlay / popover / 配色 */
 /* ========================================================= */
 
-/* ---------- 左侧边栏：版式见 system.css，此处仅保留与 system 不同项 ---------- */
-
-/* ---------- 左侧边栏：roam 配色与字体 ---------- */
+/* ---------- 左侧边栏：版式见 system.css，此处仅保留配色与字体 ---------- */
 .roam-app .roam-sidebar-container {
     background: var(--bg-color) !important;
 }
@@ -1119,6 +1121,10 @@ body:not(.rm-dark-theme) .roam-app .starred-pages-wrapper>.flex-h-box.title>span
     font-size: 1.05rem;
 }
 
+/* 侧栏文字色权重地图（2026-09 补注）：
+   ① 上方 .top-row/.log-button/.page 为无模式基础层（--text-color），夜间靠它生效；
+   ② 本组日间分支带 body:not(.rm-dark-theme) + !important，权重最高，日间由本组决定；
+   ③ 夜间另有下方 !important 兜底组与 body.rm-dark-theme :hover 组管理悬停色——三层各管一段，勿删任一层 */
 body:not(.rm-dark-theme) .roam-app .roam-sidebar-content .log-button,
 body:not(.rm-dark-theme) .roam-app .roam-sidebar-content .top-row,
 body:not(.rm-dark-theme) .roam-app .roam-sidebar-content .starred-pages .page {
@@ -1247,7 +1253,7 @@ body:not(.rm-dark-theme) .roam-app .roam-sidebar-content>div>div {
     background-color: var(--menu-hover-bg);
 }
 
-/* 日间模式下 logo 颜色改为黑色 */
+/* 侧栏 logo 旁文字：日间黑 / 夜间白（刻意硬编码，logo 为深色位图需最高对比；#000000/#FFFFFF 属既有基线） */
 
 body:not(.rm-dark-theme) .roam-sidebar-container img[src*="astrolabe"]~span {
     color: #000000 !important;
@@ -1276,7 +1282,7 @@ body.rm-dark-theme .roam-app .roam-sidebar-content .starred-pages .page:hover {
 }
 
 /* ========================================================= */
-/* 右侧边栏：版式见 system.css，此处仅保留与 system 不同的配色/字体 */
+/* 第 7 章附属：右侧边栏（版式见 system.css，此处仅保留配色/字体） */
 /* ========================================================= */
 
 /* ---------- 右侧边栏：roam 字体与配色 ---------- */
@@ -1343,8 +1349,8 @@ body:not(.rm-dark-theme) .roam-app .rm-multibar .bp3-button {
     border-color: oklch(from #000 l c h / 0.55) !important;
 }
 
-/* view/edit 两态统一：从根上把 .rm-block__input 展示层与 textarea 编辑层的行盒锁为同一规格
-   目的：bullet 与首行基线的相对位置在编辑/未编辑间保持一致，且与行距/间距无关
+/* view/edit 两态统一：把 .rm-block__input 展示层与 textarea 编辑层的字号锁为同一规格
+   （行高/行距属版式，由 blueprint.css/system.css 控制，本文件不涉及）
    作用域：非标题 / 非引用块（标题与引用另有专属规则） */
 .roam-app .roam-block-container:not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3):not(:has(blockquote))>.rm-block-main>.rm-block__input,
 .roam-app .roam-block-container:not(.rm-heading-level-1):not(.rm-heading-level-2):not(.rm-heading-level-3):not(:has(blockquote))>.rm-block-main>.rm-block__input.rm-block__input--view,
@@ -1366,7 +1372,7 @@ body.rm-dark-theme .roam-app .rm-bullet.rm-bullet--closed .rm-bullet__inner {
     border-color: oklch(from var(--m-text-muted) l c h / 0.5) !important;
 }
 
-/* 展示模式：bullet 不显示 border H*/
+/* 展示模式：bullet 不显示 border */
 .roam-app .roam-block-container:not(:focus-within) .rm-bullet .rm-bullet__inner,
 .roam-app .roam-block-container:not(:focus-within) .rm-bullet.rm-bullet--closed .rm-bullet__inner {
     border-color: transparent !important;
@@ -1387,6 +1393,9 @@ body.rm-dark-theme .roam-app .rm-bullet.rm-bullet--closed .rm-bullet__inner {
 /* 8. Block References & Blockquote                          */
 /* ========================================================= */
 
+/* 疑似死代码，待验证：#block-input / #block-input>span>div / #block-input-ghost 三条依赖「精确 id」与旧版
+   底部输入框结构；现代 Roam 块输入框 id 为 block-input-{uid}（Roam.js 的 isRoamBlockTextarea 亦按该前缀
+   判定），需确认精确 id 是否仍存在；一律保留 */
 .roam-app #block-input {
     background: var(--bg-color);
 }
@@ -1421,6 +1430,19 @@ body.rm-dark-theme .roam-app .rm-bullet.rm-bullet--closed .rm-bullet__inner {
     font-size: var(--fs-quote) !important;
 }
 
+/* 引用块竖条·实际生效路径（2026-09 实测）：Roam 当前用 .rm-bq 的 border-left 渲染竖条，
+   其默认色接近背景导致「看不见」；此处仅改 border-color（颜色类属性），宽度/线型保持 Roam 原样，
+   颜色只引用既有 --blockquote-bar-color / --blockquote-bar-hover-color，不新增色值、不新增 !important */
+.roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote) {
+    border-color: var(--blockquote-bar-color);
+}
+
+.roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote):hover {
+    border-color: var(--blockquote-bar-hover-color);
+}
+
+/* 引用块竖条·备用路径（疑似死代码，待验证）：部分 Roam 版本/第三方主题改用 ::before 画竖条；
+   当前 Roam 实测不渲染该伪元素，保留以兼容其它版本 */
 .roam-app :is(.rm-bq, .roam-article .rm-bq, blockquote)::before {
     background: var(--blockquote-bar-color);
 }
@@ -1443,7 +1465,7 @@ body.rm-dark-theme .roam-app .rm-bullet.rm-bullet--closed .rm-bullet__inner {
 }
 
 /* ========================================================= */
-/* 10. Kanban                                                */
+/* 9. Kanban                                                 */
 /* 已比对 system.css：无相同规则块（本块用主题变量），全部保留 */
 /* ========================================================= */
 
@@ -1470,7 +1492,7 @@ body.rm-dark-theme .roam-app .rm-bullet.rm-bullet--closed .rm-bullet__inner {
 }
 
 /* ========================================================= */
-/* Diagram — 完整迁移自 site.css，颜色已改为主题变量            */
+/* 10. Diagram — 完整迁移自 site.css，颜色已改为主题变量            */
 /* blueprint.css 仅 .bp3-icon-diagram-tree 图标，无布局/颜色   */
 /* ========================================================= */
 
@@ -1488,9 +1510,9 @@ body.rm-dark-theme .roam-app .rm-bullet.rm-bullet--closed .rm-bullet__inner {
     --group-title-font-size: var(--fs-h1) !important;
     --block-unset-max-width: 200px !important;
     --block-text-align: start !important;
-}
 
-.roam-app .rm-diagram {
+    /* 容器底色：原独立 .rm-diagram 规则已并入本规则（2026-09 合并同选择器，覆盖关系不变）；
+       --block-unset-max-width / --block-text-align 本文件内无引用，但由 Roam Diagram JS 读取，故保留 */
     background-color: var(--diagram-background-color);
 }
 
@@ -1498,6 +1520,7 @@ body.rm-dark-theme .roam-app .rm-bullet.rm-bullet--closed .rm-bullet__inner {
     background-color: var(--page-color);
 }
 
+/* --item-color 由 Roam Diagram JS 按色板逐项内联注入，本文件不定义（同类：Excalidraw 的 --swatch-color） */
 .roam-app .rm-diagram .rm-simple-color-picker .rm-simple-color-picker-item {
     background-color: var(--item-color);
 }
@@ -1660,11 +1683,12 @@ body.rm-dark-theme .roam-app .rm-diagram .react-flow__minimap svg {
 
 /* ========================================================= */
 /* 11. Tags & Labels                                         */
+/* 本章 !important 根因（按组）：压 Roam 默认标签样式（蓝字+下划线）与通用标签规则自身更高的权重 */
 /* ========================================================= */
 
-.roam-app .rm-page-ref--link {
-    color: var(--color-primary);
-}
+/* 已删死规则 .roam-app .rm-page-ref--link { color: var(--color-primary) }：日间被下方
+   body:not(.rm-dark-theme) 规则、夜间被 Dark Mode 章同名规则（均带 !important）接管，从未生效
+   （2026-09 层叠分析证实） */
 
 body:not(.rm-dark-theme) .roam-app .rm-page-ref--link,
 body:not(.rm-dark-theme) .roam-app a.rm-alias--page,
@@ -1737,7 +1761,13 @@ body:not(.rm-dark-theme) .roam-app a.rm-alias--block:hover {
     background: var(--tag-hover-bg) !important;
 }
 
-/* 学术节点标签配色：theorem / definition / proof / problem / counter / assumption，六色不重复 */
+/* 学术标签地图（2026-09 补注）：
+   ① 通用标签：琥珀 --m-tag（日 #CA6924 / 夜 #E8A84B），已排除 #Streamer 与下列 6 个学术标签；
+   ② 下列 6 色为学术标签专用：日间 #177CB0 绀蓝 / #21A675 松柏绿 / #CA6924 琥珀 / #7C3AED 紫 /
+      #D23B3B 丹 / #0D9488 青碧；夜间统一换亮色 #48C0A3 / #2ADD9C / #E8A84B / #A78BFA / #E85A5A / #2DD4BF；
+   ③ 搜索菜单同名标签（.rm-menu-item:has(...)）沿用同组色，保证下拉与正文一致。
+   注意：每条色都同时命中 3 种选择器形态（.rm-page-ref--tag[data-tag] / .rm-page-ref[data-tag] /
+   span[data-link-title]），改色需三处同步 */
 .roam-app span.rm-page-ref--tag[data-tag="theorem"],
 .roam-app span.rm-page-ref[data-tag="theorem"],
 .roam-app span[data-link-title="theorem"] {
@@ -1938,6 +1968,13 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
 /* ========================================================= */
 /* 13. Settings & Plugins                                    */
 /* 已比对 system.css：顶栏版式已删仅保留配色/字体；Speech to Roam 隐藏、find-or-create 等为 roam 独有 */
+/* 本章 !important 根因地图（254 处按子区归类，2026-09 补注）：
+   ① 顶栏 / find-or-create / sync / Toast / 弹层菜单 → 压 Roam 内联 style 与 Blueprint 自带样式；
+   ② Live AI、AI 命令菜单、扩展市场、Workbench 表格 → 第三方插件动态渲染，类名与内联色由插件注入；
+   ③ 设置面板（含插件设置页 panel-config）→ 面板容器自身带色，不用 !important 压不住；
+   ④ 日期选择器 / 自动补全 → 覆盖 react-day-picker 与 Roam 内联 rgb 值；
+   子区顺序：Tooltip → Hotkeys → Disabled → 弹层统一 → bp3 菜单 → 确认弹窗 → Live AI → AI 命令菜单 →
+   设置面板/扩展市场 → Section 标题 → Depot readme → 设置 Dialog → 日期选择器 → 自动补全 */
 /* ========================================================= */
 
 /* ---------- 顶栏 / dropzone / find-or-create / sync：roam 配色与字体 ---------- */
@@ -2043,6 +2080,7 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
     font-family: var(--code-font) !important;
 }
 
+/* Tooltip（根因①：气泡内文字走 Blueprint 默认色，深色底需覆盖） */
 /* Tooltip */
 .bp3-tooltip .bp3-popover-content div {
     color: var(--tooltip-text);
@@ -2064,12 +2102,14 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
     color: var(--color-primary);
 }
 
+/* Disabled button（根因①：Blueprint 的 disabled 文本色在深色底不可读） */
 /* Disabled button */
 .bp3-button.bp3-disabled,
 .bp3-button.bp3-disabled .bp3-button-text {
     color: var(--btn-disabled-text) !important;
 }
 
+/* 弹层统一底色/文字（根因①③：这些弹层挂在 body 下、脱离 .roam-app，Blueprint 自带不透明底色） */
 :is(.bp3-popover .bp3-popover-content, .bp3-popover2 .bp3-popover2-content),
 .bp3-dialog,
 .bp3-context-menu,
@@ -2763,6 +2803,7 @@ body.rm-dark-theme .bp3-toast[class*="bp3-intent-"] a:hover {
     color: var(--light-text-color);
 }
 
+/* ---------- 设置面板 / 扩展市场：根因③（面板容器自身带色，需逐层覆盖） ---------- */
 .rm-settings .rm-settings-panel .rm-settings-panel__description {
     color: var(--light-text-color);
     font-family: var(--body-font) !important;
@@ -2775,6 +2816,9 @@ body.rm-dark-theme .bp3-toast[class*="bp3-intent-"] a:hover {
     font-family: var(--body-font) !important;
 }
 
+/* 注意（实测 2026-09，现状即设计）：本组把 h1–h6 统一为 H2 色。真实设置弹窗挂在 body 下（不在 .roam-app 内），
+   本组权重生效 → 面板内各层级标题都呈 H2 色；若同一结构出现在 .roam-app 内，则第 4 章排版规则
+   （权重 (0,5,0) + !important）更高，会把 h1/h3 分别改回 H1/H3 色（h4–h6 仍为本组的 H2 色）。改色前请先实测 */
 .rm-settings .rm-settings-panel__section h1,
 .rm-settings .rm-settings-panel__section h2,
 .rm-settings .rm-settings-panel h3,
@@ -3031,6 +3075,7 @@ body:not(.rm-dark-theme) .rm-settings--desktop .rm-settings__tab:not(.rm-setting
     border-color: var(--color-subtle-border) !important;
 }
 
+/* 插件设置页（panel-config）实测 2026-09：h3 = 正文色、h4 = H2 色、描述 = 正文色（下方 h4 规则后写、同权重胜出） */
 .rm-settings-panel__panel-config .rm-settings-panel__section h4,
 .rm-settings-panel__panel-config .rm-settings-panel__section h3,
 .rm-settings-panel__panel-config .rm-settings-panel__section .rm-settings-panel__description,
@@ -3096,10 +3141,15 @@ body:not(.rm-dark-theme) .rm-settings--desktop .rm-settings__tab:not(.rm-setting
     color: var(--heading-h2-color) !important;
 }
 
+/* 注意（实测 2026-09）：本行在设置面板内不生效——h3 已被上方 "\.rm-settings .rm-settings-panel__section h*"
+   组以更高权重接管为 H2 色。保留不删：作为缺少 .rm-settings 包裹时的兜底 */
 .rm-settings-panel__section h3 {
     color: var(--heading-h1-color) !important;
 }
 
+/* 注意（实测 2026-09）：本行想把描述文字设为浅灰，但被两处更高权重规则先接管——
+   __contents 语境：(0,3,0) 规则设为 --text-color；panel-config 语境：(0,3,0) 规则设为 --text-color。
+   实测结果：这两处语境描述文字 = 正文色，仅其它语境的描述 = 浅灰（--m-text-muted）。勿按本行直觉改色 */
 .rm-settings-panel__description,
 .rm-settings-panel__section .rm-settings-panel__description {
     color: var(--light-text-color) !important;
@@ -3280,6 +3330,7 @@ body .bp3-overlay .bp3-dialog.rm-modal-dialog--settings .rm-extension-settings-h
     background: var(--sidebar-hover-bg) !important;
 }
 
+/* ---------- 日期选择器：根因④（react-day-picker 的 DayPicker-* 类 + Blueprint 默认色） ---------- */
 .bp3-datepicker {
     background-color: var(--page-color) !important;
 }
@@ -3331,6 +3382,7 @@ body .bp3-overlay .bp3-dialog.rm-modal-dialog--settings .rm-extension-settings-h
     color: var(--datepicker-day-selected-text) !important;
 }
 
+/* ---------- 自动补全：根因①④（Roam 内联 rgb 选中色 + 默认白底） ---------- */
 .rm-autocomplete__results {
     background-color: var(--autocomplete-results-bg);
     color: var(--text-color);
@@ -3428,7 +3480,14 @@ body.rm-dark-theme .roam-app .bp3-overlay div[style*="color: rgb(206, 217, 224)"
 }
 
 /* ========================================================= */
-/* 15. Dark Mode (Merged Overrides)                          */
+/* 14. Dark Mode (Merged Overrides)                          */
+/* 本章定位（2026-09）：夜间配色规则的唯一出处。第 2/4/11 章里与本章重复的夜间规则已删除（见各章删除登记）。
+   本章保留两类：① 夜间专属选择器（与日间互斥，别处不覆盖）；② 权重压制型兜底——标注"勿删"的，实测删掉会变观感。
+   已删登记（本批 14 条，判定标准：与第 13 章"日夜通用"规则选择器完全覆盖 + 声明逐字相同 + 实测计算值零变化）：
+   · 弹层 .bp3-menu 底色；· settings 容器组 + 标题 + 页签常态/hover/选中（共 5 条）；
+   · 扩展列表：__contents .rm-extensions-settings 底色、__desc、intent-primary 按钮、minimal 按钮；
+   · panel-config 兜底组（permissions 按钮文字/图标 + contents 内 h4/描述）；
+   · 设置弹窗本体 / header / close-button（3 条）。存活规则：第 13 章对应同值规则 */
 /* 已比对 system.css：本块为 roam 夜间变量/选择器（.rm-dark-theme），system 用 .bp3-dark，无重复 */
 /* ========================================================= */
 
@@ -3497,15 +3556,15 @@ body.rm-dark-theme .roam-app :is(.bp3-popover .bp3-popover-content, .bp3-popover
     color: var(--text-color) !important;
 }
 
-body.rm-dark-theme .roam-app :is(.bp3-popover-content, .bp3-popover .bp3-popover-content) .bp3-menu {
-    background: transparent !important;
-    color: var(--text-color) !important;
-}
-
+/* 勿删（实测 2026-09）：看似与第 13 章 ".bp3-menu-item { color: var(--text-color) !important }" 重复，
+   但本行权重更高——删掉后搜索菜单里带学术标签的项会从正文色变回标签色（#48C0A3 等）。
+   若要统一，请先决定"夜间菜单里的标签是否着色"再动 */
 body.rm-dark-theme .roam-app :is(.bp3-popover-content, .bp3-popover .bp3-popover-content) .bp3-menu-item {
     color: var(--text-color) !important;
 }
 
+/* 勿删（实测 2026-09）：删掉后夜间菜单选中/悬停项的文字色会从 --menu-hover-text(#E9F1F6)
+   变为 --text-color(#F1F5F7)——第 2 章 body.rm-dark-theme .roam-app .bp3-menu-item 的权重会接替 */
 body.rm-dark-theme .roam-app .bp3-menu.rm-graph-dropdown .bp3-menu-item.setting:hover,
 body.rm-dark-theme .roam-app .bp3-menu.rm-graph-dropdown .bp3-menu-item.setting.bp3-active,
 body.rm-dark-theme .roam-app :is(.bp3-popover-content, .bp3-popover .bp3-popover-content) .bp3-menu-item:hover,
@@ -3576,35 +3635,7 @@ body.rm-dark-theme .roam-app .rm-settings--desktop .rm-settings__tab:not(.rm-set
     color: var(--text-color) !important;
 }
 
-/* ========== Settings 面板 - 夜间模式强制（与日间同构，变量已为夜间值） ========== */
-body.rm-dark-theme .roam-app .bp3-tabs.rm-settings-tabs,
-body.rm-dark-theme .roam-app .bp3-tabs.rm-settings-tabs .bp3-tab-list,
-body.rm-dark-theme .roam-app .bp3-tab-panel.rm-settings__panel-wrapper,
-body.rm-dark-theme .roam-app .rm-settings-panel,
-body.rm-dark-theme .roam-app .rm-settings-panel__contents {
-    background: var(--page-color) !important;
-    color: var(--text-color) !important;
-}
-
-body.rm-dark-theme .roam-app .rm-settings-heading,
-body.rm-dark-theme .roam-app .rm-extension-settings-heading {
-    color: var(--heading-h1-color) !important;
-}
-
-body.rm-dark-theme .roam-app .bp3-tab.rm-settings__tab {
-    color: var(--text-color) !important;
-    background: transparent !important;
-}
-
-body.rm-dark-theme .roam-app .bp3-tab.rm-settings__tab:hover {
-    background: var(--sidebar-hover-bg) !important;
-    color: var(--text-color) !important;
-}
-
-body.rm-dark-theme .roam-app .bp3-tab.rm-settings__tab[aria-selected="true"] {
-    background: var(--color-primary-light) !important;
-    color: var(--text-color) !important;
-}
+/* ========== Settings 面板 - 夜间模式强制：本批已删 5 条与第 13 章重复者，保留下方纵向页签兜底 ========== */
 
 body.rm-dark-theme .roam-app .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab {
     color: var(--text-color) !important;
@@ -3649,30 +3680,11 @@ body.rm-dark-theme .bp3-dialog .bp3-input::placeholder {
 }
 
 /* 夜间：右侧内容区与 Roam Depot 扩展列表 */
-body.rm-dark-theme .roam-app .rm-settings-panel__contents .rm-extensions-settings {
-    background: var(--page-color) !important;
-    color: var(--text-color) !important;
-}
 
 body.rm-dark-theme .roam-app .rm-settings-panel__contents .rm-extensions-settings .rm-settings-panel__section h4,
 body.rm-dark-theme .roam-app .rm-settings-panel__contents .rm-extensions-settings .rm-settings-panel__description,
 body.rm-dark-theme .roam-app .rm-settings-panel__contents .rm-extensions-installed__header,
 body.rm-dark-theme .roam-app .rm-settings-panel__contents .rm-extension-installed__name {
-    color: var(--text-color) !important;
-}
-
-body.rm-dark-theme .roam-app .rm-settings-panel__contents .rm-extension-installed__desc {
-    color: var(--light-text-color) !important;
-}
-
-body.rm-dark-theme .roam-app .rm-settings-panel__contents .rm-extensions-settings .bp3-button.bp3-intent-primary {
-    background: var(--color-primary) !important;
-    border-color: var(--color-primary) !important;
-    color: var(--on-accent) !important;
-}
-
-body.rm-dark-theme .roam-app .rm-settings-panel__contents .rm-extensions-settings .bp3-button.bp3-minimal,
-body.rm-dark-theme .roam-app .rm-settings-panel__contents .rm-extension-installed .bp3-button.bp3-minimal {
     color: var(--text-color) !important;
 }
 
@@ -3683,12 +3695,16 @@ body.rm-dark-theme .roam-app .rm-settings-panel__panel-config {
     color: var(--text-color) !important;
 }
 
+/* 勿删（实测 2026-09）：删掉后 panel-config 内的 h4 会从正文色变为 H2 色——第 13 章稍后写入的
+   ".rm-settings-panel__panel-config ... h4 { heading-h2-color }" 会接替，观感会变 */
 body.rm-dark-theme .roam-app .rm-settings-panel__panel-config .rm-settings-panel__section h4,
 body.rm-dark-theme .roam-app .rm-settings-panel__panel-config .rm-settings-panel__section .rm-settings-panel__description,
 body.rm-dark-theme .roam-app .rm-settings-panel__panel-config .rm-settings-panel__description {
     color: var(--text-color) !important;
 }
 
+/* 勿删（实测 2026-09）：删掉后 panel-config 描述里的链接会从主色 --m-primary 变为外链紫 --m-link
+   （本章上方通用夜间外链规则接替） */
 body.rm-dark-theme .roam-app .rm-settings-panel__panel-config .rm-settings-panel__description a {
     color: var(--color-primary) !important;
 }
@@ -3711,29 +3727,9 @@ body.rm-dark-theme .roam-app .rm-settings-panel__panel-config .bp3-button.bp3-mi
 }
 
 /* 夜间：右侧任意 section 兜底 */
-body.rm-dark-theme .roam-app .rm-settings-panel__panel-config .rm-settings__permissions-button .bp3-button-text,
-body.rm-dark-theme .roam-app .rm-settings-panel__panel-config .rm-settings__permissions-button .bp3-icon,
-body.rm-dark-theme .roam-app .rm-settings-panel__contents .rm-settings-panel__section h4,
-body.rm-dark-theme .roam-app .rm-settings-panel__contents .rm-settings-panel__section .rm-settings-panel__description {
-    color: var(--text-color) !important;
-}
 
 body.rm-dark-theme .roam-app .rm-settings-panel__contents .rm-settings-panel__section h4 {
     color: var(--heading-h2-color) !important;
-}
-
-body.rm-dark-theme .roam-app .bp3-dialog:has(.rm-settings-tabs) {
-    background: var(--page-color) !important;
-    color: var(--text-color) !important;
-}
-
-body.rm-dark-theme .roam-app .bp3-dialog:has(.rm-settings-tabs) .bp3-dialog-header {
-    background: transparent !important;
-    color: var(--text-color) !important;
-}
-
-body.rm-dark-theme .roam-app .bp3-dialog:has(.rm-settings-tabs) .bp3-dialog-close-button {
-    color: var(--text-color) !important;
 }
 
 body .roam-app .rm-command-palette .bp3-input {
@@ -3780,7 +3776,7 @@ body .roam-app .DayPicker-Day:hover {
 }
 
 /* ========================================================= */
-/* 17. Gap-Filling & Global Resets                            */
+/* 15. Gap-Filling & Global Resets                            */
 /* 已比对 system.css：兜底/selection/滚动条等，与 system 选择器或值不同，全部保留 */
 /* ========================================================= */
 
@@ -3824,7 +3820,7 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
 /* ========================================================= */
-/* 18. References - Borderless Immersion                     */
+/* 16. References - Borderless Immersion                     */
 /* ========================================================= */
 
 .roam-app .rm-reference-wrapper .rm-reference-container>.flex-h-box strong,
@@ -3954,8 +3950,9 @@ body.rm-dark-theme .roam-app .roam-article .rm-reference-wrapper .rm-reference-i
 }
 
 /* ========================================================= */
-/* 命令面板：最高优先级覆盖（含 portaled / 扩展注入后的样式）  */
+/* 17. Command Palette（最高优先级覆盖，含 portaled / 扩展注入后的样式） */
 /* 同时匹配 .roam-app 内 与 body 直下，确保生效              */
+/* 说明：每条规则故意写两遍选择器（带/不带 .roam-app）以覆盖 portaled 元素，勿当重复删其一 */
 /* ========================================================= */
 html body .roam-app .rm-command-palette .rm-command-palette__shortcut,
 html body .rm-command-palette .rm-command-palette__shortcut {
@@ -4031,7 +4028,12 @@ html body .rm-command-palette .rm-command-palette__scroll-container .rm-command-
     color: var(--menu-hover-text) !important;
 }
 
-/* PDF 工具栏内 div：黑色 + body 字体（展示/编辑一致） */
+/* ========================================================= */
+/* 18. PDF 与杂项修复（PDF 面板 / #sup 脚注 / rm-table / ProseMirror） */
+/* 插件动态渲染，保留；PDF 工具条是插件自绘的浅色面板，故用黑色而非主题变量 */
+/* ========================================================= */
+
+/* PDF 工具栏内 div：黑色 + body 字体（展示/编辑一致；black 为刻意硬编码，理由见上方横幅） */
 .roam-app .rm-pdf-toolbar div:not(.rm-topbar):not(.rm-topbar-zen) {
     color: black;
     font-family: var(--body-font);
@@ -4078,6 +4080,12 @@ body.rm-dark-theme .roam-app .rm-table table {
 body.rm-dark-theme .roam-app .ProseMirror.rm-pm-editor {
     background-color: var(--page-color) !important;
 }
+
+/* ========================================================= */
+/* 19. Excalidraw（插件动态渲染，保留）                        */
+/* 已确认存活：Roam.js 切主题时 toggle .theme--dark（syncExcalidrawTheme）；
+/* 色值系插件面板专用硬编码（属既有基线）；--swatch-color 由 Excalidraw 逐色块内联注入 */
+/* ========================================================= */
 
 /* Excalidraw fullscreen panel: dark mode color fixes */
 body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left,
@@ -4148,7 +4156,7 @@ body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .range-input::
 }
 
 /* ========================================================= */
-/* 29. Mind Map (RoamJS Mindmap + markmap)                   */
+/* 20. Mind Map (RoamJS Mindmap + markmap；插件动态渲染，保留) */
 /* 抽屉/容器随主题；节点文字与链接、行内代码覆盖 markmap 硬编码 */
 /* 保留 markmap 枝干调色板（path/rect/circle 的 stroke/fill） */
 /* ========================================================= */
@@ -4201,17 +4209,14 @@ body.rm-dark-theme .excalidraw.theme--dark .Island.App-menu__left .range-input::
     color: var(--text-color) !important;
 }
 
-/* 夜间模式终极覆盖：纵向 Tab 文字色 */
-body.rm-dark-theme .roam-app .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab,
+/* 夜间：纵向 Tab 文字色——只保留"全局（非 .roam-app）"变体，用于 portaled / 扩展注入的 Tab；
+   .roam-app 内的同名变体与第 14 章规则选择器重叠且声明同值，2026-09 已删（实测 12 项计算值零变化） */
 body.rm-dark-theme .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab,
-body.rm-dark-theme .roam-app .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab-copy,
 body.rm-dark-theme .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab-copy,
-body.rm-dark-theme .roam-app .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab-copy.text-neutral-dark,
 body.rm-dark-theme .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab-copy.text-neutral-dark {
     color: var(--text-color) !important;
 }
 
-body.rm-dark-theme .roam-app .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab:hover,
 body.rm-dark-theme .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab:hover {
     background: var(--sidebar-hover-bg) !important;
     color: var(--text-color) !important;
