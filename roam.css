@@ -96,10 +96,10 @@
     /* 月白 */
     --m-on-accent: #F2ECDE;
     /* 缟 */
-    --m-highlight-underline: #E88894;
-    /* 海棠红 - 粉色系 */
-    --m-highlight-yellow: #F7A1AA;
-    /* 桃红 - 粉色系 */
+    --m-highlight-underline: #F2BE45;
+    /* 赤金 - 黄色系（下划线/强调） */
+    --m-highlight-yellow: #F0C239;
+    /* 缃色 - 黄色系（高亮底色，2026-09 由桃红粉系改为黄系） */
     --m-highlight-green: #EED8E5;
     /* 藕荷 - 粉色系 */
     --m-highlight-blue: #FFCABE;
@@ -379,9 +379,9 @@ body.rm-dark-theme,
     /* 紫亮 - 外链（violet，与引用条雪青/高亮区分） */
     --m-link-hover: #C4B5FD;
     /* 薰衣草 - 外链 hover */
-    /* 行内高亮（粉色系，亮色 + 适度透明保证浅字可读） */
-    --m-highlight-underline: oklch(from #F7A1AA l c h / 0.42);
-    --m-highlight-yellow: oklch(from #F7A1AA l c h / 0.40);
+    /* 行内高亮（黄色系，缃色黄底 + 适度透明，保证夜间浅字仍可读） */
+    --m-highlight-underline: oklch(from #F2BE45 l c h / 0.42);
+    --m-highlight-yellow: oklch(from #F0C239 l c h / 0.40);
     --m-highlight-green: oklch(from #EED8E5 l c h / 0.38);
     --m-highlight-blue: oklch(from #FFCABE l c h / 0.36);
     --m-highlight-red: oklch(from #F39BA2 l c h / 0.42);
@@ -462,13 +462,16 @@ body.rm-dark-theme,
  *    --block-row-min-height, --ref-block-row-min-height, --block-line-min-height, --lh-display, --lh-body,
  *    --lh-h1, --lh-h2, --lh-h3, --lh-quote, --lh-tag, --lh-code, --lh-title, --title-block-line-height
  *    （另：Diagram 区的 --block-text-align / --block-unset-max-width 由 Roam Diagram JS 读取，见第 10 章）
- * ② 色/装饰（30 个）：--code-selection-color, --color-primary-highlight, --danger-border,
- *    --datepicker-day-selected-bg, --find-input-focus-shadow, --focus-ring, --highlight-yellow,
- *    --highlight-green, --highlight-blue, --highlight-orange, --highlight-purple, --hover-secondary,
+ * ② 色/装饰（31 个）：--code-selection-color, --color-primary-highlight, --danger-border,
+ *    --datepicker-day-selected-bg, --find-input-focus-shadow, --focus-ring, --highlight-underline,
+ *    --highlight-underline-fade, --highlight-green, --highlight-blue, --highlight-orange,
+ *    --highlight-purple, --hover-secondary,
  *    --hr-color, --ink-solid, --m-checkbox-unchecked, --m-tag-hover, --page-tag-color, --popover-border,
  *    --reference-divider-color, --selection-bg, --selection-text, --settings-accent-bg,
  *    --sidebar-icon-hover-filter, --tag-border-color, --tag-font-weight, --tag-text-color,
  *    --title-text-shadow, --ui-surface-shadow, --blockquote-bar, --code-warning-surface
+ *    （注：--highlight-yellow 已于 2026-09 起被第 12 章 .rm-highlight 引用，移出本清单；
+ *      --highlight-underline / --highlight-underline-fade 随渐层写法移除而暂未引用，故加入本清单，仍一律保留）
  * ③ Sync 指示器（6 个）：--sync-synced-border, --sync-synced-border-color, --sync-synced-focus-shadow,
  *    --sync-warn-border, --sync-warn-shadow, --sync-warn-focus-shadow
  * ------------------------------------------------------------------ */
@@ -1953,11 +1956,13 @@ body.rm-dark-theme .roam-app .bp3-menu-item:has(span[data-tag="assumption"]) {
 /* ========================================================= */
 /* 12. Highlights (.rm-highlight 相关，参考 system.css)      */
 /* 已比对 system.css：本块用主题变量，与 system 硬编码色不同，全部保留 */
+/* 2026-09 调整（用户明确要求改配色/形态）：高亮统一为黄色系（日 #F0C239 缃色；夜同色 40% 透明），
+   并由「只染下半行的渐层」恢复为「整块实色全覆盖文字」 */
 /* ========================================================= */
 
-/* 文字高亮 */
+/* 文字高亮：整块实色全覆盖（不再用 linear-gradient 只染下半行） */
 .roam-app .rm-highlight {
-    background: linear-gradient(180deg, var(--highlight-underline-fade) 60%, var(--highlight-underline) 60%);
+    background-color: var(--highlight-yellow);
     color: var(--highlight-text);
 }
 
