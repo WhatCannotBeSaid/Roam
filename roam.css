@@ -726,6 +726,8 @@ body:not(.rm-dark-theme) .roam-app .roam-block-container.rm-heading-level-3>.rm-
 /* ========================================================= */
 /* 4. Typography                                             */
 /* 已比对 system.css：无相同规则块（system 仅 .roam-body .roam-app h1 颜色、.rm-level* 字号），全部保留 */
+/* 例外登记：本章「着重号」规则刻意使用 font-weight / text-emphasis（超出第四章属性白名单），
+   系用户明确要求「以着重号替代加粗」，属有意为之，清理时勿删（详见该规则上方注释） */
 /* ========================================================= */
 
 /* 应用根字体：第七种 --ui-font 仅作 .roam-app 根；六种格式用下方规则，其余 UI 用 :not 排除正文区后单独设 */
@@ -814,6 +816,47 @@ body .bp3-text-overflow-ellipsis {
 .roam-app b {
     color: var(--strong-color);
     font-family: var(--body-font);
+}
+
+/* 着重号（替代加粗）：**…** 在 Roam 中渲染为「加粗元素」。中文排版以「着重号」承担强调，
+   且 CJK 强行加粗（fake bold）观感差，故取消粗体、改在字下加点。
+   · 点色随 currentColor，未新增色值；位置 under（中文习惯：点在字下）。
+     实测（2026-09-29）：用户反馈加粗文字呈「正文色」而非 --strong-color，说明本版 Roam 渲染加粗
+     用的很可能不是 <strong>，而是 .rm-bold 或内联 style 的 span（即上面 ⑤/⑥ 层在生效）。
+     推论：第 4 章 `.roam-app strong { color: var(--strong-color) }` 可能已成死规则——需实测确认后再处理。
+   · 2026-09-29 修正：首版只写了 .rm-block-text / .rm-block__input--view，用户实测「仍加粗、无点」，
+     说明粗体所在的渲染容器不在这两个类里（很可能是新版 Roam 的 ProseMirror 富文本编辑态）。
+     现改为逐层兜底，任一层命中即生效：
+     ① 块内容区：.roam-article（含引用/嵌入/引用列表）
+     ② 块容器：.roam-block-container（任何块的祖先，容器类名再变也兜得住）
+     ③ 展示态输入层：.rm-block-text、.rm-block__input（含 --view）
+     ④ 富文本编辑态：.ProseMirror（新版 Roam 块编辑器，第 18 章已出现 .ProseMirror.rm-pm-editor）
+     ⑤ 元素兜底：.rm-bold（若 Roam 用 class 而非 <strong> 渲染加粗）
+     ⑥ 内联兜底：[style*="font-weight:bold"]（若 Roam 把加粗写进内联 style）
+   · 点径（2026-09-29 用户两次要求「调大」后实测）：text-emphasis 无尺寸属性，点径只能由 mark 字形大小
+     决定。Chromium 实测（本地对照页 16px；VS Code 内置浏览器与 Roam 桌面端同为 Chromium）：
+       内置 filled dot ≈ U+2022「•」（几乎同径——所以第一版换 • 时「看不出变化」）
+       U+25CF「●」明显更大（现采用）；U+2B24「⬤」更大但偏重（拉丁字母几乎连成一线）
+       U+2027「‧」比内置更小；filled sesame 呈逗号形（﹅），非圆点
+     换档只改下面这一处；点色随 currentColor，想单独换色加一行 text-emphasis-color 即可（不新增变量）。
+   · font-weight 带 !important：内联 style 与未知高权重规则只有在 !important 下才会让步。
+   · 编辑态若仍是纯 textarea（纯文本、** 标记可见），浏览器无法在表单控件内渲染着重号，
+     那种情况下编辑态自然还是原始 **…**。
+   ⚠ 本规则刻意使用 font-weight / text-emphasis，超出第四章「仅 color + font-family/font-size」白名单，
+     系用户明确要求，请勿在清理时删除；-webkit- 前缀供 iOS/WKWebView 端回退。
+     待确认实际命中的那一层后，可把上面 6 层收敛为最小集合。 */
+.roam-app .roam-article :is(strong, b, .rm-bold),
+.roam-app .roam-block-container :is(strong, b, .rm-bold),
+.roam-app .rm-block-text :is(strong, b, .rm-bold),
+.roam-app .rm-block__input :is(strong, b, .rm-bold),
+.roam-app .ProseMirror :is(strong, b, .rm-bold),
+.roam-app .roam-block-container [style*="font-weight: bold" i],
+.roam-app .roam-block-container [style*="font-weight:bold" i] {
+    font-weight: normal !important;
+    -webkit-text-emphasis: "●";
+    -webkit-text-emphasis-position: under;
+    text-emphasis: "●";
+    text-emphasis-position: under right;
 }
 
 .roam-app :is(.rm-title-display-container .rm-title-display, .roam-article .rm-title-display, h1.rm-title-display, .rm-title-display) {
